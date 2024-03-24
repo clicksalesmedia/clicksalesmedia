@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body {
+  font-family: 'Montserrat', sans-serif;
+  color: #fafafa;
+  background-color: #272727;
+  scroll-behavior: smooth;
+}
+
+
+h1 {
+  font-family: 'Cormorant', serif;
+}
+
+h2 {
+  font-family: 'Cormorant', serif;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: medium;
+  font-style: italic;
+}
+
+
+h2 span {
+  font-family: 'Cormorant', serif;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  color: #686868;
+  font-weight: 300; 
+}
+
+.content-container p {
+  color: white !important;
+}
+
+/* Style the scrollbar (works on Webkit/Blink browsers) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1af77;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e5ae54;
+}
+
+
+
+
+
