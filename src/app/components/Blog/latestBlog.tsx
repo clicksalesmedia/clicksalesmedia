@@ -2,13 +2,30 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+
+interface Category {
+  _id: string;
+  name: string;
+}
+
+interface Post {
+  _id: string;
+  title: string;
+  content: string;
+  thumbnailUrl: string;
+  createdAt: string; // or Date, depending on how you handle dates
+  categories: Category[];
+  day: number;
+  month: string;
+}
+
 const BlogSection = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/posts')
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Post[]) => { 
         setPosts(
           data.map((post) => {
             const date = new Date(post.createdAt);
@@ -34,7 +51,7 @@ const BlogSection = () => {
 };
 
 
-const LatestBlog = ({ post }) => {
+const LatestBlog: React.FC<{ post: Post }> = ({ post }) => {
   return (
 <section className="pb-10 pt-20">
   <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">

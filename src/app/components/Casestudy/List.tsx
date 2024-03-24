@@ -3,31 +3,46 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image"
 import Link from "next/link"
  
+interface CaseStudyApiResponse {
+  _id: string;
+  title: string;
+  content: string;
+  customer: string;
+  thumbnailUrl: string;
+  slug: string;
+  createdAt: string;
+}
+
+interface CaseStudy extends CaseStudyApiResponse {
+  day: number;
+  month: string;
+}
+
+const List: React.FC = () => {
+  const [casestudies, setCasestudies] = useState<CaseStudy[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/casestudy')
+      .then((response) => response.json())
+      .then((data: CaseStudyApiResponse[]) => {
+        // Transform the data and set the state
+        setCasestudies(
+          data.map((casestudy) => {
+            const date = new Date(casestudy.createdAt);
+            return {
+              ...casestudy,
+              day: date.getDate(),
+              month: date.toLocaleString('default', { month: 'long' }),
+            };
+          })
+        );
+      })
+      .catch((error) => console.error('Failed to fetch case studies', error));
+  }, []);
 
 
-const List = () => {
-
-    const [casestudies, setCasestudies] = useState([]);
-
-    useEffect(() => {
-      fetch('http://localhost:3001/api/casestudy')
-        .then((response) => response.json())
-        .then((data) => {
-            setCasestudies(
-            data.map((casestudy) => {
-              const date = new Date(casestudy.createdAt);
-              return {
-                ...casestudy,
-                day: date.getDate(),
-                month: date.toLocaleString('default', { month: 'long' }),
-              };
-            })
-          );
-        })
-        .catch((error) => console.error('Failed to fetch posts', error));
-    }, []);
-
-const CaseStudyCard = ({ casestudy }) => {
+  
+const CaseStudyCard: React.FC<{ casestudy: CaseStudy }> = ({ casestudy }) => {
 return (
 
     <div className="flex flex-col lg:flex-row gap-8 p-5 rounded-md bg-[#222222] dark:bg-gray-900 border border-secondaryColor/20 dark:border-gray-800/80 ">
@@ -35,7 +50,7 @@ return (
             <Image src={casestudy.thumbnailUrl} alt={casestudy.title} width={1300} height={900} className="rounded aspect-video lg:aspect-auto lg:h-full w-full object-cover" />
         </div>
         <div className="flex-1 flex flex-col space-y-6">
-            <Link href="#" className="text-xl font-semibold text-secondaryColor dark:text-white">
+            <Link href={`/case-studies/${casestudy.slug}`} className="text-xl font-semibold text-secondaryColor dark:text-white">
             {casestudy.title}
             </Link>
             <p  dangerouslySetInnerHTML={{ __html: casestudy.content }} className="text-whiteColor dark:text-gray-300 text-sm line-clamp-2">

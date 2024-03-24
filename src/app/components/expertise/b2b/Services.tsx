@@ -1,11 +1,14 @@
 'use client'
 import React, { useRef } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { motion, useTransform, useScroll, MotionValue } from "framer-motion";
 import Features from "../../expertise/b2b/Features";
 import CountUpStats from "@/app/ui/counter";
 import Keys from "./keys";
 
-
+interface CardType {
+  id: number;
+  component: React.ComponentType<any>; // Specify props as needed
+}
 
 // Adjusted Services function to use dynamic imports based on id
 export default function ServicesComponent() {
@@ -31,7 +34,11 @@ export default function ServicesComponent() {
   );
 }
 
-const Card = ({ position, card, scrollYProgress }) => {
+const Card: React.FC<{
+  position: number;
+  card: CardType;
+  scrollYProgress: MotionValue;
+}> = ({ position, card, scrollYProgress }) => {
   const scaleFromPct = (position - 1) / CARDS.length;
   const y = useTransform(scrollYProgress, [scaleFromPct, 1], [0, -CARD_HEIGHT]);
 
@@ -56,7 +63,7 @@ const Card = ({ position, card, scrollYProgress }) => {
 
 const CARD_HEIGHT = 700;
 
-const CARDS = [
+const CARDS: CardType[] = [
   {
     id: 1,
     component: Features,

@@ -3,6 +3,18 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { FiDollarSign, FiEye, FiPlay, FiSearch } from "react-icons/fi";
 import { FiCheckCircle } from "react-icons/fi";
+
+interface Feature {
+  id: number;
+  callout: string;
+  title: string;
+  description: string;
+  advantages?: { id: string; text: string }[];
+  contentPosition: "l" | "r";
+  Icon: React.ElementType;
+  imageUrl: string;
+}
+
 const Swap = () => {
   return (
     <>
@@ -13,30 +25,26 @@ const Swap = () => {
   );
 };
 
-const SwapColumnFeatures = () => {
-  const [featureInView, setFeatureInView] = useState(features[0]);
+const SwapColumnFeatures: React.FC = () => {
+  const [featureInView, setFeatureInView] = useState<Feature>(features[0]);
 
-  return (
-    
+  return (  
     <section className="relative mx-auto max-w-7xl">
-      <SlidingFeatureDisplay featureInView={featureInView} />
-
-      {/* Offsets the height of SlidingFeatureDisplay so that it renders on top of Content to start */}
-      <div className="-mt-[100vh] hidden md:block" />
-
-      {features.map((s) => (
-        <Content
-          key={s.id}
-          featureInView={s}
-          setFeatureInView={setFeatureInView}
-          {...s}
-        />
-      ))}
-    </section>
+    <SlidingFeatureDisplay featureInView={featureInView} />
+    <div className="-mt-[100vh] hidden md:block" />
+    {features.map((s) => (
+      <Content
+        key={s.id}
+        featureInView={s}
+        setFeatureInView={setFeatureInView}
+        {...s}
+      />
+    ))}
+  </section>
   );
 };
 
-const SlidingFeatureDisplay = ({ featureInView }) => {
+const SlidingFeatureDisplay: React.FC<{ featureInView: Feature }> = ({ featureInView }) => {
   return (
     <div
       style={{
@@ -60,7 +68,10 @@ const SlidingFeatureDisplay = ({ featureInView }) => {
   );
 };
 
-const Content = ({ setFeatureInView, featureInView }) => {
+const Content: React.FC<{
+  featureInView: Feature;
+  setFeatureInView: React.Dispatch<React.SetStateAction<Feature>>;
+}> = ({ featureInView, setFeatureInView }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     margin: "-150px",
@@ -82,29 +93,31 @@ const Content = ({ setFeatureInView, featureInView }) => {
       }}
     >
       <div className="grid h-full w-full place-content-center px-4 py-12 md:w-2/5 md:px-8 md:py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          <span className="rounded-full bg-secondaryColor px-2 py-1.5 text-xs font-medium text-whiteColor">
-            {featureInView.callout}
-          </span>
-          <h2 className="my-3 text-5xl font-bold text-secondaryColor">{featureInView.title}</h2>
-          <p className="text-whiteColor">{featureInView.description}</p>
-          {featureInView.advantages?.length > 0 && (
-            <ul role="list" className="space-y-2 pt-6">
-            {featureInView.advantages.map((advantage) => (
-              <li key={advantage.id} className="flex items-center gap-4 text-whiteColor dark:text-gray-400">
-                <FiCheckCircle className="text-secondaryColor"/>
-                <span>{advantage.text}</span>
-              </li>
-            ))}
-          </ul>
-          
-          )}
-          
-        </motion.div>
+      <motion.div
+  initial={{ opacity: 0, y: 25 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, ease: "easeInOut" }}
+>
+  <span className="rounded-full bg-secondaryColor px-2 py-1.5 text-xs font-medium text-whiteColor">
+    {featureInView.callout}
+  </span>
+  <h2 className="my-3 text-5xl font-bold text-secondaryColor">
+    {featureInView.title}
+  </h2>
+  <p className="text-whiteColor">
+    {featureInView.description}
+  </p>
+  {featureInView.advantages && featureInView.advantages.length > 0 && (
+    <ul role="list" className="space-y-2 pt-6">
+      {featureInView.advantages.map((advantage) => (
+        <li key={advantage.id} className="flex items-center gap-4 text-whiteColor dark:text-gray-400">
+          <FiCheckCircle className="text-secondaryColor" />
+          <span>{advantage.text}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+</motion.div>
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +131,7 @@ const Content = ({ setFeatureInView, featureInView }) => {
   );
 };
 
-const ExampleFeature = ({ featureInView }) => {
+const ExampleFeature: React.FC<{ featureInView: Feature }> = ({ featureInView }) => {
   return (
     <div className="relative h-96 w-full rounded-xl bg-slate-800 shadow-xl overflow-hidden">
       {/* Image display */}
@@ -130,7 +143,7 @@ const ExampleFeature = ({ featureInView }) => {
 
 export default Swap;
 
-const features = [
+const features: Feature[] = [
   {
     id: 1,
     callout: "Branding",

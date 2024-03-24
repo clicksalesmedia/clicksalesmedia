@@ -4,18 +4,18 @@ import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import { TracingBeam } from "../../ui/tracing-beam";
 
-// Add thumbnailUrl as an optional property to the Post type
-type Post = {
+
+type Casestudy = {
   id: number;
   title: string;
   content: string;
   createdAt: string;
-  thumbnailUrl?: string; // Optional property
+  thumbnailUrl?: string; 
 };
 
 const Details = () => {
   const pathname = usePathname();
-  const [post, setPost] = useState<Post | null>(null);
+  const [casestudy, setCasestudy] = useState<Casestudy | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,7 +31,7 @@ const Details = () => {
     const slug = pathname.split('/').pop();
     if (slug) {
       setIsLoading(true);
-      fetch(`http://localhost:3001/api/posts?slug=${slug}`)
+      fetch(`http://localhost:3001/api/casestudy?slug=${slug}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to fetch');
@@ -49,7 +49,7 @@ const Details = () => {
           }
 
           // Proceed to set the post data, using a fallback for date if needed
-          setPost({
+          setCasestudy({
             ...data,
             createdAt: !isNaN(parsedDate.getTime()) ? parsedDate.toLocaleDateString('default', {
               year: 'numeric',
@@ -68,7 +68,7 @@ const Details = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-  if (!post) return <div>Post not found</div>;
+  if (!casestudy) return <div>Post not found</div>;
 
   return (
     <article className='py-20'>
@@ -76,23 +76,23 @@ const Details = () => {
         <div className="max-w-2xl mx-auto antialiased pt-4 relative">
             <div className="mb-10">
               <h1 className="text-4xl text-secondaryColor mb-4">
-                {post.title}
+                {casestudy.title}
               </h1>
               <h2 className="bg-secondaryColor text-primaryColor rounded-full text-xl font-bold w-fit px-4 py-1 mb-4">
-                {post.title}
+                {casestudy.title}
               </h2>
               <div className="text-sm prose prose-sm dark:prose-invert">
-                {post.thumbnailUrl && 
+                {casestudy.thumbnailUrl && 
                   <Image
-                    src={post.thumbnailUrl}
-                    alt="blog thumbnail"
+                    src={casestudy.thumbnailUrl}
+                    alt={casestudy.title}
                     height="500"
                     width="1000"
                     className="rounded-lg mb-10 object-cover"
                   />
                 }
                 <p className="content-container text-base my-4"
-                  dangerouslySetInnerHTML={{ __html: post.content }}>
+                  dangerouslySetInnerHTML={{ __html: casestudy.content }}>
                 </p>
               </div>
             </div>
