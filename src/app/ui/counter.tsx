@@ -33,7 +33,8 @@ const CountUpStats = () => {
   );
 };
 
-const Stat = ({ num, suffix, decimals = 0, subheading }) => {
+
+const Stat = ({ num, suffix, decimals = 0, subheading }: { num: number, suffix: string, decimals?: number, subheading: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
 
@@ -45,7 +46,7 @@ const Stat = ({ num, suffix, decimals = 0, subheading }) => {
       onUpdate(value) {
         if (!ref.current) return;
 
-        ref.current.textContent = value.toFixed(decimals) + suffix;
+        (ref.current as HTMLDivElement).textContent = value.toFixed(decimals) + suffix;
       },
     });
   }, [num, decimals, isInView, suffix]);
