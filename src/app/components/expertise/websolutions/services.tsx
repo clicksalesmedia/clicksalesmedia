@@ -1,4 +1,5 @@
-import { HoverEffect } from "../../../ui/card-hover-effect";
+import HoverEffect from "@/app/ui/card-hover-effect";
+
 
 export default function WebServices() {
   return (
