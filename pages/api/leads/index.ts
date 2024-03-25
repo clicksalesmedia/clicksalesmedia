@@ -1,10 +1,17 @@
-// pages/api/leads/index.js
-import dbConnect from '../../../utils/dbConnect'; // Ensure you have a utility function to handle db connections
+import type { NextApiRequest, NextApiResponse } from 'next';
+import dbConnect from '../../../utils/dbConnect'; 
 import { Lead } from '../../../models/Lead';
 
-// Adjusted to immediately invoke and await the dbConnect function.
-export default async (req, res) => {
-    // Set CORS headers to allow all origins for development. Be sure to make this more restrictive for production use.
+type Data = {
+  success: boolean;
+  data?: any; 
+  error?: string;
+}
+
+export default async function handler(
+  req: NextApiRequest, 
+  res: NextApiResponse<Data> 
+) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -16,26 +23,26 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        // Using the correct model name according to the import
+
         const leads = await Lead.find({});
         res.status(200).json({ success: true, data: leads });
-      } catch (error) {
-        // Log error to the console for server-side debugging
+      } catch (error: unknown) {
+        if (error instanceof Error) {
         console.error('GET Error:', error);
         res.status(400).json({ success: false, error: error.message });
-      }
+      }}
       break;
 
     case 'POST':
-      console.log('POST request body:', req.body); // Log incoming POST data
+      console.log('POST request body:', req.body); 
       try {
         const lead = await Lead.create(req.body);
         res.status(201).json({ success: true, data: lead });
-      } catch (error) {
-        console.error('POST Error:', error); // Log error to the console
-        // Returning a more descriptive error message in the response
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+        console.error('POST Error:', error); 
         res.status(400).json({ success: false, error: error.message });
-      }
+      }}
       break;
 
     default:

@@ -43,9 +43,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.log(`Successfully updated contact with ID: ${contactId}`);
 
         res.json({ success: true, data: updatedContact });
-      } catch (error) {
-        console.error('Update Error:', error);
-        res.status(500).json({ message: 'Failed to update the contact', error: error.message });
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error('Update Error:', error.message);
+          res.status(500).json({ message: 'Failed to update the contact', error: error.message });
+        } else {
+          console.error('Unexpected error type:', error);
+          res.status(500).json({ message: 'An unexpected error occurred' });
+        }
       }
       break;
     default:
