@@ -1,10 +1,39 @@
 'use client'
-import React, { useEffect, useState } from "react";
-import { FiZap } from "react-icons/fi";
+import React, { useEffect, useState,ReactNode } from "react";
 import { motion } from "framer-motion";
 
+interface CodeBeamsProps {
+  icon: React.ReactNode; 
+  title: string;
+  description: string;
+}
 
-export default function CodeBeams({ icon, title, description }) {
+interface TransitionProps {
+  ease?: string;
+  duration?: number;
+  repeat?: number;
+  repeatDelay?: number;
+  // Include other properties as needed, or use a more flexible type like `any` or `Record<string, any>`
+}
+
+interface BeamProps {
+  top: string | number;  
+  left: string | number;
+  transition?: TransitionProps;
+}
+
+interface CardProps {
+  className?: string; 
+  children: ReactNode;
+}
+
+interface WindowSize {
+  width: number | undefined;
+  height: number | undefined;
+}
+
+
+const CodeBeams: React.FC<CodeBeamsProps> = ({ icon, title, description }) => {
   return (
     <div className="relative overflow-hidden bg-[#111111] text-slate-200">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -111,7 +140,7 @@ const Beams = () => {
   );
 };
 
-const Beam = ({ top, left, transition = {} }) => {
+const Beam: React.FC<BeamProps> = ({ top, left, transition = {} }) => {
   return (
     <motion.div
       initial={{
@@ -152,7 +181,7 @@ export const SocialMediaHero = () => {
 
 
 
-const Card = ({ className, children }) => {
+const Card: React.FC<CardProps> = ({ className = '', children }) => {
   return (
     <motion.div
       initial={{
@@ -174,15 +203,20 @@ const Card = ({ className, children }) => {
 };
 
 
+
 const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
+  const [windowSize, setWindowSize] = useState<WindowSize>({
     width: undefined,
     height: undefined,
   });
 
   useEffect(() => {
-    const handleResize = () =>
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
 
     window.addEventListener("resize", handleResize);
 
@@ -199,3 +233,4 @@ const useWindowSize = () => {
 const GRID_BOX_SIZE = 32;
 const BEAM_WIDTH_OFFSET = 1;
 
+export default CodeBeams

@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const getIcon = (iconName) => {
+
+const getIcon = (iconName: any) => {
   const iconPath = `/expertise/icons/${iconName}.svg`;
   return <Image width={150} height={150} src={iconPath} alt={iconName} className="w-10 h-10" />;
 };
@@ -19,6 +20,7 @@ const HoverEffect = ({
     title: string;
     description: string;
     link: string;
+    icon: string;
   }[];
   className?: string;
 }) => {
@@ -75,7 +77,7 @@ export const Card = ({
 }: {
   className?: string;
   children: React.ReactNode;
-  icon?: string;
+  icon?: React.ReactNode;
 }) => {
   return (
     <div className={cn("rounded-2xl h-full w-full p-4 overflow-hidden bg-[#222222] border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20", className)}>
