@@ -71,7 +71,7 @@ function WhyClicksalesmedia() {
               </svg>
             </div>
             <h1 className="text-3xl/tight font-medium mt-6 mb-4">
-              Smart Payroll. Paying your people couldn't be easier
+              {"Smart Payroll. Paying your people couldn't be easier"}
             </h1>
             <p className="text-gray-500">
               You can modify your pages with drag-dropping , can import demos

@@ -1,7 +1,12 @@
+import React, { useState, FunctionComponent, ChangeEvent, FormEvent } from 'react';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
-import { useState } from "react";
+
+interface SpringModalProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const FormService = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +23,7 @@ const FormService = () => {
   );
 };
 
-const SpringModal = ({ isOpen, setIsOpen }) => {
+const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen }) => {
   // Form state initialization
   const [form, setForm] = useState({
     name: '',
@@ -29,14 +34,12 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
     email: '',
   });
 
-  // Handle form inputs change
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/leads', {
@@ -102,7 +105,7 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
         <div className="mb-2 block">
           <Label htmlFor="email2" value="Your email" className='text-whiteColor'/>
         </div>
-        <TextInput id="email" type="email"  name="email" type="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="email" type="email"  name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>

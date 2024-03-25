@@ -144,7 +144,7 @@ const Expertise = () => {
         <div>
           <h2 className="mb-2 text-xl font-semibold text-primaryColor">Our Expertise</h2>
           <p className="mb-6 max-w-xs text-sm text-primaryColor">
-            Placeholder is the world's leading placeholder company.
+          {"Placeholder is the world's leading placeholder company."}
           </p>
         </div>
         <Link

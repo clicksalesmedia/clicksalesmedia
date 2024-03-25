@@ -85,7 +85,7 @@ function Feature() {
                             Performance Management
                         </h1>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                            Lorem Ipsum is simply dummy text of the printing and type setting industry. Industry's standard dummy
+                            {"Lorem Ipsum is simply dummy text of the printing and type setting industry. Industry's standard dummy"}
                         </p>
                     </div>
                 </div>

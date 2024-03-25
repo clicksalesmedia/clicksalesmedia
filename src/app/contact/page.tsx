@@ -76,7 +76,7 @@ function Contact() {
     </div>
     <div className="md:flex-1">
     <h1 className="text-secondaryColor py-6 dark:text-white font-semibold text-2xl sm:text-3xl md:text-4xl">
-            Let's Get in Touch
+            {"Let's Get in Touch"}
         </h1>
     <ContactForm />
     </div>

@@ -1,11 +1,19 @@
 'use client'
-import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { Button, Label, TextInput, Textarea } from 'flowbite-react';
 
+// Define a type for the form state
+interface FormData {
+  name: string;
+  company: string;
+  website: string;
+  mobile: string;
+  email: string;
+  message: string;
+}
 
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
+const ContactForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     company: '',
     website: '',
@@ -14,8 +22,8 @@ const ContactForm = () => {
     message: '',
   });
 
-  // Handle input change
-  const handleChange = (e) => {
+  // Adjusted to use ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -23,8 +31,8 @@ const ContactForm = () => {
     }));
   };
 
-  // Handle form submission
-  const handleSubmit = async (e) => {
+  // Adjusted to use FormEvent<HTMLFormElement>
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/contacts', {
@@ -59,7 +67,7 @@ const ContactForm = () => {
         <div className="mb-2 block">
           <Label htmlFor="base" value="Name" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" type="text" sizing="md" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
@@ -73,7 +81,7 @@ const ContactForm = () => {
         <div className="mb-2 block">
           <Label htmlFor="base" value="Website" className='text-whiteColor'/>
         </div>
-        <TextInput  sizing="md" type="text" sizing="md" id="website" name="website" value={formData.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput  sizing="md" type="text" id="website" name="website" value={formData.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
@@ -88,14 +96,14 @@ const ContactForm = () => {
         <div className="mb-2 block">
           <Label htmlFor="email2" value="Your email" className='text-whiteColor'/>
         </div>
-        <TextInput id="email" type="email"  name="email" type="email" value={formData.email} onChange={handleChange} placeholder="name@example.com"  required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="email" type="email"  name="email" value={formData.email} onChange={handleChange} placeholder="name@example.com"  required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
     <div>
       <div className="mb-2 block">
         <Label htmlFor="comment" value="Your message" className='text-whiteColor'/>
       </div>
-      <Textarea id="message" type="text" sizing="md" type="text" sizing="md"  name="message" value={formData.message} onChange={handleChange} placeholder="Message..." className='p-2 bg-[#222222] rounded-xs border-secondaryColor' placeholder="Your Message..." required rows={4} />
+      <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Message..." className='p-2 bg-[#222222] rounded-xs border-secondaryColor' required rows={4} />
     </div>
 
     <Button

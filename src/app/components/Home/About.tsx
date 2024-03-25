@@ -10,7 +10,7 @@ function About() {
     <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 grid lg:grid-cols-2 lg:items-center gap-10">
       <div className="flex flex-col space-y-8 sm:space-y-10 lg:items-center text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto">
         <h1 className=" font-semibold leading-tight text-slate-200 dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-          We'll be happy to take care of <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">your work.</span>
+          {"We'll be happy to take care of"} <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">your work.</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestiae soluta ipsa
