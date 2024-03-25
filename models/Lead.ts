@@ -34,4 +34,6 @@ const leadSchema = new mongoose.Schema({
 
 const Lead = mongoose.models.Lead || mongoose.model<ILead>('Lead', leadSchema);
 
-export { Lead, ILead };
+export { Lead };
+export type { ILead };
+
