@@ -1,8 +1,14 @@
 'use client'
 import ButtonGen from "@/app/ui/button";
-import Link from "next/link";
+
+interface FeatureItemProps {
+    title: string;
+    description: string;
+    icon: string; 
+    id: string | number; 
+  }
  
-const iconRender = (val) => {
+const iconRender = (val: string) => {
 switch (val) {
     case "stat-ico":
         return (
@@ -15,7 +21,7 @@ switch (val) {
 }
 }
  
-const FeatureItem = ({ title, description, icon, id }) => {
+const FeatureItem: React.FC<FeatureItemProps> = ({ title, description, icon, id }) => {
 return (
     <div className={
         ` space-y-4 
