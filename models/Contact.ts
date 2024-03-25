@@ -33,4 +33,5 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.models.Contact || mongoose.model<IContact>('Contact', contactSchema);
 
-export { Contact, IContact };
+export { Contact };
+export type { IContact };
