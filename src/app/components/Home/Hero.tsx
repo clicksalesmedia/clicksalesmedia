@@ -3,7 +3,11 @@ import React from 'react'
 import TypewriterComponent from './TypewriterComponent'
 import {Home, Inbox, Bell, Camera, Heart } from 'lucide-react';
 
-const IconCircle = ({icon}) => {
+interface IconCircleProps {
+  icon: React.ReactNode;
+}
+
+const IconCircle: React.FC<IconCircleProps> = ({ icon }) => {
   return (
     <div className="flex items-center">
       <span className="mr-4 p-2 border-2 border-secondaryColor text-secondaryColor rounded-full">
