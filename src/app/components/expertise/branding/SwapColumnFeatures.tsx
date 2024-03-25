@@ -1,5 +1,6 @@
 'use client'
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiDollarSign, FiEye, FiPlay, FiSearch } from "react-icons/fi";
 import { FiCheckCircle } from "react-icons/fi";
@@ -135,7 +136,7 @@ const ExampleFeature: React.FC<{ featureInView: Feature }> = ({ featureInView })
   return (
     <div className="relative h-96 w-full rounded-xl bg-slate-800 shadow-xl overflow-hidden">
       {/* Image display */}
-      <img src={featureInView.imageUrl} alt={featureInView.title} className="absolute inset-0 h-full w-full object-cover" />
+      <Image width={600} height={300} src={featureInView.imageUrl} alt={featureInView.title} className="absolute inset-0 h-full w-full object-cover" />
     </div>
   );
 };

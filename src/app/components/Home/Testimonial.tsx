@@ -2,6 +2,7 @@
 import { FC } from 'react';
 import { motion } from "framer-motion";
 import Data from "@/app/ui/data";
+import Image from 'next/image';
 
 interface TestimonialItem {
   id: number;
@@ -56,7 +57,7 @@ const TestimonialList: FC<TestimonialListProps> = ({ list, reverse = false, dura
           key={t.id}
           className="shrink-0 w-[500px] grid grid-cols-[7rem,_1fr] rounded-lg overflow-hidden relative"
         >
-          <img src={t.img} alt={t.name} className="w-full h-44 object-cover" />
+          <Image width={180} height={280} src={t.img} alt={t.name} className="w-full h-44 object-cover" />
           <div className="bg-secondaryColor text-slate-50 p-4">
             <span className="block font-semibold text-lg mb-1">{t.name}</span>
             <span className="block mb-3 text-sm font-medium">{t.title}</span>

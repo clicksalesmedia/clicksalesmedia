@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi"; // Importing the right arrow icon
 
-const ButtonGen = () => {
+interface DrawOutlineButtonProps {
+  children: React.ReactNode; // Explicitly typing children
+}
+
+const ButtonGen: React.FC = () => {
   return (
     <div className="grid place-content-center">
       <Link href="#" passHref>
@@ -11,7 +15,7 @@ const ButtonGen = () => {
   );
 };
 
-const DrawOutlineButton = ({ children, ...rest }) => {
+const DrawOutlineButton: React.FC<DrawOutlineButtonProps> = ({ children, ...rest }) => {
   return (
     <button 
       {...rest}

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function WhyClicksalesmedia() {
@@ -20,7 +21,9 @@ function WhyClicksalesmedia() {
           <div className="xl:pt-16 xl:pb-28 py-16">
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 items-center justify-center">
               <div className="relative">
-                <img
+                <Image
+                width={300}
+                height={300}
                   src="/images/hero/saas1.png"
                   alt="saas1"
                   data-aos="fade-right"
@@ -82,7 +85,9 @@ function WhyClicksalesmedia() {
     <div className="absolute w-20 h-20 -top-8 -right-8 z-5 bg-[url('/dot2.svg')]"></div>
     <div className="absolute w-20 h-20 -bottom-8 -left-8 z-5 bg-[url('/dot5.svg')]"></div>
   </div>
-  <img
+  <Image 
+    width={300}
+    height={300}
     src="/images/hero/saas2.png"
     className="z-20" // Ensure this is higher than the dots' z-index
     alt="saas2"

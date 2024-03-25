@@ -1,4 +1,5 @@
 import ButtonUX from '@/app/ui/buttonux';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const Hero = () => {
@@ -20,7 +21,7 @@ const Hero = () => {
           </div>
           {/* Image */}
           <div className="flex-1">
-            <img className="object-cover w-full h-96 rounded-xl" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Marketing Image" />
+            <Image width={300} height={600} className="object-cover w-full h-96 rounded-xl" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Marketing Image" />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { FiMenu, FiArrowRight, FiX, FiChevronDown } from "react-icons/fi";
 import { GrSchedule } from "react-icons/gr";
 
@@ -10,6 +10,21 @@ import {
   motion,
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+
+
+interface NavLinkProps {
+  children: ReactNode;
+  href: string;
+  FlyoutContent?: React.ComponentType; 
+}
+
+interface MobileMenuLinkProps {
+  children: ReactNode;
+  href: string;
+  FoldContent?: React.ComponentType; 
+  setMenuOpen: (open: boolean) => void; 
+}
 
 const Navbar = () => {
   return (
@@ -50,10 +65,11 @@ const FlyoutNav = () => {
 };
 
 const Logo = ({ color = "white" }) => {
-  // Temp logo from https://logoipsum.com/
   return (
     <div className="flex items-center gap-2">
+      <Link href='/'>
       <Image src='/clicksalesmedialogo.svg' alt="clicksalesmedia agency" width={100} height={50}></Image>
+      </Link>
     </div>
   );
 };
@@ -70,7 +86,7 @@ const Links = () => {
   );
 };
 
-const NavLink = ({ children, href, FlyoutContent }) => {
+const NavLink: React.FC<NavLinkProps> = ({ children, href, FlyoutContent }) => {
   const [open, setOpen] = useState(false);
 
   const showFlyout = FlyoutContent && open;
@@ -81,7 +97,7 @@ const NavLink = ({ children, href, FlyoutContent }) => {
       onMouseLeave={() => setOpen(false)}
       className="relative w-fit h-fit"
     >
-      <a href={href} className="relative">
+      <Link href={href} className="relative">
         {children}
         <span
           style={{
@@ -89,7 +105,7 @@ const NavLink = ({ children, href, FlyoutContent }) => {
           }}
           className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-secondaryColor transition-transform duration-300 ease-out"
         />
-      </a>
+      </Link>
       <AnimatePresence>
         {showFlyout && (
           <motion.div
@@ -131,15 +147,15 @@ const Expertise = () => {
             Placeholder is the world's leading placeholder company.
           </p>
         </div>
-        <a
+        <Link
           href="#"
           className="flex items-center gap-1 text-xs text-primaryColor hover:underline"
         >
           Discover More <FiArrowRight />
-        </a>
+        </Link>
       </div>
       <div className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8">
-        <a
+        <Link
           href="/expertise/branding"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -147,8 +163,8 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/expertise/social-media-management"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -156,8 +172,8 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/expertise/website-solutions"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -165,8 +181,8 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/expertise/seo-solutions"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -174,8 +190,8 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/expertise//google-marketing-services"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -183,8 +199,8 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
-        <a
+        </Link>
+        <Link
           href="/expertise/business-to-business"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
@@ -192,14 +208,14 @@ const Expertise = () => {
           <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
           </p>
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
 
-const MobileMenuLink = ({ children, href, FoldContent, setMenuOpen }) => {
+const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({ children, href, FoldContent, setMenuOpen }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -209,7 +225,7 @@ const MobileMenuLink = ({ children, href, FoldContent, setMenuOpen }) => {
           className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
           onClick={() => setOpen((pv) => !pv)}
         >
-          <a
+          <Link
             onClick={(e) => {
               e.stopPropagation();
               setMenuOpen(false);
@@ -217,7 +233,7 @@ const MobileMenuLink = ({ children, href, FoldContent, setMenuOpen }) => {
             href={href}
           >
             {children}
-          </a>
+          </Link>
           <motion.div
             animate={{ rotate: open ? "180deg" : "0deg" }}
             transition={{
@@ -229,7 +245,7 @@ const MobileMenuLink = ({ children, href, FoldContent, setMenuOpen }) => {
           </motion.div>
         </div>
       ) : (
-        <a
+        <Link
           onClick={(e) => {
             e.stopPropagation();
             setMenuOpen(false);
@@ -239,7 +255,7 @@ const MobileMenuLink = ({ children, href, FoldContent, setMenuOpen }) => {
         >
           <span>{children}</span>
           <FiArrowRight />
-        </a>
+        </Link>
       )}
       {FoldContent && (
         <motion.div

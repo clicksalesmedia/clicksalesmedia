@@ -3,13 +3,30 @@ import React, { useState, useEffect } from 'react'; // Import React hooks
 import Image from 'next/image';
 import Link from 'next/link';
 
+interface Category {
+  _id: string;
+  name: string;
+}
+
+interface Post {
+  _id: string;
+  title: string;
+  content: string;
+  thumbnailUrl: string;
+  slug: string;
+  createdAt: string; // or Date, depending on how you handle dates
+  categories: Category[];
+  day: number;
+  month: string;
+}
+
 const BlogSection = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     fetch('http://localhost:3001/api/posts')
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Post[]) => {
         setPosts(
           data.map((post) => {
             const date = new Date(post.createdAt);
@@ -24,7 +41,7 @@ const BlogSection = () => {
       .catch((error) => console.error('Failed to fetch posts', error));
   }, []);
 
-  const BlogCard = ({ post }) => {
+  const BlogCard: React.FC<{ post: Post }> = ({ post }) => {
     return (
       <div className="rounded-md flex flex-col bg-[#222222] dark:bg-gray-950 shadow-sm shadow-black dark:shadow-none border border-black/20 dark:border-gray-800/80 p-4">
         <div className="relative">

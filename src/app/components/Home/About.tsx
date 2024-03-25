@@ -26,22 +26,22 @@ function About() {
           </Link>
         </div>
         <div className="mt-5 flex items-center justify-center flex-wrap gap-4 lg:justify-start w-full">
-          <a href="#" target="_blank" rel='noreferer'>
+          <Link href="#" target="_blank" rel='noreferer'>
             <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-google.png" alt="client name" className="h-10 w-auto dark:grayscale" />
-          </a>
-          <a href="#" target="_blank" rel='noreferer'>
+          </Link>
+          <Link href="#" target="_blank" rel='noreferer'>
             <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-meta.png" alt="client name" className="h-10 w-auto dark:grayscale" />
-          </a>
-          <a href="#" target="_blank" rel='noreferer'>
+          </Link>
+          <Link href="#" target="_blank" rel='noreferer'>
             <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-hubspot.png" alt="client name" className="h-10 w-auto dark:grayscale" />
-          </a>
-          <a href="#" target="_blank" rel='noreferer'>
+          </Link>
+          <Link href="#" target="_blank" rel='noreferer'>
             <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-semrush.png" alt="client name" className="h-10 w-auto dark:grayscale" />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="flex aspect-square lg:aspect-auto lg:h-[35rem] relative">

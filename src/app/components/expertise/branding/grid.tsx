@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 <div className="relative overflow-hidden bg-gray-900 pt-16 pb-32 space-y-24">
   <div className="relative">
     <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
@@ -32,19 +35,20 @@
               analyze text-based inputs.
             </p>
             <div className="mt-6">
-              <a
+              <Link
                 className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                 href="/login"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-12 sm:mt-16 lg:mt-0">
         <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-          <img
+          <Image
+            alt=""
             loading="lazy"
             width={647}
             height={486}
@@ -89,19 +93,19 @@
               expressed in text or customer feedback.
             </p>
             <div className="mt-6">
-              <a
+              <Link
                 className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                 href="/login"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-12 sm:mt-16 lg:mt-0">
         <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-          <img
+          <Image
             alt="Inbox user interface"
             loading="lazy"
             width={647}
@@ -146,19 +150,20 @@
               or reports based on structured data or analysis results.
             </p>
             <div className="mt-6">
-              <a
+              <Link
                 className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                 href="/login"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-12 sm:mt-16 lg:mt-0">
         <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-          <img
+          <Image
+            alt=""
             loading="lazy"
             width={646}
             height={485}

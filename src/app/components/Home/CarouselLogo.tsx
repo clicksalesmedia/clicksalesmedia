@@ -2,6 +2,7 @@
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Image from 'next/image';
 
 const CarouselLogo = () => {
   const settings = {
@@ -34,7 +35,7 @@ const CarouselLogo = () => {
       <Slider {...settings}>
         {logos.map((logo, index) => (
           <div key={index} className='py-10'>
-            <img src={logo} alt={`Logo ${index + 1}`} className='w-full max-w-40' style={{ filter: 'grayscale(100%)' }} />
+            <Image width={200} height={80} src={logo} alt={`Logo ${index + 1}`} className='w-full max-w-40' style={{ filter: 'grayscale(100%)' }} />
           </div>
         ))}
       </Slider>

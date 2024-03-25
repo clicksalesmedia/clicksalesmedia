@@ -23,6 +23,7 @@ import {
 import { TbBrandNextjs } from 'react-icons/tb';
 import { IoLogoJavascript, IoLogoVercel } from 'react-icons/io5';
 import { DiJqueryLogo } from 'react-icons/di';
+import { Link } from 'lucide-react';
 
 interface TranslateWrapperProps {
   children: React.ReactNode;
@@ -48,14 +49,13 @@ interface LogoItemProps {
 
 const LogoItem: React.FC<LogoItemProps> = ({ Icon }) => {
   return (
-    <a
+    <Link
       href="/"
-      rel="nofollow noopener noreferrer"
       target="_blank"
       className="w-16 md:w-24 h-16 md:h-24 flex justify-center items-center hover:text-[#222222] text-secondaryColor transition-colors"
     >
       <Icon className="text-4xl md:text-5xl" />
-    </a>
+    </Link>
   );
 };
 

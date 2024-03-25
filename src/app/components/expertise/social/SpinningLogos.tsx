@@ -137,11 +137,17 @@ const SpinningLogos = () => {
 
 export default SpinningSocial;
 
+interface WindowSize {
+  width: number | undefined;
+  height: number | undefined;
+}
+
 const useWindowSize = () => {
-  const [windowSize, setWindowSize] = useState({
+  const [windowSize, setWindowSize] = useState<WindowSize>({
     width: undefined,
     height: undefined,
   });
+
 
   useEffect(() => {
     function handleResize() {
@@ -160,7 +166,7 @@ const useWindowSize = () => {
   return windowSize;
 };
 
-const degreesToRadians = (degrees) => {
+const degreesToRadians = (degrees: number): number => {
   return degrees * (Math.PI / 180);
 };
 
@@ -227,8 +233,8 @@ const BREAKPOINTS = {
 };
 
 const TRANSITION = {
-  repeat: Infinity,
-  repeatType: "loop",
-  duration: 50,
-  ease: "linear",
+  repeat: Infinity, 
+  repeatType: "loop" as "loop",
+  duration: 50, 
+  ease: "linear", 
 };

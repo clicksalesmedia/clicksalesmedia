@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function WebSolution() {
@@ -34,7 +35,8 @@ function WebSolution() {
     <div className="mt-16 grid divide-x divide-y  divide-gray-700 overflow-hidden  rounded-3xl border text-gray-600 border-gray-700 sm:grid-cols-2 lg:grid-cols-4  lg:divide-y-0 xl:grid-cols-4">
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl  hover:shadow-gray-600/10">
         <div className="relative space-y-8 py-12 p-8">
-          <img
+          <Image
+            alt=''
             src="https://www.svgrepo.com/show/164986/logo.svg"
             loading="lazy"
             width={200}
@@ -54,7 +56,8 @@ function WebSolution() {
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div className="relative space-y-8 py-12 p-8">
-          <img
+          <Image
+            alt=''
             src="https://www.svgrepo.com/show/120853/logo.svg"
             loading="lazy"
             width={200}
@@ -74,7 +77,8 @@ function WebSolution() {
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div className="relative space-y-8 py-12 p-8">
-          <img
+          <Image
+            alt=''
             src="https://www.svgrepo.com/show/120852/logo.svg"
             loading="lazy"
             width={200}
@@ -94,7 +98,8 @@ function WebSolution() {
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
         <div className="relative space-y-8 py-12 p-8">
-          <img
+          <Image
+            alt=''
             src="https://www.svgrepo.com/show/120850/logo.svg"
             loading="lazy"
             width={200}

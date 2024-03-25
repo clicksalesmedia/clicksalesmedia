@@ -1,11 +1,12 @@
 import { cn } from "../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const getIcon = (iconName) => {
   const iconPath = `/expertise/icons/${iconName}.svg`;
-  return <img src={iconPath} alt={iconName} className="w-10 h-10" />;
+  return <Image width={150} height={150} src={iconPath} alt={iconName} className="w-10 h-10" />;
 };
 
 

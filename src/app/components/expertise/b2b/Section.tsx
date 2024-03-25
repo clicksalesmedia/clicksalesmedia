@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function B2bAdvantages() {
@@ -36,20 +38,21 @@ function B2bAdvantages() {
                 analyze text-based inputs.
               </p>
               <div className="mt-6">
-                <a
+                <Link
                   className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                   href="/login"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
         <div className="mt-12 sm:mt-16 lg:mt-0">
           <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-            <img
+            <Image
               loading="lazy"
+              alt=''
               width={647}
               height={486}
               className="w-full rounded-xl shadow-2xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
@@ -93,19 +96,19 @@ function B2bAdvantages() {
                 expressed in text or customer feedback.
               </p>
               <div className="mt-6">
-                <a
+                <Link
                   className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                   href="/login"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
         <div className="mt-12 sm:mt-16 lg:mt-0">
           <div className="-ml-48 pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-            <img
+            <Image
               alt="Inbox user interface"
               loading="lazy"
               width={647}
@@ -150,19 +153,20 @@ function B2bAdvantages() {
                 or reports based on structured data or analysis results.
               </p>
               <div className="mt-6">
-                <a
+                <Link
                   className="inline-flex rounded-lg bg-pink-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-pink-600 hover:bg-pink-700 hover:ring-pink-700"
                   href="/login"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
         <div className="mt-12 sm:mt-16 lg:mt-0">
           <div className="-mr-48 pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
-            <img
+            <Image
+              alt=''
               loading="lazy"
               width={646}
               height={485}

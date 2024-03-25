@@ -1,6 +1,14 @@
 import Link from "next/link";
  
-const iconRender = (val) => {
+
+interface FeatureItemProps {
+    title: string;
+    description: string;
+    icon: string;
+    id: number;
+}
+
+const iconRender = (val: string): JSX.Element => {
 switch (val) {
     case "stat-ico":
         return (
@@ -13,7 +21,7 @@ switch (val) {
 }
 }
  
-const FeatureItem = ({ title, description, icon, id }) => {
+const FeatureItem = ({ title, description, icon, id }: FeatureItemProps): JSX.Element => {
 return (
     <div className={
         ` space-y-4 

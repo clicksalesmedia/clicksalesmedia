@@ -1,5 +1,6 @@
 
 import Data from "@/app/ui/data";
+import Image from "next/image";
 import { FaInstagram, FaLinkedinIn ,FaXTwitter } from "react-icons/fa6";
 
 interface TeamMember {
@@ -106,7 +107,7 @@ const ExecutiveTeam: React.FC = () => {
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4">
           {teamMembers.map((member, index) => (
             <div key={index} className="flex flex-col items-center p-8 transition-colors duration-300 transform border border-secondaryColor cursor-pointer rounded-xl hover:border-transparent group hover:bg-secondaryColor dark:border-gray-700 dark:hover:border-transparent">
-              <img className="object-cover w-32 h-32 rounded-full ring-4 ring-secondaryColor" src={member.imageUrl} alt={member.name} />
+              <Image className="object-cover w-32 h-32 rounded-full ring-4 ring-secondaryColor" width={128} height={128}  src={member.imageUrl} alt={member.name} />
 
               <h1 className="mt-4 text-2xl font-semibold text-secondaryColor capitalize dark:text-white group-hover:text-white">{member.name}</h1>
 
