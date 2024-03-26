@@ -1,9 +1,13 @@
-'use client'
+import { Metadata } from "next";
 import BlogSection from "../components/Blog/BlogSection";
 import LatestBlog from "../components/Blog/latestBlog";
 import CodeBeams from "../ui/CodeBeams";
 import { BiDetail } from "react-icons/bi";
 
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'its branding page',
+}
 
 export default function Blog() {
   

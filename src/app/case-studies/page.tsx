@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import List from '../components/Casestudy/List'
 import CodeBeams from '../ui/CodeBeams'
