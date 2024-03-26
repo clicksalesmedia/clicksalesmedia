@@ -45,7 +45,7 @@ function Hero() {
   </div>
 
   <div className="p-4">
-    <div className="w-full space-y-10 md:py-20">
+    <div className="w-full space-y-10 md:py-20 text-center sm:text-left">
       <h1 className='text-third font-cormorant font text-4xl md:text-6xl font-bold'><span className='text-secondaryColor'>Welcome to </span>Digital Marketing Agency Clicksalesmedia</h1>
           <TypewriterComponent />
           <p className='text-1xl text-thirdColor font-montserrat'>We are digital marketing agency experts in using data to create outstanding brands, engaging content, powerful stories, high conversions, and significant growth.</p>

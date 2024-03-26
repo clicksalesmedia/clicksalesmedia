@@ -1,6 +1,3 @@
-
-import Data from '@/app/ui/data'
-import Link from 'next/link'
 function Hero() {
   return (
     <section className="min-h-max bg-primaryColor dark:bg-gray-950">

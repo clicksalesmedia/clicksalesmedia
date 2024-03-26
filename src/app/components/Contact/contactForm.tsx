@@ -67,28 +67,28 @@ const ContactForm: React.FC = () => {
         <div className="mb-2 block">
           <Label htmlFor="base" value="Name" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Company" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your Company Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your Company Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Website" className='text-whiteColor'/>
         </div>
-        <TextInput  sizing="md" type="text" id="website" name="website" value={formData.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput  sizing="md" type="text" id="website" name="website" value={formData.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Mobile" className='text-whiteColor'/>
         </div>
-        <TextInput id="mobile" type="text" sizing="md" name="mobile" value={formData.mobile} onChange={handleChange} placeholder="Your Mobile Number" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="mobile" type="text" sizing="md" name="mobile" value={formData.mobile} onChange={handleChange} placeholder="Your Mobile Number" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
 
@@ -96,14 +96,14 @@ const ContactForm: React.FC = () => {
         <div className="mb-2 block">
           <Label htmlFor="email2" value="Your email" className='text-whiteColor'/>
         </div>
-        <TextInput id="email" type="email"  name="email" value={formData.email} onChange={handleChange} placeholder="name@example.com"  required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="email" type="email"  name="email" value={formData.email} onChange={handleChange} placeholder="name@example.com"  required shadow style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
     <div>
       <div className="mb-2 block">
         <Label htmlFor="comment" value="Your message" className='text-whiteColor'/>
       </div>
-      <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Message..." className='p-2 bg-[#222222] rounded-xs border-secondaryColor' required rows={4} />
+      <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Message..." className='focus:text-[#C3A177] p-2 bg-[#222222] rounded-xs border-secondaryColor' required rows={4} />
     </div>
 
     <Button

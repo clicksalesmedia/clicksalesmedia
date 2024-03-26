@@ -21,7 +21,7 @@ interface TestimonialListProps {
 
 const Testimonial = () => {
   return (
-    <div className="bg-primaryColor py-12">
+    <div className="bg-primaryColor py-12 hidden md:block">
       <div className="mb-8 px-4">
       <Data sectionName="testimonials" />
       </div>
@@ -63,7 +63,7 @@ const TestimonialList: FC<TestimonialListProps> = ({ list, reverse = false, dura
             <span className="block mb-3 text-sm font-medium">{t.title}</span>
             <span className="block text-sm text-slate-300">{t.info}</span>
           </div>
-          <span className="text-7xl absolute top-2 right-2 text-slate-700">&apos;s</span>
+          <span className="text-7xl absolute top-2 right-2 text-slate-700">&apos;&apos; </span>
         </div>
       ))}
     </motion.div>
@@ -124,13 +124,6 @@ const testimonials = {
       name: "Mr. Saleh Ghalayini",
       title: "Project Manager at Joynt",
       info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
-    },
-    {
-      id: 4,
-      img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      name: "Matthew I.",
-      title: "Founder of XYZ",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere mollitia nam aspernatur esse corporis!",
     },
   ],
 };

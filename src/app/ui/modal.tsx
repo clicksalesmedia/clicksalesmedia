@@ -90,7 +90,7 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
-              <div className="bg-white w-16 h-16 mb-2 rounded-full text-3xl text-indigo-600 grid place-items-center mx-auto">
+              <div className="bg-white w-16 h-16 mb-2 rounded-full text-3xl text-primaryColor grid place-items-center mx-auto">
                 <FiAlertCircle />
               </div>
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -98,42 +98,42 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         <div className="mb-2 block">
           <Label htmlFor="base" value="Name" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="email2" value="Your email" className='text-whiteColor'/>
         </div>
-        <TextInput id="email" type="email"  name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required shadow style={{ background: '#222222',color:'#FFFFFF', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="email" type="email"  name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required shadow style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Company" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" id="company" name="company" value={form.company} onChange={handleChange} placeholder="Your Company Name" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="company" name="company" value={form.company} onChange={handleChange} placeholder="Your Company Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Website" className='text-whiteColor'/>
         </div>
-        <TextInput type="text" sizing="md" id="website" name="website" value={form.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput type="text" sizing="md" id="website" name="website" value={form.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label htmlFor="base" value="Mobile" className='text-whiteColor'/>
         </div>
-        <TextInput id="mobile" type="text" sizing="md" name="mobile" value={form.mobile} onChange={handleChange} placeholder="Your Mobile Number" style={{ background: '#222222',color:'#111827', borderColor: '#C3A177', borderRadius:1}}/>
+        <TextInput id="mobile" type="text" sizing="md" name="mobile" value={form.mobile} onChange={handleChange} placeholder="Your Mobile Number" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
       </div>
 
-      <div className="max-w-md">
+      <div>
       <div className="mb-2 block">
-        <Label htmlFor="countries" value="Select your country" />
+        <Label htmlFor="Services" value="Select Service" className="text-left text-white"/>
       </div>
-      <Select id="services" name="services" value={form.services} onChange={handleChange}>
+      <Select id="services" name="services" value={form.services} onChange={handleChange} style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}>
                     <option value="Web Solutions">Web Solutions</option>
                     <option value="Google Marketing">Google Marketing</option>
                     <option value="Social Media Management">Social Media Management</option>
