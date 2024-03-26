@@ -1,12 +1,15 @@
-'use client'
 import React from 'react'
 
 import CodeBeams from '../ui/CodeBeams'
 import { MdOutlineSupportAgent } from 'react-icons/md'
 import Link from 'next/link'
 import ContactForm from '../components/Contact/contactForm'
+import { Metadata } from 'next'
 
-
+export const metadata: Metadata = {
+    title: 'Contact us',
+    description: 'its branding page',
+  }
 
 function Contact() {
   return (

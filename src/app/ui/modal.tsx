@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, FunctionComponent, ChangeEvent, FormEvent } from 'react';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import { AnimatePresence, motion } from "framer-motion";

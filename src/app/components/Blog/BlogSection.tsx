@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'; // Import React hooks
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+
 interface Category {
   _id: string;
   name: string;

@@ -1,4 +1,3 @@
-'use client'
 import Cta from '@/app/ui/Cta'
 import { AiOutlineHeart } from "react-icons/ai";
 import CarouselInsta from '@/app/components/expertise/social/CarouselInsta'
@@ -12,7 +11,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Data from '@/app/ui/data';
 import DataRight from '@/app/ui/dataRight';
+import { Metadata } from 'next';
  
+export const metadata: Metadata = {
+  title: 'Social Media Management',
+  description: 'its branding page',
+}
  
 export default function HeroSection() {
 return (

@@ -7,8 +7,12 @@ import Hero from "./components/Home/Hero";
 import LogoClient from "./components/Home/LogoClient";
 import Testimonial from "./components/Home/Testimonial";
 import Vision from "./components/Home/Vision";
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'its branding page',
+}
 
 export default function Home() {
   

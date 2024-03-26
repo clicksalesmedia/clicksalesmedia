@@ -1,3 +1,4 @@
+'use client'
 import ButtonUX from '@/app/ui/buttonux';
 import Image from 'next/image';
 import React, { useState } from 'react';

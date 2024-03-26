@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
     default:"Create Next App",
-    template:"%s - my clicksalesmedia"},
+    template:"%s - clicksalesmedia Dubai Marketing Agency"},
   description: "clicksalesmedia is here",
   keywords: "digital marketing, marketing, sales, business to business"
 };
