@@ -2,14 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import { animate, useInView } from "framer-motion";
 
-const CountUpStats = () => {
+const SeoCounter = () => {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20 md:py-24">
-      <h2 className="mb-8 text-center text-base text-indigo-900 sm:text-lg md:mb-16">
-        BUILD TRUST WITH YOUR USERS WITH A
-        <span className="text-indigo-500"> BEAUTIFUL LANDING PAGE</span>
-      </h2>
-
+    <div className="mx-auto max-w-3xl px-4 py-10 md:py-10">
       <div className="flex flex-col items-center justify-center sm:flex-row">
         <Stat
           num={45}
@@ -53,13 +48,13 @@ const Stat = ({ num, suffix, decimals = 0, subheading }: { num: number, suffix: 
   }, [num, decimals, isInView, suffix]);
 
   return (
-    <div className="flex w-72 flex-col items-center py-8 sm:py-0">
-      <p className="mb-2 text-center text-7xl font-semibold sm:text-6xl">
+    <div className="flex w-72 flex-col items-center py-2 sm:py-0">
+      <p className="mb-2 text-center text-7xl font-semibold sm:text-6xl text-secondaryColor">
         <span ref={ref}></span>
       </p>
-      <p className="max-w-48 text-center text-neutral-600">{subheading}</p>
+      <p className="max-w-48 text-center text-whiteColor">{subheading}</p>
     </div>
   );
 };
 
-export default CountUpStats;
+export default SeoCounter;

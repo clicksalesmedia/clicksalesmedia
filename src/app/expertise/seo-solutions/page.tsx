@@ -1,8 +1,9 @@
+import AboutSeo from "@/app/components/expertise/seo/AboutSeo";
 import FAQ from "@/app/components/expertise/seo/Faq";
-import Hero from "@/app/components/expertise/seo/Hero";
-import Services from "@/app/components/expertise/seo/Services";
-import WhyClicksalesmedia from "@/app/components/expertise/seo/why";
+import Features from "@/app/components/expertise/seo/Features";
+import SeoServices from "@/app/components/expertise/seo/SeoServices";
 import CodeBeams from "@/app/ui/CodeBeams";
+import Cta from "@/app/ui/Cta";
 import { Metadata } from "next";
 import { RiSeoLine } from "react-icons/ri";
 
@@ -21,12 +22,13 @@ export default function Seo() {
   title="SEO Solutions"
   description="Show why you're better than your competitors"
 />
-    <section className="py-20">
-      <Hero />
-      <Services />
-      <WhyClicksalesmedia />
+    <main className="py-20">
+      <AboutSeo />
+      <Features />
+      <SeoServices />
       <FAQ />
-    </section>
+      <Cta />
+    </main>
     </>
   );
 }

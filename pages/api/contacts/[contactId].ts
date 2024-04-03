@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../utils/dbConnect';
 import { Contact } from '../../../models/Contact';
 
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Set CORS headers to allow all origins for development. Be sure to make this more restrictive for production use.
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -38,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!updatedContact) {
           return res.status(404).json({ message: 'Contact not found' });
         }
-
+        
         // Log the successful update operation
         console.log(`Successfully updated contact with ID: ${contactId}`);
 

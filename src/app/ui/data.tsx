@@ -44,6 +44,15 @@ export const sections: Sections = {
     highlight: "Your Business Needs.",
     description: "Experience unparalleled premium quality with ClickSalesMedia. Elevate your expectations and discover a world of exclusive, top-tier marketing services."
 },
+
+// Expertise:
+  //-seo:
+  seoServices: {
+    subTitle: "OUR FEATURES",
+    title: "Marketing Solutions for",
+    highlight: "Your Business Needs.",
+    description: ""
+},
 };
 
 // TypeScript component with typed props
