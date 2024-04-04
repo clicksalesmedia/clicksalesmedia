@@ -26,6 +26,10 @@ interface MobileMenuLinkProps {
   setMenuOpen: (open: boolean) => void; 
 }
 
+interface ExpertiseProps {
+  setMenuOpen?: (open: boolean) => void;
+}
+
 const Navbar = () => {
   return (
     <>
@@ -226,12 +230,9 @@ const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({ children, href, FoldCon
   
 
   const toggleFoldContent = () => {
+    setOpen(!open);
     if (!FoldContent) {
-      // If there's no foldable content, explicitly close the menu
-      setMenuOpen(false);
-    } else {
-      // Toggle visibility of the foldable content
-      setOpen(!open);
+      setMenuOpen(false); // Close the menu if there's no foldable content
     }
   };
 
@@ -241,9 +242,9 @@ const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({ children, href, FoldCon
     <div className="relative text-neutral-950">
       {FoldContent ? (
         <>
-          <div
+           <div
             className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
-            onClick={() => setOpen((prevOpen) => !prevOpen)}
+            onClick={toggleFoldContent}
           >
             <span>{children}</span>
             <motion.div

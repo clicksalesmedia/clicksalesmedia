@@ -12,6 +12,7 @@ import { useState } from 'react'
 import Data from '@/app/ui/data';
 import DataRight from '@/app/ui/dataRight';
 import { Metadata } from 'next';
+import SocialFeatures from '@/app/components/expertise/social/SocialFeatures';
  
 export const metadata: Metadata = {
   title: 'Social Media Management',
@@ -39,31 +40,18 @@ return (
         </div>
         <div className="flex flex-1 lg:w-1/2 relative max-w-3xl mx-auto lg:max-w-none">
         <SpinningSocial />
-          <div className="absolute left-1/2 -translate-x-1/2 lg:-translate-x-0 -bottom-10 w-60 p-4 rounded-lg bg-white dark:bg-gray-950 border dark:border-gray-800">
-            <div className="flex children:ring-4 children:ring-white dark:children:ring-gray-950 children:w-9 children:h-9 children:object-cover children:-ml-1 children:rounded-full">
-              <Image src="/images/creative-agency-production.webp" alt="employee image" width={1920} height={1320} className="!-ml-0" />
-              <Image src="/images/creative-agency-production.webp" alt="employee image" width={1920} height={1320} />
-              <Image src="/images/creative-agency-production.webp" alt="employee image" width={1920} height={1320} />
-              <Image src="/images/creative-agency-production.webp" alt="employee image" width={1920} height={1320} />
-            </div>
-            <div>
-              <p className="text-lg font-semibold text-indigo-950 dark:text-white">45+ employees</p>
-              <p className="text-gray-700 dark:text-gray-300 flex">
-                <span className="text-yellow-500 text-xl">★</span> 5.0 (2.5k reviews)
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   </main>
-
-<Features />
+  
+  <SocialFeatures />
   <div className='mt-10'>
  <Data sectionName="features" />
   </div>
   <CarouselInsta />
   <ContentSection />
+
   <FAQ />
   <Cta />
 </>

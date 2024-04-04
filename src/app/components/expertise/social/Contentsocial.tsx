@@ -9,15 +9,15 @@ return (
                 <h1 className="text-secondaryColor dark:text-white font-semibold text-2xl sm:text-3xl md:text-4xl">
                 Social Media Management
                 </h1>
-                <p>
+                <p className="text-whiteColor">
                 Our social media management services aim to empower your brand fully in the diverse and competitive digital landscape. We set up your social media accounts, considering the visual strategies and identity that align with your brand. This service also includes comprehensive content planning, scheduling, and goal setting for your brand.
                 </p>
 
-                <p>
+                <p className="text-whiteColor">
                 Our social media management strategy also involves crafting integrated and engaging content strategies that highlight your brand’s identity, along with posting schedules and the objectives you seek to achieve. We believe in the power of paid advertising on social media and offer services to design paid advertising strategies on all platforms. We create strategies to maximize reach and engagement to ensure your brand’s objectives are met.
                 </p>
 
-                <p>
+                <p className="text-whiteColor">
                 We place great importance on analyzing your competitors in the social media field through a detailed study of their strategies, evaluating their audience engagement tactics, and monitoring the growth of the audiences they target.
                 </p>
 

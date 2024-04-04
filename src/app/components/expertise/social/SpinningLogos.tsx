@@ -4,11 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import {
   SiInstagram,
-  SiAdobe,
-  SiCoinbase,
   SiFacebook,
   SiPatreon,
-  SiReddit,
   SiYoutube,
 
 } from "react-icons/si";
@@ -101,7 +98,7 @@ const SpinningLogos = () => {
           transition={TRANSITION}
           className="text-lg font-bold uppercase text-neutral-900 sm:text-xl md:text-3xl"
         >
-          Clicksalesmedia
+          <Image src={'/arrow.png'} width={100} height={80} alt="Clicksalesmedia-socialmedia" />
         </motion.div>
         {ICON_DATA.map((icon, idx) => {
           const degrees = (360 / ICON_DATA.length) * idx;
