@@ -218,57 +218,66 @@ const Expertise = () => {
 const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({ children, href, FoldContent, setMenuOpen }) => {
   const [open, setOpen] = useState(false);
 
-  return (
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation(); 
+    setMenuOpen(false);
+  };
+  
+
+  const toggleFoldContent = () => {
+    if (!FoldContent) {
+      // If there's no foldable content, explicitly close the menu
+      setMenuOpen(false);
+    } else {
+      // Toggle visibility of the foldable content
+      setOpen(!open);
+    }
+  };
+
+  
+
+ return (
     <div className="relative text-neutral-950">
       {FoldContent ? (
-        <div
-          className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
-          onClick={() => setOpen((pv) => !pv)}
-        >
-          <Link
-            onClick={(e) => {
-              e.stopPropagation();
-              setMenuOpen(false);
-            }}
-            href={href}
+        <>
+          <div
+            className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
+            onClick={() => setOpen((prevOpen) => !prevOpen)}
           >
-            {children}
-          </Link>
-          <motion.div
-            animate={{ rotate: open ? "180deg" : "0deg" }}
-            transition={{
-              duration: 0.3,
-              ease: "easeOut",
-            }}
-          >
-            <FiChevronDown />
-          </motion.div>
-        </div>
+            <span>{children}</span>
+            <motion.div
+              animate={{ rotate: open ? "180deg" : "0deg" }}
+              transition={{
+                duration: 0.3,
+                ease: "easeOut",
+              }}
+            >
+              <FiChevronDown />
+            </motion.div>
+          </div>
+          {open && (
+            <motion.div
+              initial={false}
+              animate={{
+                height: "fit-content",
+                marginBottom: "24px",
+                marginTop: "12px",
+              }}
+              className="overflow-hidden"
+            >
+              <FoldContent />
+            </motion.div>
+          )}
+        </>
       ) : (
-        <Link
-          onClick={(e) => {
-            e.stopPropagation();
-            setMenuOpen(false);
-          }}
-          href="#"
+        <div
+          onClick={handleClick} // This is now correctly typed for a div
           className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
         >
-          <span>{children}</span>
+          <Link href={href}>{children}</Link>
           <FiArrowRight />
-        </Link>
-      )}
-      {FoldContent && (
-        <motion.div
-          initial={false}
-          animate={{
-            height: open ? "fit-content" : "0px",
-            marginBottom: open ? "24px" : "0px",
-            marginTop: open ? "12px" : "0px",
-          }}
-          className="overflow-hidden"
-        >
-          <FoldContent />
-        </motion.div>
+        </div>
       )}
     </div>
   );
