@@ -53,6 +53,15 @@ export const sections: Sections = {
     highlight: "Your Business Needs.",
     description: ""
 },
+
+// B2B Industries
+
+B2bIndustries: {
+    title: "Services Section Title",
+    subTitle: "Industries",
+    description: "This is the description for the Services section.",
+    highlight: "for the About section.",
+  },
 };
 
 // TypeScript component with typed props
