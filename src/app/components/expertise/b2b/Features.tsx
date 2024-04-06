@@ -1,47 +1,68 @@
 import HoverEffect from "@/app/ui/card-hover-effect";
-import FormService from "@/app/ui/modal";
 
 const projects = [
     {
-        title: "Research & Plan",
+        title: "Branding",
         description:
           "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
-        link: "https://meta.com",
-        icon: "research"
+        link: "",
+        icon: "branding"
       },
     {
-        title: "Googole Ads",
+        title: "Account Based Marketing",
         description: "A technology company that builds economic infrastructure for the internet.",
-        link: "https://stripe.com",
-        icon: "googleadsicon"
+        link: "",
+        icon: "sales"
       },
       {
-        title: "Google Analytics",
+        title: "Lead Generation",
         description: "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-        link: "https://netflix.com",
-        icon: "googleanalyticsicon"
+        link: "",
+        icon: "target-leadgen"
       },
       {
-        title: "Google Tag Manager",
+        title: "Strategy",
         description:
           "A multinational technology company that specializes in Internet-related services and products.",
-        link: "https://google.com",
-        icon: "googletagmanager"
+        link: "",
+        icon: "strategy"
       },
       {
-        title: "Remarketing Strategy",
+        title: "Demand Generation",
         description:
           "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-        link: "https://amazon.com",
-        icon: "remarketing"
+        link: "",
+        icon: "demand-generation"
       },
       {
-        title: "Reports and Analysis",
+        title: "Sales Enablement",
         description:
           "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-        link: "https://microsoft.com",
-        icon: "reports"
+        link: "",
+        icon: "sales-enablement"
       },
+      {
+        title: "Content Management",
+        description:
+          "A multinational technology company that specializes in Internet-related services and products.",
+        link: "",
+        icon: "content-management"
+      },
+      {
+        title: "Ads Management",
+        description:
+          "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+        link: "",
+        icon: "ads-management"
+      },
+      {
+        title: "Innovation",
+        description:
+          "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+        link: "",
+        icon: "innovation"
+      },
+
 ]
  
 const Features = () => {
@@ -59,12 +80,6 @@ return (
       <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-10 xl:gap-14">
         <HoverEffect items={projects} />
       </div>
-      <div className="flex items-center justify-center">
-  <div className="flex flex-col justify-center text-center mx-auto md:max-w-3xl space-y-5">
-  <FormService />
-  </div>
-</div>
-
     </div>
   </section>
 )

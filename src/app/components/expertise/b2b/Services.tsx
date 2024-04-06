@@ -3,7 +3,7 @@ import React from 'react'
 
 function Services() {
   return (
-    <section>
+    <section className="w-full"> {/* Added w-full class to make the section span full width */}
         <div className="relative overflow-hidden bg-primaryColor pt-16 pb-32 space-y-24">
   <div className="relative">
     <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8 ">
@@ -21,7 +21,6 @@ function Services() {
               interpret human language, enabling it to accurately process and
               analyze text-based inputs.
             </p>
-            <Button>Hello test</Button>
           </div>
         </div>
       </div>
