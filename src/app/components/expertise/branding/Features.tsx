@@ -59,7 +59,7 @@ export default function BrandingFeatures() {
             <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-80">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
     Get back to growth {" "}
-    <span className="text-secondaryColor dark:text-blue-500">with the world's #1</span>{" "}
+    <span className="text-secondaryColor dark:text-blue-500">with the worlds #1</span>{" "}
     CRM.
   </h1>
   <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
@@ -77,7 +77,7 @@ export default function BrandingFeatures() {
           <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-60">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
     Brand Stationery {" "}
-    <span className="text-secondaryColor dark:text-blue-500">with the world's #1</span>{" "}
+    <span className="text-secondaryColor dark:text-blue-500">with the worlds #1</span>{" "}
     CRM.
   </h1>
   <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
@@ -126,7 +126,7 @@ export default function BrandingFeatures() {
             </div>
             <div className="md:col-span-4 lg:col-span-6 bg-[#222222] p-10 md:p-20">
               <h1 className="text-2xl md:text-4xl font-extrabold leading-none tracking-tight text-white md:md:text-5xl lg:text-6xl">
-                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the world's #1 CRM.</span>
+                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the worlds #1 CRM.</span>
               </h1>
               <p className="mt-4 text-sm md:text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
                 Here at Flowbite we focus on markets where technology, innovation, and
@@ -155,7 +155,7 @@ export default function BrandingFeatures() {
             </div>
             <div className="md:col-span-4 lg:col-span-6 bg-[#222222] p-10 md:p-20">
               <h1 className="text-2xl md:text-4xl font-extrabold leading-none tracking-tight text-white md:md:text-5xl lg:text-6xl">
-                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the world's #1 CRM.</span>
+                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the worlds #1 CRM.</span>
               </h1>
               <p className="mt-4 text-sm md:text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
                 Here at Flowbite we focus on markets where technology, innovation, and
