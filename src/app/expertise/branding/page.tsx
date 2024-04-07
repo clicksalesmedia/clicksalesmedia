@@ -4,6 +4,10 @@ import Cta from "@/app/ui/Cta"
 import CodeBeams from "@/app/ui/CodeBeams";
 import { Metadata } from 'next';
 import { IoBusiness } from "react-icons/io5";
+import BrandingFeatures from "@/app/components/expertise/branding/Features";
+import FitText from "@/app/components/expertise/branding/FitText";
+import Services from "@/app/components/expertise/branding/Services";
+import Portfolio from "@/app/components/expertise/branding/Portfolio";
 
 
 export const metadata: Metadata = {
@@ -17,11 +21,17 @@ function Branding() {
     <>
     <CodeBeams
     icon={<IoBusiness />}
-    title="Business to Business Solutions"
+    title="Branding"
     description="Show why you're better than your competitors"
   />
   <section>
   <Swap />
+  <BrandingFeatures />
+  <div className="overflow-x-hidden">
+  <Services />
+  </div>
+  <FitText />
+  <Portfolio />
   <Cta />
   </section>
    </>
