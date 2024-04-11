@@ -107,7 +107,7 @@ const footerBlocks = [
  
 const Footer = () => {
 return (
-    <footer className="p-20 mt-20 md:pt-20 bg-footerBgColor dark:bg-gray-900">
+    <footer className="mt-20 md:pt-20 bg-footerBgColor dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
             <div className="w-full text-gray-700 dark:text-gray-300 grid grid-cols-2 lg:grid-cols-4 gap-8 pb-4 border-b border-b-[#2d2d2d] dark:border-b-gray-800">
                 <div className="flex">

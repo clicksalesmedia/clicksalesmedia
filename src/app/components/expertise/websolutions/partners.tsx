@@ -50,13 +50,9 @@ interface LogoItemProps {
 
 const LogoItem: React.FC<LogoItemProps> = ({ Icon }) => {
   return (
-    <Link
-      href="/"
-      target="_blank"
-      className="w-16 md:w-24 h-16 md:h-24 flex justify-center items-center hover:text-[#222222] text-secondaryColor transition-colors"
-    >
+    <div className="w-16 md:w-24 h-16 md:h-24 flex justify-center items-center hover:text-[#222222] text-secondaryColor transition-colors">
       <Icon className="text-4xl md:text-5xl" />
-    </Link>
+    </div>
   );
 };
 

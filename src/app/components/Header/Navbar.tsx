@@ -16,18 +16,19 @@ import Link from "next/link";
 interface NavLinkProps {
   children: ReactNode;
   href: string;
-  FlyoutContent?: React.ComponentType; 
+  FlyoutContent?: React.ComponentType<{ setMenuOpen?: (open: boolean) => void }>;
 }
 
 interface MobileMenuLinkProps {
   children: ReactNode;
   href: string;
-  FoldContent?: React.ComponentType; 
-  setMenuOpen: (open: boolean) => void; 
+  FoldContent?: React.ComponentType<{ setMenuOpen?: (open: boolean) => void }>;
+  setMenuOpen: (open: boolean) => void;
 }
 
+
 interface ExpertiseProps {
-  setMenuOpen?: (open: boolean) => void;
+  setMenuOpen?: (open: boolean) => void; 
 }
 
 const Navbar = () => {
@@ -68,7 +69,7 @@ const FlyoutNav = () => {
   );
 };
 
-const Logo = ({ color = "white" }) => {
+const Logo = () => {
   return (
     <div className="flex items-center gap-2">
       <Link href='/'>
@@ -140,8 +141,7 @@ const CTAs = () => {
     </div>
   );
 };
-
-const Expertise = () => {
+const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
   return (
     <div className="grid h-fit w-full grid-cols-12 shadow-xl lg:h-72 lg:w-[600px] lg:shadow-none xl:w-[750px]">
       <div className="col-span-12 flex flex-col justify-between bg-secondaryColor p-6 lg:col-span-4">
@@ -158,7 +158,9 @@ const Expertise = () => {
           Discover More <FiArrowRight />
         </Link>
       </div>
-      <div className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8">
+      <div className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"
+      onClick={() => setMenuOpen?.(false)}
+      >
         <Link
           href="/expertise/branding"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
@@ -267,7 +269,7 @@ const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({ children, href, FoldCon
               }}
               className="overflow-hidden"
             >
-              <FoldContent />
+               <FoldContent setMenuOpen={setMenuOpen} />
             </motion.div>
           )}
         </>
@@ -301,7 +303,7 @@ const MobileMenu = () => {
             className="fixed left-0 top-0 flex h-screen w-full flex-col bg-white"
           >
             <div className="flex items-center justify-between p-6">
-              <Logo color="black" />
+              <Logo />
               <button onClick={() => setOpen(false)}>
                 <FiX className="text-3xl text-neutral-950" />
               </button>

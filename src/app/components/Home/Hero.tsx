@@ -38,8 +38,8 @@ function Hero() {
   <Image
     src="/clicksalesmedia-style.png"
     alt="clicksalesmedia Marketing strategy"
-    width={750}
-    height={750}
+    width={550}
+    height={550}
   />
 </div>
   </div>
