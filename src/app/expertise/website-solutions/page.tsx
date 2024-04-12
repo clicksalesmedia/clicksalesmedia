@@ -7,6 +7,7 @@ import WebSolution from "@/app/components/expertise/websolutions/webSolutions";
 import Partner from "@/app/components/expertise/websolutions/partners";
 import { Metadata } from "next";
 import WhyClicksalesmedia from "@/app/components/expertise/websolutions/WebClicksalesmedia";
+import Solutions from "@/app/components/expertise/websolutions/solutions";
 
 export const metadata: Metadata = {
   title: 'Website Solution',
@@ -24,9 +25,9 @@ export default function WebMasterSolutions() {
   description="Show why you're better than your competitors"
 />
     <WhyClicksalesmedia />
-    <WebSolution />
-    <Cta />
+    <Solutions />
     <Partner />
+    <Cta />    
     </main>
     </>
   );
