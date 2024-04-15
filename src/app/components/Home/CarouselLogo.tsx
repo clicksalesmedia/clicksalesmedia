@@ -28,6 +28,7 @@ const CarouselLogo = () => {
     '/clients/joynt-1.png',
     '/clients/bajunaid-company.png',
     '/clients/erosforlady.png',
+    '/clients/lavivianex.png',
   ];
 
   return (

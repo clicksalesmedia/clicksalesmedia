@@ -300,15 +300,15 @@ const MobileMenu = () => {
             animate={{ x: 0 }}
             exit={{ x: "100vw" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed left-0 top-0 flex h-screen w-full flex-col bg-white"
+            className="fixed left-0 top-0 flex h-screen w-full flex-col bg-primaryColor"
           >
-            <div className="flex items-center justify-between p-6">
+            <div className="flex items-center justify-between p-6 bg-[#222222]">
               <Logo />
               <button onClick={() => setOpen(false)}>
-                <FiX className="text-3xl text-neutral-950" />
+                <FiX className="text-3xl text-secondaryColor" />
               </button>
             </div>
-            <div className="h-screen overflow-y-scroll bg-neutral-100 p-6">
+            <div className="h-screen overflow-y-scroll bg-primaryColor p-6">
               {LINKS.map((l) => (
                 <MobileMenuLink
                   key={l.text}
@@ -320,7 +320,7 @@ const MobileMenu = () => {
                 </MobileMenuLink>
               ))}
             </div>
-            <div className="flex justify-end bg-neutral-950 p-6">
+            <div className="flex justify-end bg-primaryColor p-6">
               <CTAs />
             </div>
           </motion.nav>
