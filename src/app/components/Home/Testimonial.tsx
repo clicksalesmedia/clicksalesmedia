@@ -57,11 +57,11 @@ const TestimonialList: FC<TestimonialListProps> = ({ list, reverse = false, dura
           key={t.id}
           className="shrink-0 w-[500px] grid grid-cols-[7rem,_1fr] rounded-lg overflow-hidden relative"
         >
-          <Image width={180} height={280} src={t.img} alt={t.name} className="w-full h-44 object-cover" />
-          <div className="bg-secondaryColor text-slate-50 p-4">
+          <Image width={180} height={280} src={t.img} alt={t.name} className="w-full h-60 object-cover" />
+          <div className="bg-secondaryColor text-whiteColor p-4">
             <span className="block font-semibold text-lg mb-1">{t.name}</span>
-            <span className="block mb-3 text-sm font-medium">{t.title}</span>
-            <span className="block text-sm text-slate-300">{t.info}</span>
+            <span className="block mb-3 text-sm font-medium text-primaryColor">{t.title}</span>
+            <span className="block text-sm text-whiteColor">{t.info}</span>
           </div>
           <span className="text-7xl absolute top-2 right-2 text-slate-700">&apos;&apos; </span>
         </div>
@@ -78,7 +78,7 @@ const testimonials = {
       img: "/testimonials/doctor-samir.jpg",
       name: "Dr Samir",
       title: "Founder of Inspeedglobal",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere mollitia nam.",
+      info: "The ROI from the ad campaigns managed by clicksalesmedia has been incredible. They've mastered the art of targeting and optimizing our ads, resulting in a dramatic increase in quality leads.",
     },
     {
       id: 2,
@@ -92,14 +92,14 @@ const testimonials = {
       img: "/testimonials/dr-mohammed-saad.jpg",
       name: "Dr.Mohammed Saad",
       title: "CEO of American Accreditation Association",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis.",
+      info: "We needed a website that was not just aesthetically pleasing but also functionally robust. clicksalesmedia delivered beyond our expectations, creating a site that has significantly improved our user engagement and conversion rates.",
     },
     {
       id: 4,
       img: "/testimonials/hicham.jpg",
       name: "Mr. Hicham Bouliz",
       title: "Founder of Jurico",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere mollitia nam aspernatur esse corporis!",
+      info: "Implementing a CRM solution with clicksalesmedia has revolutionized how we manage customer relationships. Their tailored approach ensures we're maximizing every customer interaction, which has boosted our sales significantly.",
     },
     
   ],
@@ -109,21 +109,21 @@ const testimonials = {
       img: "/testimonials/said-traiteur.jpg",
       name: "Said Hannour",
       title: "Owner of Traiteur Hannour Alliance",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere mollitia nam aspernatur!",
+      info: "Every project with clicksalesmedia has been a breeze. Their project managers are exceptional—communicative, organized, and always a step ahead. It's made all the difference in meeting our marketing objectives on time.",
     },
     {
       id: 2,
       img: "/testimonials/maevafashion.jpg",
       name: "Mme. Sana",
       title: "Founder of Maevafashion",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nostrum labore dolor facilis, nesciunt facere.",
+      info: "Launching our online store with clicksalesmedia was a seamless experience. Their expertise in eCommerce optimization has not only enhanced our site's user experience but also improved our sales metrics dramatically.",
     },
     {
       id: 3,
       img: "/testimonials/joynt.jpg",
       name: "Mr. Saleh Ghalayini",
       title: "Project Manager at Joynt",
-      info: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+      info: "The B2B strategies developed by clicksalesmedia have opened new doors for us in the industry. Their insights into partnership development have led to several lucrative contracts and a stronger market position.",
     },
   ],
 };

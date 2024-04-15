@@ -15,27 +15,16 @@ return (
                             Web designer based in Lubumbashi-DRC
                         </h2>
                         <div className="text-gray-700 dark:text-gray-900 space-y-3 mx-auto max-w-2xl lg:max-w-none">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <p>
+                            <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                            </p>
+                            <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
                                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
                             </p>
                         </div>
                         <div className="flex justify-center lg:justify-start">
-                            <Link href="#" className="px-6 h-11 flex items-center rounded-lg bg-secondaryColor dark:bg-white text-white dark:text-gray-900 text-sm transition ease-linear hover:bg-gray-900">Hire me</Link>
-                        </div>
-                        <div className="grid grid-cols-3 w-full">
-                            <div>
-                                <h2 className="text-xl md:text-2xl font-display font-semiboldtext-gray-800 dark:text-gray-200">2years</h2>
-                                <span className="text-gray-600">Experience</span>
-                            </div>
-                            <div>
-                                <h2 className="text-xl md:text-2xl font-display font-semiboldtext-gray-800 dark:text-gray-200">+10</h2>
-                                <span className="text-gray-600">Projects</span>
-                            </div>
-                            <div>
-                                <h2 className="text-xl md:text-2xl font-display font-semiboldtext-gray-800 dark:text-gray-200">90%</h2>
-                                <span className="text-gray-600">Satisfaction</span>
-                            </div>
+                            <Link href="/contact" className="px-6 h-11 flex items-center rounded-lg bg-secondaryColor dark:bg-white text-white dark:text-gray-900 text-sm transition ease-linear hover:bg-gray-900">Contact us</Link>
                         </div>
                     </div>
                     <div className="flex justify-center">

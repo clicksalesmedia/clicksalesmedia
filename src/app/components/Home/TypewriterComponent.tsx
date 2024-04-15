@@ -51,7 +51,7 @@ const TypewriterComponent: React.FC = () => {
     };
   }, [index]);
 
-  return <h2 className="text-2xl md:text-3xl text-secondaryColor font-montserrat"><span className='text-thirdColor'>ClickSalesMedia:</span> {displayText}</h2>;
+  return <h2 className="text-3xl md:text-4xl text-secondaryColor"><span className='text-whiteColor'>ClickSalesMedia:</span> {displayText}</h2>;
 };
 
 export default TypewriterComponent;

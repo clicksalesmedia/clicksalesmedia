@@ -1,6 +1,8 @@
 'use client'
 import React, { useEffect, useRef } from "react";
 import ScrollAnimationWrapper from "@/app/ui/ScrollAnimationWrapper";
+import Link from "next/link";
+import Image from "next/image";
 
 const FitText: React.FC = () => {
   // Specify the type of elements the refs will point to.
@@ -44,6 +46,7 @@ const FitText: React.FC = () => {
   }, []);
 
   return (
+    <>
     <ScrollAnimationWrapper>
       <div className="flex h-200 items-center justify-center overflow-hidden bg-primaryColor" ref={containerRef}>
         <span className="whitespace-nowrap text-center font-bold uppercase text-[#474747] text-opacity-2" ref={textRef}>
@@ -51,6 +54,12 @@ const FitText: React.FC = () => {
         </span>
       </div>
     </ScrollAnimationWrapper>
+    <div className="flex justify-center items-center">
+    <Link href="https://www.google.com/partners/agency?id=5210292678" target="_blank">
+    <Image width={150} height={150} alt="google partner agency clicksalesmedia" src="https://www.gstatic.com/partners/badge/images/2024/PartnerBadgeClickable.svg"/>
+    </Link>
+    </div>
+    </>
   );
 };
 

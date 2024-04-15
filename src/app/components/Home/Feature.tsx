@@ -32,11 +32,11 @@ function Feature() {
                             {/* feature icon */}
                             <FaChessKnight />
                         </span>
-                        <h1 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
+                        <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
                          Branding 
-                        </h1>
+                        </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        Where brands evolve. Unleash your potential, Empower your Brand, Optimize resources, and Expand your reach for market leadership.
+                        We simply need to highlight the brand value and establish your market position to foster long-term business growth, to cultivate maximum brand awareness, trust, and loyalty.
                         </p>
                     </div>
                     <div className="flex flex-col space-y-6 justify-center md:justify-start">
@@ -44,11 +44,11 @@ function Feature() {
                             {/* feature icon */}
                             <TiSocialInstagram />
                         </span>
-                        <h1 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
+                        <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
                         Social Media Management
-                        </h1>
+                        </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        Unlock the potential of your online presence with our top-tier team of Social Media Management experts.
+                        We'll maintain fidelity to your brand's values and tone as we produce content that helps you engage with new audiences and stay connected with your existing customers.
                         </p>
                     </div>
                 </div>
@@ -67,25 +67,25 @@ function Feature() {
                     <div className="flex flex-col space-y-6 justify-center md:justify-start">
                         <span className="p-2 rounded-md bg-secondaryColor text-whiteColor dark:bg-gray-900 dark:text-blue-500 flex w-max">
                             {/* feature icon */}
-                            <IoBusiness />
+                            <MdAutoGraph />
                         </span>
-                        <h1 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                           B2B Marketing
-                        </h1>
+                        <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
+                        Efficient project management
+                        </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                            Unlock B2B success with Click Sales Media. Streamline operations, ignite growth, and elevate your industry position with our strategic marketing solutions.
+                        Optimize workflows, adhere to timelines, and accomplish objectives using our tailored system.
                         </p>
                     </div>
                     <div className="flex flex-col space-y-6 justify-center md:justify-start">
                         <span className="p-2 rounded-md bg-secondaryColor text-whiteColor dark:bg-gray-900 dark:text-blue-500 flex w-max">
                             {/* feature icon */}
-                            <MdAutoGraph />
+                            <IoBusiness />
                         </span>
-                        <h1 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                            Performance Management
-                        </h1>
+                        <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
+                        Achieve success in the B2B sphere
+                        </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                            {"Lorem Ipsum is simply dummy text of the printing and type setting industry. Industry's standard dummy"}
+                            Streamline operations, fuel growth, and elevate industry standing with strategic marketing expertise.
                         </p>
                     </div>
                 </div>

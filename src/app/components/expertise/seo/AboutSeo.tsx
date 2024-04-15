@@ -14,10 +14,10 @@ function AboutSeo() {
             <div className="col-span-4 md:col-span-8 lg:col-span-12 pb-4">
             <div className="flex flex-col justify-left text-left  mx-auto md:max-w-3xl space-y-5">
               <h2 className="font-semibold font-cormorant text-3xl sm:text-4xl lg:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">
-                  Lorem ipsum dolor sit  <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">Lorem ipsum dolor sit </span>
+              ClickSalesMedia provides effective  <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">professional SEO services. </span>
               </h2>
               <p className="text-whiteColor dark:text-gray-300">
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore illo doloremque deleniti reiciendis animi, earum provident sequi facilis corporis cupiditate dignissimos! Fugit, eaque voluptates sint earum deleniti asperiores impedit.
+              Before choosing strategic keywords to target certain influencers and decision-makers in the most profitable market sectors, we thoroughly understand your business strategy and goals. Our SEO agency professionals keep up with the latest tools, research, trends, and algorithm upgrades so they can notify you of any changes that can affect your SEO objectives. To keep your site optimized, they adjust or modify your content, keywords, and SEO approach.
               </p>
               <p className="text-whiteColor dark:text-gray-300">
                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem inventore illo doloremque deleniti reiciendis animi, earum provident sequi facilis corporis cupiditate dignissimos! Fugit, eaque voluptates sint earum deleniti asperiores impedit.

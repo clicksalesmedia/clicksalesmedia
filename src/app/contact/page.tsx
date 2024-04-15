@@ -27,7 +27,7 @@ function Contact() {
     <h1 className="text-secondaryColor py-2 dark:text-white font-semibold text-2xl sm:text-3xl md:text-4xl">
             We help drive your business forward faster
         </h1>
-        <p>
+        <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, saepe aliquid autem alias vero distinctio dignissimos consequatur? Excepturi quibusdam, quam ipsum hic, laudantium ducimus suscipit, culpa facere consequuntur repellat delectus.
         </p>
         <div className="grid gap-6 sm:grid-cols-2">

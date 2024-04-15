@@ -13,16 +13,16 @@ const Hero = () => {
           {/* Text and Button */}
           <div className="flex flex-col items-center lg:items-start lg:flex-1 max-w-lg mx-auto lg:mx-0">
             <h1 className="font-semibold py-5 leading-tight text-slate-200 dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-              Google Marketing <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">Services</span>
+              Our Google <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">Marketing Services</span>
             </h1>
-            <p className="text-slate-200 pb-10 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque cumque aut maiores debitis earum nisi officiis? A veritatis numquam sed illum ullam molestiae, obcaecati reprehenderit saepe, atque odio nemo exercitationem!
+            <p className="text-slate-200 pb-10 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none px-2">
+            We specialize in Google marketing, ensuring your brand stands out in the digital sphere. Whether it's search ads, display ads, or YouTube campaigns, we tailor strategies to your specific needs. With expert guidance and real-time analytics, we optimize your campaigns for maximum impact. Let us elevate your online presence and drive results that matter.
             </p>
             <ButtonUX />
           </div>
           {/* Image */}
           <div className="flex-1">
-            <Image width={300} height={600} className="object-cover w-full h-96 rounded-xl" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Marketing Image" />
+            <Image width={900} height={400} className="object-cover w-full h-96 rounded-xl" src="/expertise/ppcads/google-ads.jpg" alt="google-ads-optimization" />
           </div>
         </div>
       </div>

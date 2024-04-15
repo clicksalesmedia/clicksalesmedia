@@ -40,6 +40,10 @@ p {
   color: white !important;
 }
 
+.custom-line-height {
+  line-height: 1.25 !important; 
+}
+
 /* Style the scrollbar (works on Webkit/Blink browsers) */
 ::-webkit-scrollbar {
   width: 10px;

@@ -5,40 +5,40 @@ const projects = [
     {
         title: "Research & Plan",
         description:
-          "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
+          "Before diving into the digital realm, we research and plan every step to ensure your campaign's success. From understanding your audience to creating the perfect strategy, we're with you every step of the way.",
         link: "",
         icon: "research"
       },
     {
         title: "Googole Ads",
-        description: "A technology company that builds economic infrastructure for the internet.",
+        description: "Reach your target audience where they spend most of their time – online. With Google Ads, we create compelling campaigns that drive traffic, leads, and conversions, helping your business thrive in the digital landscape.",
         link: "",
         icon: "googleadsicon"
       },
       {
         title: "Google Analytics",
-        description: "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+        description: "Discover the power of data with Google Analytics. Gain valuable insights into your website's performance, user behavior, and conversion rates. With this knowledge, we optimize your strategies for maximum impact and growth.",
         link: "",
         icon: "googleanalyticsicon"
       },
       {
         title: "Google Tag Manager",
         description:
-          "A multinational technology company that specializes in Internet-related services and products.",
+          "Simplify your tracking and analytics processes with Google Tag Manager. Seamlessly manage tags, pixels, and scripts on your website, ensuring accurate data collection and streamlined performance tracking.",
         link: "",
         icon: "googletagmanager"
       },
       {
         title: "Remarketing Strategy",
         description:
-          "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
+          "Re-engage with past visitors and turn them into loyal customers with our remarketing strategy. By strategically targeting users who have interacted with your brand, we keep your business top-of-mind and drive repeat conversions.",
         link: "",
         icon: "remarketing"
       },
       {
         title: "Reports and Analysis",
         description:
-          "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
+          "Track your progress and measure your success with our comprehensive reporting and analysis services. From campaign performance to audience demographics, we provide actionable insights that inform your future strategies and drive continuous improvement.",
         link: "",
         icon: "reports"
       },

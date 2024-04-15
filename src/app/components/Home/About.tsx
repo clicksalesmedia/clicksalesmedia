@@ -10,36 +10,30 @@ function About() {
     <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 grid lg:grid-cols-2 lg:items-center gap-10">
       <div className="flex flex-col space-y-8 sm:space-y-10 lg:items-center text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto">
         <h1 className=" font-semibold leading-tight text-slate-200 dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-          {"We'll be happy to take care of"} <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">your work.</span>
+          {"Your Business,"} <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">Our Expertise.</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem molestiae soluta ipsa
-          incidunt expedita rem! Suscipit molestiae voluptatem iure, eum alias nobis velit quidem
-          reiciendis saepe nostrum
+        Share with us your specific requirements, and our team of experts will create a personalized quote that perfectly aligns with your needs and vision.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full">
-          <Link href="#" className="px-6 items-center h-12 rounded-md bg-gradient-to-br from-secondaryColor from-35% via-[#AD8253] via-35% to-[#8C5C28] text-white duration-300 ease-linear flex justify-center w-full sm:w-auto">
-            Get started
+          <Link href="#" className="px-6 font-semibold items-center h-12 rounded-md bg-gradient-to-br from-secondaryColor from-35% via-[#AD8253] via-35% to-[#8C5C28] text-white duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-[#222222] hover:text-secondaryColor">
+          Schedule a call
           </Link>
-          <Link href="#" className="px-6 items-center h-12 rounded-md text-secondaryColor border border-gray-100 dark:border-gray-800 dark:text-white bg-slate-200 dark:bg-gray-900 duration-300 ease-linear flex justify-center w-full sm:w-auto">
-            Book a call
+          <Link href="#" className="px-6 font-semibold items-center h-12 rounded-md text-secondaryColor border border-[#1c1c1c] dark:border-gray-800 dark:text-white bg-[#222222] dark:bg-gray-900 duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-secondaryColor hover:text-[#222222]">
+          Begin Your Journey
           </Link>
         </div>
         <div className="mt-5 flex items-center justify-center flex-wrap gap-4 lg:justify-start w-full">
           <Link href="#" target="_blank" rel='noreferer'>
-            <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-google.png" alt="client name" className="h-10 w-auto dark:grayscale" />
           </Link>
           <Link href="#" target="_blank" rel='noreferer'>
-            <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-meta.png" alt="client name" className="h-10 w-auto dark:grayscale" />
           </Link>
           <Link href="#" target="_blank" rel='noreferer'>
-            <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-hubspot.png" alt="client name" className="h-10 w-auto dark:grayscale" />
           </Link>
           <Link href="#" target="_blank" rel='noreferer'>
-            <span className="sr-only">org name</span>
             <Image width={600} height={120} src="/logo-partner-semrush.png" alt="client name" className="h-10 w-auto dark:grayscale" />
           </Link>
         </div>
