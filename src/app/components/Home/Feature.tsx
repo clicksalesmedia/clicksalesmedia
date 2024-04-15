@@ -48,7 +48,7 @@ function Feature() {
                         Social Media Management
                         </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        We'll maintain fidelity to your brand's values and tone as we produce content that helps you engage with new audiences and stay connected with your existing customers.
+                        We&apos;ll maintain fidelity to your brand&apos;s values and tone as we produce content that helps you engage with new audiences and stay connected with your existing customers.
                         </p>
                     </div>
                 </div>
