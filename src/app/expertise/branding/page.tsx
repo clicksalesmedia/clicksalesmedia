@@ -24,7 +24,7 @@ function Branding() {
     title="Branding"
     description="Show why you're better than your competitors"
   />
-  <section>
+  <main>
   <Swap />
   <BrandingFeatures />
   <div className="overflow-x-hidden">
@@ -33,7 +33,7 @@ function Branding() {
   <FitText />
   <Portfolio />
   <Cta />
-  </section>
+  </main>
    </>
   )
 }

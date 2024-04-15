@@ -16,7 +16,7 @@ const Hero = () => {
               Our Google <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">Marketing Services</span>
             </h1>
             <p className="text-slate-200 pb-10 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none px-2">
-            We specialize in Google marketing, ensuring your brand stands out in the digital sphere. Whether it's search ads, display ads, or YouTube campaigns, we tailor strategies to your specific needs. With expert guidance and real-time analytics, we optimize your campaigns for maximum impact. Let us elevate your online presence and drive results that matter.
+             {`We specialize in Google marketing, ensuring your brand stands out in the digital sphere. Whether it's search ads, display ads, or YouTube campaigns, we tailor strategies to your specific needs. With expert guidance and real-time analytics, we optimize your campaigns for maximum impact. Let us elevate your online presence and drive results that matter.`}
             </p>
             <ButtonUX />
           </div>

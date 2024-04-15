@@ -23,14 +23,14 @@ export default function BusinessToBusiness() {
   title="Business to Business Solutions"
   description="Show why you're better than your competitors"
 />
-    <section className="py-20">
+    <main className="py-20">
 
   
       <Services />
       <Features />
       <Industries />
       <Cta />
-    </section>
+    </main>
     </>
   );
 }

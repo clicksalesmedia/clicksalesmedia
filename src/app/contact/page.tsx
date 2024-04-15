@@ -20,7 +20,7 @@ function Contact() {
     description="Show why you're better than your competitors"
   
   />
-<section className="py-24">
+<main className="py-24">
 <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">
  
     <div className="md:w-1/2 space-y-10 text-gray-700 dark:text-gray-300 md:py-4">
@@ -84,7 +84,7 @@ function Contact() {
     <ContactForm />
     </div>
 </div>
-</section>
+</main>
     </>
 )
 }
