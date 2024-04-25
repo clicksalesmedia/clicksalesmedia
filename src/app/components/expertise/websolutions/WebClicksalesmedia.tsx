@@ -13,12 +13,10 @@ function WebClicksalesmedia() {
                  Web Performance
                 </span>
                 <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                 The performance and speed
+                Don't enable your brand get left behind.
                 </h2>
                 <p className="mt-4 text-lg text-gray-300">
-                  The product has built-in sentiment analysis capabilities, allowing
-                  it to determine the sentiment (positive, negative, or neutral)
-                  expressed in text or customer feedback.
+                Being slow to accept new technologies gives your competitors an advantage. Not to mention how a lack of creativity might harm your business. Take a creative approach to new web3 triggers and be the first to market in the metaverse and beyond.
                 </p>
               </div>
         </div>
@@ -40,7 +38,7 @@ function WebClicksalesmedia() {
                  Web Performance
                 </span>
                 <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                 The performance and speed
+                From website to Client 
                 </h2>
                 <p className="mt-4 text-lg text-gray-300">
                   The product has built-in sentiment analysis capabilities, allowing
@@ -61,12 +59,10 @@ function WebClicksalesmedia() {
                  Our Unique System
                 </span>
                 <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                 From Website to client
+                Developing solutions using customized web development.
                 </h2>
                 <p className="mt-4 text-lg text-gray-300">
-                  The product has built-in sentiment analysis capabilities, allowing
-                  it to determine the sentiment (positive, negative, or neutral)
-                  expressed in text or customer feedback.
+                Great ideas are not always possible to realize with a traditional CMS system. To bring your unique ideas alive online, we design, develop, and optimize to go beyond your expectations.
                 </p>
               </div>
         </div>

@@ -10,7 +10,7 @@ const AnimatedButton = () => {
 const AIButton = () => {
   return (
     <button className="w-full text-white font-medium px-3 py-2 rounded-md overflow-hidden relative transition-transform hover:scale-105 active:scale-95">
-      <span className="relative z-10">Sign up free</span>
+      <span className="relative z-10">Reach out now</span>
       <motion.div
         initial={{ left: 0 }}
         animate={{ left: "-300%" }}

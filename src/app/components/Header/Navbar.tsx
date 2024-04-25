@@ -166,8 +166,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Branding</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          How and why brands grow? Maximize your potential, empower your brand, optimize your resources, and expand your reach to achieve market leadership.
           </p>
         </Link>
         <Link
@@ -175,8 +175,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Social Media</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          Our elite team of Social Media Management specialists can help you realize the full potential of your online presence.
           </p>
         </Link>
         <Link
@@ -184,8 +184,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Website Solutions</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          We innovate in web development, creating pioneering online experiences that makes your brand special.
           </p>
         </Link>
         <Link
@@ -193,8 +193,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">SEO Solutions</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          Maximize visibility with expert SEO strategies. Don't let valuable content go unnoticed; our expertise ensures wider audience reach effortlessly.
           </p>
         </Link>
         <Link
@@ -202,8 +202,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Google Marketing</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          ClickSalesMedia takes advantage of Google's opportunities. Improve your online influence, boost conversions, and achieve your brand's maximum potential. 
           </p>
         </Link>
         <Link
@@ -211,8 +211,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Business to Business</h3>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, quam?
+          <p className="text-xs text-whiteColor">
+          Achieve B2B success with Click Sales Media. Our strategic marketing strategies help you simplify processes, drive growth, and strengthen your industry position.
           </p>
         </Link>
       </div>

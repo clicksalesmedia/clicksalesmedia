@@ -49,10 +49,11 @@ function Features() {
             </div>
             <div className="col-span-4 lg:col-span-6">
             <p className='text-white'>
-                             Description text goes here. Ensure full accessibility by adhering to WAI-ARIA standards, enabling people with disabilities to use the website effectively.
+            For starters, it improves organic search by making optimized content more visible and hence more likely to convert users into buyers.
+Second, it increases site quality since search engines base their overall evaluation of a website on its searchability.
                         </p>
                         <p className='text-white'>
-                             Description text goes here. Ensure full accessibility by adhering to WAI-ARIA standards, enabling people with disabilities to use the website effectively.
+                        Finally, SEO produces concrete benefits by raising exposure, generating conversions, and drawing consumers; without it, an invisible website might put you at a competitive disadvantage.
                         </p>
                 <SeoCounter />
             </div>

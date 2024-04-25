@@ -8,16 +8,16 @@ export default function BrandingFeatures() {
     <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
       <div className="col-span-4 md:col-span-8 lg:col-span-12 bg-[#000000] p-20 flex flex-col items-center justify-center">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-secondaryColor md:text-5xl lg:text-6xl dark:text-white text-center">
-          We invest in the world’s potential
+        The Way Successful Brands Grow Strong
         </h1>
         <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">
-          Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+        Empower your potential, enhance your brand, optimize your resources, and broaden your reach to achieve market dominance.
         </p>
         <a
           href="#"
           className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-secondaryColor rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
         >
-          Learn more
+          Transform Your Brand Today
           <svg
             className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
             aria-hidden="true"
@@ -58,13 +58,12 @@ export default function BrandingFeatures() {
             </div>
             <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-80">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
-    Get back to growth {" "}
-    <span className="text-secondaryColor dark:text-blue-500">with the worlds #1</span>{" "}
-    CRM.
+            Lost  {" "}
+    <span className="text-secondaryColor dark:text-blue-500">revenue</span>{" "}
+    ?
   </h1>
   <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-    Here at Flowbite we focus on markets where technology, innovation, and
-    capital can unlock long-term value and drive economic growth.
+  Without an effective strategy, the money you spend on marketing will be wasted attempting to compete in an overcrowded market rather than building a niche within a crowd.
   </p>
             </div>
           </div>
@@ -76,18 +75,13 @@ export default function BrandingFeatures() {
           <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
           <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-60">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
-    Brand Stationery {" "}
-    <span className="text-secondaryColor dark:text-blue-500">with the worlds #1</span>{" "}
-    CRM.
+            A deep {" "}
+    <span className="text-secondaryColor dark:text-blue-500">understand of your</span>{" "}
+    brand.
   </h1>
   <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-  Designing branded stationery that conveys professionalism and consistency in all business communications.
+  We immerse in your brand's history, goals, and culture to build a brand that will succeed. We define your goals, vision, values, audiences, and unique value propositions to help you develop your identity, niche, and future campaigns, and then design your stationary accordingly.
   </p>
-  <ul>
-    <li>Developing business cards, letterheads, envelopes, and email signatures with your brand’s visual identity.</li>
-    <li>Ensuring cohesive branding across all stationery items.</li>
-    <li>Enhancing brand recognition in all written and digital interactions.</li>
-  </ul>
             </div>
           <div className="col-span-4 lg:col-span-6 relative">
               <div

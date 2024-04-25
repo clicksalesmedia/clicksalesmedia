@@ -34,7 +34,7 @@ return (
         <DataRight sectionName="Social" />
          
         <button className="my-10 px-6 py-2 font-medium bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28] text-white w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
-          Schedule a Free Meeting
+        Engage your leads
         </button>
 
         </div>

@@ -52,7 +52,7 @@ return (
                 Our Google<span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]"> Marketing Services</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-       Lorem ipsum dolor sit amet consectetur adipisicing elit. Non laudantium saepe culpa ipsam suscipit mollitia harum nam, adipisci modi unde voluptate laboriosam sunt pariatur molestiae alias possimus magnam iusto iure?
+        We believe in transparency. Your investment deserves clarity — knowing where it's allocated, what's effective, and where adjustments are needed. We develop personalized dashboards for real-time insights into your ad campaigns. Our aim is to simplify the process, providing straightforward access to key metrics such as ad spend, conversions, calls, and ROI.
         </p>
             </div>
     <div className="container px-6 py-5 mx-auto">

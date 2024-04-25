@@ -14,9 +14,9 @@ interface Sections {
 export const sections: Sections = {
 // Social media management
   Social: {
-      title: "Services Section Title",
-      description: "This is the description for the Services section.",
-      highlight: "for the About section.",
+      title: "Your path for achieving ",
+      description: "Organic content generates connection, while performance strategies provide results. If you want consistent social results, you need a system that handles everything, from paid media to strategy to big-picture goals, and more.",
+      highlight: "social media success.",
   },
 
   // Web solution

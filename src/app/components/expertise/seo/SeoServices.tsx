@@ -12,39 +12,39 @@ interface FeatureItem {
 
 const features: FeatureItem[] = [
   {
-    title: 'Responsive Design',
+    title: 'Research and plan',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
-    imageUrl: "/expertise/icons/targeting.png", // Placeholder image URL
+      "We do extensive research on industry trends, customer behavior, and competition analysis to create a strategic content roadmap that is perfect for your company's objectives.",
+    imageUrl: "/expertise/icons/targeting.png", 
   },
   {
-    title: 'Responsive Design',
+    title: 'SEO strategy implementation',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
-    imageUrl: "/expertise/icons/backlinks.png", // Placeholder image URL
+      "Improve your web page visibility with our SEO content strategy and execution services. We use innovative techniques to improve your website's exposure and enhance organic traffic, assuring long-term success in the digital world.",
+    imageUrl: "/expertise/icons/backlinks.png", 
   },
   {
-    title: 'Responsive Design',
+    title: 'Technical and Performance Analysis',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
-    imageUrl: "/expertise/icons/speed-seo-website.png", // Placeholder image URL
+      "Our technical and performance study analyzes the complexities of your website's structure. From page speed  to mobile responsiveness, we discover and fix technical issues to improve the user experience and performance in general.",
+    imageUrl: "/expertise/icons/speed-seo-website.png", 
   },
   {
-    title: 'Responsive Design',
+    title: 'Keywords Plan and Analysis',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
+      'Our complete keyword plan and research will help you maximize the power of your keywords. We carefully research and choose relevant keywords specific to your industry and target demographic, then optimize your content for greatest exposure and communication.',
     imageUrl: "/expertise/icons/seo-keywords.png", // Placeholder image URL
   },
   {
-    title: 'Responsive Design',
+    title: 'Results Analysis',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
+      'Our results analysis services provide helpful details about the success of your marketing activities. We analyze key performance measures, evaluate data patterns, and make practical suggestions to help refine tactics and promote continual progress.',
     imageUrl: "/expertise/icons/seo-analysis.png", // Placeholder image URL
   },
   {
-    title: 'Responsive Design',
+    title: 'Traffic and ROI Strategy',
     description:
-      'Wind UI ensures your web application looks and functions flawlessly on various devices, from smartphones to desktops.',
+      'Our traffic and ROI approach maximizes investment returns. We create tailored strategies to attract quality customers, improve website traffic, and optimize conversion rates, resulting in a meaningful impact on your bottom line.',
     imageUrl: "/expertise/icons/result-seo-clicksalesmedia.png", // Placeholder image URL
   },
   

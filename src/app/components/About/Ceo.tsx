@@ -12,15 +12,11 @@ return (
                 <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-14 gap-y-8 md:items-end">
                     <div className="space-y-4 md:space-y-6 md:col-span-2 lg:col-span-1 w-full max-w-3xl lg:max-w-none mx-auto lg:mx-0 text-center lg:text-left">
                         <h2 className="font-display font-semibold text-2xl md:text-3xl text-secondaryColor dark:text-white">
-                            Web designer based in Lubumbashi-DRC
+                        Elevating Brands Together 
                         </h2>
                         <div className="text-gray-700 dark:text-gray-900 space-y-3 mx-auto max-w-2xl lg:max-w-none">
-                            <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                             <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                            </p>
-                            <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
-                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                            With over a decade of expertise, ClickSalesMedia is your trusted marketing partner in Dubai. Our dedicated team ensures your business thrives, by providing constant assistance and reliability to clients throughout the GCC area.
                             </p>
                         </div>
                         <div className="flex justify-center lg:justify-start">
@@ -42,9 +38,9 @@ return (
                                 </svg>
                             </span>
                             <div>
-                                <span className="font-semibold text-gray-800  dark:text-gray-200 text-lg">Smart Skills</span>
+                                <span className="font-semibold text-gray-800  dark:text-gray-200 text-lg">Our Journey, Your Success</span>
                                 <p className="text-gray-700 dark:text-gray-300">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                A road that leads to digital success.
                                 </p>
                             </div>
                         </div>
@@ -55,9 +51,9 @@ return (
                                 </svg>
                             </span>
                             <div>
-                                <span className="font-semibold text-gray-800  dark:text-gray-200 text-lg">Smart Skills</span>
+                                <span className="font-semibold text-gray-800  dark:text-gray-200 text-lg">Creators of Impact</span>
                                 <p className="text-gray-700 dark:text-gray-300">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Create digital innovations, one strategy at a time.
                                 </p>
                             </div>
                         </div>
@@ -68,9 +64,9 @@ return (
                                 </svg>
                             </span>
                             <div>
-                                <span className="font-semibold text-gray-800 dark:text-gray-200 text-lg">Smart Skills</span>
+                                <span className="font-semibold text-gray-800 dark:text-gray-200 text-lg">Results-driven</span>
                                 <p className="text-gray-700 dark:text-gray-300">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Results beyond expectations.
                                 </p>
                             </div>
                         </div>
