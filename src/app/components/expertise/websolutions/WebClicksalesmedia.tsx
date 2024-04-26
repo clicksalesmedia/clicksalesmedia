@@ -13,7 +13,7 @@ function WebClicksalesmedia() {
                  Web Performance
                 </span>
                 <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                Don't enable your brand get left behind.
+                {"Don't enable your brand get left behind."}
                 </h2>
                 <p className="mt-4 text-lg text-gray-300">
                 Being slow to accept new technologies gives your competitors an advantage. Not to mention how a lack of creativity might harm your business. Take a creative approach to new web3 triggers and be the first to market in the metaverse and beyond.

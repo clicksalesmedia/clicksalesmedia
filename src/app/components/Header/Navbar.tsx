@@ -22,6 +22,7 @@ interface NavLinkProps {
 interface MobileMenuLinkProps {
   children: ReactNode;
   href: string;
+  className:any;
   FoldContent?: React.ComponentType<{ setMenuOpen?: (open: boolean) => void }>;
   setMenuOpen: (open: boolean) => void;
 }
@@ -146,16 +147,16 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
     <div className="grid h-fit w-full grid-cols-12 shadow-xl lg:h-72 lg:w-[600px] lg:shadow-none xl:w-[750px]">
       <div className="col-span-12 flex flex-col justify-between bg-secondaryColor p-6 lg:col-span-4">
         <div>
-          <h2 className="mb-2 text-xl font-semibold text-primaryColor">Our Expertise</h2>
-          <p className="mb-6 max-w-xs text-sm text-primaryColor">
-          {"Placeholder is the world's leading placeholder company."}
+          <h2 className="mb-2 text-2xl font-bold text-primaryColor">Our Expertise</h2>
+          <p className="mb-6 max-w-xs text-sm font-semibold text-primaryColor">
+          {"Explore our Performance Marketing expertise, where we create data-driven campaigns that deliver measurable results and optimize ROI. Our approach ensures effective audience engagement and sustained growth."}
           </p>
         </div>
         <Link
-          href="#"
-          className="flex items-center gap-1 text-xs text-primaryColor hover:underline"
+          href="/contact"
+          className="flex items-center gap-1 text-xs font-bold text-primaryColor hover:underline"
         >
-          Discover More <FiArrowRight />
+          Let's Discuss <FiArrowRight />
         </Link>
       </div>
       <div className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"
@@ -194,7 +195,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">SEO Solutions</h3>
           <p className="text-xs text-whiteColor">
-          Maximize visibility with expert SEO strategies. Don't let valuable content go unnoticed; our expertise ensures wider audience reach effortlessly.
+          {"Maximize visibility with expert SEO strategies. Don't let valuable content go unnoticed; our expertise ensures wider audience reach effortlessly."}
           </p>
         </Link>
         <Link
@@ -203,7 +204,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Google Marketing</h3>
           <p className="text-xs text-whiteColor">
-          ClickSalesMedia takes advantage of Google's opportunities. Improve your online influence, boost conversions, and achieve your brand's maximum potential. 
+         {"ClickSalesMedia takes advantage of Google's opportunities. Improve your online influence, boost conversions, and achieve your brand's maximum potential."} 
           </p>
         </Link>
         <Link
@@ -308,13 +309,14 @@ const MobileMenu = () => {
                 <FiX className="text-3xl text-secondaryColor" />
               </button>
             </div>
-            <div className="h-screen overflow-y-scroll bg-primaryColor p-6">
+            <div className="h-screen overflow-y-scroll bg-primaryColor p-6 NavColorMobileText">
               {LINKS.map((l) => (
                 <MobileMenuLink
                   key={l.text}
                   href={l.href}
                   FoldContent={l.component}
                   setMenuOpen={setOpen}
+                  className="NavColorMobileText"
                 >
                   {l.text}
                 </MobileMenuLink>

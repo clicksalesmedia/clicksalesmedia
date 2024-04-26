@@ -29,7 +29,7 @@ function SocialFeatures() {
               Preparation Face
             </h5>
             <p className="text-gray-300">
-              Platform to convert Domains into Content websites.
+            Setting the foundation for success, our Preparation Phase ensures all tools, strategies, and goals are perfectly aligned. This stage is all about creating a solid groundwork to support innovative breakthroughs.
             </p>
           </div>
         </div>
@@ -50,7 +50,7 @@ function SocialFeatures() {
               Testing Face
             </h5>
             <p className="text-gray-300">
-              Platform to create dynamic widgets for websites.
+            Dedicated to quality and precision, the Testing Phase involves thorough evaluations to guarantee the reliability and effectiveness of our solutions. We test rigorously today to ensure a flawless performance tomorrow.
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@ function SocialFeatures() {
               Optimization Face
             </h5>
             <p className="text-gray-300">
-              API SaaS Platform that provides API Suit to help you ship fast.
+            In the Optimization Phase, we focus on refining and enhancing our processes to achieve peak performance. This stage is crucial for turning good results into great outcomes through meticulous improvements.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ function SocialFeatures() {
               Scaling up Face
             </h5>
             <p className="text-gray-300">
-              Chrome Extension that lets you add ChatGPT on any website
+            Expanding horizons in the Scaling Up Phase, we take our validated solutions to new markets and broader audiences. Watch as we grow our reach and impact on a global scale.
             </p>
           </div>
         </div>

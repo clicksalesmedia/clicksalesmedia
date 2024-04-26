@@ -44,6 +44,13 @@ p {
   line-height: 1.25 !important; 
 }
 
+.NavColorMobileText{
+  color: white !important;
+}
+.NavColorMobileText a,span{
+  color: white !important;
+}
+
 /* Style the scrollbar (works on Webkit/Blink browsers) */
 ::-webkit-scrollbar {
   width: 10px;
@@ -60,6 +67,8 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: #e5ae54;
 }
+
+
 
 
 

@@ -73,7 +73,7 @@ return (
                 Our B2B<span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]"> Services</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-       Lorem ipsum dolor sit amet consectetur adipisicing elit. Non laudantium saepe culpa ipsam suscipit mollitia harum nam, adipisci modi unde voluptate laboriosam sunt pariatur molestiae alias possimus magnam iusto iure?
+        Expanding Your Business Capabilities with Our B2B Services
         </p>
             </div>
     <div className="container px-6 py-5 mx-auto">

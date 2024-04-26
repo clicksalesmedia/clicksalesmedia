@@ -22,9 +22,7 @@ function About() {
   
   />
         <Ceo />
-        <Hero />
         <Team /> 
-        <Partner />
     </main>
   )
 }

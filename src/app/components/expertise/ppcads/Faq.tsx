@@ -15,98 +15,120 @@ type QuestionsMap = {
 };
 
 // List of tabs as a constant tuple
-const TABS = ["Social Media Management", "Social media Ads", "Social Media for B2B", "Social Media Content"] as const;
+const TABS = ["PPC Ads Strategies", "Paid Search", "Performance Max", "Google Shopping", "Google My Business" ] as const;
 
 // Deriving a union type of tab values from the TABS constant
 type Tab = typeof TABS[number];
 
 const QUESTIONS: QuestionsMap = {
-  "Social Media Management": [
+  "PPC Ads Strategies": [
     {
-      question: "What is web development?",
+      question: "What are the key elements of a successful PPC campaign?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "A successful PPC campaign involves careful keyword selection, compelling ad copy, optimized landing pages, and strategic bid management to maximize ROI.",
     },
     {
-      question: "How do I know if I need it?",
+      question: "How do you determine the right budget for a PPC campaign?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We assess your business goals, target audience, and competitive landscape to set a budget that maximizes visibility and conversions while maintaining cost-efficiency.",
     },
     {
-      question: "What does it cost?",
+      question: "What strategies do you use to improve PPC ad performance?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We utilize A/B testing, keyword refinement, and performance analytics to continually optimize ads and ensure they resonate with the target audience and drive results.",
     },
     {
-      question: "What about SEO?",
+      question: "How do you ensure PPC ads reach the intended audience?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-  ],
-  "Social media Ads": [
-    {
-      question: "What is mobile development?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "Can you do both iOS and Android?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "Can you help with app store optimization?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
-    },
-    {
-      question: "How long does it take?",
-      answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We leverage advanced targeting options including demographic, geographic, and psychographic filters, as well as retargeting techniques to ensure ads are seen by the most relevant users.",
     },
   ],
-  "Social Media for B2B": [
+  "Paid Search": [
     {
-      question: "What is UI/UX?",
+      question: "What distinguishes paid search from other forms of digital advertising?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Paid search targets users actively searching for your products or services, offering immediate visibility and direct response compared to broader-reaching digital ad types.",
     },
     {
-      question: "Can you audit my existing site?",
+      question: "How do you optimize paid search ads for high conversion rates?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We focus on precise keyword targeting, crafting engaging ad copy, and designing user-friendly landing pages that are optimized for conversions.",
     },
     {
-      question: "How do you perform research?",
+      question: "What metrics are most important in measuring paid search effectiveness?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Key metrics include Click-Through Rate (CTR), Cost Per Click (CPC), Conversion Rate, and Return on Ad Spend (ROAS), which help us gauge campaign success and areas for improvement.",
     },
     {
-      question: "Does it make sense for my company?",
+      question: "How quickly can we see results from paid search campaigns?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Results can often be seen shortly after campaign launch due to the immediate nature of paid search, with ongoing optimizations enhancing performance over time.",
     },
   ],
-  "Social Media Content": [
+  "Performance Max": [
     {
-      question: "What is copywriting?",
+      question: "What is Google's Performance Max, and how does it benefit advertisers?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Performance Max is a Google Ads campaign type that uses AI to optimize ad placement across all Google platforms. It maximizes conversion value by automatically finding the best performing strategies.",
     },
     {
-      question: "Can you write my blog?",
+      question: "How do you set up a Performance Max campaign?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Setting up involves defining campaign goals, uploading assets like images and videos, and providing a range of conversion actions for Google’s AI to target.",
     },
     {
-      question: "Can you also help with ad design?",
+      question: "What makes Performance Max different from standard PPC campaigns?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Performance Max utilizes machine learning to automatically adjust bids, placements, and targeting across Google's entire inventory, which can lead to improved performance and simplified management.",
     },
     {
-      question: "How much does it cost?",
+      question: "Can Performance Max campaigns use existing assets from other campaigns?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Yes, Performance Max can utilize existing ad assets, allowing seamless integration and leveraging past creative work for new optimization opportunities.",
+    },
+  ],
+  "Google Shopping": [
+    {
+      question: "How does Google Shopping work for retailers?",
+      answer:
+        "Google Shopping displays products directly in search results, allowing users to compare prices and see products before clicking through to a retailer’s website to make a purchase.",
+    },
+    {
+      question: "What are the advantages of using Google Shopping for e-commerce?",
+      answer:
+        "It offers high intent-to-purchase exposure, direct product comparisons, and simplified path to purchase, which can significantly boost sales.",
+    },
+    {
+      question: "What strategies optimize Google Shopping campaigns?",
+      answer:
+        "Optimization strategies include detailed product feeds, strategic bidding, high-quality images, and continuous performance monitoring to adjust bids and product listings for maximum ROI.",
+    },
+    {
+      question: "How do you handle product listings and bidding in Google Shopping?",
+      answer:
+        "We manage product listings through meticulous feed optimization and use data-driven bidding strategies to compete effectively in product category auctions.",
+    },
+  ],
+  "Google My Business": [
+    {
+      question: "What is Google My Business and why is it important for local businesses?",
+      answer:
+        "Google My Business (GMB) is a free tool that allows businesses to manage their online presence across Google, including Search and Maps. It is crucial for helping local businesses increase their visibility, attract more customers, and manage their information effectively.",
+    },
+    {
+      question: "How do you optimize a Google My Business listing for better visibility?",
+      answer:
+        "Optimization includes ensuring your business information is accurate and comprehensive, posting regular updates, adding high-quality photos, and collecting customer reviews to enhance credibility and attract more local searches.",
+    },
+    {
+      question: "What types of content should be posted on Google My Business?",
+      answer:
+        "Effective content for GMB includes updates about your business, promotions, upcoming events, and new products or services. Regular posting keeps your profile active and engaging for potential customers.",
+    },
+    {
+      question: "How can Google My Business impact my local SEO rankings?",
+      answer:
+        "A well-managed GMB profile can significantly boost your local SEO by making your business more relevant and visible in local search results and on Google Maps. This can lead to increased traffic both online and in-store.",
     },
   ],
 };
@@ -131,7 +153,7 @@ const Heading: React.FC = () => {
              <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">FAQ</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam iure eligendi veniam autem repudiandae velit magni quos dolorum maxime fugiat quo quis possimus necessitatibus eaque, dolore eveniet officiis ducimus. Facere?
+        Discover how our agency helps you maximize the potential of Google's services. Our FAQs offer insights into effective strategies for Google Ads, Google My Business, Google Shopping, and more, ensuring your business achieves optimal online visibility and success.
         </p>
             </div>
     </>

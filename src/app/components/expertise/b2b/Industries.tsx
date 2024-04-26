@@ -125,56 +125,64 @@ const posts = [
     id: 1,
     imgUrl: "/expertise/b2b/industries/saas.jpg",
     author: "SAAS",
-    title: "We built an AI chess bot with ChatGPT",
+    title: "SaaS Solutions",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Drive innovation and scalability in your SaaS business. Our targeted digital strategies enhance user engagement and maximize subscription growth.",
   },
   {
     id: 2,
     imgUrl: "/expertise/b2b/industries/real-estate.jpg",
     author: "Real estate",
-    title: "How to grow your personal brand as a web designer",
+    title: "Real Estate Performance Marketing",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Transform property listings into sales with our real estate marketing expertise. We provide powerful tools and strategies to attract buyers and sellers alike.",
   },
   {
     id: 3,
     imgUrl: "/expertise/b2b/industries/education.jpg",
     author: "Education",
-    title: "Calm down, monoliths are totally fine",
+    title: "Education Digital Services",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Empower your educational institution with digital solutions that enhance learning and administration. Our strategies help you connect with students and improve educational outcomes.",
   },
   {
     id: 4,
     imgUrl: "/expertise/b2b/industries/automotive.jpg",
     author: "Automotive",
-    title: "A quick guide to Framer Motion (for dummies)",
+    title: "Automotive Marketing Excellence",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Accelerate your automotive business with high-impact digital marketing strategies. From dealerships to manufacturers, we drive traffic and increase sales.",
   },
   {
     id: 5,
     imgUrl: "/expertise/b2b/industries/construction.jpg",
     author: "Construction",
-    title: "You probably don't need kubernetes",
+    title: "Construction Industry Growth",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Build a solid foundation for your construction business with our specialized marketing approaches that increase visibility and attract new projects.",
   },
   {
     id: 6,
     imgUrl: "/expertise/b2b/industries/accreditation.jpg",
     author: "Accreditation",
-    title: "State of JavaScript in 2024",
+    title: "Accreditation Success",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Enhance your accreditation processes with our tailored digital solutions. We help institutions manage standards and improve operational efficiencies.",
   },
   {
     id: 7,
     imgUrl: "/expertise/b2b/industries/gas-and-oil.jpg",
     author: "Oil & Gas",
-    title: "What's new in Python?",
+    title: "Oil & Gas Performance Digital Strategy",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, dolor.",
+      "Fuel success in the oil and gas sector with our robust digital strategies. From exploration to distribution, we enhance visibility and operational efficiency.",
+  },
+  {
+    id: 7,
+    imgUrl: "/expertise/b2b/industries/food-beverage-restaurants-hotels.jpg",
+    author: "Food & Beverage",
+    title: "Food & Beverage Marketing",
+    description:
+      "Whet the appetite of your target audience with our food and beverage marketing expertise. We create campaigns that increase brand loyalty and drive sales.",
   },
 ];

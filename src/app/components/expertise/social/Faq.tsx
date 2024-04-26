@@ -23,90 +23,90 @@ type Tab = typeof TABS[number];
 const QUESTIONS: QuestionsMap = {
   "Social Media Management": [
     {
-      question: "What is web development?",
+      question: "What is social media management and why is it important?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Social media management involves overseeing your online interactions and content across platforms. It's crucial for maintaining a cohesive brand voice, engaging with your audience, and building your digital presence effectively.",
     },
     {
-      question: "How do I know if I need it?",
+      question: "What strategies do you use to enhance brand presence on social media?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We customize strategies to align with your brand’s voice and goals, utilizing targeted content calendars, community engagement practices, and performance analytics to enhance your online presence.",
     },
     {
-      question: "What does it cost?",
+      question: "Can you handle multiple social media platforms?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Yes, we manage a range of platforms including Facebook, Instagram, Twitter, LinkedIn, and more, ensuring a cohesive brand message across all channels.",
     },
     {
-      question: "What about SEO?",
+      question: "How do you deal with negative comments or a brand crisis on social media?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We employ proactive monitoring and rapid response strategies to manage negative comments and mitigate crises, maintaining your brand's reputation.",
     },
   ],
   "Social media Ads": [
     {
-      question: "What is mobile development?",
+      question: "How do you ensure our ads target the right audience?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We use advanced targeting options based on demographics, interests, behaviors, and more to reach the most relevant audience for your brand.",
     },
     {
-      question: "Can you do both iOS and Android?",
+      question: "What kind of return on investment (ROI) can we expect from social media ads?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "ROI can vary by campaign and goals, but we focus on maximizing your ad spend by optimizing campaigns for conversions and closely monitoring performance metrics.",
     },
     {
-      question: "Can you help with app store optimization?",
+      question: "Do you offer creative design services for ads?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Yes, we provide complete creative solutions including graphic design, video production, and copywriting to make your ads engaging and effective.",
     },
     {
-      question: "How long does it take?",
+      question: "How often do you report on ad performance?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We offer regular reporting that suits your needs, ranging from weekly to monthly updates, including detailed analytics and insights to guide future strategies.",
     },
   ],
-  "Social Media for B2B": [
+  "Social Media in B2B": [
     {
-      question: "What is UI/UX?",
+      question: "How does B2B social media marketing differ from B2C in your strategies?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Our B2B strategies are designed to build long-term relationships and establish thought leadership through content that addresses industry-specific issues, trends, and insights.",
     },
     {
-      question: "Can you audit my existing site?",
+      question: "What platforms do you recommend for B2B social media marketing?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "LinkedIn and google are a cornerstone for B2B marketing, along with Twitter and Facebook depending on your industry and target audience specifics.",
     },
     {
-      question: "How do you perform research?",
+      question: "How do you measure effectiveness in B2B social media marketing?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We focus on metrics such as lead generation, engagement with key decision-makers, and the quality of interactions over volume.",
     },
     {
-      question: "Does it make sense for my company?",
+      question: "Can social media influence B2B decision-making?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Absolutely, social media allows B2B companies to position themselves as experts in their field, influencing decision-makers and shaping industry conversations.",
     },
   ],
   "Social Media Content": [
     {
-      question: "What is copywriting?",
+      question: "How do you create content that stands out on social media?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We prioritize originality and relevance in our content creation, utilizing trends, user engagement data, and brand identity to craft posts that capture attention.",
     },
     {
-      question: "Can you write my blog?",
+      question: "What types of content do you think perform best on social media?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Video content and interactive posts typically see higher engagement rates, but the best type of content can vary depending on your audience and platform.",
     },
     {
-      question: "Can you also help with ad design?",
+      question: "How do you ensure content aligns with our brand values?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "We start by thoroughly understanding your brand’s values and voice, which guides the content strategy to ensure consistency and authenticity in all posts.",
     },
     {
-      question: "How much does it cost?",
+      question: "Do you involve clients in the content creation process?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint tempora quasi eligendi distinctio, mollitia porro repudiandae modi consectetur consequuntur perferendis!",
+        "Yes, we collaborate closely with clients to ensure content not only meets but exceeds their expectations, incorporating their feedback and insights throughout the creation process.",
     },
   ],
 };
@@ -131,7 +131,7 @@ const Heading: React.FC = () => {
              <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">FAQ</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam iure eligendi veniam autem repudiandae velit magni quos dolorum maxime fugiat quo quis possimus necessitatibus eaque, dolore eveniet officiis ducimus. Facere?
+        Get quick answers on Social media strategy, ads, engagement, and more to effectively boost your online presence.
         </p>
             </div>
     </>

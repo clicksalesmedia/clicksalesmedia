@@ -57,10 +57,10 @@ export const sections: Sections = {
 // B2B Industries
 
 B2bIndustries: {
-    title: "Services Section Title",
+    title: "Comprehensive Performance Marketing Solutions ",
     subTitle: "Industries",
-    description: "This is the description for the Services section.",
-    highlight: "for the About section.",
+    description: "Customized Strategies to Meet Industry-Specific Demands ",
+    highlight: "for Diverse Industries",
   },
 };
 

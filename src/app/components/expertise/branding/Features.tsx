@@ -80,7 +80,7 @@ export default function BrandingFeatures() {
     brand.
   </h1>
   <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-  We immerse in your brand's history, goals, and culture to build a brand that will succeed. We define your goals, vision, values, audiences, and unique value propositions to help you develop your identity, niche, and future campaigns, and then design your stationary accordingly.
+  {"We immerse in your brand's history, goals, and culture to build a brand that will succeed. We define your goals, vision, values, audiences, and unique value propositions to help you develop your identity, niche, and future campaigns, and then design your stationary accordingly."}
   </p>
             </div>
           <div className="col-span-4 lg:col-span-6 relative">
