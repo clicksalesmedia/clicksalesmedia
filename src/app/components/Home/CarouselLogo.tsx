@@ -18,7 +18,6 @@ const CarouselLogo = () => {
   };
 
   const logos = [
-    '/clients/aaa-logo.png',
     '/clients/wse.png',
     '/clients/eshraq.png',
     '/clients/inspeedglobal-1.png',
