@@ -156,7 +156,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           href="/contact"
           className="flex items-center gap-1 text-xs font-bold text-primaryColor hover:underline"
         >
-          Let's Discuss <FiArrowRight />
+          {"Let's Discuss"} <FiArrowRight />
         </Link>
       </div>
       <div className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"

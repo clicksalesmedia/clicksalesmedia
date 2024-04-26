@@ -153,7 +153,7 @@ const Heading: React.FC = () => {
              <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">FAQ</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        Discover how our agency helps you maximize the potential of Google's services. Our FAQs offer insights into effective strategies for Google Ads, Google My Business, Google Shopping, and more, ensuring your business achieves optimal online visibility and success.
+        {"Discover how our agency helps you maximize the potential of Google's services. Our FAQs offer insights into effective strategies for Google Ads, Google My Business, Google Shopping, and more, ensuring your business achieves optimal online visibility and success."}
         </p>
             </div>
     </>

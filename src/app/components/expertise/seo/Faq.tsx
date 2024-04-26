@@ -131,7 +131,7 @@ const Heading: React.FC = () => {
              <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">FAQ</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        Explore key insights on enhancing your website's search engine performance!
+        {"Explore key insights on enhancing your website's search engine performance!"}
         </p>
             </div>
     </>
