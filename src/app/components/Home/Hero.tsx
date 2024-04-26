@@ -49,7 +49,7 @@ function Hero() {
     </div>
 
     <div className="grid grid-cols-1 lg:grid-cols-2">
-    <div className="w-full px-4 md:px-20 text-center">
+    <div className="flex flex-col justify-center items-center h-full px-4 md:px-20">
       <Image
         src="/clicksalesmedia-marketing-agency.png"
         alt="clicksalesmedia Marketing strategy"
