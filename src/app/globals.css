@@ -47,7 +47,10 @@ p {
 .NavColorMobileText{
   color: white !important;
 }
-.NavColorMobileText a,span{
+.NavColorMobileText a {
+  color: white !important;
+}
+.NavColorMobileText span {
   color: white !important;
 }
 

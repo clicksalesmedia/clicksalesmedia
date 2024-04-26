@@ -49,14 +49,14 @@ function Hero() {
     </div>
 
     <div className="grid grid-cols-1 lg:grid-cols-2">
-  <div className="p-4"> <div className="w-full px-20 text-center">
-  <Image
-    src="/clicksalesmedia-marketing-agency.png"
-    alt="clicksalesmedia Marketing strategy"
-    width={550}
-    height={550}
-  />
-</div>
+    <div className="w-full px-4 md:px-20 text-center">
+      <Image
+        src="/clicksalesmedia-marketing-agency.png"
+        alt="clicksalesmedia Marketing strategy"
+        layout="responsive"
+        width={550}  // Used for aspect ratio
+        height={550} // Used for aspect ratio
+      />
   </div>
 
   <div className="p-4">
