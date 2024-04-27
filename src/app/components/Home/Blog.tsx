@@ -33,7 +33,7 @@ const BlogSection: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]); 
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/posts")
+    fetch("https://administration.clicksalesmedia.com/api/posts")
         .then((response) => response.json())
         .then((data: PostData[]) => {
             const enhancedPosts = data.slice(0, 3).map((post) => {

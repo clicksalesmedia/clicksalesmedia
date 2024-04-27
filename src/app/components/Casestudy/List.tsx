@@ -23,7 +23,7 @@ const List: React.FC = () => {
   const [casestudies, setCasestudies] = useState<CaseStudy[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/casestudy')
+    fetch('https://administration.clicksalesmedia.com/api/casestudy')
       .then((response) => response.json())
       .then((data: CaseStudyApiResponse[]) => {
         // Transform the data and set the state
