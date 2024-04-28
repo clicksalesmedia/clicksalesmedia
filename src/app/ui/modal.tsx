@@ -43,7 +43,7 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/leads', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

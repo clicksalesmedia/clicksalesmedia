@@ -4,7 +4,7 @@ import { Contact } from '../../../models/Contact'; // Ensure this import matches
 
 type Data = {
   success: boolean;
-  data?: any; // You can replace 'any' with a more specific type for your contacts data
+  data?: any; 
   error?: string;
 }
 

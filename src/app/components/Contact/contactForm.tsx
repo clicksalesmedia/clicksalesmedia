@@ -35,7 +35,7 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/contacts', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contacts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
