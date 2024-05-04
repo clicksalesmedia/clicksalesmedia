@@ -19,7 +19,7 @@ return (
                          <SpiningText /></div>
                     </h1>
                     <p className="mt-4 text-whiteColor dark:text-gray-300">
-                    Our agency doesn't just excel in digital marketing; we bring the full power of performance marketing to deliver tangible results right down to the sales level. Our objective is clear: to drive sales and secure contracts for your business. By blending advanced digital strategies with a performance-focused approach, we ensure that every campaign we run contributes directly to your bottom line. This unwavering focus on results is the key to our success and yours.
+                    {"Our agency doesn't just excel in digital marketing; we bring the full power of performance marketing to deliver tangible results right down to the sales level. Our objective is clear: to drive sales and secure contracts for your business. By blending advanced digital strategies with a performance-focused approach, we ensure that every campaign we run contributes directly to your bottom line. This unwavering focus on results is the key to our success and yours."}
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                     <FormService />

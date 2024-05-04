@@ -2,6 +2,7 @@
 import React, { useState, FunctionComponent, ChangeEvent, FormEvent } from 'react';
 import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import { AnimatePresence, motion } from "framer-motion";
+import Swal from 'sweetalert2';
 import { FiAlertCircle } from "react-icons/fi";
 
 interface SpringModalProps {
@@ -50,9 +51,17 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         },
         body: JSON.stringify(form),
       });
-
+  
       if (response.ok) {
-        alert('Lead submitted successfully');
+        // SweetAlert2 for successful submission
+        Swal.fire({
+          icon: 'success',
+          title: 'Thank you for completing the form.',
+          text: 'Please wait while our customer service team reaches out to you as soon as possible.',
+          background: '#272727',
+          confirmButtonColor: '#C3A177',
+          confirmButtonText: 'Okay'
+        });
         setIsOpen(false); // Close modal on success
         // Reset form state
         setForm({
@@ -64,11 +73,25 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
           email: '',
         });
       } else {
-        alert('Failed to submit lead. Please try again.');
+        // SweetAlert2 for failure
+        Swal.fire({
+          icon: 'error',
+          title: 'Submission Failed',
+          text: 'Failed to submit lead. Please try again.',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'Retry'
+        });
       }
     } catch (error) {
       console.error('Failed to submit lead', error);
-      alert('An error occurred. Please try again.');
+      // SweetAlert2 for catch error
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'An error occurred. Please try again.',
+        confirmButtonColor: '#d33',
+        confirmButtonText: 'Retry'
+      });
     }
   };
 
