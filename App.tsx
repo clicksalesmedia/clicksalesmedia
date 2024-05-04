@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
     // Add GTM script dynamically if in the browser environment
     if (typeof window !== 'undefined') {
       const script = document.createElement('script');
-      script.src = `https://www.googletagmanager.com/gtm.js?id=GTM-XXXXXXX`; // Replace GTM-XXXXXXX with your GTM ID
+      script.src = `https://www.googletagmanager.com/gtm.js?id=GTM-WBLD4686`; // Replace GTM-XXXXXXX with your GTM ID
       document.head.appendChild(script);
     }
   }, []);
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
   return (
     <>
       {/* Add the noscript tag to support GTM if JS is disabled */}
-      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686`} height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
 
       <Component {...pageProps} />
     </>
