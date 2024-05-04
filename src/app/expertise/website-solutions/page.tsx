@@ -22,7 +22,7 @@ export default function WebMasterSolutions() {
     <CodeBeams
   icon={<MdOutlineWeb />}
   title="Web Solution"
-  description="Show why you're better than your competitors"
+  description="We design websites tailored to your brand identity, ensuring a cohesive and impactful online presence."
 />
     <WhyClicksalesmedia />
     <Solutions />

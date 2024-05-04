@@ -22,7 +22,7 @@ function Branding() {
     <CodeBeams
     icon={<IoBusiness />}
     title="Branding"
-    description="Show why you're better than your competitors"
+    description="Brands grow through consistent communication and engagement."
   />
   <main>
   <Swap />

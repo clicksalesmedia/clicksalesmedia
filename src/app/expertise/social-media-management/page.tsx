@@ -16,7 +16,7 @@ import SocialFeatures from '@/app/components/expertise/social/SocialFeatures';
  
 export const metadata: Metadata = {
   title: 'Social Media Management',
-  description: 'its branding page',
+  description: 'Engage, connect, and resonate with your community online.',
 }
  
 export default function HeroSection() {
@@ -25,7 +25,7 @@ return (
 <CodeBeams
   icon={<AiOutlineHeart />}
   title="Social Marketing"
-  description="Show why you're better than your competitors"
+  description="Engage, connect, and resonate with your community online."
 />
   <main className="w-full">
     <section className="relative pt-20 xl:pt-24">

@@ -21,7 +21,7 @@ export default function BusinessToBusiness() {
     <CodeBeams
   icon={<IoBusiness />}
   title="Business to Business Solutions"
-  description="Show why you're better than your competitors"
+  description="Our strategic marketing simplifies processes, fuels growth, and strengthens your industry presence."
 />
     <main className="py-20">
 

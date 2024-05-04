@@ -20,7 +20,7 @@ export default function Seo() {
     <CodeBeams
   icon={<RiSeoLine />}
   title="SEO Solutions"
-  description="Show why you're better than your competitors"
+  description="Boost visibility with expert SEO strategies, ensuring your valuable content reaches a wider audience effortlessly."
 />
     <main className="py-20">
       <AboutSeo />

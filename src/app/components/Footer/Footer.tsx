@@ -1,5 +1,12 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import { FaInstagramSquare, FaLinkedin, FaPinterestSquare } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
  
@@ -120,9 +127,58 @@ const footerBlocks = [
     ]
 },
 ]
- 
- 
+
 const Footer = () => {
+    const [email, setEmail] = useState('');
+  
+    const handleSubscribe = async (e: React.FormEvent) => {
+      e.preventDefault();
+  
+      try {
+        const response = await axios.post('/api/emailsubscriptions', { email });
+        console.log(response.data); // Check the response
+  
+        if (response.data.success) {
+          toast.success('👌 Successfully subscribed!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+          setEmail('');
+        } else {
+          toast.error('Subscription failed. Please try again later.', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Bounce,
+          });
+        }
+      } catch (error) {
+        console.error(error); // Log errors
+        toast.error('An error occurred. Please try again later.', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
+      }
+    };
 return (
     <footer className="mt-20 md:pt-20 bg-footerBgColor dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
@@ -163,15 +219,40 @@ return (
                         Subscribe to our newsletter
                     </h1>
                     <p className="max-w-xl text-whiteColor">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores debitis ex temporibus
+                    Stay updated with our latest news and offers. Join our newsletter today!
                     </p>
-                    <form className="grid w-full relative max-w-xl">
-                        <div className="flex flex-col gap-3 w-full relative">
-                            <input type="email" className="w-full outline-none px-3 py-3 rounded-md bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700" placeholder="Your Address Email" />
-                            <button className="w-full py-3 sm:py-0 sm:w-max sm:absolute sm:right-1 sm:inset-y-1 px-4 text-sm flex sm:items-center justify-center outline-none bg-secondaryColor text-white rounded-md">Subscribe</button>
-                        </div>
-                    </form>
+                    <form className="grid w-full relative max-w-xl" onSubmit={handleSubscribe}>
+            <div className="flex flex-col gap-3 w-full relative">
+              <input
+                type="email"
+                className="w-full outline-none px-3 py-3 rounded-md bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700"
+                placeholder="Your Address Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="w-full py-3 sm:py-0 sm:w-max sm:absolute sm:right-1 sm:inset-y-1 px-4 text-sm flex sm:items-center justify-center outline-none bg-secondaryColor text-white rounded-md"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
                 </div>
+                <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
             </nav>
             <div className="w-full flex flex-col md:flex-row gap-4 items-center sm:justify-between py-3 border-t border-[#2d2d2d] dark:border-t-[gray-800] text-secondaryColor dark:text-gray-300">
                 <div className="flex text-center sm:text-left sm:min-w-max">

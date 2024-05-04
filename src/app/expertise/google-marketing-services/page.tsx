@@ -18,7 +18,7 @@ export default function PpcAds() {
     <CodeBeams
   icon={<FaGoogle />}
   title="Google Marketing Solutions"
-  description="Show why you're better than your competitors"
+  description="Amplify your online influence, drive conversions, and propel your business towards unparalleled success."
 
 />
     <main className="py-20">
