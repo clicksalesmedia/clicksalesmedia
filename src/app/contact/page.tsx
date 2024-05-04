@@ -18,7 +18,7 @@ function Contact() {
          <CodeBeams
     icon={<MdOutlineSupportAgent/>}
     title="Contact us"
-    description="Show why you're better than your competitors"
+    description="We'd love to hear from you!"
   
   />
 <main className="py-24">

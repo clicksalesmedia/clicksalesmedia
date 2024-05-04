@@ -16,7 +16,7 @@ export default function Blog() {
       <CodeBeams
   icon={<BiDetail />}
   title="Blogs & Articles"
-  description="Show why you're better than your competitors"
+  description="Discover insights and strategies to help your business thrive online"
 />
       <section className="p-10">
         <LatestBlog />

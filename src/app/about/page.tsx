@@ -18,7 +18,7 @@ function About() {
          <CodeBeams
     icon={<LuCrown/>}
     title="About us"
-    description="Show why you're better than your competitors"
+    description="We prioritize integrity, innovation, and customer satisfaction."
   
   />
         <Ceo />
