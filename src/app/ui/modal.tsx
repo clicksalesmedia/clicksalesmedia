@@ -158,18 +158,23 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         <Label htmlFor="Services" value="Select Service" className="text-left text-white"/>
       </div>
       <Select id="services" name="services" value={form.services} onChange={handleChange} style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}>
-                    <option value="Web Solutions">Web Solutions</option>
+                    <option value="Performance Marketing">Performance Marketing</option>
+                    <option value="Conversion rate optimization">Conversion rate optimization</option>
                     <option value="Google Marketing">Google Marketing</option>
-                    <option value="Social Media Management">Social Media Management</option>
+                    <option value="Branding">Branding</option>
+                    <option value="Social Media Management">Branding</option>
+                    <option value="Website Solutions">Website Solutions</option>
+                    <option value="Ecommerce Solutions">Ecommerce Solutions</option>
                     <option value="Email Marketing">Email Marketing</option>
+                    <option value="Ads Management">Ads Management</option>
       </Select>
     </div>
 
           <Button
             type="submit"
-            className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-xs text-white bg-secondaryColor hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-xs text-white bg-secondaryColor hover:bg-[#b89469] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#b89469]"
           >
-            Send your Message
+            Power Up Your Project
           </Button>
   
       </form>
