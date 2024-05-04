@@ -5,6 +5,7 @@ import { MdOutlineSupportAgent } from 'react-icons/md'
 import Link from 'next/link'
 import ContactForm from '../components/Contact/contactForm'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
     title: 'Contact us',
@@ -27,8 +28,11 @@ function Contact() {
     <h1 className="text-secondaryColor py-2 dark:text-white font-semibold text-2xl sm:text-3xl md:text-4xl">
             We help drive your business forward faster
         </h1>
+        <div>
+        <Image className="h-auto max-w-full rounded-lg" src="/contact/digital-marketing-dubai.jpg" width={1200} height={900} alt="" />
+    </div>
         <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus, saepe aliquid autem alias vero distinctio dignissimos consequatur? Excepturi quibusdam, quam ipsum hic, laudantium ducimus suscipit, culpa facere consequuntur repellat delectus.
+        Reach out to us to discuss your business needs. Whether it's via our address, phone number, or email, we're here to provide the support you need to drive your business forward.
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
             <Link href="tel:+243" className="flex gap-x-6 items-start" rel="noreferer">
@@ -38,8 +42,8 @@ function Contact() {
                     </svg>
                 </span>
                 <div className="space-y-0.5 flex flex-col flex-1">
-                    <p className="text-foreground text-secondaryColor">Call us</p>
-                    <p className="font-semibold text-whiteColor dark:text-white text-lg">+243 xx xx xx xxx</p>
+                    <p className="text-foreground text-secondaryColor text-lg font-semibold">Call us</p>
+                    <p className="font-semibold text-whiteColor dark:text-white text-sm font-semibold">+971 50 341 21 74</p>
                 </div>
             </Link>
             <Link href="mailto:" className="flex gap-x-6 items-start" rel="noreferer">
@@ -49,8 +53,8 @@ function Contact() {
                     </svg>
                 </span>
                 <div className="space-y-0.5 flex flex-col flex-1">
-                    <p className="text-foreground text-secondaryColor">Send us a mail</p>
-                    <p className="font-semibold text-whiteColor dark:text-white text-lg">+243 xx xx xx xxx</p>
+                    <p className="text-foreground text-secondaryColor text-lg font-semibold">Send us a mail</p>
+                    <p className="font-semibold text-whiteColor dark:text-white text-sm font-semibold">info@clicksalesmedia.com</p>
                 </div>
             </Link>
             <Link href="mailto:" className="flex gap-x-6 items-start" rel="noreferer">
@@ -60,8 +64,8 @@ function Contact() {
                     </svg>
                 </span>
                 <div className="space-y-0.5 flex flex-col flex-1">
-                    <p className="text-foreground text-secondaryColor">Send us a mail</p>
-                    <p className="font-semibold text-whiteColor dark:text-white text-lg">+243 xx xx xx xxx</p>
+                    <p className="text-foreground text-secondaryColor text-lg font-semibold">Address</p>
+                    <p className="font-semibold text-whiteColor dark:text-white text-sm">Meydan Free Zone Meydan Hotel, Meydan Grandstand, 6th Floor, Meydan Rd, Nad Al Sheba 1, Dubai, UAE</p>
                 </div>
             </Link>
             <Link href="mailto:" className="flex gap-x-6 items-start" rel="noreferer">
@@ -71,8 +75,8 @@ function Contact() {
                     </svg>
                 </span>
                 <div className="space-y-0.5 flex flex-col flex-1">
-                    <p className="text-foreground text-secondaryColor">Send us a mail</p>
-                    <p className="font-semibold text-whiteColor dark:text-white text-lg">+243 xx xx xx xxx</p>
+                    <p className="text-foreground text-secondaryColor  text-lg font-semibold">Opening Hours</p>
+                    <p className="font-semibold text-whiteColor dark:text-white text-sm">Monday - Friday: 8:00 AM - 6:00 PM</p>
                 </div>
             </Link>
         </div>
@@ -81,6 +85,9 @@ function Contact() {
     <h1 className="text-secondaryColor py-6 dark:text-white font-semibold text-2xl sm:text-3xl md:text-4xl">
             {"Let's Get in Touch"}
         </h1>
+        <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none py-6'>
+        Please provide details about your project and any challenges you're encountering. The more information you share, the better we can tailor our solutions to meet your specific needs.
+        </p>
     <ContactForm />
     </div>
 </div>
