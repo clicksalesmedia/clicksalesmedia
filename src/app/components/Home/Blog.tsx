@@ -19,6 +19,7 @@ type PostData = {
 type Post = PostData &{
   thumbnailUrl: string;
   title: string;
+  slug: string;
   day: string;
   month: string;
   categories: Category[];
@@ -52,6 +53,7 @@ const BlogSection: React.FC = () => {
   // BlogCard component
   const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     return (
+      <Link href={`/blog/${post.slug}`} passHref className="text-secondaryColor dark:text-secondaryColor transition hover:text-opacity-90 flex items-center gap-x-3 group">
       <div className="bg-black bg-opacity-30 dark:bg-gray-950 shadow-xs shadow-[#222222] dark:shadow-transparent border border-primaryColor/50 dark:border-gray-800/50">
       <Image
         src={post.thumbnailUrl}
@@ -79,7 +81,7 @@ const BlogSection: React.FC = () => {
         <h1 className="text-xl my-6 font-semibold text-whiteColor dark:text-white">
           {post.title}
         </h1>
-        <Link href="#" className="text-secondaryColor dark:text-secondaryColor transition hover:text-opacity-90 flex items-center gap-x-3 group">
+        <Link href={`/blog/${post.slug}`} passHref className="text-secondaryColor dark:text-secondaryColor transition hover:text-opacity-90 flex items-center gap-x-3 group">
           Read more
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 transition-all ease-linear group-hover:ml-1">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -87,6 +89,7 @@ const BlogSection: React.FC = () => {
         </Link>
       </div>
     </div>
+    </Link>
     );
   };
 

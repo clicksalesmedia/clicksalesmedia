@@ -45,6 +45,7 @@ const BlogSection = () => {
 
   const BlogCard: React.FC<{ post: Post }> = ({ post }) => {
     return (
+      <Link href={`/blog/${post.slug}`} passHref className="mt-5 text-xl font-semibold text-secondaryColor dark:text-white">
       <div className="rounded-md flex flex-col bg-[#222222] dark:bg-gray-950 shadow-sm shadow-black dark:shadow-none border border-black/20 dark:border-gray-800/80 p-4">
         <div className="relative">
           <Image
@@ -80,6 +81,7 @@ const BlogSection = () => {
           </Link>
         </div>
       </div>
+      </Link>
     );
   };
 

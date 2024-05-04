@@ -8,6 +8,7 @@ import LogoClient from "./components/Home/LogoClient";
 import Testimonial from "./components/Home/Testimonial";
 import Vision from "./components/Home/Vision";
 import { Metadata } from "next";
+import NewHero from "./components/Home/NewHero";
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -19,7 +20,7 @@ export default function Home() {
   return (
     <> 
     <main>
-      <Hero />
+      <NewHero />
       <LogoClient />
       <About />
       <FitText />

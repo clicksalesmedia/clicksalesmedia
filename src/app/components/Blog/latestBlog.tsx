@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 interface Category {
@@ -12,6 +13,7 @@ interface Post {
   _id: string;
   title: string;
   content: string;
+  slug: string;
   thumbnailUrl: string;
   createdAt: string; // or Date, depending on how you handle dates
   categories: Category[];
@@ -57,16 +59,18 @@ const LatestBlog: React.FC<{ post: Post }> = ({ post }) => {
   <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">
     {/* Wrapper div for the image to control height like a card */}
     <div className="flex md:flex-1 lg:flex-2 py-[200px] h-500 overflow-hidden rounded-lg relative">
+    <Link href={`/blog/${post.slug}`} passHref>
       <Image
         src={post.thumbnailUrl}
         alt={post.title}
         className="object-cover"
         layout="fill" // Use fill layout for the image to stretch and cover the div
       />
+      </Link>
     </div>
     {/* Reduce the width of the text container */}
     <div className="md:w-1/4 lg:w-1/3 space-y-12 text-gray-700 dark:text-gray-300">
-    <p className="text-sm text-gray-300">{post.month} {post.day}</p> 
+    <p className="text-sm text-gray-300 py-2">{post.month} {post.day}</p> 
     {post.categories.map((category, index) => (
         <React.Fragment key={category._id}>
           <span className='text-secondaryColor'>{category.name}</span>
@@ -76,10 +80,13 @@ const LatestBlog: React.FC<{ post: Post }> = ({ post }) => {
           )}
         </React.Fragment>
       ))}
+      <Link href={`/blog/${post.slug}`} passHref>
       <h1 className="text-4xl font-semibold text-secondaryColor">
         {post.title}...
       </h1>
+      </Link>
       <p className='content-container line-clamp-5 text-whiteColor my-4'  dangerouslySetInnerHTML={{ __html: post.content }} />
+      <Link href={`/blog/${post.slug}`} passHref className='text-secondaryColor'>Read More</Link>
  
      
     </div>

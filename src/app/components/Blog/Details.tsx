@@ -81,7 +81,7 @@ const Details = () => {
               <h2 className="bg-secondaryColor text-primaryColor rounded-full text-xl font-bold w-fit px-4 py-1 mb-4">
                 {post.title}
               </h2>
-              <div className="text-sm prose prose-sm dark:prose-invert">
+              <div className="text-sm prose prose-sm dark:prose-invert custom-content">
                 {post.thumbnailUrl && 
                   <Image
                     src={post.thumbnailUrl}

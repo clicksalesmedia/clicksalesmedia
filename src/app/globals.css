@@ -36,6 +36,14 @@ p {
   font-weight: 300; 
 }
 
+.custom-content p {
+  color: white !important;
+}
+
+.custom-content h2, h3, h4 {
+  color: #C3A177 !important;
+}
+
 .content-container p {
   color: white !important;
 }
