@@ -122,7 +122,7 @@ const testimonials = {
       id: 3,
       img: "/testimonials/joynt.jpg",
       name: "Mr. Saleh Ghalayini",
-      title: "Project Manager at Joynt",
+      title: "Strategy Consultant at Tryjoynt",
       info: `The B2B strategies developed by clicksalesmedia have opened new doors for us in the industry. Their insights into partnership development have led to several lucrative contracts and a stronger market position.`,
     },
   ],
