@@ -32,7 +32,7 @@ function Contact() {
         <Image className="h-auto max-w-full rounded-lg" src="/contact/digital-marketing-dubai.jpg" width={1200} height={900} alt="" />
     </div>
         <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none'>
-        Reach out to us to discuss your business needs. Whether it's via our address, phone number, or email, we're here to provide the support you need to drive your business forward.
+        {"Reach out to us to discuss your business needs. Whether it's via our address, phone number, or email, we're here to provide the support you need to drive your business forward."}
         </p>
         <div className="grid gap-6 sm:grid-cols-2">
             <Link href="tel:+243" className="flex gap-x-6 items-start" rel="noreferer">
@@ -86,7 +86,7 @@ function Contact() {
             {"Let's Get in Touch"}
         </h1>
         <p className='flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none py-6'>
-        Please provide details about your project and any challenges you're encountering. The more information you share, the better we can tailor our solutions to meet your specific needs.
+       {"Please provide details about your project and any challenges you're encountering. The more information you share, the better we can tailor our solutions to meet your specific needs."}
         </p>
     <ContactForm />
     </div>
