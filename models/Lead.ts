@@ -6,7 +6,7 @@ interface ILead extends Document {
   company: string;
   website: string;
   mobile: string;
-  services: 'Website Solutions' | 'Google Marketing' | 'Social Media Management' | 'Email Marketing' | 'Conversion rate optimization' | 'Branding' | 'Ecommerce Solutions' | 'Ads Management';
+  services: 'Website Solutions' | 'Performance Marketing' | 'Google Marketing' | 'Social Media Management' | 'Email Marketing' | 'Conversion rate optimization' | 'Branding' | 'Ecommerce Solutions' | 'Ads Management';
   email: string;
   status: string;
 }
@@ -16,7 +16,7 @@ const leadSchema = new mongoose.Schema({
   company: { type: String, required: true, trim: true },
   website: { type: String, required: true, trim: true },
   mobile: { type: String, required: true, trim: true },
-  services: { type: String, required: true, enum: ['Website Solutions', 'Google Marketing', 'Social Media Management', 'Email Marketing', 'Conversion rate optimization', 'Branding', 'Ecommerce Solutions', 'Ads Management'], trim: true },
+  services: { type: String, required: true, enum: ['Website Solutions','Performance Marketing', 'Google Marketing', 'Social Media Management', 'Email Marketing', 'Conversion rate optimization', 'Branding', 'Ecommerce Solutions', 'Ads Management'], trim: true },
   email: {
     type: String,
     required: true,
