@@ -10,6 +10,14 @@ interface SpringModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+declare global {
+  interface Window {
+    dataLayer: Array<Record<string, any>>;
+  }
+}
+
+
+
 const FormService = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -93,6 +101,25 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         confirmButtonText: 'Retry'
       });
     }
+
+
+// Ensure dataLayer is initialized
+window.dataLayer = window.dataLayer || [];
+
+// Push the form data
+window.dataLayer.push({
+  event: 'formSubmission',
+  formData: {
+    name: form.name,
+    company: form.company,
+    website: form.website,
+    mobile: form.mobile,
+    services: form.services,
+    email: form.email
+  }
+});
+
+
   };
 
   return (
