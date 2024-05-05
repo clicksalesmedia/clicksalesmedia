@@ -189,7 +189,7 @@ window.dataLayer.push({
                     <option value="Conversion rate optimization">Conversion rate optimization</option>
                     <option value="Google Marketing">Google Marketing</option>
                     <option value="Branding">Branding</option>
-                    <option value="Social Media Management">Branding</option>
+                    <option value="Social Media Management">Social Media Management</option>
                     <option value="Website Solutions">Website Solutions</option>
                     <option value="Ecommerce Solutions">Ecommerce Solutions</option>
                     <option value="Email Marketing">Email Marketing</option>

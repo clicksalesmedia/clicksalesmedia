@@ -6,7 +6,7 @@ interface ILead extends Document {
   company: string;
   website: string;
   mobile: string;
-  services: 'Web Solutions' | 'google Marketing' | 'Social Media Management' | 'Email Marketing';
+  services: 'Website Solutions' | 'Google Marketing' | 'Social Media Management' | 'Email Marketing' | 'Conversion rate optimization' | 'Branding' | 'Ecommerce Solutions' | 'Ads Management';
   email: string;
   status: string;
 }
