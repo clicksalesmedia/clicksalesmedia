@@ -15,7 +15,7 @@ return (
                 </div>
                 <div className="lg:w-1/2 lg:py-10 xl:py-12 text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto ">
                     <h1 className="font-semibold leading-tight text-secondaryColor dark:text-white text-2xl md:text-3xl lg:text-4xl">
-                    Achieving Digital Impact with Performance-Focused Marketing Mastery <div className="relative after:absolute after:inset-x-0 after:h-1 after:bg-secondaryColor dark:after:bg-secondaryColor after:bottom-2 inline-block px-2">
+                    Achieving Digital Impact with Performance-Focused Marketing Mastery <div className="relative inline-block px-2">
                          <SpiningText /></div>
                     </h1>
                     <p className="mt-4 text-whiteColor dark:text-gray-300">
