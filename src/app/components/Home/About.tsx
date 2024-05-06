@@ -39,11 +39,11 @@ function About() {
         </div>
       </div>
       <div className="flex aspect-square lg:aspect-auto lg:h-[35rem] relative">
-        <div className="w-3/5 h-[80%] rounded-3xl overflow-clip border-8 border-gray-200 dark:border-gray-950 z-30">
-          <Image src="/creativehome.webp" alt="buildind plan image" width={1300} height={1300} className="w-full h-full object-cover z-30" />
+        <div className="w-3/5 h-[80%] rounded-3xl overflow-clip border-4 border-secondaryColor dark:border-gray-950 z-30">
+          <Image src="/dubai-business.jpg" alt="buildind plan image" width={1300} height={1300} className="w-full h-full object-cover z-30" />
         </div>
-        <div className="absolute right-0 bottom-0 h-[calc(100%-50px)] w-4/5 rounded-3xl overflow-clip border-4 border-gray-200 dark:border-gray-800 z-10">
-          <Image src="/background.jpg" alt="working-on-housing-project" height={1300} width={1300} className="z-10 w-full h-full object-cover" />
+        <div className="absolute right-0 bottom-0 h-[calc(100%-50px)] w-4/5 rounded-3xl overflow-clip border-4 border-secondaryColor dark:border-gray-800 z-10">
+          <Image src="/business-performance.jpg" alt="working-on-housing-project" height={1300} width={1300} className="z-10 w-full h-full object-cover" />
         </div>
       </div>
     </div>
