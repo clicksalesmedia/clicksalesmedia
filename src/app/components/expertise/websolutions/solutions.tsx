@@ -24,24 +24,24 @@ export const Solutions = () => {
   return (
     <div className="bg-primaryColor">
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        subheading="Collaborate"
-        heading="You have a vision but are unclear about how to put it into action?">
-        <ExampleContent />
+        imgUrl="/expertise/websolutions/web-application.jpg"
+        subheading="New technology web applications"
+        heading="Why Create Your Web Application with Us?">
+        <WebApplication />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        subheading="Quality"
-        heading="Never compromise."
+        imgUrl="/expertise/websolutions/ecommerce-solution.jpg"
+        subheading="Advanced Ecommerce Solutions"
+        heading="Why Choose Our Advanced E-commerce Development Solutions?"
       >
-        <ExampleContent />
+        <EcommerceSolutions />
       </TextParallaxContent>
       <TextParallaxContent
-        imgUrl="https://images.unsplash.com/photo-1504610926078-a1611febcad3?q=80&w=2416&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        subheading="Modern"
-        heading="Dress for the best."
+        imgUrl="/expertise/websolutions/landing-page-marketing.jpg"
+        subheading="Advanced Marketing Landing pages"
+        heading="Why Opt for Our Advanced Marketing Landing Pages?"
       >
-        <ExampleContent />
+        <LandingPages />
       </TextParallaxContent>
     </div>
   );
@@ -126,25 +126,39 @@ const OverlayCopy = ({ subheading, heading }: OverlayCopyProps) => {
   );
 };
 
-const ExampleContent = () => (
+const WebApplication = () => (
   <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
-    <h2 className="col-span-1 text-3xl font-bold md:col-span-4 text-whiteColor">
-      Additional content explaining the above card here
-    </h2>
-    <div className="col-span-1 md:col-span-8">
-      <p className="mb-4 text-xl text-neutral-600 md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi,
-        blanditiis soluta eius quam modi aliquam quaerat odit deleniti minima
-        maiores voluptate est ut saepe accusantium maxime doloremque nulla
-        consectetur possimus.
+    <div className="col-span-1 md:col-span-12">
+      <p className="mb-4 text-xl text-whiteColor md:text-2xl">
+      At Clicksalesmedia, we harness the power of the latest technologies and artificial intelligence to develop state-of-the-art web applications that are not only modern but also optimized for performance.
       </p>
-      <p className="mb-8 text-xl text-neutral-600 md:text-2xl">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        reiciendis blanditiis aliquam aut fugit sint.
+      <p className="mb-8 text-xl text-whiteColor md:text-2xl">
+      {"Our approach combines innovative AI solutions with cutting-edge web technology to create applications that are intelligent, efficient, and tailored to meet the unique needs of your business. From automating complex processes to delivering seamless user experiences, our team is dedicated to providing you with a competitive edge in today's digital world. Choose us to lead your project, and experience a partnership that transforms your digital presence."}
       </p>
-      <button className="w-full rounded bg-neutral-900 px-9 py-4 text-xl text-white transition-colors hover:bg-neutral-700 md:w-fit">
-        Learn more <FiArrowUpRight className="inline" />
-      </button>
+    </div>
+  </div>
+);
+
+const EcommerceSolutions = () => (
+  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+    <div className="col-span-1 md:col-span-12">
+      <p className="mb-4 text-xl text-whiteColor md:text-2xl">
+      At Clicksalesmedia, we specialize in pushing the boundaries of e-commerce with our advanced development solutions powered by the latest technologies. 
+      </p>
+      <p className="mb-8 text-xl text-whiteColor md:text-2xl">
+      {"Our commitment to innovation allows us to implement cutting-edge features such as AI-driven recommendations, AR/VR experiences, and seamless integration with multiple sales channels, ensuring a captivating and convenient shopping experience for your customers. Whether you're looking to optimize your existing online store or build a sophisticated e-commerce platform from scratch, our expert team equips your business with the tools it needs to thrive in a digital-first marketplace. Partner with us and turn your e-commerce vision into reality, driving growth and customer satisfaction."}
+      </p>
+    </div>
+  </div>
+);
+
+const LandingPages = () => (
+  <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+    <div className="col-span-1 md:col-span-12">
+      <p className="mb-4 text-xl text-whiteColor md:text-2xl">
+      At Clicksalesmedia, we elevate the art of the landing page by integrating sophisticated CRM and tracking technologies to enhance your marketing campaigns. </p>
+      <p className="mb-8 text-xl text-whiteColor md:text-2xl">
+      {"Our advanced landing pages are designed not just to attract but also to convert. By employing the latest tools in analytics and customer relationship management, we ensure that every visitor's interaction is captured, analyzed, and utilized to tailor interactions and boost conversions. From dynamic content that adapts to user behavior to precise tracking that informs strategy adjustments in real-time, our solutions empower your business to make data-driven decisions that significantly improve campaign performance. Partner with us to craft landing pages that serve as powerful tools in your marketing arsenal, turning traffic into valuable leads. "}</p>
     </div>
   </div>
 );
