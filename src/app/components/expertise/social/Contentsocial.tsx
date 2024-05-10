@@ -1,3 +1,4 @@
+import FormService from "@/app/ui/modal"
 import Image from "next/image"
 import Link from "next/link"
  
@@ -22,9 +23,7 @@ return (
                 </p>
 
                 <div className="flex">
-                    <Link href="#" className="px-5 h-11 flex items-center bg-secondaryColor dark:bg-gray-100 rounded-xs text-white dark:text-gray-900">
-                        Know more
-                    </Link>
+                <FormService buttonText="Unleash Social Potential!" />
                 </div>
             </div>
             <div className="flex md:flex-1">

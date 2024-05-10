@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
+import FormService from "@/app/ui/modal";
 
 interface TextParallaxContentProps {
   imgUrl: string;         
@@ -135,6 +136,7 @@ const WebApplication = () => (
       <p className="mb-8 text-xl text-whiteColor md:text-2xl">
       {"Our approach combines innovative AI solutions with cutting-edge web technology to create applications that are intelligent, efficient, and tailored to meet the unique needs of your business. From automating complex processes to delivering seamless user experiences, our team is dedicated to providing you with a competitive edge in today's digital world. Choose us to lead your project, and experience a partnership that transforms your digital presence."}
       </p>
+      <FormService buttonText="Unleash Powerful Web Solutions!" />
     </div>
   </div>
 );
@@ -148,6 +150,7 @@ const EcommerceSolutions = () => (
       <p className="mb-8 text-xl text-whiteColor md:text-2xl">
       {"Our commitment to innovation allows us to implement cutting-edge features such as AI-driven recommendations, AR/VR experiences, and seamless integration with multiple sales channels, ensuring a captivating and convenient shopping experience for your customers. Whether you're looking to optimize your existing online store or build a sophisticated e-commerce platform from scratch, our expert team equips your business with the tools it needs to thrive in a digital-first marketplace. Partner with us and turn your e-commerce vision into reality, driving growth and customer satisfaction."}
       </p>
+      <FormService buttonText="Revolutionize Your Store Today!" />
     </div>
   </div>
 );
@@ -159,6 +162,7 @@ const LandingPages = () => (
       At Clicksalesmedia, we elevate the art of the landing page by integrating sophisticated CRM and tracking technologies to enhance your marketing campaigns. </p>
       <p className="mb-8 text-xl text-whiteColor md:text-2xl">
       {"Our advanced landing pages are designed not just to attract but also to convert. By employing the latest tools in analytics and customer relationship management, we ensure that every visitor's interaction is captured, analyzed, and utilized to tailor interactions and boost conversions. From dynamic content that adapts to user behavior to precise tracking that informs strategy adjustments in real-time, our solutions empower your business to make data-driven decisions that significantly improve campaign performance. Partner with us to craft landing pages that serve as powerful tools in your marketing arsenal, turning traffic into valuable leads. "}</p>
+      <FormService buttonText="Convert Visitors Now!" />
     </div>
   </div>
 );

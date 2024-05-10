@@ -1,5 +1,6 @@
 'use client'
 import ButtonUX from '@/app/ui/buttonux';
+import FormService from '@/app/ui/modal';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -18,7 +19,7 @@ const Hero = () => {
             <p className="text-slate-200 pb-10 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none px-2">
              {`We specialize in Google marketing, ensuring your brand stands out in the digital sphere. Whether it's search ads, display ads, or YouTube campaigns, we tailor strategies to your specific needs. With expert guidance and real-time analytics, we optimize your campaigns for maximum impact. Let us elevate your online presence and drive results that matter.`}
             </p>
-            <ButtonUX />
+            <FormService buttonText="Schedule a Free Consultation" />
           </div>
           {/* Image */}
           <div className="flex-1">

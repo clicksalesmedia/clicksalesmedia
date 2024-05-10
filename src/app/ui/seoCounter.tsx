@@ -7,22 +7,21 @@ const SeoCounter = () => {
     <div className="mx-auto max-w-3xl px-4 py-10 md:py-10">
       <div className="flex flex-col items-center justify-center sm:flex-row">
         <Stat
-          num={45}
-          suffix="%"
-          subheading="Lorem ipsum dolor sit amet consectetur"
+          num={15}
+          suffix="+"
+          subheading="Years of Experience"
         />
         <div className="h-[1px] w-12 bg-indigo-200 sm:h-12 sm:w-[1px]" />
         <Stat
-          num={15.5}
-          decimals={1}
+          num={432}
+          suffix="+"
+          subheading="Successful Projects"
+        />
+        <div className="h-[1px] w-12 bg-indigo-200 sm:h-12 sm:w-[1px]" />
+        <Stat
+          num={25}
           suffix="K+"
-          subheading="Lorem ipsum dolor sit amet consectetur"
-        />
-        <div className="h-[1px] w-12 bg-indigo-200 sm:h-12 sm:w-[1px]" />
-        <Stat
-          num={20}
-          suffix="B+"
-          subheading="Lorem ipsum dolor sit amet consectetur"
+          subheading="Total Keywords Ranked"
         />
       </div>
     </div>
