@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import ModalCalendar from "@/app/ui/modalCalendar";
 
 
 interface NavLinkProps {
@@ -135,10 +136,7 @@ const NavLink: React.FC<NavLinkProps> = ({ children, href, FlyoutContent }) => {
 const CTAs = () => {
   return (
     <div className="flex items-center gap-3">
-      <button className="flex items-center gap-2 rounded-xs border-2 border-secondaryColor px-4 py-2 font-semibold text-secondaryColor transition-colors transition duration-500 hover:bg-white hover:text-black">
-      <GrSchedule />
-      <span>Schedule a Meeting</span>
-      </button>
+      <ModalCalendar />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
 import { AnimatePresence, motion } from "framer-motion";
 import Swal from 'sweetalert2';
 import { FiAlertCircle } from "react-icons/fi";
+import { GrSchedule } from 'react-icons/gr';
 
 interface SpringModalProps {
   isOpen: boolean;
@@ -19,24 +20,14 @@ declare global {
 
 
 
-const FormService = ({ buttonText = "Transform Your Traffic Today !" }) => {
+const ModalCalendar = ({ buttonText = "Transform Your Traffic Today !" }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="px-4 grid place-content-center">
-      <button  onClick={() => setIsOpen(true)}  className="w-full text-white font-semibold px-3 py-2 rounded-sm overflow-hidden relative transition-transform hover:scale-105 active:scale-95">
-      <span className="relative z-10">{buttonText}</span>
-      <motion.div
-        initial={{ left: 0 }}
-        animate={{ left: "-300%" }}
-        transition={{
-          repeat: Infinity,
-          repeatType: "mirror",
-          duration: 4,
-          ease: "linear",
-        }}
-        className="bg-[linear-gradient(to_right,#c3a177,#cc9f6e,#d19b61,#ce8442,#bf752b)] absolute z-0 inset-0 w-[400%]"
-      ></motion.div>
-    </button>
+      <button onClick={() => setIsOpen(true)} className="flex items-center gap-2 rounded-xs border-2 border-secondaryColor px-4 py-2 font-semibold text-secondaryColor transition-colors transition duration-500 hover:bg-white hover:text-black">
+      <GrSchedule />
+      <span>Schedule a Meeting</span>
+      </button>
      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} buttonText={buttonText} />
     </div>
   );
@@ -196,7 +187,7 @@ window.dataLayer.push({
       <Select id="services" name="services" value={form.services} onChange={handleChange} style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}>
                     <option value="Performance Marketing">Performance Marketing</option>
                     <option value="Conversion rate optimization">Conversion rate optimization</option>
-                    <option value="Google Marketing">Google Marketing</option>
+                    <option value="Google Marketing">Google marketing</option>
                     <option value="Search engine optimization">Search engine optimization (SEO)</option>
                     <option value="Branding">Branding</option>
                     <option value="Social Media Management">Social Media Management</option>
@@ -224,5 +215,5 @@ window.dataLayer.push({
   );
 };
 
-export default FormService;
+export default ModalCalendar;
 
