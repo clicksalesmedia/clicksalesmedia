@@ -15,7 +15,7 @@ function page() {
     <CodeBeams
     icon={<FaChartBar />}
     title="Our case studies"
-    description="ee how we've transformed businesses across various industries through innovative performance marketing."
+    description="Successful Case Studies for Our Clients"
   />
     <section className='py-10'>
       <List />

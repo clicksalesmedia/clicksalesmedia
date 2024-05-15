@@ -31,7 +31,7 @@ const Details = () => {
     const slug = pathname.split('/').pop();
     if (slug) {
       setIsLoading(true);
-      fetch(`http://localhost:3001/api/casestudy?slug=${slug}`)
+      fetch(`https://administration.clicksalesmedia.com/api/casestudy?slug=${slug}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Failed to fetch');
