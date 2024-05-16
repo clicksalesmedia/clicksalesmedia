@@ -78,9 +78,9 @@ const BlogSection: React.FC = () => {
             </React.Fragment>
           ))}
         </div>
-        <h1 className="text-xl my-6 font-semibold text-whiteColor dark:text-white">
+        <h2 className="text-xl my-6 font-semibold text-whiteColor dark:text-white line-clamp-2">
           {post.title}
-        </h1>
+        </h2>
         <Link href={`/blog/${post.slug}`} passHref className="text-secondaryColor dark:text-secondaryColor transition hover:text-opacity-90 flex items-center gap-x-3 group">
           Read more
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4 transition-all ease-linear group-hover:ml-1">

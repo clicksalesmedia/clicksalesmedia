@@ -68,15 +68,17 @@ const BlogSection = () => {
             <p className="text-sm text-gray-300">{post.month} {post.day}</p> 
           </div>
         </div>
-        <Link href={`/blog/${post.slug}`} passHref className="mt-5 text-xl font-semibold text-secondaryColor dark:text-white">
+        <Link href={`/blog/${post.slug}`} passHref>
+          <h2 className='line-clamp-2 mt-5 text-xl font-semibold text-secondaryColor dark:text-white'>
           {post.title}
+          </h2>
         </Link>
-        <p className="content-container line-clamp-2 my-4"
+        <p className="content-container line-clamp-2 my-4 text-sm"
    dangerouslySetInnerHTML={{ __html: post.content }}>
 </p>
         <div className="flex flex-1 items-end">
 
-          <Link href={`/blog/${post.slug}`} passHref className="flex items-center gap-x-2 text-secondaryColor dark:text-blue-500">
+          <Link href={`/blog/${post.slug}`} passHref className="flex items-center gap-x-2 text-secondaryColor dark:text-blue-500 text-sm">
             Read more
           </Link>
         </div>
