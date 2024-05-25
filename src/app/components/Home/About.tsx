@@ -16,11 +16,11 @@ function About() {
         Share with us your specific requirements, and our team of experts will create a personalized quote that perfectly aligns with your needs and vision.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full">
-          <Link href="#" className="px-6 font-semibold items-center h-12 rounded-md bg-gradient-to-br from-secondaryColor from-35% via-[#AD8253] via-35% to-[#8C5C28] text-white duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-[#222222] hover:text-secondaryColor">
+          <Link href="/schedule-a-meeting" className="px-6 font-semibold items-center h-12 rounded-md bg-gradient-to-br from-secondaryColor from-35% via-[#AD8253] via-35% to-[#8C5C28] text-white duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-[#222222] hover:text-secondaryColor">
           Schedule a call
           </Link>
-          <Link href="#" className="px-6 font-semibold items-center h-12 rounded-md text-secondaryColor border border-[#1c1c1c] dark:border-gray-800 dark:text-white bg-[#222222] dark:bg-gray-900 duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-secondaryColor hover:text-[#222222]">
-          Begin Your Journey
+          <Link href="/case-studies" className="px-6 font-semibold items-center h-12 rounded-md text-secondaryColor border border-[#1c1c1c] dark:border-gray-800 dark:text-white bg-[#222222] dark:bg-gray-900 duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-secondaryColor hover:text-[#222222]">
+          Our Case studies
           </Link>
         </div>
         <div className="mt-5 flex items-center justify-center flex-wrap gap-4 lg:justify-start w-full">

@@ -62,6 +62,15 @@ B2bIndustries: {
     description: "Customized Strategies to Meet Industry-Specific Demands ",
     highlight: "for Diverse Industries",
   },
+
+//Schedule a meeting
+
+scheduleMeeting: {
+  subTitle: "Schedule a meeting",
+  title: "Schedule a free 30 Min",
+  highlight: "Consultation Meeting!",
+  description: "Book a free consultation to explore how we can help elevate your business and project with tailored marketing and sales strategies designed to boost your performance and drive success."
+},
 };
 
 // TypeScript component with typed props
