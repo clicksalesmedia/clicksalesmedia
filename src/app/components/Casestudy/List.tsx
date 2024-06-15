@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react';
 import Image from "next/image"
 import Link from "next/link"
 
-
 interface CaseStudyApiResponse {
   _id: string;
   title: string;
   content: string;
-  customer: string;
+  client: {
+    name: string;
+  };
   thumbnailUrl: string;
   slug: string;
   createdAt: string;
@@ -41,48 +42,47 @@ const List: React.FC = () => {
       .catch((error) => console.error('Failed to fetch case studies', error));
   }, []);
 
-
-  
-const CaseStudyCard: React.FC<{ casestudy: CaseStudy }> = ({ casestudy }) => {
-return (
-
-    <div className="flex flex-col lg:flex-row gap-8 p-5 rounded-md bg-[#222222] dark:bg-gray-900 border border-secondaryColor/20 dark:border-gray-800/80 ">
-        <div className="w-full lg:w-2/5 lg:h-full">
-            <Image src={casestudy.thumbnailUrl} alt={casestudy.title} width={1300} height={900} className="rounded aspect-video lg:aspect-auto lg:h-full w-full object-cover" />
+  const CaseStudyCard: React.FC<{ casestudy: CaseStudy }> = ({ casestudy }) => {
+    return (
+      <div className="max-w-sm bg-[#222222] border border-secondaryColor rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <Link href={`/case-studies/${casestudy.slug}`}>
+          <Image className="rounded-t-lg" src={casestudy.thumbnailUrl} alt={casestudy.title} width={400} height={300} />
+        </Link>
+        <div className="p-5">
+          <Link href={`/case-studies/${casestudy.slug}`}>
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-secondaryColor dark:text-white">
+              {casestudy.title}
+            </h2>
+          </Link>
+          <p className="mb-3 font-normal text-slate-50 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: casestudy.content }}></p>
+          <div className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+            <span className="font-semibold text-secondaryColor">Customer: </span>{casestudy.client.name}
+          </div>
+          <div className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+            <span className="font-semibold text-secondaryColor">Date: </span>{casestudy.month} {casestudy.day}
+          </div>
+          <Link href={`/case-studies/${casestudy.slug}`} className="inline-flex items-center px-3 py-2 text-sm font-semibold text-center text-secondaryColor bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </Link>
         </div>
-        <div className="flex-1 flex flex-col space-y-6">
-            <Link href={`/case-studies/${casestudy.slug}`} className="text-xl font-semibold text-secondaryColor dark:text-white">
-            {casestudy.title}
-            </Link>
-            <p  dangerouslySetInnerHTML={{ __html: casestudy.content }} className="text-whiteColor dark:text-gray-300 text-sm line-clamp-2">
-            </p>
-            <div className="flex items-center gap-x-4">
-             
-                <div>
-                    <p className="text-whiteColor dark:text-gray-50 font-semibold">Customer: {casestudy.customer}</p>
-                    <p className="text-sm text-whiteColor dark:text-gray-300">
-                    {casestudy.month} {casestudy.day}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+      </div>
+    )
+  }
 
-
-)
-}
-
-return (
+  return (
     <section className="py-20">
-    <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {casestudies.map((casestudy) => (
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {casestudies.map((casestudy) => (
             <CaseStudyCard key={casestudy._id} casestudy={casestudy} />
           ))}
         </div>
-    </div>
-</section>
+      </div>
+    </section>
   );
 };
 
-export default List
+export default List;
