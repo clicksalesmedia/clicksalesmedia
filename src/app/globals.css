@@ -82,5 +82,15 @@ p {
 
 
 
+.logoImage {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logoImage:hover {
+  filter: none;
+  transform: scale(1.05);
+  background-color: #C3A177;
+}
 
 

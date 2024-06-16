@@ -19,7 +19,8 @@ const CarouselLogo = () => {
 
   const logos = [
     '/clients/wse.png',
-    '/clients/greenroasteries.png',
+    '/clients/thegreenroasteries-logo.png',
+    '/clients/ses-school-logo-clicksalesmedia.png',
     '/clients/eshraq.png',
     '/clients/inspeedglobal-1.png',
     '/clients/maeva-2.png',
@@ -36,11 +37,10 @@ const CarouselLogo = () => {
       <Slider {...settings}>
         {logos.map((logo, index) => (
           <div key={index} className='py-10'>
-            <Image width={200} height={80} src={logo} alt={`Logo ${index + 1}`} className='w-full max-w-40' style={{ filter: 'grayscale(100%)' }} />
+            <Image width={200} height={80} src={logo} alt={`Logo ${index + 1}`} className='logoImage w-full max-w-40' />
           </div>
         ))}
       </Slider>
-
     </div>
   );
 };
