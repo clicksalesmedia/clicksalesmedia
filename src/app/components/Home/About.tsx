@@ -10,10 +10,10 @@ function About() {
     <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 grid lg:grid-cols-2 lg:items-center gap-10">
       <div className="flex flex-col space-y-8 sm:space-y-10 lg:items-center text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto">
         <h1 className=" font-semibold leading-tight text-slate-200 dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-          {"Your Business,"} <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">Our Expertise.</span>
+          {"Unmatched ROI with"} <span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]">AI-Driven Marketing.</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        Share with us your specific requirements, and our team of experts will create a personalized quote that perfectly aligns with your needs and vision.
+        At our Dubai-based AI Performance Marketing Agency, we are dedicated to maximizing your return on investment. Our innovative AI technology analyzes vast amounts of data to deliver precise, targeted marketing strategies that drive results. By automating and optimizing your campaigns, we ensure every marketing dollar is spent efficiently, leading to higher conversions and greater profitability. Partner with us and experience the future of marketing in the Middle East, where advanced AI meets unparalleled expertise to elevate your business to new heights.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full">
           <Link href="/schedule-a-meeting" className="px-6 font-semibold items-center h-12 rounded-md bg-gradient-to-br from-secondaryColor from-35% via-[#AD8253] via-35% to-[#8C5C28] text-white duration-300 ease-linear flex justify-center w-full sm:w-auto hover:bg-[#222222] hover:text-secondaryColor">

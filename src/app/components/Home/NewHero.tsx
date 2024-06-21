@@ -15,11 +15,11 @@ return (
                 </div>
                 <div className="lg:w-1/2 lg:py-10 xl:py-12 text-center lg:text-left max-w-2xl md:max-w-3xl mx-auto ">
                     <h1 className="font-semibold leading-tight text-secondaryColor dark:text-white text-2xl md:text-3xl lg:text-4xl">
-                    Achieving Digital Impact with Performance-Focused Marketing Mastery <div className="relative inline-block px-2">
+                    The First AI Performance Marketing Agency in the Middle East <div className="relative inline-block px-2">
                          <SpiningText /></div>
                     </h1>
                     <p className="mt-4 text-whiteColor dark:text-gray-300">
-                    {"Our agency doesn't just excel in digital marketing; we bring the full power of performance marketing to deliver tangible results right down to the sales level. Our objective is clear: to drive sales and secure contracts for your business. By blending advanced digital strategies with a performance-focused approach, we ensure that every campaign we run contributes directly to your bottom line. This unwavering focus on results is the key to our success and yours."}
+                    {"Welcome to the first AI Performance Marketing Agency in the Middle East. We harness advanced AI and automation scripts to boost your marketing performance and optimization, delivering unmatched results and ROI. Join us to revolutionize your digital marketing with cutting-edge technology and expertise."}
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                     <FormService />

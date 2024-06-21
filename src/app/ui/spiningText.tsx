@@ -18,7 +18,7 @@ const SpiningText = () => {
 const SpinningBoxText = () => {
   return (
     <span className="flex flex-col items-center justify-center gap-6 text-4xl font-semibold text-white md:flex-row md:gap-4">
-    Why Clicksalesmedia <Box front="Innovation" bottom="ROI-Focused" back="Omnichannel" top="Growth" />
+    Why Clicksalesmedia <Box front="AI Marketing" bottom="ROI-Focused" back="Innovation" top="Growth" />
     </span>
   );
 };
