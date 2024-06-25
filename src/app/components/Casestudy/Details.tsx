@@ -34,6 +34,8 @@ const Details = () => {
     }
 
     const slug = pathname.split('/').pop();
+    console.log(`Slug from pathname: ${slug}`);
+
     if (slug) {
       setIsLoading(true);
       fetch(`https://administration.clicksalesmedia.com/api/casestudy?slug=${slug}`)
