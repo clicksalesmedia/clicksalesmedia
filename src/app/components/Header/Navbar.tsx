@@ -176,8 +176,8 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
         className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"
         onClick={() => setMenuOpen?.(false)}
       >
-         <Link
-          href="/expertise/branding"
+        {/* <Link
+          href="/expertise/ai-marketing"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">AI Marketing</h3>
@@ -188,7 +188,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           </p>
         </Link>
         <Link
-          href="/expertise/branding"
+          href="/expertise/performance-marketing"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Performance Marketing</h3>
@@ -198,6 +198,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
             market leadership.
           </p>
         </Link>
+        */}
         <Link
           href="/expertise/branding"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
