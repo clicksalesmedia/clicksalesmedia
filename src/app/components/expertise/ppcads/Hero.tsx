@@ -23,7 +23,7 @@ const Hero = () => {
           </div>
           {/* Image */}
           <div className="flex-1">
-            <Image width={900} height={400} className="object-cover w-full h-96 rounded-xl" src="/expertise/ppcads/google-ads.jpg" alt="google-ads-optimization" />
+            <Image width={900} height={400} className="object-cover w-full h-96 rounded-xl" src="/expertise/ppcads/gads.jpg" alt="google-ads-optimization" />
           </div>
         </div>
       </div>

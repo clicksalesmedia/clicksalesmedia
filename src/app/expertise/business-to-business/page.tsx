@@ -7,6 +7,7 @@ import Cta from "@/app/ui/Cta";
 import Services from "@/app/components/expertise/b2b/Services";
 import Industries from "@/app/components/expertise/b2b/Industries";
 import Features from "@/app/components/expertise/b2b/Features";
+import Animationsvg from "@/app/components/expertise/b2b/animationsvg";
 
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function BusinessToBusiness() {
 
   
       <Services />
+      <Animationsvg />
       <Features />
       <Industries />
       <Cta />

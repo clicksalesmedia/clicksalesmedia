@@ -69,7 +69,7 @@ function Services() {
         {/* Third Section: Customers Optimization */}
         <div className="relative px-4 sm:px-6 lg:px-8">
           <div className="lg:mx-auto lg:max-w-7xl lg:grid lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24">
-            <div className="px-4 py-16 sm:px-6 lg:py-20 lg:px-8 xl:py-24">
+            <div className="px-4 py-16 sm:px-6 lg:py-10 lg:px-8 xl:py-14">
               <div>
                 <span className="rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide text-whiteColor bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">
 Customers Optimization
