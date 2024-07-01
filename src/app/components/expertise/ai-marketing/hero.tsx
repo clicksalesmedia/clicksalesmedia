@@ -87,7 +87,7 @@ const Content: React.FC = () => {
         className="flex flex-col items-center gap-6 sm:flex-row"
       >
         <SplashButton className="flex items-center gap-2">
-          Let's Talk
+          {"Let's Talk"}
           <FiArrowRight />
         </SplashButton>
         <GhostButton className="rounded-md px-4 py-2 text-zinc-100">

@@ -3,42 +3,63 @@ import FormService from "@/app/ui/modal";
 
 const projects = [
     {
-        title: "Research & Plan",
+        title: "AI Performance Marketing",
         description:
-          "Before diving into the digital realm, we research and plan every step to ensure your campaign's success. From understanding your audience to creating the perfect strategy, we're with you every step of the way.",
+          "Our AI-driven performance marketing solutions optimize your campaigns in real-time, ensuring maximum reach and engagement while minimizing costs.",
         link: "",
         icon: "research"
       },
     {
-        title: "Googole Ads",
-        description: "Reach your target audience where they spend most of their time – online. With Google Ads, we create compelling campaigns that drive traffic, leads, and conversions, helping your business thrive in the digital landscape.",
+        title: "Conversion Rate Optimization (CRO)",
+        description: "Utilize AI to analyze user behavior and optimize your website for higher conversion rates, turning more visitors into loyal customers.",
         link: "",
         icon: "googleadsicon"
       },
       {
-        title: "Google Analytics",
-        description: "Discover the power of data with Google Analytics. Gain valuable insights into your website's performance, user behavior, and conversion rates. With this knowledge, we optimize your strategies for maximum impact and growth.",
+        title: "Automation Scripts",
+        description: "Streamline repetitive marketing tasks with our advanced automation scripts, allowing your team to focus on strategic growth initiatives.",
         link: "",
         icon: "googleanalyticsicon"
       },
       {
-        title: "Google Tag Manager",
+        title: "AI SEO",
         description:
-          "Simplify your tracking and analytics processes with Google Tag Manager. Seamlessly manage tags, pixels, and scripts on your website, ensuring accurate data collection and streamlined performance tracking.",
+          "Boost your search engine rankings with AI-powered SEO strategies that adapt to changing algorithms and deliver sustainable results.",
         link: "",
         icon: "googletagmanager"
       },
       {
-        title: "Remarketing Strategy",
+        title: "PPC Ads by AI",
         description:
-          "Re-engage with past visitors and turn them into loyal customers with our remarketing strategy. By strategically targeting users who have interacted with your brand, we keep your business top-of-mind and drive repeat conversions.",
+          "Maximize the effectiveness of your pay-per-click ads with AI that dynamically adjusts bids and targets to achieve the best possible ROI.",
         link: "",
         icon: "remarketing"
       },
       {
-        title: "Reports and Analysis",
+        title: "Auto Blogging",
         description:
-          "Track your progress and measure your success with our comprehensive reporting and analysis services. From campaign performance to audience demographics, we provide actionable insights that inform your future strategies and drive continuous improvement.",
+          "Generate high-quality, SEO-friendly content automatically with our AI-driven auto blogging solutions, keeping your website fresh and engaging.",
+        link: "",
+        icon: "remarketing"
+      },
+      {
+        title: "Email Marketing",
+        description:
+          "Leverage AI to personalize email campaigns, increase open rates, and drive conversions with targeted, data-driven content.",
+        link: "",
+        icon: "remarketing"
+      },
+      {
+        title: "Lead Generation",
+        description:
+          "Use AI to identify and attract high-quality leads, optimizing your sales funnel and increasing your conversion rates efficiently.",
+        link: "",
+        icon: "remarketing"
+      },
+      {
+        title: "Social Media AI",
+        description:
+          "Enhance your social media presence with AI tools that automate posting, analyze engagement, and optimize your content strategy for better results.",
         link: "",
         icon: "reports"
       },
@@ -49,10 +70,10 @@ return (
     <section className="py-10">
                  <div className="flex flex-col justify-center text-center  mx-auto md:max-w-3xl space-y-5">
                 <h1 className=" font-semibold leading-tight text-slate-200 dark:text-white text-4xl sm:text-5xl lg:text-6xl">
-                Our Google<span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]"> Marketing Services</span>
+                AI<span className="text-transparent bg-clip-text bg-gradient-to-tr from-secondaryColor to-[#B28757]"> Marketing Services</span>
         </h1>
         <p className=" flex text-slate-200 dark:text-gray-300 tracking-tight md:font-normal max-w-xl mx-auto lg:max-w-none">
-        {"We believe in transparency. Your investment deserves clarity — knowing where it's allocated, what's effective, and where adjustments are needed. We develop personalized dashboards for real-time insights into your ad campaigns. Our aim is to simplify the process, providing straightforward access to key metrics such as ad spend, conversions, calls, and ROI."}
+        {"At ClickSalesMedia, we are dedicated to transforming the marketing landscape through automation and artificial intelligence. Our mission is to help companies achieve quick and effective results"}
         </p>
             </div>
     <div className="container px-6 py-5 mx-auto">

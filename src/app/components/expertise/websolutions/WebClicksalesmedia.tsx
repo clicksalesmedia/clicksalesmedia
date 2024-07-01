@@ -7,6 +7,36 @@ function WebClicksalesmedia() {
     <section className='py-20'>
     <div className="container px-6 m-auto">
       <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
+      <div className="col-span-4 lg:col-span-6">
+      <object type="image/svg+xml" data="/svg/sv.svg">svg-animation</object>
+        </div>
+        <div className="col-span-4 lg:col-span-6 pt-40">
+        <div>
+                <span className="rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide text-whiteColor bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">
+                Interactive Web Animation
+                </span>
+                <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Transform Your Website with Our Interactive Web Animation Packages
+                </h2>
+                <p className="mt-4 text-lg text-gray-300">
+                {"Enhance user engagement, improve ROI, and boost your Google SEO with our comprehensive web animation strategy. Our expertly crafted animations not only captivate your audience but also provide a seamless and enjoyable user experience. Invest in our animation solutions today and see the difference in user retention and satisfaction."} </p>
+              </div>
+              <div className='pt-10'>
+              <button
+                   type="button"
+                 className="text-white bg-gradient-to-r from-[#e2c3a1] via-secondaryColor to-[#af8054] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                 >
+                 Learn More
+              </button>
+              </div>
+              
+        </div>
+      </div>
+    </div>
+  </section>
+    <section className='py-20'>
+    <div className="container px-6 m-auto">
+      <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
         <div className="col-span-4 lg:col-span-6">
         <div>
                 <span className="rounded-lg px-2.5 py-1 text-xs font-semibold tracking-wide text-whiteColor bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">
