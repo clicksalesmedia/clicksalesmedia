@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Said Jabouri',
-    role: 'Head of Production',
+    role: 'Chief Marketing Officer in Morocco',
     imageUrl: '/team/said.jpg',
     socialMedia: {
       reddit: '#',
