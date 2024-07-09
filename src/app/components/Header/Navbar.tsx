@@ -177,7 +177,7 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
         onClick={() => setMenuOpen?.(false)}
       >
          <Link
-          href="/expertise/ai-marketing"
+          href="/expertise/web-animation"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">Web Animation</h3>
