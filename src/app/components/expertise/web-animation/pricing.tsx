@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FiCheck, FiX } from "react-icons/fi";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
+import FormService from "@/app/ui/modalWebanimation";
 
 interface BenefitProps {
   text: string;
@@ -13,7 +14,6 @@ interface PriceCardProps {
   tier: string;
   price: string;
   bestFor: string;
-  CTA: React.ReactNode;
   benefits: BenefitProps[];
 }
 
@@ -24,6 +24,16 @@ interface CardProps {
 }
 
 const Pricing: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCTAClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section className="relative overflow-hidden bg-primaryColor text-zinc-200 selection:bg-zinc-600">
       <div className="relative z-10 mx-auto max-w-5xl px-4 py-10 md:px-8">
@@ -32,7 +42,7 @@ const Pricing: React.FC = () => {
             Pricing
           </h2>
           <p className="text-center text-base text-zinc-400 md:text-lg">
-          Our Web Animation Packages
+            Our Web Animation Packages
           </p>
         </div>
 
@@ -41,7 +51,6 @@ const Pricing: React.FC = () => {
             tier="One-time Fee"
             price="$490"
             bestFor="Basic Web Animation Package"
-            CTA={<GhostButton className="w-full">Get started now</GhostButton>}
             benefits={[
               { text: "3 UX Design Sections", checked: true },
               { text: "3 Web Animations", checked: true },
@@ -49,11 +58,11 @@ const Pricing: React.FC = () => {
               { text: "1 Ad Banner for Social Ads", checked: true },
             ]}
           />
+
           <PriceCard
             tier="One-time Fee"
             price="$650"
             bestFor="Standard Web Animation Package"
-            CTA={<GhostButton className="w-full">Get Standard</GhostButton>}
             benefits={[
               { text: "5 UX Design Sections", checked: true },
               { text: "5 Web Animations", checked: true },
@@ -62,15 +71,11 @@ const Pricing: React.FC = () => {
               { text: "1 Email Marketing Animation Design", checked: true },
             ]}
           />
+
           <PriceCard
             tier="One-time Fee"
             price="$890"
             bestFor="Premium Web Animation Package"
-            CTA={
-              <GhostButton className="w-full bg-secondaryColor text-black font-semibold hover:bg-zinc-200 hover:text-zinc-900">
-                Go Premium
-              </GhostButton>
-            }
             benefits={[
               { text: "5 UX Design Sections", checked: true },
               { text: "5 Web Animations", checked: true },
@@ -81,12 +86,18 @@ const Pricing: React.FC = () => {
             ]}
           />
         </div>
+        <div className="flex justify-center mt-8">
+          <GhostButton onClick={handleCTAClick} className="text-white bg-gradient-to-br from-secondaryColor to-[#df9d4b] hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-semibold rounded-lg text-lg px-5 py-2.5 text-center me-2 mb-2">
+          Power up your project!
+          </GhostButton>
+        </div>
       </div>
+      <FormService isOpen={isModalOpen} setIsOpen={setIsModalOpen} buttonText="Power up your project!" />
     </section>
   );
 };
 
-const PriceCard: React.FC<PriceCardProps> = ({ tier, price, bestFor, CTA, benefits }) => {
+const PriceCard: React.FC<PriceCardProps> = ({ tier, price, bestFor, benefits }) => {
   return (
     <Card className="flex flex-col justify-between">
       <div>
@@ -103,10 +114,6 @@ const PriceCard: React.FC<PriceCardProps> = ({ tier, price, bestFor, CTA, benefi
             <Benefit {...b} key={i} />
           ))}
         </div>
-      </div>
-
-      <div className="flex justify-center mt-4">
-        {CTA}
       </div>
     </Card>
   );
