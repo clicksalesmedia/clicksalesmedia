@@ -5,14 +5,15 @@ import { ContainerScroll } from "@/app/ui/container-scroll-animation";
 
 export function SectionOne() {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <>
+    <div className="flex flex-col overflow-hidden -m-40">
       <ContainerScroll
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-secondaryColor dark:text-white">
               Unleash the power of <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
+                Your Website
               </span>
             </h1>
           </>
@@ -28,6 +29,7 @@ export function SectionOne() {
        
       </ContainerScroll>
     </div>
+    </>
   );
 }
 
