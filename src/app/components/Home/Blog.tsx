@@ -99,9 +99,9 @@ const BlogSection: React.FC = () => {
 
   return (
     <section className="py-20 relative">
-      <div className="absolute left-0 top-3/1 transform -translate-y-1/2">
-        <Image src="/svg/arrows.svg" alt="Arrows" width={45} height={45} layout="fixed" />
-      </div>
+      <div className="absolute left-0 top-3/1 transform -translate-y-1/2 hidden md:block">
+  <Image src="/svg/arrows.svg" alt="Arrows" width={45} height={45} layout="fixed" />
+</div>
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-10">
         <Data sectionName="blog" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">

@@ -12,7 +12,7 @@ function Feature() {
     <ScrollAnimationWrapper>
     <section className="py-20 relative">
 
-        <div className="absolute right-0 top-1/2 transform -translate-y-1/2">
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden sm:block">
         <Image 
           src="/svg/arrows.svg" // Assuming the SVG is located at public/arrows.svg
           alt="Arrows"
