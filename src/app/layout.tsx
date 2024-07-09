@@ -10,11 +10,11 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: {
-    default: 'Create Next App',
+    default: 'Clicksalesmedia: AI Perfomance Marketing Agency',
     template: '%s - clicksalesmedia Dubai Marketing Agency',
   },
-  description: 'clicksalesmedia is here',
-  keywords: 'digital marketing, marketing, sales, business to business',
+  description: "Welcome to Clicksalesmedia, the premier AI performance marketing agency dedicated to elevating your brand's online presence. We specialize in leveraging cutting-edge artificial intelligence and machine learning technologies to deliver unparalleled results for your business. Our expert team crafts data-driven strategies that optimize your digital marketing campaigns, ensuring maximum ROI and growth.",
+  keywords: 'Marketing agency, AI Marketing agency, Web solutions, business to business, performance marketing',
 };
 
 export default function RootLayout({

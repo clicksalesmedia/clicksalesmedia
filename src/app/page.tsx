@@ -11,8 +11,9 @@ import { Metadata } from "next";
 import NewHero from "./components/Home/NewHero";
 
 export const metadata: Metadata = {
-  title: 'Home',
-  description: 'its branding page',
+  title: 'Clicksalesmedia: AI Perfomance Marketing Agency',
+  description: "Welcome to Clicksalesmedia, the premier AI performance marketing agency dedicated to elevating your brand's online presence. We specialize in leveraging cutting-edge artificial intelligence and machine learning technologies to deliver unparalleled results for your business. Our expert team crafts data-driven strategies that optimize your digital marketing campaigns, ensuring maximum ROI and growth.",
+  keywords:'Performance marketing agency, digital marketing agency, performance marketing agency'
 }
 
 export default function Home() {

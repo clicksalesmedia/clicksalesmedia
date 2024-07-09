@@ -11,8 +11,9 @@ import Animationsvg from "@/app/components/expertise/b2b/animationsvg";
 
 
 export const metadata: Metadata = {
-  title: 'Business to Business',
-  description: 'its branding page',
+  title: 'Business to Business agency based in dubai',
+  description: "Boost your business with Clicksalesmedia, Dubai's leading B2B AI marketing agency. Enhance SEO and optimize digital campaigns with our AI-driven, data-focused strategies.",
+  keywords:'B2B Marketing agency in dubai, B2B marketing agency'
 }
 
 export default function BusinessToBusiness() {

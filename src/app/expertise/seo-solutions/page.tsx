@@ -9,8 +9,9 @@ import { RiSeoLine } from "react-icons/ri";
 
 
 export const metadata: Metadata = {
-  title: 'SEO Solutions',
-  description: 'its branding page',
+  title: 'SEO Solutions agency in dubai',
+  description: "Enhance your online presence with Clicksalesmedia's expert SEO services in Dubai. Boost search engine rankings and drive organic traffic with our proven, AI-driven strategies.",
+  keywords:'SEO Agency in dubai, SEO Marketing in dubai'
 }
 
 export default function Seo() {

@@ -6,9 +6,6 @@ import FAQ from '@/app/components/expertise/social/Faq'
 import Features from '@/app/components/expertise/social/Features'
 import SpinningSocial from '@/app/components/expertise/social/SpinningLogos'
 import CodeBeams from '@/app/ui/CodeBeams'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
 import Data from '@/app/ui/data';
 import DataRight from '@/app/ui/dataRight';
 import { Metadata } from 'next';
@@ -16,8 +13,9 @@ import SocialFeatures from '@/app/components/expertise/social/SocialFeatures';
 import FormService from '@/app/ui/modal';
  
 export const metadata: Metadata = {
-  title: 'Social Media Management',
-  description: 'Engage, connect, and resonate with your community online.',
+  title: 'Social Media Management agency in dubai',
+  description: "Elevate your brand with Clicksalesmedia's expert social media management services in Dubai. Enhance engagement, grow your audience, and drive results with our AI-driven strategies.",
+  keywords:'Social media management agency in dubai, Social media ads agency'
 }
  
 export default function HeroSection() {

@@ -7,8 +7,9 @@ import { Metadata } from "next";
 import { FaGoogle } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: 'Google Marketing Services',
-  description: 'its branding page',
+  title: 'Google Marketing Solutions agency in dubai',
+  description: "Maximize your online presence with Clicksalesmedia's a Google Partner in Dubai. Enhance your Campaigns and boost ROI with our expert, Google marketing strategies.",
+  keywords:'Google ads agency in dubai, Google partner agency in dubai'
 }
 
 export default function PpcAds() {

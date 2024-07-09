@@ -10,8 +10,9 @@ import WhyClicksalesmedia from "@/app/components/expertise/websolutions/WebClick
 import Solutions from "@/app/components/expertise/websolutions/solutions";
 
 export const metadata: Metadata = {
-  title: 'Website Solution',
-  description: 'its branding page',
+  title: 'Website Solutions agency in dubai',
+  description: "Transform your online presence with Clicksalesmedia, Dubai's leading web solutions agency. Offering comprehensive web development, design, and SEO services to drive business growth.",
+  keywords:'Web solutions agency in dubai, create website, create landing page'
 }
 
 export default function WebMasterSolutions() {
