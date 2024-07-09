@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { twMerge } from "tailwind-merge";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
   return (
@@ -12,6 +13,12 @@ const Hero: React.FC = () => {
       <GradientGrid />
     </section>
   );
+};
+
+type LinkProps = {
+  children: any;
+  className?: string;
+  [x: string]: any; // Allow any other props
 };
 
 const Content: React.FC = () => {
@@ -116,9 +123,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const SplashButton: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
+const SplashButton: React.FC<ButtonProps> = ({ children, className, ...rest }: LinkProps) => {
   return (
-    <button
+    <Link
+      href="/schedule-a-meeting"
       className={twMerge(
         "rounded-md bg-gradient-to-br from-secondaryColor to-[#B28757] px-4 py-2 text-zinc-50 ring-2 ring-secondaryColor/50 ring-offset-2 ring-offset-zinc-950 transition-all hover:scale-[1.02] hover:ring-transparent active:scale-[0.98] active:ring-blue-500/70",
         className
@@ -126,7 +134,7 @@ const SplashButton: React.FC<ButtonProps> = ({ children, className, ...rest }) =
       {...rest}
     >
       {children}
-    </button>
+    </Link>
   );
 };
 

@@ -7,33 +7,33 @@ const projects = [
         description:
           "Our AI-driven performance marketing solutions optimize your campaigns in real-time, ensuring maximum reach and engagement while minimizing costs.",
         link: "",
-        icon: "research"
+        icon: "web-ai-performance"
       },
     {
         title: "Conversion Rate Optimization (CRO)",
         description: "Utilize AI to analyze user behavior and optimize your website for higher conversion rates, turning more visitors into loyal customers.",
         link: "",
-        icon: "googleadsicon"
+        icon: "cro"
       },
       {
         title: "Automation Scripts",
         description: "Streamline repetitive marketing tasks with our advanced automation scripts, allowing your team to focus on strategic growth initiatives.",
         link: "",
-        icon: "googleanalyticsicon"
+        icon: "automation"
       },
       {
         title: "AI SEO",
         description:
           "Boost your search engine rankings with AI-powered SEO strategies that adapt to changing algorithms and deliver sustainable results.",
         link: "",
-        icon: "googletagmanager"
+        icon: "ai-seo"
       },
       {
         title: "PPC Ads by AI",
         description:
           "Maximize the effectiveness of your pay-per-click ads with AI that dynamically adjusts bids and targets to achieve the best possible ROI.",
         link: "",
-        icon: "remarketing"
+        icon: "ppc-ads-ai"
       },
       {
         title: "Auto Blogging",
@@ -47,14 +47,14 @@ const projects = [
         description:
           "Leverage AI to personalize email campaigns, increase open rates, and drive conversions with targeted, data-driven content.",
         link: "",
-        icon: "remarketing"
+        icon: "email-marketing-ai"
       },
       {
         title: "Lead Generation",
         description:
           "Use AI to identify and attract high-quality leads, optimizing your sales funnel and increasing your conversion rates efficiently.",
         link: "",
-        icon: "remarketing"
+        icon: "lead-gen"
       },
       {
         title: "Social Media AI",

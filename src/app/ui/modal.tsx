@@ -195,6 +195,7 @@ window.dataLayer.push({
       </div>
       <Select id="services" name="services" value={form.services} onChange={handleChange} style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}>
                     <option value="Performance Marketing">Performance Marketing</option>
+                    <option value="ai Marketing">AI Marketing</option>
                     <option value="Conversion rate optimization">Conversion rate optimization</option>
                     <option value="Google Marketing">Google Marketing</option>
                     <option value="Search engine optimization">Search engine optimization (SEO)</option>
