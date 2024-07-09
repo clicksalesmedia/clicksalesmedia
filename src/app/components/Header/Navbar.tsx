@@ -176,17 +176,16 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
         className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"
         onClick={() => setMenuOpen?.(false)}
       >
-        {/* <Link
+         <Link
           href="/expertise/ai-marketing"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">AI Marketing</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">Web Animation</h3>
           <p className="text-xs text-whiteColor">
-            How and why brands grow? Maximize your potential, empower your
-            brand, optimize your resources, and expand your reach to achieve
-            market leadership.
+          Web animation adds visual interest and interactivity, making websites more engaging and intuitive.
           </p>
         </Link>
+        {/*
         <Link
           href="/expertise/performance-marketing"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"

@@ -32,14 +32,13 @@ const Pricing: React.FC = () => {
             Pricing
           </h2>
           <p className="text-center text-base text-zinc-400 md:text-lg">
-            Use it for free for yourself, upgrade when your team needs advanced
-            control.
+          Our Web Animation Packages
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <PriceCard
-            tier="One time Fee"
+            tier="One-time Fee"
             price="$490"
             bestFor="Basic Web Animation Package"
             CTA={<GhostButton className="w-full">Get started now</GhostButton>}
@@ -51,10 +50,10 @@ const Pricing: React.FC = () => {
             ]}
           />
           <PriceCard
-            tier="One time Fee"
+            tier="One-time Fee"
             price="$650"
             bestFor="Standard Web Animation Package"
-            CTA={<GhostButton className="w-full">Get started now</GhostButton>}
+            CTA={<GhostButton className="w-full">Get Standard</GhostButton>}
             benefits={[
               { text: "5 UX Design Sections", checked: true },
               { text: "5 Web Animations", checked: true },
@@ -64,12 +63,12 @@ const Pricing: React.FC = () => {
             ]}
           />
           <PriceCard
-            tier="One time Fee"
+            tier="One-time Fee"
             price="$890"
             bestFor="Premium Web Animation Package"
             CTA={
               <GhostButton className="w-full bg-secondaryColor text-black font-semibold hover:bg-zinc-200 hover:text-zinc-900">
-                Get started now
+                Go Premium
               </GhostButton>
             }
             benefits={[
