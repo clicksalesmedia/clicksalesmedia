@@ -13,7 +13,7 @@ interface FormServiceProps {
 declare global {
   interface Window {
     dataLayer: Array<Record<string, any>>;
-    gtag: (...args: any[]) => void;
+    fbq: (...args: any[]) => void;
   }
 }
 
@@ -27,6 +27,8 @@ const FormService: FunctionComponent<FormServiceProps> = ({ isOpen, setIsOpen, b
     email: '',
   });
 
+  const metaApiToken = 'EAAIeh85nYDIBOZBPtvD57hw6a6kX053khHM6G5XXMJZC5SBpuwWlSeCzDaCZBb62Y2ac9ZAnZCQeTo76zz38Gn7eMGgze2RR4cyrZA6kkk7tX9llAZCkLNRydySNLBveXOm3ZCrnLJB6dDrRGBOJ96hHe2O6mMOg9v0jBnuv7CgvPiEUE9tdWsoz2kZA8IxsTZBn5qvwZDZD';
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -35,6 +37,7 @@ const FormService: FunctionComponent<FormServiceProps> = ({ isOpen, setIsOpen, b
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      // Send form data to your API
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leadwebanimations`, {
         method: 'POST',
         headers: {
@@ -44,6 +47,32 @@ const FormService: FunctionComponent<FormServiceProps> = ({ isOpen, setIsOpen, b
       });
 
       if (response.ok) {
+        // Send data to Meta Ads
+        await fetch(`https://graph.facebook.com/v12.0/1552827585519840/events`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: [{
+              event_name: 'FormSubmission',
+              event_time: Math.floor(new Date().getTime() / 1000),
+              user_data: {
+                email: form.email,
+                phone: form.mobile,
+                first_name: form.name.split(' ')[0],
+                last_name: form.name.split(' ').slice(1).join(' '),
+              },
+              custom_data: {
+                company: form.company,
+                website: form.website,
+                package: form.package,
+              },
+            }],
+            access_token: metaApiToken,
+          }),
+        });
+
         Swal.fire({
           icon: 'success',
           title: 'Thank you for completing the form.',
@@ -62,15 +91,9 @@ const FormService: FunctionComponent<FormServiceProps> = ({ isOpen, setIsOpen, b
           email: '',
         });
 
-        // Push event to Google Analytics and Google Ads
-        window.gtag('event', 'form_submission', {
-          event_category: 'Form',
-          event_label: 'Service Form',
-        });
-
-        // Push form data to dataLayer
+        // Push form data to dataLayer for GTM
         window.dataLayer.push({
-          event: 'animationFormSubmission',
+          event: 'formSubmission',
           formData: {
             name: form.name,
             company: form.company,
@@ -81,6 +104,9 @@ const FormService: FunctionComponent<FormServiceProps> = ({ isOpen, setIsOpen, b
           },
         });
 
+        // Track events in Facebook
+        window.fbq('track', 'Lead');
+        window.fbq('track', 'Contact');
       } else {
         Swal.fire({
           icon: 'error',

@@ -14,6 +14,7 @@ interface SpringModalProps {
 declare global {
   interface Window {
     dataLayer: Array<Record<string, any>>;
+    fbq: (...args: any[]) => void;
   }
 }
 
@@ -70,7 +71,7 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
 
       if (response.ok) {
         // Send data to Meta Ads
-        await fetch(`https://graph.facebook.com/v12.0/your_pixel_id/events`, {
+        await fetch(`https://graph.facebook.com/v12.0/1552827585519840/events`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -125,6 +126,10 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
             email: form.email,
           },
         });
+
+        // Track events in Facebook
+        window.fbq('track', 'Lead');
+        window.fbq('track', 'Contact');
       } else {
         Swal.fire({
           icon: 'error',
