@@ -1,9 +1,9 @@
-'use client'
+'use client';
 import React, { useState, FunctionComponent, ChangeEvent, FormEvent } from 'react';
-import { Button, Label, Select, TextInput, Textarea } from 'flowbite-react';
-import { AnimatePresence, motion } from "framer-motion";
+import { Button, Label, Select, TextInput } from 'flowbite-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import Swal from 'sweetalert2';
-import { FiAlertCircle } from "react-icons/fi";
+import { FiAlertCircle } from 'react-icons/fi';
 
 interface SpringModalProps {
   isOpen: boolean;
@@ -17,41 +17,40 @@ declare global {
   }
 }
 
-
-
 const FormService = ({ buttonText = "Transform Your Traffic Today !" }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="px-4 grid place-content-center">
-      <button  onClick={() => setIsOpen(true)}  className="w-full text-white font-semibold px-3 py-2 rounded-sm overflow-hidden relative transition-transform hover:scale-105 active:scale-95">
-      <span className="relative z-10">{buttonText}</span>
-      <motion.div
-        initial={{ left: 0 }}
-        animate={{ left: "-300%" }}
-        transition={{
-          repeat: Infinity,
-          repeatType: "mirror",
-          duration: 4,
-          ease: "linear",
-        }}
-        className="bg-[linear-gradient(to_right,#c3a177,#cc9f6e,#d19b61,#ce8442,#bf752b)] absolute z-0 inset-0 w-[400%]"
-      ></motion.div>
-    </button>
-     <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} buttonText={buttonText} />
+      <button onClick={() => setIsOpen(true)} className="w-full text-white font-semibold px-3 py-2 rounded-sm overflow-hidden relative transition-transform hover:scale-105 active:scale-95">
+        <span className="relative z-10">{buttonText}</span>
+        <motion.div
+          initial={{ left: 0 }}
+          animate={{ left: '-300%' }}
+          transition={{
+            repeat: Infinity,
+            repeatType: 'mirror',
+            duration: 4,
+            ease: 'linear',
+          }}
+          className="bg-[linear-gradient(to_right,#c3a177,#cc9f6e,#d19b61,#ce8442,#bf752b)] absolute z-0 inset-0 w-[400%]"
+        ></motion.div>
+      </button>
+      <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} buttonText={buttonText} />
     </div>
   );
 };
 
 const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen }) => {
-  // Form state initialization
   const [form, setForm] = useState({
     name: '',
     company: '',
     website: '',
     mobile: '',
-    services: 'Web Solutions', // Default service or could be empty string ''
+    services: 'Web Solutions',
     email: '',
   });
+
+  const metaApiToken = 'EAAIeh85nYDIBOZBPtvD57hw6a6kX053khHM6G5XXMJZC5SBpuwWlSeCzDaCZBb62Y2ac9ZAnZCQeTo76zz38Gn7eMGgze2RR4cyrZA6kkk7tX9llAZCkLNRydySNLBveXOm3ZCrnLJB6dDrRGBOJ96hHe2O6mMOg9v0jBnuv7CgvPiEUE9tdWsoz2kZA8IxsTZBn5qvwZDZD';
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -68,19 +67,43 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         },
         body: JSON.stringify(form),
       });
-  
+
       if (response.ok) {
-        // SweetAlert2 for successful submission
+        // Send data to Meta Ads
+        await fetch(`https://graph.facebook.com/v12.0/your_pixel_id/events`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: [{
+              event_name: 'FormSubmission',
+              event_time: Math.floor(new Date().getTime() / 1000),
+              user_data: {
+                email: form.email,
+                phone: form.mobile,
+                first_name: form.name.split(' ')[0],
+                last_name: form.name.split(' ').slice(1).join(' '),
+              },
+              custom_data: {
+                company: form.company,
+                website: form.website,
+                services: form.services,
+              },
+            }],
+            access_token: metaApiToken,
+          }),
+        });
+
         Swal.fire({
           icon: 'success',
           title: 'Thank you for completing the form.',
           text: 'Please wait while our customer service team reaches out to you as soon as possible.',
           background: '#272727',
           confirmButtonColor: '#C3A177',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
         });
-        setIsOpen(false); // Close modal on success
-        // Reset form state
+        setIsOpen(false);
         setForm({
           name: '',
           company: '',
@@ -89,46 +112,38 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
           services: 'Web Solutions',
           email: '',
         });
+
+        // Push form data to dataLayer for GTM
+        window.dataLayer.push({
+          event: 'formSubmission',
+          formData: {
+            name: form.name,
+            company: form.company,
+            website: form.website,
+            mobile: form.mobile,
+            services: form.services,
+            email: form.email,
+          },
+        });
       } else {
-        // SweetAlert2 for failure
         Swal.fire({
           icon: 'error',
           title: 'Submission Failed',
           text: 'Failed to submit lead. Please try again.',
           confirmButtonColor: '#d33',
-          confirmButtonText: 'Retry'
+          confirmButtonText: 'Retry',
         });
       }
     } catch (error) {
       console.error('Failed to submit lead', error);
-      // SweetAlert2 for catch error
       Swal.fire({
         icon: 'error',
         title: 'Error',
         text: 'An error occurred. Please try again.',
         confirmButtonColor: '#d33',
-        confirmButtonText: 'Retry'
+        confirmButtonText: 'Retry',
       });
     }
-
-
-// Ensure dataLayer is initialized
-window.dataLayer = window.dataLayer || [];
-
-// Push the form data
-window.dataLayer.push({
-  event: 'formSubmission',
-  formData: {
-    name: form.name,
-    company: form.company,
-    website: form.website,
-    mobile: form.mobile,
-    services: form.services,
-    email: form.email
-  }
-});
-
-
   };
 
   return (
@@ -142,9 +157,9 @@ window.dataLayer.push({
           className="bg-primaryColor/20 backdrop-blur p-8 fixed inset-0 z-50 grid place-items-center overflow-y-scroll cursor-pointer"
         >
           <motion.div
-            initial={{ scale: 0, rotate: "12.5deg" }}
-            animate={{ scale: 1, rotate: "0deg" }}
-            exit={{ scale: 0, rotate: "0deg" }}
+            initial={{ scale: 0, rotate: '12.5deg' }}
+            animate={{ scale: 1, rotate: '0deg' }}
+            exit={{ scale: 0, rotate: '0deg' }}
             onClick={(e) => e.stopPropagation()}
             className="bg-gradient-to-br from-[#222222] to-primaryColor text-white p-6 rounded-lg w-full max-w-lg shadow-xl cursor-default relative overflow-hidden"
           >
@@ -154,48 +169,100 @@ window.dataLayer.push({
                 <FiAlertCircle />
               </div>
               <form className="space-y-4" onSubmit={handleSubmit}>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="base" value="Name" className='text-whiteColor'/>
-        </div>
-        <TextInput type="text" sizing="md" id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your Full Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
-      </div>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="base" value="Name" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    type="text"
+                    sizing="md"
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your Full Name"
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
 
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email2" value="Your email" className='text-whiteColor'/>
-        </div>
-        <TextInput id="email" type="email"  name="email" value={form.email} onChange={handleChange} placeholder="name@example.com" required shadow style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
-      </div>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="email2" value="Your email" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="name@example.com"
+                    required
+                    shadow
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
 
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="base" value="Company" className='text-whiteColor'/>
-        </div>
-        <TextInput type="text" sizing="md" id="company" name="company" value={form.company} onChange={handleChange} placeholder="Your Company Name" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
-      </div>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="base" value="Company" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    type="text"
+                    sizing="md"
+                    id="company"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    placeholder="Your Company Name"
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
 
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="base" value="Website" className='text-whiteColor'/>
-        </div>
-        <TextInput type="text" sizing="md" id="website" name="website" value={form.website} onChange={handleChange} placeholder="www.yourwebsite.com" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
-      </div>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="base" value="Website" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    type="text"
+                    sizing="md"
+                    id="website"
+                    name="website"
+                    value={form.website}
+                    onChange={handleChange}
+                    placeholder="www.yourwebsite.com"
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
 
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="base" value="Mobile" className='text-whiteColor'/>
-        </div>
-        <TextInput id="mobile" type="text" sizing="md" name="mobile" value={form.mobile} onChange={handleChange} placeholder="Your Mobile Number" style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}/>
-      </div>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="base" value="Mobile" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    id="mobile"
+                    type="text"
+                    sizing="md"
+                    name="mobile"
+                    value={form.mobile}
+                    onChange={handleChange}
+                    placeholder="Your Mobile Number"
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
 
-      <div>
-      <div className="mb-2 block">
-        <Label htmlFor="Services" value="Select Service" className="text-left text-white"/>
-      </div>
-      <Select id="services" name="services" value={form.services} onChange={handleChange} style={{ background: '#222222',color:'#C3A177', borderColor: '#C3A177', borderRadius:1}}>
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="Services" value="Select Service" className="text-left text-white" />
+                  </div>
+                  <Select
+                    id="services"
+                    name="services"
+                    value={form.services}
+                    onChange={handleChange}
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  >
                     <option value="Performance Marketing">Performance Marketing</option>
-                    <option value="ai Marketing">AI Marketing</option>
+                    <option value="AI Marketing">AI Marketing</option>
                     <option value="Conversion rate optimization">Conversion rate optimization</option>
                     <option value="Google Marketing">Google Marketing</option>
                     <option value="Search engine optimization">Search engine optimization (SEO)</option>
@@ -205,19 +272,17 @@ window.dataLayer.push({
                     <option value="Ecommerce Solutions">Ecommerce Solutions</option>
                     <option value="Email Marketing">Email Marketing</option>
                     <option value="Ads Management">Ads Management</option>
-      </Select>
-    </div>
+                  </Select>
+                </div>
 
-          <Button
-            type="submit"
-            className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-xs text-white bg-secondaryColor hover:bg-[#b89469] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#b89469]"
-          >
-            Power Up Your Project
-          </Button>
-  
-      </form>
-
-              </div>
+                <Button
+                  type="submit"
+                  className="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-md text-sm font-medium rounded-xs text-white bg-secondaryColor hover:bg-[#b89469] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#b89469]"
+                >
+                  Power Up Your Project
+                </Button>
+              </form>
+            </div>
           </motion.div>
         </motion.div>
       )}
@@ -226,4 +291,3 @@ window.dataLayer.push({
 };
 
 export default FormService;
-
