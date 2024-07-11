@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 export const metadata: Metadata = {
     title: 'Contact us',
-    description: 'its branding page',
+    description: 'Contact clicksalesmedia Team',
   }
 
 function Contact() {

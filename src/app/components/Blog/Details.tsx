@@ -1,16 +1,21 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Image from "next/image";
-import { TracingBeam } from "../../ui/tracing-beam";
+import Image from 'next/image';
+import { TracingBeam } from '../../ui/tracing-beam';
+import Head from 'next/head';
 
-// Add thumbnailUrl as an optional property to the Post type
 type Post = {
   id: number;
   title: string;
   content: string;
   createdAt: string;
-  thumbnailUrl?: string; // Optional property
+  thumbnailUrl?: string;
+  seo: {
+    title: string;
+    description: string;
+    seoKeywords: string;
+  };
 };
 
 const Details = () => {
@@ -20,14 +25,13 @@ const Details = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if pathname is not null before proceeding
     if (!pathname) {
       console.error('Pathname is null');
       setIsLoading(false);
       setError('Invalid URL');
-      return; // Exit early if pathname is null
+      return;
     }
-    
+
     const slug = pathname.split('/').pop();
     if (slug) {
       setIsLoading(true);
@@ -39,24 +43,8 @@ const Details = () => {
           return response.json();
         })
         .then(data => {
-          console.log("Received data:", data); // Ensure data structure is as expected
-          const parsedDate = new Date(data.createdAt);
-          console.log("Parsed Date:", parsedDate.toISOString()); // Log the parsed date in ISO format for debugging
-
-          if (isNaN(parsedDate.getTime())) {
-            console.warn("Date parsing issue with:", data.createdAt);
-            // Set a fallback or handle differently instead of blocking render
-          }
-
-          // Proceed to set the post data, using a fallback for date if needed
-          setPost({
-            ...data,
-            createdAt: !isNaN(parsedDate.getTime()) ? parsedDate.toLocaleDateString('default', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }) : 'Date not available', // Fallback display
-          });
+          setPost(data);
+          updateMetadata(data.seo);
         })
         .catch(error => {
           console.error('Error:', error);
@@ -66,14 +54,28 @@ const Details = () => {
     }
   }, [pathname]);
 
+  const updateMetadata = (seo:any) => {
+    if (typeof document !== "undefined") {
+      document.title = seo.title;
+      document.querySelector('meta[name="description"]')?.setAttribute("content", seo.description);
+      document.querySelector('meta[name="keywords"]')?.setAttribute("content", seo.seoKeywords);
+    }
+  };
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   if (!post) return <div>Post not found</div>;
 
   return (
-    <article className='py-20'>
-      <TracingBeam className="px-6">
-        <div className="max-w-2xl mx-auto antialiased pt-4 relative">
+    <>
+      <Head>
+        <title>{post?.seo.title}</title>
+        <meta name="description" content={post?.seo.description} />
+        <meta name="keywords" content={post?.seo.seoKeywords} />
+      </Head>
+      <article className='py-20'>
+        <TracingBeam className="px-6">
+          <div className="max-w-2xl mx-auto antialiased pt-4 relative">
             <div className="mb-10">
               <h1 className="text-4xl text-secondaryColor mb-4">
                 {post.title}
@@ -96,9 +98,10 @@ const Details = () => {
                 </p>
               </div>
             </div>
-        </div>
-      </TracingBeam>
-    </article>
+          </div>
+        </TracingBeam>
+      </article>
+    </>
   );
 };
 
