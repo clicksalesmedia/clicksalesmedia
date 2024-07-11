@@ -107,7 +107,7 @@ const Details = () => {
             <h2 className="bg-secondaryColor text-primaryColor rounded-full text-xl font-bold w-fit px-4 py-1 mb-4">
               {casestudy.title}
             </h2>
-            <div className="text-sm prose prose-sm dark:prose-invert custom-content">
+            <div className="text-sm prose prose-sm dark:prose-invert custom-content cssUnique">
               {casestudy.thumbnailUrl && (
                 <Image
                   src={casestudy.thumbnailUrl}
@@ -119,7 +119,7 @@ const Details = () => {
               )}
               <p className="mb-3 font-normal text-slate-50 dark:text-gray-400 line-clamp-3">{casestudy.summary}</p>
               <p
-                className="content-container text-base my-4"
+                className="content-container text-base my-4 text-white" 
                 dangerouslySetInnerHTML={{ __html: casestudy.content }}
               ></p>
             </div>
