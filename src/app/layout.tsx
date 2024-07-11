@@ -1,10 +1,9 @@
+// components/RootLayout.tsx
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from './components/Header/Navbar';
-import Footer from './components/Footer/Footer';
-import AnimatedCursor from 'react-animated-cursor';
-import ScrollToTopButton from './utils/ScrollToTopButton';
+import React from 'react';
+import AppContainer from './components/AppContainer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,11 +16,11 @@ export const metadata = {
   keywords: 'Marketing agency, AI Marketing agency, Web solutions, business to business, performance marketing',
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang='en'>
       <head>
@@ -47,32 +46,12 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <Navbar />
-        <AnimatedCursor
-          innerSize={8}
-          outerSize={10}
-          color='178, 137, 85'
-          outerAlpha={0.2}
-          innerScale={0.7}
-          outerScale={5}
-          clickables={[
-            'a',
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="number"]',
-            'input[type="submit"]',
-            'input[type="image"]',
-            'label[for]',
-            'select',
-            'textarea',
-            'button',
-            '.link',
-          ]}
-        />
-        {children}
-        <ScrollToTopButton />
-        <Footer />
+        <AppContainer>
+          {children}
+        </AppContainer>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
