@@ -22,12 +22,14 @@ function WebClicksalesmedia() {
                 {"Enhance user engagement, improve ROI, and boost your Google SEO with our comprehensive web animation strategy. Our expertly crafted animations not only captivate your audience but also provide a seamless and enjoyable user experience. Invest in our animation solutions today and see the difference in user retention and satisfaction."} </p>
               </div>
               <div className='pt-10'>
+                {/* 
               <button
                    type="button"
                  className="text-white bg-gradient-to-r from-[#e2c3a1] via-secondaryColor to-[#af8054] hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                  >
                  Learn More
               </button>
+                */}
               </div>
               
         </div>
