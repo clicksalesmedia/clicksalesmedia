@@ -18,9 +18,9 @@ async function hasMultilingualFields() {
 // GET a single blog post by slug
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
-  const { slug } = params;
+  const { slug } = context.params;
   
   // Log the incoming slug for debugging
   console.log('Fetching blog post with slug:', slug);
@@ -128,14 +128,14 @@ export async function GET(
 // PATCH to update an existing blog post
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { slug } = params;
+  const { slug } = context.params;
   let postId;
   
   try {
@@ -306,14 +306,14 @@ export async function PATCH(
 // DELETE a blog post
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { slug } = params;
+  const { slug } = context.params;
   let postId;
 
   try {
