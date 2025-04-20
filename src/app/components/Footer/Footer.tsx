@@ -4,7 +4,8 @@ import Link from "next/link"
 import { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// Import is now in globals.css
+// import 'react-toastify/dist/ReactToastify.css';
 
 
 import { FaInstagramSquare, FaLinkedin, FaPinterestSquare } from "react-icons/fa";
@@ -256,7 +257,7 @@ return (
             </nav>
             <div className="w-full flex flex-col md:flex-row gap-4 items-center sm:justify-between py-3 border-t border-[#2d2d2d] dark:border-t-[gray-800] text-secondaryColor dark:text-gray-300">
                 <div className="flex text-center sm:text-left sm:min-w-max">
-                    <p className="text-whiteColor"> © 2024 Clicksalesmedia. All right reserved </p>
+                    <p className="text-whiteColor"> © 2025 Clicksalesmedia. All right reserved </p>
                 </div>
                 <div className="flex justify-center sm:justify-end w-full gap-3">
                     <Link href="https://linkedin.com/company/clicksalesmedia" aria-label="linkedin" rel="noreferer">

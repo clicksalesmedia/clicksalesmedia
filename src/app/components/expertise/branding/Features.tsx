@@ -1,7 +1,11 @@
+'use client'
 import FormService from "@/app/ui/modal";
 import React from "react";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 export default function BrandingFeatures() {
+  const { language } = useLanguage();
+  
   return (
     <>
 <section>
@@ -9,12 +13,16 @@ export default function BrandingFeatures() {
     <div className="grid grid-cols-4 gap-6 md:grid-cols-8 lg:grid-cols-12">
       <div className="col-span-4 md:col-span-8 lg:col-span-12 bg-[#000000] p-20 flex flex-col items-center justify-center">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-secondaryColor md:text-5xl lg:text-6xl dark:text-white text-center">
-        The Way Successful Brands Grow Strong
+          {language === 'en' 
+            ? "The Way Successful Brands Grow Strong" 
+            : "الطريق لبناء علامات تجارية ناجحة وقوية"}
         </h1>
         <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">
-        Empower your potential, enhance your brand, optimize your resources, and broaden your reach to achieve market dominance.
+          {language === 'en'
+            ? "Empower your potential, enhance your brand, optimize your resources, and broaden your reach to achieve market dominance."
+            : "عزز إمكاناتك، وقوي علامتك التجارية، وحسن مواردك، ووسع نطاق وصولك لتحقيق الريادة في السوق."}
         </p>
-        <FormService buttonText="Shape Your Brand Future!" />
+        <FormService buttonText={language === 'en' ? "Shape Your Brand Future!" : "شكّل مستقبل علامتك التجارية!"} />
       </div>
     </div>
   </div>
@@ -39,13 +47,24 @@ export default function BrandingFeatures() {
             </div>
             <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-80">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
-            Lost  {" "}
-    <span className="text-secondaryColor dark:text-blue-500">revenue</span>{" "}
-    ?
-  </h1>
-  <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-  Without an effective strategy, the money you spend on marketing will be wasted attempting to compete in an overcrowded market rather than building a niche within a crowd.
-  </p>
+              {language === 'en' ? (
+                <>
+                Lost {" "}
+                <span className="text-secondaryColor dark:text-blue-500">revenue</span>{" "}
+                ?
+                </>
+              ) : (
+                <>
+                <span className="text-secondaryColor dark:text-blue-500">إيرادات</span>{" "}
+                مفقودة؟
+                </>
+              )}
+            </h1>
+            <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+              {language === 'en' 
+                ? "Without an effective strategy, the money you spend on marketing will be wasted attempting to compete in an overcrowded market rather than building a niche within a crowd."
+                : "بدون استراتيجية فعالة، ستضيع الأموال التي تنفقها على التسويق في محاولة للمنافسة في سوق مزدحم بدلاً من بناء مكانة متخصصة داخل هذا الازدحام."}
+            </p>
             </div>
           </div>
         </div>
@@ -56,13 +75,25 @@ export default function BrandingFeatures() {
           <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
           <div className="col-span-4 lg:col-span-6 bg-[#222222] p-20 py-60">
             <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-whiteColor md:text-5xl lg:text-6xl dark:text-white">
-            A deep {" "}
-    <span className="text-secondaryColor dark:text-blue-500">understand of your</span>{" "}
-    brand.
-  </h1>
-  <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-  {"We immerse in your brand's history, goals, and culture to build a brand that will succeed. We define your goals, vision, values, audiences, and unique value propositions to help you develop your identity, niche, and future campaigns, and then design your stationary accordingly."}
-  </p>
+              {language === 'en' ? (
+                <>
+                A deep {" "}
+                <span className="text-secondaryColor dark:text-blue-500">understand of your</span>{" "}
+                brand.
+                </>
+              ) : (
+                <>
+                فهم {" "}
+                <span className="text-secondaryColor dark:text-blue-500">عميق لعلامتك</span>{" "}
+                التجارية.
+                </>
+              )}
+            </h1>
+            <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+              {language === 'en'
+                ? "We immerse in your brand's history, goals, and culture to build a brand that will succeed. We define your goals, vision, values, audiences, and unique value propositions to help you develop your identity, niche, and future campaigns, and then design your stationary accordingly."
+                : "نغوص في تاريخ علامتك التجارية وأهدافها وثقافتها لبناء علامة تجارية ناجحة. نحدد أهدافك ورؤيتك وقيمك وجماهيرك وعروض القيمة الفريدة لمساعدتك في تطوير هويتك ومكانتك المتخصصة وحملاتك المستقبلية، ثم نصمم المواد المطبوعة وفقًا لذلك."}
+            </p>
             </div>
           <div className="col-span-4 lg:col-span-6 relative">
               <div
@@ -101,11 +132,20 @@ export default function BrandingFeatures() {
             </div>
             <div className="md:col-span-4 lg:col-span-6 bg-[#222222] p-10 md:p-20">
               <h1 className="text-2xl md:text-4xl font-extrabold leading-none tracking-tight text-white md:md:text-5xl lg:text-6xl">
-                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the worlds #1 CRM.</span>
+                {language === 'en' ? (
+                  <>
+                  Lost <span className="text-secondaryColor dark:text-blue-500">revenue?</span>
+                  </>
+                ) : (
+                  <>
+                  <span className="text-secondaryColor dark:text-blue-500">إيرادات مفقودة؟</span>
+                  </>
+                )}
               </h1>
               <p className="mt-4 text-sm md:text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                Here at Flowbite we focus on markets where technology, innovation, and
-                capital can unlock long-term value and drive economic growth.
+                {language === 'en'
+                  ? "Without an effective strategy, the money you spend on marketing will be wasted attempting to compete in an overcrowded market."
+                  : "بدون استراتيجية فعالة، ستضيع الأموال التي تنفقها على التسويق في محاولة للمنافسة في سوق مزدحم."}
               </p>
             </div>
           </div>
@@ -130,11 +170,20 @@ export default function BrandingFeatures() {
             </div>
             <div className="md:col-span-4 lg:col-span-6 bg-[#222222] p-10 md:p-20">
               <h1 className="text-2xl md:text-4xl font-extrabold leading-none tracking-tight text-white md:md:text-5xl lg:text-6xl">
-                Get back to growth <span className="text-secondaryColor dark:text-blue-500">with the worlds #1 CRM.</span>
+                {language === 'en' ? (
+                  <>
+                  A deep <span className="text-secondaryColor dark:text-blue-500">understanding of your brand.</span>
+                  </>
+                ) : (
+                  <>
+                  <span className="text-secondaryColor dark:text-blue-500">فهم عميق لعلامتك التجارية.</span>
+                  </>
+                )}
               </h1>
               <p className="mt-4 text-sm md:text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                Here at Flowbite we focus on markets where technology, innovation, and
-                capital can unlock long-term value and drive economic growth.
+                {language === 'en'
+                  ? "We immerse in your brand's history, goals, and culture to build a brand that will succeed."
+                  : "نغوص في تاريخ علامتك التجارية وأهدافها وثقافتها لبناء علامة تجارية ناجحة."}
               </p>
             </div>
           </div>

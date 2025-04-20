@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import Calendly from '../components/Calendly/Calendly';
 import Data from '../ui/data';
+import BookingCalendar from '../components/BookingCalendar/BookingCalendar';
 
 export const metadata: Metadata = {
   title: 'Schedule a meeting with our team',
@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 const ScheduleMeeting = () => {
   return (
     <>
-    <div className='pt-40'><Data sectionName="scheduleMeeting" /></div>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#272727' }}>
-        <Calendly />
+      <div className='pt-40'><Data sectionName="scheduleMeeting" /></div>
+      <div className="min-h-[calc(100vh-160px)] bg-[#272727] py-12">
+        <BookingCalendar />
       </div>
     </>
   );

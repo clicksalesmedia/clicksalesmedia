@@ -37,6 +37,7 @@ const config: Config = {
         cormorant: ['Cormorant', 'serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         quicksand: ['Quicksand', 'sans-serif'],
+        'noto-kufi': ['"Noto Kufi Arabic"', 'sans-serif'],
       },
     },
     // other theme settings

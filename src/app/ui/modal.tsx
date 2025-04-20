@@ -46,9 +46,11 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
     name: '',
     company: '',
     website: '',
-    mobile: '',
+    phone: '',
+    message: '',
     services: 'Web Solutions',
     email: '',
+    source: 'Website Form'
   });
 
   const metaApiToken = 'EAAIeh85nYDIBOZBPtvD57hw6a6kX053khHM6G5XXMJZC5SBpuwWlSeCzDaCZBb62Y2ac9ZAnZCQeTo76zz38Gn7eMGgze2RR4cyrZA6kkk7tX9llAZCkLNRydySNLBveXOm3ZCrnLJB6dDrRGBOJ96hHe2O6mMOg9v0jBnuv7CgvPiEUE9tdWsoz2kZA8IxsTZBn5qvwZDZD';
@@ -61,13 +63,28 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads`, {
+      // Prepare data for API
+      const leadData = {
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        phone: form.phone,
+        message: `Service: ${form.services}\nWebsite: ${form.website}\n${form.message || ''}`,
+        source: 'Website Form',
+        status: 'LEAD'
+      };
+      
+      // Send to the leads API endpoint
+      const response = await fetch('/api/leads', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(leadData),
       });
+
+      const data = await response.json();
+      console.log("API Response:", data);
 
       if (response.ok) {
         // Send data to Meta Ads
@@ -82,7 +99,7 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
               event_time: Math.floor(new Date().getTime() / 1000),
               user_data: {
                 email: form.email,
-                phone: form.mobile,
+                phone: form.phone,
                 first_name: form.name.split(' ')[0],
                 last_name: form.name.split(' ').slice(1).join(' '),
               },
@@ -109,9 +126,11 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
           name: '',
           company: '',
           website: '',
-          mobile: '',
+          phone: '',
+          message: '',
           services: 'Web Solutions',
           email: '',
+          source: 'Website Form'
         });
 
         // Push form data to dataLayer for GTM
@@ -121,9 +140,11 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
             name: form.name,
             company: form.company,
             website: form.website,
-            mobile: form.mobile,
+            phone: form.phone,
+            message: form.message,
             services: form.services,
             email: form.email,
+            source: form.source
           },
         });
 
@@ -241,16 +262,32 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
 
                 <div>
                   <div className="mb-2 block">
-                    <Label htmlFor="base" value="Mobile" className="text-whiteColor" />
+                    <Label htmlFor="phone" value="Phone" className="text-whiteColor" />
                   </div>
                   <TextInput
-                    id="mobile"
+                    id="phone"
                     type="text"
                     sizing="md"
-                    name="mobile"
-                    value={form.mobile}
+                    name="phone"
+                    value={form.phone}
                     onChange={handleChange}
-                    placeholder="Your Mobile Number"
+                    placeholder="Your Phone Number"
+                    style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
+                  />
+                </div>
+
+                <div>
+                  <div className="mb-2 block">
+                    <Label htmlFor="message" value="Message (Optional)" className="text-whiteColor" />
+                  </div>
+                  <TextInput
+                    id="message"
+                    type="text"
+                    sizing="md"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Any additional information"
                     style={{ background: '#222222', color: '#C3A177', borderColor: '#C3A177', borderRadius: 1 }}
                   />
                 </div>

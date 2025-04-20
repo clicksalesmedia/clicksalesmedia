@@ -1,11 +1,14 @@
 'use client'
-import React, { useEffect, useState,ReactNode } from "react";
+import React, { useEffect, useState, ReactNode } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from '@/app/providers/LanguageProvider';
 
 interface CodeBeamsProps {
   icon: React.ReactNode; 
   title: string;
   description: string;
+  titleTransKey?: string;
+  descriptionTransKey?: string;
 }
 
 interface TransitionProps {
@@ -32,8 +35,73 @@ interface WindowSize {
   height: number | undefined;
 }
 
+// Simplified translations
+const localTranslations = {
+  en: {
+    seo: {
+      pageTitle: "SEO Solutions",
+      pageDescription: "Boost visibility with expert SEO strategies, ensuring your valuable content reaches a wider audience effortlessly."
+    }
+  },
+  ar: {
+    seo: {
+      pageTitle: "حلول تحسين محركات البحث",
+      pageDescription: "عزز الظهور باستراتيجيات تحسين محركات البحث المتخصصة، مما يضمن وصول المحتوى القيم الخاص بك إلى جمهور أوسع بسهولة."
+    }
+  }
+};
 
-const CodeBeams: React.FC<CodeBeamsProps> = ({ icon, title, description }) => {
+const CodeBeams: React.FC<CodeBeamsProps> = ({ 
+  icon, 
+  title, 
+  description, 
+  titleTransKey, 
+  descriptionTransKey 
+}) => {
+  const { language } = useLanguage();
+  const [isRTL, setIsRTL] = useState(false);
+
+  useEffect(() => {
+    // Check document direction after component mounts
+    setIsRTL(document.documentElement.dir === 'rtl');
+    console.log('CodeBeams - Current language:', language);
+  }, [language]);
+  
+  // Helper function to get translation by key path
+  const translate = (key: string): string => {
+    try {
+      const keys = key.split('.');
+      
+      // Use our local translations
+      const translations = language === 'ar' ? localTranslations.ar : localTranslations.en;
+      
+      // Navigate through the nested keys
+      let result: any = translations;
+      for (const k of keys) {
+        if (result && typeof result === 'object' && k in result) {
+          result = result[k];
+        } else {
+          console.warn(`CodeBeams - Translation key not found: ${key} at part ${k}`);
+          return key;
+        }
+      }
+      
+      if (typeof result === 'string') {
+        return result;
+      } else {
+        console.warn(`CodeBeams - Invalid translation value for key: ${key}`);
+        return key;
+      }
+    } catch (error) {
+      console.error(`CodeBeams - Translation error for key: ${key}`, error);
+      return key; // Fallback to the key itself
+    }
+  };
+  
+  // If translation keys are provided, use them, otherwise use the provided text
+  const displayTitle = titleTransKey ? translate(titleTransKey) || title : title;
+  const displayDescription = descriptionTransKey ? translate(descriptionTransKey) || description : description;
+
   return (
     <div className="relative overflow-hidden bg-[#111111] text-slate-200">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -42,10 +110,10 @@ const CodeBeams: React.FC<CodeBeamsProps> = ({ icon, title, description }) => {
           {icon}
           </span>
           <h2 className="mb-3 text-center text-3xl font-semibold leading-tight sm:text-4xl">
-          {title}
+          {displayTitle}
           </h2>
           <p className="mb-6 text-center text-base leading-snug text-slate-400 sm:text-lg sm:leading-snug md:text-xl md:leading-snug">
-          {description}
+          {displayDescription}
           </p>
 
         </section>

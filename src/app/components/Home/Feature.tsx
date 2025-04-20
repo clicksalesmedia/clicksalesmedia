@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import Data from "@/app/ui/data";
 import { FaChessKnight } from "react-icons/fa";
@@ -5,9 +6,36 @@ import { TiSocialInstagram } from "react-icons/ti";
 import { IoBusiness } from "react-icons/io5";
 import { MdAutoGraph } from "react-icons/md";
 import ScrollAnimationWrapper from '@/app/ui/ScrollAnimationWrapper';
-
+import { motion } from 'framer-motion';
+import { FaLaptopCode, FaChartLine, FaRobot } from "react-icons/fa";
+import { useTranslation } from '@/app/hooks/useTranslation';
 
 function Feature() {
+  const { t } = useTranslation();
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
   return (
     <ScrollAnimationWrapper>
     <section className="py-20 relative">
@@ -23,7 +51,7 @@ function Feature() {
       </div>
 
     <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5">
-        <div className="flex flex-col  space-y-16">
+        <div className="flex flex-col space-y-16">
         <Data sectionName="features" />
             <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-4 lg:items-center">
                 <div className="order-1 grid gap-10 sm:grid-cols-2 md:order-1 md:grid-cols-1 lg:order-1">
@@ -33,10 +61,10 @@ function Feature() {
                             <FaChessKnight />
                         </span>
                         <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                         Branding 
+                         {t('feature.branding.title')} 
                         </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        We simply need to highlight the brand value and establish your market position to foster long-term business growth, to cultivate maximum brand awareness, trust, and loyalty.
+                        {t('feature.branding.description')}
                         </p>
                     </div>
                     <div className="flex flex-col space-y-6 justify-center md:justify-start">
@@ -45,10 +73,10 @@ function Feature() {
                             <TiSocialInstagram />
                         </span>
                         <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                        Social Media Management
+                        {t('feature.socialMedia.title')}
                         </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        We&apos;ll maintain fidelity to your brand&apos;s values and tone as we produce content that helps you engage with new audiences and stay connected with your existing customers.
+                        {t('feature.socialMedia.description')}
                         </p>
                     </div>
                 </div>
@@ -70,10 +98,10 @@ function Feature() {
                             <MdAutoGraph />
                         </span>
                         <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                        Efficient project management
+                        {t('feature.projectManagement.title')}
                         </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                        Optimize workflows, adhere to timelines, and accomplish objectives using our tailored system.
+                        {t('feature.projectManagement.description')}
                         </p>
                     </div>
                     <div className="flex flex-col space-y-6 justify-center md:justify-start">
@@ -82,19 +110,19 @@ function Feature() {
                             <IoBusiness />
                         </span>
                         <h3 className="flex text-lg font-semibold capitalize text-secondaryColor dark:text-white">
-                        Achieve success in the B2B sphere
+                        {t('feature.b2bSuccess.title')}
                         </h3>
                         <p className="text-sm font-light text-whiteColor dark:text-gray-300">
-                            Streamline operations, fuel growth, and elevate industry standing with strategic marketing expertise.
+                        {t('feature.b2bSuccess.description')}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-</ScrollAnimationWrapper>
-  )
+    </section>
+    </ScrollAnimationWrapper>
+  );
 }
 
-export default Feature
+export default Feature;

@@ -2,6 +2,8 @@
 import React, { useState, ReactNode } from "react";
 import { FiMenu, FiArrowRight, FiX, FiChevronDown } from "react-icons/fi";
 import { GrSchedule } from "react-icons/gr";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslation } from "@/app/hooks/useTranslation";
 
 import {
   useMotionValueEvent,
@@ -85,13 +87,15 @@ const Logo = () => {
 };
 
 const Links = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-6">
-      {LINKS.map((l) => (
-        <NavLink key={l.text} href={l.href} FlyoutContent={l.component}>
-          {l.text}
-        </NavLink>
-      ))}
+      <NavLink href="/">{t('nav.home')}</NavLink>
+      <NavLink href="/about">{t('nav.about')}</NavLink>
+      <NavLink href="/expertise" FlyoutContent={Expertise}>{t('nav.expertise')}</NavLink>
+      <NavLink href="/our-work">{t('nav.ourWork')}</NavLink>
+      <NavLink href="/blog">{t('nav.blog')}</NavLink>
+      <NavLink href="/contact">{t('nav.contact')}</NavLink>
     </div>
   );
 };
@@ -137,39 +141,38 @@ const NavLink: React.FC<NavLinkProps> = ({ children, href, FlyoutContent }) => {
 };
 
 const CTAs = () => {
+  const { t } = useTranslation();
   return (
-    <div className="flex items-center gap-3">
-      <div className="px-4 grid place-content-center">
-        <Link href="/schedule-a-meeting">
-          <button className="flex items-center gap-2 rounded-xs border-2 border-secondaryColor px-4 py-2 font-semibold text-secondaryColor transition-colors transition duration-500 hover:bg-white hover:text-black">
-            <GrSchedule />
-            <span>Schedule a Meeting</span>
-          </button>
-        </Link>
-      </div>
+    <div className="flex items-center gap-4">
+      <LanguageSwitcher />
+      <Link href="/schedule-a-meeting">
+        <button className="flex items-center gap-2 rounded-full border-2 border-secondaryColor px-4 py-1.5 font-semibold text-secondaryColor transition-all duration-300 hover:bg-white hover:text-black">
+          <GrSchedule />
+          <span>{t('nav.scheduleAMeeting')}</span>
+        </button>
+      </Link>
     </div>
   );
 };
 
 const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
+  const { t } = useTranslation();
   return (
     <div className="grid h-fit w-full grid-cols-12 shadow-xl lg:h-72 lg:w-[600px] lg:shadow-none xl:w-[750px]">
       <div className="col-span-12 flex flex-col justify-between bg-secondaryColor p-6 lg:col-span-4">
         <div>
           <h2 className="mb-2 text-2xl font-bold text-primaryColor">
-            Our Expertise
+            {t('expertise.title')}
           </h2>
           <p className="mb-6 max-w-xs text-sm font-semibold text-primaryColor">
-            {
-              "Explore our Performance Marketing expertise, where we create data-driven campaigns that deliver measurable results and optimize ROI. Our approach ensures effective audience engagement and sustained growth."
-            }
+            {t('expertise.description')}
           </p>
         </div>
         <Link
           href="/contact"
           className="flex items-center gap-1 text-xs font-bold text-primaryColor hover:underline"
         >
-          {"Let's Discuss"} <FiArrowRight />
+          {t('expertise.letsDiscuss')} <FiArrowRight />
         </Link>
       </div>
       <div
@@ -180,62 +183,66 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           href="/expertise/ai-marketing"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">AI Marketing</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.aiMarketing.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-            How and why brands grow? Maximize your potential, empower your
-            brand, optimize your resources, and expand your reach to achieve
-            market leadership.
+            {t('nav.megaMenu.aiMarketing.description')}
           </p>
         </Link>
         <Link
           href="/expertise/branding"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">Branding</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.branding.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-            How and why brands grow? Maximize your potential, empower your
-            brand, optimize your resources, and expand your reach to achieve
-            market leadership.
+            {t('nav.megaMenu.branding.description')}
           </p>
         </Link>
         <Link
           href="/expertise/social-media-management"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">Social Media</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.socialMedia.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-            Our elite team of Social Media Management specialists can help you
-            realize the full potential of your online presence.
+            {t('nav.megaMenu.socialMedia.description')}
           </p>
         </Link>
         <Link
           href="/expertise/website-solutions"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">Website Solutions</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.websiteSolutions.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-            We innovate in web development, creating pioneering online
-            experiences that makes your brand special.
+            {t('nav.megaMenu.websiteSolutions.description')}
           </p>
         </Link>
         <Link
           href="/expertise/web-animation"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">Web Animation</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.webAnimation.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-          Web animation adds visual interest and interactivity, making websites more engaging and intuitive.
+            {t('nav.megaMenu.webAnimation.description')}
           </p>
         </Link>
         <Link
           href="/expertise/seo-solutions"
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
-          <h3 className="mb-1 font-semibold text-secondaryColor">SEO Solutions</h3>
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.seoSolutions.title')}
+          </h3>
           <p className="text-xs text-whiteColor">
-            {
-              "Maximize visibility with expert SEO strategies. Don't let valuable content go unnoticed; our expertise ensures wider audience reach effortlessly."
-            }
+            {t('nav.megaMenu.seoSolutions.description')}
           </p>
         </Link>
         <Link
@@ -243,12 +250,10 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">
-            Google Marketing
+            {t('nav.megaMenu.googleMarketing.title')}
           </h3>
           <p className="text-xs text-whiteColor">
-            {
-              "ClickSalesMedia takes advantage of Google's opportunities. Improve your online influence, boost conversions, and achieve your brand's maximum potential."
-            }
+            {t('nav.megaMenu.googleMarketing.description')}
           </p>
         </Link>
         <Link
@@ -256,12 +261,10 @@ const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
           className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
         >
           <h3 className="mb-1 font-semibold text-secondaryColor">
-            Business to Business
+            {t('nav.megaMenu.b2b.title')}
           </h3>
           <p className="text-xs text-whiteColor">
-            Achieve B2B success with Click Sales Media. Our strategic marketing
-            strategies help you simplify processes, drive growth, and strengthen
-            your industry position.
+            {t('nav.megaMenu.b2b.description')}
           </p>
         </Link>
       </div>
@@ -335,44 +338,77 @@ const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({
 };
 
 const MobileMenu = () => {
-  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mobileLinks = [
+    { href: "/", text: t('nav.home') },
+    { href: "/about", text: t('nav.about') },
+    { href: "/expertise", text: t('nav.expertise'), component: Expertise },
+    { href: "/our-work", text: t('nav.ourWork') },
+    { href: "/blog", text: t('nav.blog') },
+    { href: "/contact", text: t('nav.contact') },
+  ];
+
   return (
-    <div className="block lg:hidden">
-      <button onClick={() => setOpen(true)} className="block text-3xl">
+    <div className="lg:hidden">
+      <button
+        onClick={() => setMenuOpen(true)}
+        className="rounded-full p-2 text-2xl hover:bg-white/10"
+      >
         <FiMenu />
       </button>
+
       <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ x: "100vw" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100vw" }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed left-0 top-0 flex h-screen w-full flex-col bg-primaryColor"
-          >
-            <div className="flex items-center justify-between p-6 bg-[#222222]">
-              <Logo />
-              <button onClick={() => setOpen(false)}>
-                <FiX className="text-3xl text-secondaryColor" />
-              </button>
-            </div>
-            <div className="h-screen overflow-y-scroll bg-primaryColor p-6 NavColorMobileText">
-              {LINKS.map((l) => (
-                <MobileMenuLink
-                  key={l.text}
-                  href={l.href}
-                  FoldContent={l.component}
-                  setMenuOpen={setOpen}
-                  className="NavColorMobileText"
+        {menuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="fixed inset-y-0 right-0 z-50 w-[80%] bg-primaryColor p-6"
+            >
+              <div className="flex items-center justify-between">
+                <Logo />
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-full p-2 text-2xl hover:bg-white/10"
                 >
-                  {l.text}
-                </MobileMenuLink>
-              ))}
-            </div>
-            <div className="flex justify-end bg-primaryColor p-6">
-              <CTAs />
-            </div>
-          </motion.nav>
+                  <FiX />
+                </button>
+              </div>
+              <div className="mt-6 flex flex-col gap-4">
+                <div className="flex justify-center mb-2">
+                  <LanguageSwitcher />
+                </div>
+                {mobileLinks.map((l) => (
+                  <MobileMenuLink
+                    key={l.text}
+                    href={l.href}
+                    FoldContent={l.component}
+                    setMenuOpen={setMenuOpen}
+                  >
+                    {l.text}
+                  </MobileMenuLink>
+                ))}
+                <div className="mt-4">
+                  <Link href="/schedule-a-meeting">
+                    <button className="flex w-full items-center justify-center gap-2 rounded-xs border-2 border-secondaryColor px-4 py-2 font-semibold text-secondaryColor transition-colors hover:bg-white hover:text-black">
+                      <GrSchedule />
+                      <span>{t('nav.scheduleAMeeting')}</span>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>
@@ -392,8 +428,8 @@ const LINKS = [
     component: Expertise,
   },
   {
-    text: "Case Studies",
-    href: "/case-studies",
+    text: "Our Work",
+    href: "/our-work",
   },
   {
     text: "Blog",

@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 
 const LoadingScreen: React.FC<{ onLoaded: () => void }> = ({ onLoaded }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setTimeout(() => {
       setIsVisible(false);
       onLoaded(); // Notify the parent component that loading is finished
@@ -14,6 +16,10 @@ const LoadingScreen: React.FC<{ onLoaded: () => void }> = ({ onLoaded }) => {
     return () => clearTimeout(timer);
   }, [onLoaded]);
 
+  // Don't render anything during SSR
+  if (!isMounted) return null;
+  
+  // Don't render if not visible
   if (!isVisible) return null;
 
   return (

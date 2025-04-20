@@ -1,18 +1,26 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
+import { useTranslation } from '@/app/hooks/useTranslation'
+import { useLanguage } from '@/app/providers/LanguageProvider'
 
 function WebSolution() {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  const textDirection = language === 'ar' ? 'rtl' : 'ltr';
+  const textAlign = language === 'ar' ? 'text-right' : 'text-left';
+
   return (
     <div className="bg-primaryColor pb-10">
   <div
     aria-hidden="true"
     className="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-20"
   >
-    <div className="blur-[106px] h-56 bg-gradient-to-br  to-primaryColor from-[#222222]" />
-    <div className="blur-[106px] h-32 bg-gradient-to-r from-[#222222]  to-primaryColor" />
+    <div className="blur-[106px] h-56 bg-gradient-to-br to-primaryColor from-[#222222]" />
+    <div className="blur-[106px] h-32 bg-gradient-to-r from-[#222222] to-primaryColor" />
   </div>
   <div className="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-    <div className="md:w-2/3 lg:w-1/2 mt-12 text-gray-100">
+    <div className={`md:w-2/3 lg:w-1/2 mt-12 text-gray-100 ${textAlign}`} dir={textDirection}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -26,15 +34,15 @@ function WebSolution() {
         />
       </svg>
       <h2 className="my-8 text-2xl font-bold text-white md:text-4xl">
-        Our Work
+        {t('webSolutions.title')}
       </h2>
       <p className="text-gray-300">
-        We have built many products and some of them are below
+        {t('webSolutions.description')}
       </p>
     </div>
-    <div className="mt-16 grid divide-x divide-y  divide-gray-700 overflow-hidden  rounded-3xl border text-gray-600 border-gray-700 sm:grid-cols-2 lg:grid-cols-4  lg:divide-y-0 xl:grid-cols-4">
-      <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl  hover:shadow-gray-600/10">
-        <div className="relative space-y-8 py-12 p-8">
+    <div className="mt-16 grid divide-x divide-y divide-gray-700 overflow-hidden rounded-3xl border text-gray-600 border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
+      <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+        <div className={`relative space-y-8 py-12 p-8 ${textAlign}`} dir={textDirection}>
           <Image
             alt=''
             src="https://www.svgrepo.com/show/164986/logo.svg"
@@ -46,16 +54,16 @@ function WebSolution() {
           />
           <div className="space-y-2">
             <h5 className="text-xl font-semibold text-white transition group-hover:text-secondary">
-              Xyz.com
+              {t('webSolutions.projects.project1.name')}
             </h5>
             <p className="text-gray-300">
-              Platform to convert Domains into Content websites.
+              {t('webSolutions.projects.project1.description')}
             </p>
           </div>
         </div>
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-        <div className="relative space-y-8 py-12 p-8">
+        <div className={`relative space-y-8 py-12 p-8 ${textAlign}`} dir={textDirection}>
           <Image
             alt=''
             src="https://www.svgrepo.com/show/120853/logo.svg"
@@ -67,16 +75,16 @@ function WebSolution() {
           />
           <div className="space-y-2">
             <h5 className="text-xl font-semibold text-white transition group-hover:text-secondary">
-              ABC.com
+              {t('webSolutions.projects.project2.name')}
             </h5>
             <p className="text-gray-300">
-              Platform to create dynamic widgets for websites.
+              {t('webSolutions.projects.project2.description')}
             </p>
           </div>
         </div>
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-        <div className="relative space-y-8 py-12 p-8">
+        <div className={`relative space-y-8 py-12 p-8 ${textAlign}`} dir={textDirection}>
           <Image
             alt=''
             src="https://www.svgrepo.com/show/120852/logo.svg"
@@ -88,16 +96,16 @@ function WebSolution() {
           />
           <div className="space-y-2">
             <h5 className="text-xl font-semibold text-white transition group-hover:text-secondary">
-              ASD.com
+              {t('webSolutions.projects.project3.name')}
             </h5>
             <p className="text-gray-300">
-              API SaaS Platform that provides API Suit to help you ship fast.
+              {t('webSolutions.projects.project3.description')}
             </p>
           </div>
         </div>
       </div>
       <div className="group relative bg-primaryColor transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
-        <div className="relative space-y-8 py-12 p-8">
+        <div className={`relative space-y-8 py-12 p-8 ${textAlign}`} dir={textDirection}>
           <Image
             alt=''
             src="https://www.svgrepo.com/show/120850/logo.svg"
@@ -109,10 +117,10 @@ function WebSolution() {
           />
           <div className="space-y-2">
             <h5 className="text-xl font-semibold text-white transition group-hover:text-secondary">
-              TMK.co
+              {t('webSolutions.projects.project4.name')}
             </h5>
             <p className="text-gray-300">
-              Chrome Extension that lets you add ChatGPT on any website
+              {t('webSolutions.projects.project4.description')}
             </p>
           </div>
         </div>

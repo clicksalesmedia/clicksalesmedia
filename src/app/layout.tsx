@@ -1,28 +1,85 @@
 // components/RootLayout.tsx
 import Script from 'next/script';
-import { Inter } from 'next/font/google';
+import { Noto_Sans_Arabic, Noto_Kufi_Arabic, Inter } from 'next/font/google';
 import './globals.css';
 import React from 'react';
 import AppContainer from './components/AppContainer';
+import { NextAuthProvider } from '@/app/providers';
+import { LanguageProvider } from '@/app/providers/LanguageProvider';
+import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
+const notoSansArabic = Noto_Sans_Arabic({ subsets: ['arabic'] });
+const notoKufiArabic = Noto_Kufi_Arabic({ subsets: ['arabic'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
-    default: 'Clicksalesmedia: AI Perfomance Marketing Agency',
-    template: '%s - clicksalesmedia Dubai Marketing Agency',
+    default: 'Clicksalesmedia: AI Performance Marketing Agency Dubai',
+    template: '%s | Clicksalesmedia Dubai Marketing Agency',
   },
   description: "Welcome to Clicksalesmedia, the premier AI performance marketing agency dedicated to elevating your brand's online presence. We specialize in leveraging cutting-edge artificial intelligence and machine learning technologies to deliver unparalleled results for your business. Our expert team crafts data-driven strategies that optimize your digital marketing campaigns, ensuring maximum ROI and growth.",
-  keywords: 'Marketing agency, AI Marketing agency, Web solutions, business to business, performance marketing',
+  keywords: 'Marketing agency Dubai, AI Marketing agency Dubai, Web solutions Dubai, business to business marketing, performance marketing Dubai, digital marketing agency UAE',
+  alternates: {
+    languages: {
+      'en': 'https://www.clicksalesmedia.com/en',
+      'ar': 'https://www.clicksalesmedia.com/ar'
+    },
+    canonical: 'https://www.clicksalesmedia.com'
+  },
+  metadataBase: new URL('https://www.clicksalesmedia.com'),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: 'Clicksalesmedia: AI Performance Marketing Agency Dubai',
+    description: "Elevate your brand's online presence with Clicksalesmedia, the premier AI performance marketing agency in Dubai",
+    url: 'https://www.clicksalesmedia.com',
+    siteName: 'Clicksalesmedia',
+    images: [
+      {
+        url: 'https://www.clicksalesmedia.com/clicksalesmedialogo.png',
+        width: 800,
+        height: 600,
+        alt: 'Clicksalesmedia Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clicksalesmedia: AI Performance Marketing Agency Dubai',
+    description: "AI-powered marketing strategies for maximum ROI and business growth in Dubai",
+    creator: '@clicksalesmedia',
+    images: ['https://www.clicksalesmedia.com/clicksalesmedialogo.png'],
+  },
+  verification: {
+    google: 'verification-code', // Replace with your Google verification code
+  },
 };
 
 interface RootLayoutProps {
   children: React.ReactNode;
+  params: {
+    locale: string;
+  };
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
+const RootLayout: React.FC<RootLayoutProps> = ({ children, params }) => {
+  // Determine direction and language based on locale parameter
+  const isRtl = params?.locale === 'ar';
+  const currentLang = params?.locale || 'ar';
+  
   return (
-    <html lang='en'>
+    <html lang={currentLang} dir={isRtl ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
         <Script
           id='gtm-script'
@@ -33,22 +90,27 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-WBLD4686');`, // Replace GTM-WBLD4686 with your GTM ID
+              })(window,document,'script','dataLayer','GTM-WBLD4686');`,
           }}
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body>
+      <body className={`${inter.className} ${notoSansArabic.className} ${notoKufiArabic.className}`}>
         <noscript>
           <iframe
-            src='https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686' // Replace GTM-WBLD4686 with your GTM ID
+            src='https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686'
             height='0'
             width='0'
             style={{ display: 'none', visibility: 'hidden' }}
           ></iframe>
         </noscript>
-        <AppContainer>
-          {children}
-        </AppContainer>
+        <NextAuthProvider>
+          <LanguageProvider>
+          <AppContainer>
+            {children}
+          </AppContainer>
+          </LanguageProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

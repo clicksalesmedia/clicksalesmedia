@@ -2,6 +2,9 @@ import AiServices from '@/app/components/expertise/ai-marketing/AiServices'
 import FAQ from '@/app/components/expertise/ai-marketing/Faq'
 import Grid from '@/app/components/expertise/ai-marketing/grid'
 import Hero from '@/app/components/expertise/ai-marketing/hero'
+import Swap from '@/app/components/expertise/ai-marketing/SwapColumnFeatures'
+import AiMarketingTitle from '@/app/components/expertise/ai-marketing/AiMarketingTitle'
+import Cta from '@/app/ui/Cta'
 import { Metadata } from 'next'
 import React from 'react'
 
@@ -15,8 +18,12 @@ function page() {
   return (
     <div>
       <Hero />
+      <AiMarketingTitle />
+      <Swap />
       <Grid />
       <AiServices />
+      <FAQ />
+      <Cta />
     </div>
   )
 }

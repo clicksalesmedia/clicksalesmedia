@@ -1,12 +1,19 @@
 // components/AppContainer.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Footer from './Footer/Footer';
 import LoadingScreen from './LoadingScreen';
 import Navbar from './Header/Navbar';
-import Footer from './Footer/Footer';
-import AnimatedCursor from 'react-animated-cursor';
 import ScrollToTopButton from '../utils/ScrollToTopButton';
+import dynamic from 'next/dynamic';
+
+// Dynamically import AnimatedCursor with no SSR
+const AnimatedCursor = dynamic(
+  () => import('react-animated-cursor').then((mod) => mod.default),
+  { ssr: false }
+);
 
 interface AppContainerProps {
   children: React.ReactNode;
@@ -14,25 +21,32 @@ interface AppContainerProps {
 
 const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const pathname = usePathname();
+  const isDashboard = pathname?.startsWith('/dashboard');
 
   const handleLoaded = () => {
     setIsLoaded(true);
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      handleLoaded();
-    }, 2000);
+    setIsMounted(true);
+    if (pathname) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [pathname]);
 
-    return () => clearTimeout(timer);
-  }, []);
+  // Only render client-side components after mounting
+  if (!isMounted) {
+    return <div className="min-h-screen">{children}</div>;
+  }
 
   return (
-    <>
+    <div>
       {!isLoaded && <LoadingScreen onLoaded={handleLoaded} />}
       {isLoaded && (
         <>
-          <Navbar />
+          {!isDashboard && <Navbar />}
           <AnimatedCursor
             innerSize={8}
             outerSize={10}
@@ -55,11 +69,15 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
             ]}
           />
           {children}
-          <ScrollToTopButton />
-          <Footer />
+          {!isDashboard && (
+            <>
+              <ScrollToTopButton />
+              <Footer />
+            </>
+          )}
         </>
       )}
-    </>
+    </div>
   );
 };
 

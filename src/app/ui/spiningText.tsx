@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useTranslation } from '@/app/hooks/useTranslation';
+import { useLanguage } from '@/app/providers/LanguageProvider';
 
 interface BoxProps {
     front: string;
@@ -8,6 +10,8 @@ interface BoxProps {
   }
 
 const SpiningText = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="grid place-content-center px-4 py-8">
       <SpinningBoxText />
@@ -16,14 +20,26 @@ const SpiningText = () => {
 };
 
 const SpinningBoxText = () => {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  const isRTL = language === 'ar';
+  
   return (
     <span className="flex flex-col items-center justify-center gap-6 text-4xl font-semibold text-white md:flex-row md:gap-4">
-    Why Clicksalesmedia <Box front="AI Marketing" bottom="ROI-Focused" back="Innovation" top="Growth" />
+      {t('spinningText.why')} <Box 
+        front={t('spinningText.aiMarketing')} 
+        bottom={t('spinningText.roiFocused')} 
+        back={t('spinningText.innovation')} 
+        top={t('spinningText.growth')} 
+      />
     </span>
   );
 };
 
 const Box: React.FC<BoxProps> = ({ front, bottom, back, top }) => {
+  const { language } = useLanguage();
+  const isRTL = language === 'ar';
+  
   return (
     <motion.span
       className="relative h-20 w-72 font-black uppercase"

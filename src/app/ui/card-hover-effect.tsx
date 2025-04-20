@@ -16,6 +16,7 @@ const getIcon = (iconName: any) => {
 const HoverEffect = ({
   items,
   className,
+  isRTL = false,
 }: {
   items: {
     title: string;
@@ -24,6 +25,7 @@ const HoverEffect = ({
     icon: string;
   }[];
   className?: string;
+  isRTL?: boolean;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -38,7 +40,7 @@ const HoverEffect = ({
       {items.map((item, idx) => (
         <Link
           href={item?.link}
-          key={item?.link}
+          key={`${item?.link}-${idx}`}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -60,9 +62,9 @@ const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card icon={item.icon}>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
+          <Card icon={item.icon} isRTL={isRTL}>
+            <CardTitle isRTL={isRTL}>{item.title}</CardTitle>
+            <CardDescription isRTL={isRTL}>{item.description}</CardDescription>
           </Card>
         </Link>
       ))}
@@ -75,14 +77,16 @@ export const Card = ({
   className,
   children,
   icon,
+  isRTL = false,
 }: {
   className?: string;
   children: React.ReactNode;
   icon?: React.ReactNode;
+  isRTL?: boolean;
 }) => {
   return (
     <div className={cn("rounded-2xl h-full w-full p-4 overflow-hidden bg-[#222222] border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20", className)}>
-      <div className="flex items-start space-x-4">
+      <div className={`flex items-start ${isRTL ? 'space-x-reverse flex-row-reverse' : 'space-x-4'}`}>
         <div className="shrink-0">
           {icon && getIcon(icon)}
         </div>
@@ -96,12 +100,14 @@ export const Card = ({
 export const CardTitle = ({
   className,
   children,
+  isRTL = false,
 }: {
   className?: string;
   children: React.ReactNode;
+  isRTL?: boolean;
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", isRTL ? "text-right" : "", className)}>
       {children}
     </h4>
   );
@@ -109,14 +115,17 @@ export const CardTitle = ({
 export const CardDescription = ({
   className,
   children,
+  isRTL = false,
 }: {
   className?: string;
   children: React.ReactNode;
+  isRTL?: boolean;
 }) => {
   return (
     <p
       className={cn(
         "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
+        isRTL ? "text-right" : "",
         className
       )}
     >

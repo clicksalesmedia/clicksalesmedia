@@ -1,3 +1,7 @@
+'use client';
+
+import { useTranslation } from "@/app/hooks/useTranslation";
+
 // Defining an interface for the section structure
 interface Section {
   title: string;
@@ -16,65 +20,64 @@ export const sections: Sections = {
 
     //Home
   services: {
-      title: "Services Section Title",
-      description: "This is the description for the Services section.",
-      highlight: "for the About section.",
-      subTitle: "Testimonials"
+      title: "webPortfolio.title",
+      description: "webPortfolio.description",
+      highlight: "webPortfolio.highlight",
+      subTitle: "webPortfolio.subTitle"
   },
   about: {
-      title: "About Section Title",
-      description: "This is the description",
-      highlight: "for the About section.",
-      subTitle: "Testimonials"
+      title: "aboutSection.title",
+      description: "aboutSection.description",
+      highlight: "aboutSection.highlight",
+      subTitle: "aboutSection.subTitle"
   },
   // Add other sections following the same structure...
   // Example for brevity:
   features: {
-      subTitle: "OUR FEATURES",
-      title: "Marketing Solutions for",
-      highlight: "Your Business Needs.",
-      description: "Experience unparalleled premium quality with ClickSalesMedia. Elevate your expectations and discover a world of exclusive, top-tier marketing services."
+      subTitle: "feature.subTitle",
+      title: "feature.title",
+      highlight: "feature.highlight",
+      description: "feature.description"
   },
 
   // Expertise:
   //-Websolution:
   why: {
-    subTitle: "OUR FEATURES",
-    title: "Marketing Solutions for",
-    highlight: "Your Business Needs.",
-    description: "Experience unparalleled premium quality with ClickSalesMedia. Elevate your expectations and discover a world of exclusive, top-tier marketing services."
-},
-
-// Expertise:
-  //-seo:
-  seoServices: {
-    subTitle: "OUR FEATURES",
-    title: "Marketing Solutions for",
-    highlight: "Your Business Needs.",
-    description: ""
-},
-
-// B2B Industries
-
-B2bIndustries: {
-    title: "Comprehensive Performance Marketing Solutions ",
-    subTitle: "Industries",
-    description: "Customized Strategies to Meet Industry-Specific Demands ",
-    highlight: "for Diverse Industries",
+    subTitle: "webSolutions.why.subTitle",
+    title: "webSolutions.why.title",
+    highlight: "webSolutions.why.highlight",
+    description: "webSolutions.why.description"
   },
 
-//Schedule a meeting
+  // Expertise:
+  //-seo:
+  seoServices: {
+    subTitle: "seo.subTitle",
+    title: "seo.pageTitle",
+    highlight: "seo.highlight",
+    description: "seo.pageDescription"
+  },
 
-scheduleMeeting: {
-  subTitle: "Schedule a meeting",
-  title: "Schedule a free 30 Min",
-  highlight: "Consultation Meeting!",
-  description: "Book a free consultation to explore how we can help elevate your business and project with tailored marketing and sales strategies designed to boost your performance and drive success."
-},
+  // B2B Industries
+  B2bIndustries: {
+    title: "b2b.industries.title",
+    subTitle: "b2b.industries.subTitle",
+    description: "b2b.industries.description",
+    highlight: "b2b.industries.highlight"
+  },
+
+  //Schedule a meeting
+  scheduleMeeting: {
+    subTitle: "meeting.subTitle",
+    title: "meeting.title",
+    highlight: "meeting.highlight",
+    description: "meeting.description"
+  }
 };
 
 // TypeScript component with typed props
 const Data: React.FC<{ sectionName: string }> = ({ sectionName }) => {
+  const { t } = useTranslation();
   const sectionData = sections[sectionName];
 
   if (!sectionData) {
@@ -83,15 +86,20 @@ const Data: React.FC<{ sectionName: string }> = ({ sectionName }) => {
 
   const { title, subTitle, description, highlight } = sectionData;
 
+  // Type assertion to ensure TypeScript compatibility with the t function
+  type TranslationKey = Parameters<typeof t>[0];
+
   return (
       <>
           <div className="flex flex-col justify-center text-center  mx-auto md:max-w-3xl space-y-5">
-              <span className="rounded-lg px-2.5 py-1 text-xs w-max mx-auto font-semibold tracking-wide text-whiteColor bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">{subTitle}</span>
+              <span className="rounded-lg px-2.5 py-1 text-xs w-max mx-auto font-semibold tracking-wide text-whiteColor bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">
+                {t(subTitle as TranslationKey)}
+              </span>
               <h2 className="font-semibold font-cormorant text-3xl sm:text-4xl lg:text-5xl text-whiteColor dark:text-white">
-                  {title} <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">{highlight}</span>
+                  {t(title as TranslationKey)} <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondaryColor from-20% via-[#AD8253] via-30% to-[#8C5C28]">{t(highlight as TranslationKey)}</span>
               </h2>
               <p className="text-whiteColor dark:text-gray-300">
-                  {description}
+                  {t(description as TranslationKey)}
               </p>
           </div>
       </>

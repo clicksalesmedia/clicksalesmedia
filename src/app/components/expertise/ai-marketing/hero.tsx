@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import ContactForm from "./ContactForm";
+import { useTranslation } from "@/app/hooks/useTranslation";
+import { useLanguage } from "@/app/providers/LanguageProvider";
 
 const Hero: React.FC = () => {
   return (
@@ -22,8 +25,21 @@ type LinkProps = {
 };
 
 const Content: React.FC = () => {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  const isRTL = language === 'ar';
+
+  // Debug translations
+  useEffect(() => {
+    if (language === 'ar') {
+      console.log('Hero translations check:');
+      console.log('Title:', t('expertise.aiMarketing.hero.title' as any));
+      console.log('Subtitle:', t('expertise.aiMarketing.hero.subtitle' as any));
+    }
+  }, [language, t]);
+
   return (
-    <div className="relative z-20 mx-auto flex max-w-6xl flex-col items-center justify-center px-4 py-24 md:px-8 md:py-36">
+    <div className={`relative z-20 mx-auto flex max-w-6xl flex-col items-center justify-center px-4 py-24 md:px-8 md:py-36 ${isRTL ? 'rtl' : 'ltr'}`}>
       <motion.div
         initial={{
           y: 25,
@@ -39,7 +55,7 @@ const Content: React.FC = () => {
         }}
         className="relative"
       >
-        <GlowingChip>Elevate. Automate. Dominate 🤖</GlowingChip>
+        <GlowingChip>{t('expertise.aiMarketing.hero.subtitle' as any)}</GlowingChip>
       </motion.div>
       <motion.h1
         initial={{
@@ -57,7 +73,7 @@ const Content: React.FC = () => {
         }}
         className="mb-3 text-center text-3xl font-bold leading-tight text-zinc-50 sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight lg:text-7xl lg:leading-tight"
       >
-        Transform Your Marketing with AI-Driven Success
+        {t('expertise.aiMarketing.hero.title' as any)}
       </motion.h1>
       <motion.p
         initial={{
@@ -75,7 +91,7 @@ const Content: React.FC = () => {
         }}
         className="mb-9 max-w-2xl text-center text-base leading-relaxed text-zinc-400 sm:text-lg md:text-lg md:leading-relaxed"
       >
-        Our AI marketing solutions revolutionize your business by optimizing every step of your marketing and sales journey. Experience seamless processes, enhanced performance, and skyrocketing ROI. Let us guide you to unprecedented growth and efficiency.
+        {t('expertise.aiMarketing.hero.description' as any)}
       </motion.p>
       <motion.div
         initial={{
@@ -91,14 +107,15 @@ const Content: React.FC = () => {
           delay: 0.75,
           ease: "easeInOut",
         }}
-        className="flex flex-col items-center gap-6 sm:flex-row"
+        className={`flex flex-col items-center gap-6 sm:flex-row ${isRTL ? 'sm:flex-row-reverse' : ''}`}
       >
         <SplashButton className="flex items-center gap-2">
-          {"Let's Talk"}
-          <FiArrowRight />
+          {t('expertise.aiMarketing.hero.letsTalk' as any)}
+          {!isRTL && <FiArrowRight />}
+          {isRTL && <FiArrowRight className="transform rotate-180" />}
         </SplashButton>
         <GhostButton className="rounded-md px-4 py-2 text-zinc-100">
-          Schedule a call
+          {t('expertise.aiMarketing.hero.scheduleCall' as any)}
         </GhostButton>
       </motion.div>
     </div>

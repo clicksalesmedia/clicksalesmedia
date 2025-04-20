@@ -9,28 +9,54 @@ import Testimonial from "./components/Home/Testimonial";
 import Vision from "./components/Home/Vision";
 import { Metadata } from "next";
 import NewHero from "./components/Home/NewHero";
+import AIAgents from "./components/Home/AIAgents";
+import FeaturedWork from "./components/Home/FeaturedWork";
+import { OrganizationSchema, WebsiteSchema, LocalBusinessSchema } from "./components/JsonLdSchema";
 
 export const metadata: Metadata = {
-  title: 'Clicksalesmedia: AI Perfomance Marketing Agency',
-  description: "Welcome to Clicksalesmedia, the premier AI performance marketing agency dedicated to elevating your brand's online presence. We specialize in leveraging cutting-edge artificial intelligence and machine learning technologies to deliver unparalleled results for your business. Our expert team crafts data-driven strategies that optimize your digital marketing campaigns, ensuring maximum ROI and growth.",
-  keywords:'Performance marketing agency, digital marketing agency, performance marketing agency'
+  title: 'Clicksalesmedia: AI Performance Marketing Agency in Dubai',
+  description: "Welcome to Clicksalesmedia, the premier AI performance marketing agency dedicated to elevating your brand's online presence. We specialize in leveraging cutting-edge artificial intelligence and machine learning technologies to deliver unparalleled results for your business.",
+  keywords: 'Performance marketing agency Dubai, AI marketing agency Dubai, digital marketing agency Dubai, SEO agency Dubai, social media marketing Dubai, PPC advertising Dubai',
+  openGraph: {
+    title: 'Clicksalesmedia: AI Performance Marketing Agency in Dubai',
+    description: "Elevate your brand with cutting-edge AI-driven marketing strategies. We deliver data-driven campaigns that optimize ROI and fuel business growth.",
+    images: [
+      {
+        url: 'https://www.clicksalesmedia.com/clicksalesmedia-marketing-agency.png',
+        width: 1200,
+        height: 630,
+        alt: 'Clicksalesmedia - AI Marketing Agency Dubai',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clicksalesmedia: AI Performance Marketing Agency',
+    description: "AI-powered marketing strategies for maximum ROI and business growth",
+    images: ['https://www.clicksalesmedia.com/clicksalesmedia-marketing-agency.png'],
+  }
 }
 
 export default function Home() {
   
   return (
     <> 
-    <main>
-      <NewHero />
-      <LogoClient />
-      <About />
-      <FitText />
-      <Feature />
-      <Testimonial />
-      <Vision />
-      <Blog />
-      <Cta />    
-    </main>
+      <OrganizationSchema />
+      <WebsiteSchema />
+      <LocalBusinessSchema />
+      <main>
+        <NewHero />
+        <LogoClient />
+        <About />
+        <AIAgents />
+        <FitText />
+        <Feature />
+        <FeaturedWork />
+        <Testimonial />
+        <Vision />
+        <Blog />
+        <Cta />    
+      </main>
     </>
   );
 }

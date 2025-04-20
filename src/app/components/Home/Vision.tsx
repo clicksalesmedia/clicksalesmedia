@@ -1,7 +1,14 @@
 'use client'
 import Image from "next/image"
 import Data from "@/app/ui/data";
+import { useTranslation } from '@/app/hooks/useTranslation';
+import { useLanguage } from '@/app/providers/LanguageProvider';
+
 function Vision() {
+  const { t } = useTranslation();
+  const { language } = useLanguage();
+  const isRTL = language === 'ar';
+
   return (
     <section className="py-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">
@@ -18,9 +25,9 @@ function Vision() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                             </svg>
                         </span>
-                        <h2 className="font-semibold text-xl text-secondaryColor dark:text-white">OUR MISSION</h2>
-                        <p>
-                        To provide unparalleled customer satisfaction and deliver exceptional results that leave a lasting impression.
+                        <h2 className={`font-semibold text-xl text-secondaryColor dark:text-white ${isRTL ? 'text-right' : ''}`}>{t('vision.mission.title')}</h2>
+                        <p className={isRTL ? 'text-right' : ''}>
+                        {t('vision.mission.description')}
                         </p>
                     </div>
                     
@@ -30,9 +37,9 @@ function Vision() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                             </svg>
                         </span>
-                        <h2 className="font-semibold text-xl text-secondaryColor dark:text-white">OUR VISION</h2>
-                        <p>
-                        To revolutionize the business landscape by fostering prosperity, purpose, and profound connections for all stakeholders, driven by measurable success and unwavering dedication.
+                        <h2 className={`font-semibold text-xl text-secondaryColor dark:text-white ${isRTL ? 'text-right' : ''}`}>{t('vision.vision.title')}</h2>
+                        <p className={isRTL ? 'text-right' : ''}>
+                        {t('vision.vision.description')}
                         </p>
                     </div>
 
@@ -42,9 +49,9 @@ function Vision() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                             </svg>
                         </span>
-                        <h2 className="font-semibold text-xl text-secondaryColor dark:text-white">OUR VALUES</h2>
-                        <p>
-                        We prioritize transparency, teamwork, and creativity to ensure the best outcomes for all our clients.
+                        <h2 className={`font-semibold text-xl text-secondaryColor dark:text-white ${isRTL ? 'text-right' : ''}`}>{t('vision.values.title')}</h2>
+                        <p className={isRTL ? 'text-right' : ''}>
+                        {t('vision.values.description')}
                         </p>
                     </div>
 
@@ -54,9 +61,9 @@ function Vision() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                             </svg>
                         </span>
-                        <h2 className="font-semibold text-xl text-secondaryColor dark:text-white">OUR GOALS</h2>
-                        <p>
-                        Invest in ongoing training and development programs for both internal teams and clients, focusing on enhancing skills in areas such as digital marketing, sales techniques, and cultural sensitivity.
+                        <h2 className={`font-semibold text-xl text-secondaryColor dark:text-white ${isRTL ? 'text-right' : ''}`}>{t('vision.goals.title')}</h2>
+                        <p className={isRTL ? 'text-right' : ''}>
+                        {t('vision.goals.description')}
                         </p>
                     </div>
                 </div>

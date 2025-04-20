@@ -1,0 +1,883 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "expertise": "Expertise",
+    "ourWork": "Our Work",
+    "caseStudies": "Case Studies",
+    "blog": "Blog",
+    "contact": "Contact",
+    "scheduleAMeeting": "Schedule a Meeting",
+    "megaMenu": {
+      "aiMarketing": {
+        "title": "AI Marketing",
+        "description": "End‑to‑end AI performance marketing that scales revenue across Search, Social, Display and CRM for GCC brands."
+      },
+      "branding": {
+        "title": "Branding",
+        "description": "How and why brands grow? Maximize your potential, empower your brand, optimize your resources, and expand your reach to achieve market leadership."
+      },
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Our elite team of Social Media Management specialists can help you realize the full potential of your online presence."
+      },
+      "websiteSolutions": {
+        "title": "Website Solutions",
+        "description": "We innovate in web development, creating pioneering online experiences that makes your brand special."
+      },
+      "webAnimation": {
+        "title": "Web Animation",
+        "description": "Web animation adds visual interest and interactivity, making websites more engaging and intuitive."
+      },
+      "seoSolutions": {
+        "title": "SEO Solutions",
+        "description": "Rank #1 on Google KSA & UAE with technical, on‑page and Arabic keyword optimisation built for Gulf audiences."
+      },
+      "googleMarketing": {
+        "title": "Google Marketing",
+        "description": "Convert high‑intent searches into sales with Smart Bidding, Performance Max and Arabic ad‑copy engineered for Gulf markets."
+      },
+      "b2b": {
+        "title": "Business to Business",
+        "description": "Achieve B2B success with Click Sales Media. Our strategic marketing strategies help you simplify processes, drive growth, and strengthen your industry position."
+      }
+    }
+  },
+  "common": {
+    "switchLanguage": "العربية",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "transformTraffic": "Transform Your Traffic Today!"
+  },
+  "cta": {
+    "title": {
+      "part1": "Amplify Your Impact",
+      "highlight": "Across Every",
+      "part2": "Marketing Milestone"
+    },
+    "description": "Ready to capture more customers in Dubai, Abu Dhabi, Riyadh or Jeddah? Tell us your targets and our AI‑powered strategies will turn them into measurable profit.",
+    "buttonText": "Transform Your Traffic Today!"
+  },
+  "vision": {
+    "mission": {
+      "title": "OUR MISSION",
+      "description": "To provide unparalleled customer satisfaction and deliver exceptional results that leave a lasting impression."
+    },
+    "vision": {
+      "title": "OUR VISION",
+      "description": "To revolutionize the business landscape by fostering prosperity, purpose, and profound connections for all stakeholders, driven by measurable success and unwavering dedication."
+    },
+    "values": {
+      "title": "OUR VALUES",
+      "description": "We prioritize transparency, teamwork, and creativity to ensure the best outcomes for all our clients."
+    },
+    "goals": {
+      "title": "OUR GOALS",
+      "description": "Invest in ongoing training and development programs for both internal teams and clients, focusing on enhancing skills in areas such as digital marketing, sales techniques, and cultural sensitivity."
+    }
+  },
+  "spinningText": {
+    "why": "Why Clicksalesmedia",
+    "aiMarketing": "AI Marketing",
+    "roiFocused": "ROI-Focused",
+    "innovation": "Innovation",
+    "growth": "Growth"
+  },
+  "expertise": {
+    "title": "Our Expertise",
+    "description": "We build hyper‑targeted, ROI‑focused campaigns that speak the language of your Saudi and Emirati customers, leveraging AI models to predict demand and slash acquisition costs.",
+    "letsDiscuss": "Let's Discuss",
+    "aiMarketing": {
+      "title": "AI Marketing",
+      "description": "How and why brands grow? Maximize your potential, empower your brand, optimize your resources, and expand your reach to achieve market leadership.",
+      "hero": {
+        "title": "Transform Your Marketing with AI-Driven Success",
+        "subtitle": "Elevate. Automate. Dominate 🤖",
+        "description": "Our AI marketing solutions revolutionize your business by optimizing every step of your marketing and sales journey. Experience seamless processes, enhanced performance, and skyrocketing ROI. Let us guide you to unprecedented growth and efficiency.",
+        "letsTalk": "Let's Talk",
+        "scheduleCall": "Schedule a call"
+      }
+    },
+    "branding": {
+      "title": "Branding",
+      "description": "How and why brands grow? Maximize your potential, empower your brand, optimize your resources, and expand your reach to achieve market leadership."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "AI Performance Marketing Agency — Dubai & Riyadh",
+      "subtitle": "Data‑driven growth for ambitious brands across the UAE and Saudi Arabia."
+    },
+    "about": {
+      "title": "Unmatched ROI with",
+      "subtitle": "AI-Driven Marketing",
+      "description": "ClickSalesMedia is the GCC’s specialist AI Performance Marketing agency. Head‑quartered in Dubai with boots on the ground in Riyadh, we turn data into revenue by pairing proprietary AI with local market insight. From Arabic‑first creatives to laser‑targeted Google & Meta campaigns, every riyal and dirham is spent for maximum ROAS.",
+      "partners": {
+        "google": "Google Partner",
+        "meta": "Meta Partner",
+        "hubspot": "Hubspot Partner",
+        "semrush": "Semrush Partner"
+      },
+      "images": {
+        "dubaiBusiness": "Dubai Business District",
+        "businessPerformance": "Business Performance Growth"
+      }
+    },
+    "aiAgents": {
+      "title": "AI Agents",
+      "description": "We use the latest AI technologies to optimize your marketing campaigns and achieve the best results.",
+      "intelligentMarketing": {
+        "title": "Intelligent Marketing",
+        "description": "Leverage AI-powered insights to create targeted, data-driven marketing campaigns that deliver exceptional results."
+      },
+      "predictiveAnalytics": {
+        "title": "Predictive Analytics",
+        "description": "Harness the power of machine learning to forecast trends and make data-informed decisions for your business."
+      },
+      "personalization": {
+        "title": "AI Personalization",
+        "description": "Deliver tailored experiences to your audience through AI-driven content and recommendation systems."
+      },
+      "automation": {
+        "title": "Smart Automation",
+        "description": "Streamline your marketing operations with intelligent automation that saves time and improves efficiency."
+      }
+    },
+    "fitText": {
+      "title": "Custom Solutions",
+      "description": "We provide tailored solutions that fit your business needs and help you achieve your goals."
+    },
+    "feature": {
+      "title": "Our Features",
+      "description": "Marketing Solutions for Your Business Needs",
+      "marketingStrategy": {
+        "title": "Marketing Strategy",
+        "description": "Develop comprehensive marketing strategies tailored to your business objectives and target audience."
+      },
+      "contentCreation": {
+        "title": "Content Creation",
+        "description": "Create engaging, SEO-optimized content that resonates with your audience and drives conversions."
+      },
+      "socialMedia": {
+        "title": "Social Media Marketing",
+        "description": "Build and manage your brand presence across social media platforms to engage your target audience."
+      },
+      "emailMarketing": {
+        "title": "Email Marketing",
+        "description": "Design and execute targeted email campaigns that nurture leads and drive customer engagement."
+      },
+      "seoOptimization": {
+        "title": "SEO Optimization",
+        "description": "Improve your website's visibility in search engines and drive organic traffic to your business."
+      },
+      "ppcAdvertising": {
+        "title": "PPC Advertising",
+        "description": "Create and manage targeted paid advertising campaigns that deliver measurable results."
+      }
+    },
+    "featuredWork": {
+      "title": "Featured Work",
+      "description": "Discover how we helped our clients achieve success through our innovative marketing solutions."
+    },
+    "testimonial": {
+      "title": "What Our Clients Say",
+      "description": "Read about our clients' experiences and how we helped them achieve their goals."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "We strive to be the trusted partner in digital marketing, helping businesses achieve sustainable growth."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Discover the latest news and articles in the digital marketing world."
+    },
+    "cta": {
+      "title": "Start Your Business Growth Journey Today",
+      "description": "Get in touch to discuss how we can help you achieve your marketing goals.",
+      "button": "Book a Free Consultation"
+    }
+  },
+  "feature": {
+    "subTitle": "OUR FEATURES",
+    "title": "Marketing Solutions for",
+    "highlight": "Your Business Needs",
+    "description": "Experience unparalleled premium quality with ClickSalesMedia. Elevate your expectations and discover a world of exclusive, top-tier marketing services.",
+    "branding": {
+      "title": "Branding",
+      "description": "We simply need to highlight the brand value and establish your market position to foster long-term business growth, to cultivate maximum brand awareness, trust, and loyalty."
+    },
+    "socialMedia": {
+      "title": "Social Media Management",
+      "description": "We'll maintain fidelity to your brand's values and tone as we produce content that helps you engage with new audiences and stay connected with your existing customers."
+    },
+    "projectManagement": {
+      "title": "Efficient project management",
+      "description": "Optimize workflows, adhere to timelines, and accomplish objectives using our tailored system."
+    },
+    "b2bSuccess": {
+      "title": "Achieve success in the B2B sphere",
+      "description": "Streamline operations, fuel growth, and elevate industry standing with strategic marketing expertise."
+    }
+  },
+  "b2b": {
+    "industries": {
+      "title": "Comprehensive Performance Marketing Solutions",
+      "subTitle": "Industries",
+      "description": "Customized Strategies to Meet Industry-Specific Demands",
+      "highlight": "for Diverse Industries"
+    },
+    "features": {
+      "title": "Our B2B",
+      "highlight": "Services",
+      "description": "Expanding Your Business Capabilities with Our B2B Services",
+      "services": {
+        "branding": {
+          "title": "Branding",
+          "description": "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together."
+        },
+        "accountBasedMarketing": {
+          "title": "Account Based Marketing",
+          "description": "A technology company that builds economic infrastructure for the internet."
+        },
+        "leadGeneration": {
+          "title": "Lead Generation",
+          "description": "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices."
+        },
+        "strategy": {
+          "title": "Strategy",
+          "description": "A multinational technology company that specializes in Internet-related services and products."
+        },
+        "demandGeneration": {
+          "title": "Demand Generation",
+          "description": "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence."
+        },
+        "salesEnablement": {
+          "title": "Sales Enablement",
+          "description": "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services."
+        },
+        "contentManagement": {
+          "title": "Content Management",
+          "description": "A multinational technology company that specializes in Internet-related services and products."
+        },
+        "adsManagement": {
+          "title": "Ads Management",
+          "description": "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence."
+        },
+        "innovation": {
+          "title": "Innovation",
+          "description": "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services."
+        }
+      }
+    },
+    "services": {
+      "roiOptimization": {
+        "tag": "ROI Optimization",
+        "title": "We help you optimize your ROI",
+        "description": "The AI product utilizes advanced NLP algorithms to understand and interpret human language, enabling it to accurately process and analyze text-based inputs."
+      },
+      "ourSystem": {
+        "tag": "Our System",
+        "title": "Sentiment Analysis",
+        "description": "The product has built-in sentiment analysis capabilities, allowing it to determine the sentiment (positive, negative, or neutral) expressed in text or customer feedback."
+      },
+      "customersOptimization": {
+        "tag": "Customers Optimization",
+        "title": "We help you to convert your leads to contracts",
+        "description": "The AI product can generate human-like written content, summaries, or reports based on structured data or analysis results, significantly enhancing lead conversion processes."
+      }
+    },
+    "industriesList": {
+      "saas": {
+        "tag": "SAAS",
+        "title": "SaaS Solutions",
+        "description": "Drive innovation and scalability in your SaaS business. Our targeted digital strategies enhance user engagement and maximize subscription growth."
+      },
+      "realEstate": {
+        "tag": "Real estate",
+        "title": "Real Estate Performance Marketing",
+        "description": "Transform property listings into sales with our real estate marketing expertise. We provide powerful tools and strategies to attract buyers and sellers alike."
+      },
+      "education": {
+        "tag": "Education",
+        "title": "Education Digital Services",
+        "description": "Empower your educational institution with digital solutions that enhance learning and administration. Our strategies help you connect with students and improve educational outcomes."
+      },
+      "automotive": {
+        "tag": "Automotive",
+        "title": "Automotive Marketing Excellence",
+        "description": "Accelerate your automotive business with high-impact digital marketing strategies. From dealerships to manufacturers, we drive traffic and increase sales."
+      },
+      "construction": {
+        "tag": "Construction",
+        "title": "Construction Industry Growth",
+        "description": "Build a solid foundation for your construction business with our specialized marketing approaches that increase visibility and attract new projects."
+      },
+      "accreditation": {
+        "tag": "Accreditation",
+        "title": "Accreditation Success",
+        "description": "Enhance your accreditation processes with our tailored digital solutions. We help institutions manage standards and improve operational efficiencies."
+      },
+      "oilAndGas": {
+        "tag": "Oil & Gas",
+        "title": "Oil & Gas Performance Digital Strategy",
+        "description": "Fuel success in the oil and gas sector with our robust digital strategies. From exploration to distribution, we enhance visibility and operational efficiency."
+      },
+      "foodAndBeverage": {
+        "tag": "Food & Beverage",
+        "title": "Food & Beverage Marketing",
+        "description": "Whet the appetite of your target audience with our food and beverage marketing expertise. We create campaigns that increase brand loyalty and drive sales."
+      }
+    }
+  },
+  "meeting": {
+    "subTitle": "Schedule a meeting",
+    "title": "Schedule a free 30 Min",
+    "highlight": "Consultation Meeting!",
+    "description": "Book a free consultation to explore how we can help elevate your business and project with tailored marketing and sales strategies designed to boost your performance and drive success."
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "description": "Read about our clients' experiences and how we helped them achieve their goals.",
+    "clients": {
+      "drSamir": {
+        "name": "Dr Samir",
+        "title": "Founder of Inspeedglobal",
+        "info": "The ROI from the ad campaigns managed by clicksalesmedia has been incredible. They've mastered the art of targeting and optimizing our ads, resulting in a dramatic increase in quality leads."
+      },
+      "chefAbdesamad": {
+        "name": "Chef Abdesamad",
+        "title": "Owner of Lubinablanca Restaurant",
+        "info": "Since partnering with clicksalesmedia, our brand identity has transformed. Their creative team not only refined our logo and color scheme but also aligned our entire online presence to truly reflect our values and attract the right customers. It's been a game-changer!"
+      },
+      "drMohammedSaad": {
+        "name": "Dr.Mohammed Saad",
+        "title": "CEO of American Accreditation Association",
+        "info": "We needed a website that was not just aesthetically pleasing but also functionally robust. clicksalesmedia delivered beyond our expectations, creating a site that has significantly improved our user engagement and conversion rates."
+      },
+      "mrHicham": {
+        "name": "Mr. Hicham Bouliz",
+        "title": "Founder of Jurico",
+        "info": "Implementing a CRM solution with clicksalesmedia has revolutionized how we manage customer relationships. Their tailored approach ensures we're maximizing every customer interaction, which has boosted our sales significantly."
+      },
+      "saidHannour": {
+        "name": "Said Hannour",
+        "title": "Owner of Traiteur Hannour Alliance",
+        "info": "Every project with clicksalesmedia has been a breeze. Their project managers are exceptional—communicative, organized, and always a step ahead. It's made all the difference in meeting our marketing objectives on time."
+      },
+      "mmeSana": {
+        "name": "Mme. Sana",
+        "title": "Founder of Maevafashion",
+        "info": "Launching our online store with clicksalesmedia was a seamless experience. Their expertise in eCommerce optimization has not only enhanced our site's user experience but also improved our sales metrics dramatically."
+      },
+      "mrSaleh": {
+        "name": "Mr. Saleh Ghalayini",
+        "title": "Strategy Consultant at Tryjoynt",
+        "info": "The B2B strategies developed by clicksalesmedia have opened new doors for us in the industry. Their insights into partnership development have led to several lucrative contracts and a stronger market position."
+      }
+    }
+  },
+  "ceo": {
+    "title": "Elevating Brands Together",
+    "description": "With over a decade of expertise, ClickSalesMedia is your trusted marketing partner in Dubai. Our dedicated team ensures your business thrives, by providing constant assistance and reliability to clients throughout the GCC area.",
+    "contactUs": "Contact us",
+    "ceoAlt": "clicksalesmedia ceo",
+    "journeySuccess": {
+      "title": "Our Journey, Your Success",
+      "description": "A road that leads to digital success."
+    },
+    "impactCreators": {
+      "title": "Creators of Impact",
+      "description": "Create digital innovations, one strategy at a time."
+    },
+    "resultsDriven": {
+      "title": "Results-driven",
+      "description": "Results beyond expectations."
+    }
+  },
+  "team": {
+    "title": "OUR TALENTED TEAM",
+    "heading": "Meet the Minds Behind Your",
+    "headingHighlight": "Digital Success",
+    "description": "Our diverse team of experts combines creativity, technical expertise, and strategic thinking to deliver exceptional results for your business.",
+    "members": {
+      "rafif": {
+        "name": "Rafif Shaaban",
+        "role": "Co-founder"
+      },
+      "sara": {
+        "name": "Sara Hamza",
+        "role": "Account Manager"
+      },
+      "said": {
+        "name": "Said Jabouri",
+        "role": "Chief Marketing Officer"
+      },
+      "reem": {
+        "name": "Reem El-baba",
+        "role": "Head of Content Marketing"
+      },
+      "ibraheem": {
+        "name": "Ibraheem Rayaan",
+        "role": "Head of webmaster"
+      },
+      "zeina": {
+        "name": "Zeina Jadayel",
+        "role": "Design Director"
+      },
+      "moncef": {
+        "name": "Moncef Bennassar",
+        "role": "Head of Ads Management"
+      },
+      "ahmed": {
+        "name": "Ahmed Hassan",
+        "role": "Senior Digital Strategist"
+      },
+      "layla": {
+        "name": "Layla Mahmoud",
+        "role": "Content Creator"
+      },
+      "omar": {
+        "name": "Omar Khalil",
+        "role": "AI Specialist"
+      },
+      "nadia": {
+        "name": "Nadia Ali",
+        "role": "Social Media Manager"
+      },
+      "karim": {
+        "name": "Karim Saleh",
+        "role": "Video Production Lead"
+      },
+      "maya": {
+        "name": "Maya Zidan",
+        "role": "Client Success Manager"
+      },
+      "youssef": {
+        "name": "Youssef Amin",
+        "role": "PPC Specialist"
+      },
+      "fatima": {
+        "name": "Fatima Rahman",
+        "role": "Graphic Designer"
+      },
+      "ziad": {
+        "name": "Ziad Nour",
+        "role": "SEO Specialist"
+      }
+    }
+  },
+  "aboutHero": {
+    "title": "About Us",
+    "subtitle": "A marketing agency focused on",
+    "highlightedText": "Results",
+    "description": "We are an AI-driven digital marketing agency in Dubai, specializing in helping businesses reach their maximum potential through innovative and tailored marketing strategies. Our team of experienced specialists combines creativity and advanced technology to deliver marketing solutions that drive growth and enhance ROI.",
+    "foundedIn": "Founded In",
+    "year": "2017",
+    "happyClients": "Happy Clients",
+    "clientsCount": "300+",
+    "successfulProjects": "Successful Projects",
+    "projectsCount": "500+",
+    "values": "We prioritize integrity, innovation, and customer satisfaction."
+  },
+  "socialMediaSuccess": {
+    "headline": "social media success.",
+    "titlePrefix": "Your path for achieving ",
+    "description": "Organic content generates connection, while performance strategies provide results. If you want consistent social results, you need a system that handles everything, from paid media to strategy to big-picture goals, and more.",
+    "cta": "Convert Visitors Now!"
+  },
+  "webPortfolio": {
+    "title": "Services Section Title",
+    "description": "This is the description for the Services section.",
+    "highlight": "for the About section.",
+    "subTitle": "Our Services"
+  },
+  "aboutSection": {
+    "title": "About Section Title",
+    "description": "This is the description",
+    "highlight": "for the About section.",
+    "subTitle": "About Us"
+  },
+  "webSolutions": {
+    "title": "Our Work",
+    "description": "We have built many products and some of them are below",
+    "why": {
+      "subTitle": "Why Choose Us",
+      "title": "Top Reasons to",
+      "highlight": "Choose Our Services",
+      "description": "We provide comprehensive digital solutions that drive growth and enhance your online presence."
+    },
+    "projects": {
+      "project1": {
+        "name": "Xyz.com",
+        "description": "Platform to convert Domains into Content websites."
+      },
+      "project2": {
+        "name": "ABC.com",
+        "description": "Platform to create dynamic widgets for websites."
+      },
+      "project3": {
+        "name": "ASD.com",
+        "description": "API SaaS Platform that provides API Suit to help you ship fast."
+      },
+      "project4": {
+        "name": "TMK.co",
+        "description": "Chrome Extension that lets you add ChatGPT on any website"
+      }
+    },
+    "webAnimation": {
+      "title": "Interactive Web Animation",
+      "subtitle": "Transform Your Website with Our Interactive Web Animation Packages",
+      "description": "Enhance user engagement, improve ROI, and boost your Google SEO with our comprehensive web animation strategy. Our expertly crafted animations not only captivate your audience but also provide a seamless and enjoyable user experience. Invest in our animation solutions today and see the difference in user retention and satisfaction.",
+      "cta": "Unleash Powerful Web Solutions!"
+    },
+    "uiUxDesigns": {
+      "title": "UI/UX Designs",
+      "subtitle": "Revolutionize Your Online Presence with Our Creative UI/UX Designs",
+      "description": "we believe that a brilliant user interface goes beyond good looks, acting as a pivotal driver for sales and customer engagement. Our UI/UX design services focus on creating intuitive, visually appealing websites that not only capture your brand's essence but also facilitate an effortless user journey. By prioritizing usability and aesthetic appeal, we craft experiences that encourage visitors to explore, engage, and convert. With strategic design elements tailored to your specific audience, our designs do more than just stand out—they perform. Partner with us to transform your website into a dynamic tool that enhances user satisfaction and maximizes conversion rates.",
+      "cta": "Transform Your Digital Experience!"
+    },
+    "webPerformance": {
+      "title": "Web Performance",
+      "subtitle": "Maximize Your Online Success with High-Performance Websites",
+      "description": "we understand that the speed and performance of your website are crucial to retaining visitors and converting them into customers. A fast-loading site improves user experience, significantly lowers bounce rates, and enhances your SEO rankings, driving more traffic and engagement. Our team leverages the latest in web technology to optimize every aspect of your site, ensuring it operates at peak efficiency. From streamlined code to advanced caching solutions and responsive design, we provide a performance-optimized platform that not only loads quickly but also handles traffic surges with ease. Invest in speed and performance with us, and watch your business grow through superior digital experiences.",
+      "cta": "Boost Your Website Speed Now!"
+    },
+    "uniqueSystem": {
+      "title": "Our Unique System",
+      "subtitle": "Empower Your Business with Our Unique CRM and Web System Solutions",
+      "description": "we provide not just websites or web applications, but a comprehensive system integrated with a unique CRM tailored to your business needs. Our CRM solutions are designed to start bringing you clients and driving sales effectively from day one. By automating data collection and enhancing customer interactions, our systems ensure that every customer touchpoint is an opportunity for conversion. With advanced analytics and seamless integration, our CRM tools give you a detailed overview of customer behaviors and trends, enabling you to make informed decisions that boost efficiency and profitability. Choose our systems to transform your digital infrastructure into a robust engine for business growth.",
+      "cta": "Get Your Custom CRM System!"
+    },
+    "webApplications": {
+      "title": "New technology web applications",
+      "subtitle": "Why Create Your Web Application with Us?",
+      "description": "At Clicksalesmedia, we harness the power of the latest technologies and artificial intelligence to develop state-of-the-art web applications that are not only modern but also optimized for performance. Our approach combines innovative AI solutions with cutting-edge web technology to create applications that are intelligent, efficient, and tailored to meet the unique needs of your business. From automating complex processes to delivering seamless user experiences, our team is dedicated to providing you with a competitive edge in today's digital world. Choose us to lead your project, and experience a partnership that transforms your digital presence.",
+      "cta": "Unleash Powerful Web Solutions!"
+    },
+    "ecommerce": {
+      "title": "Advanced Ecommerce Solutions",
+      "subtitle": "Why Choose Our Advanced E-commerce Development Solutions?",
+      "description": "At Clicksalesmedia, we specialize in pushing the boundaries of e-commerce with our advanced development solutions powered by the latest technologies. Our commitment to innovation allows us to implement cutting-edge features such as AI-driven recommendations, AR/VR experiences, and seamless integration with multiple sales channels, ensuring a captivating and convenient shopping experience for your customers. Whether you're looking to optimize your existing online store or build a sophisticated e-commerce platform from scratch, our expert team equips your business with the tools it needs to thrive in a digital-first marketplace. Partner with us and turn your e-commerce vision into reality, driving growth and customer satisfaction.",
+      "cta": "Revolutionize Your Store Today!"
+    },
+    "marketingPages": {
+      "title": "Advanced Marketing Landing pages",
+      "subtitle": "Why Opt for Our Advanced Marketing Landing Pages?",
+      "description": "At Clicksalesmedia, we elevate the art of the landing page by integrating sophisticated CRM and tracking technologies to enhance your marketing campaigns. Our advanced landing pages are designed not just to attract but also to convert. By employing the latest tools in analytics and customer relationship management, we ensure that every visitor's interaction is captured, analyzed, and utilized to tailor interactions and boost conversions. From dynamic content that adapts to user behavior to precise tracking that informs strategy adjustments in real-time, our solutions empower your business to make data-driven decisions that significantly improve campaign performance. Partner with us to craft landing pages that serve as powerful tools in your marketing arsenal, turning traffic into valuable leads.",
+      "cta": "Convert Visitors Now!"
+    }
+  },
+  "seo": {
+    "pageTitle": "SEO Solutions",
+    "pageDescription": "AI‑driven SEO agency in Dubai & Riyadh: dominate Google, grow organic traffic and out‑rank competitors in the GCC.",
+    "subTitle": "Search Engine Optimization",
+    "highlight": "for Your Business",
+    "about": {
+      "title": "ClickSalesMedia provides effective professional SEO services.",
+      "paragraph1": "The importance of SEO extends beyond mere visibility. In today's digital age, it acts as a credibility marker for your business, influencing consumer perception by positioning your website as a reliable resource. High rankings in search results are often equated with reputability, encouraging more engagement from potential clients. Additionally, SEO is cost-effective compared to other marketing strategies such as pay-per-click. By investing in SEO, you're focusing on attracting traffic at the moment they are looking for information or products like yours, which can lead to higher conversion rates. Hence, neglecting SEO can mean missing out on a substantial base of potential customers who are actively seeking to engage with your business.",
+      "paragraph2": "Before choosing strategic keywords to target certain influencers and decision-makers in the most profitable market sectors, we thoroughly understand your business strategy and goals. Our SEO agency professionals keep up with the latest tools, research, trends, and algorithm upgrades so they can notify you of any changes that can affect your SEO objectives. To keep your site optimized, they adjust or modify your content, keywords, and SEO approach.",
+      "ctaButton": "Get a Free SEO Audit!"
+    },
+    "features": {
+      "card1": {
+        "label": "SEO Best Practices",
+        "title": "Optimize for Success",
+        "description": "Our proven SEO techniques ensure your website ranks higher in search results, driving targeted traffic and increasing conversion rates."
+      },
+      "card2": {
+        "label": "Technical SEO",
+        "title": "Performance Optimization",
+        "description": "We optimize your website's technical aspects to improve loading speed, mobile responsiveness, and overall user experience."
+      },
+      "benefits": {
+        "paragraph1": "For starters, it improves organic search by making optimized content more visible and hence more likely to convert users into buyers. Second, it increases site quality since search engines base their overall evaluation of a website on its searchability.",
+        "paragraph2": "Finally, SEO produces concrete benefits by raising exposure, generating conversions, and drawing consumers; without it, an invisible website might put you at a competitive disadvantage."
+      }
+    }
+  },
+  "ppcFaq": {
+    "title": "FAQ",
+    "description": "Discover how our agency helps you maximize the potential of Google's services. Our FAQs offer insights into effective strategies for Google Ads, Google My Business, Google Shopping, and more, ensuring your business achieves optimal online visibility and success.",
+    "tabs": {
+      "ppcAdsStrategies": "PPC Ads Strategies",
+      "paidSearch": "Paid Search",
+      "performanceMax": "Performance Max",
+      "googleShopping": "Google Shopping",
+      "googleMyBusiness": "Google My Business"
+    },
+    "questions": {
+      "ppcAdsStrategies": [
+        {
+          "question": "What are the key elements of a successful PPC campaign?",
+          "answer": "A successful PPC campaign involves careful keyword selection, compelling ad copy, optimized landing pages, and strategic bid management to maximize ROI."
+        },
+        {
+          "question": "How do you determine the right budget for a PPC campaign?",
+          "answer": "We assess your business goals, target audience, and competitive landscape to set a budget that maximizes visibility and conversions while maintaining cost-efficiency."
+        },
+        {
+          "question": "What strategies do you use to improve PPC ad performance?",
+          "answer": "We utilize A/B testing, keyword refinement, and performance analytics to continually optimize ads and ensure they resonate with the target audience and drive results."
+        },
+        {
+          "question": "How do you ensure PPC ads reach the intended audience?",
+          "answer": "We leverage advanced targeting options including demographic, geographic, and psychographic filters, as well as retargeting techniques to ensure ads are seen by the most relevant users."
+        }
+      ],
+      "paidSearch": [
+        {
+          "question": "What distinguishes paid search from other forms of digital advertising?",
+          "answer": "Paid search targets users actively searching for your products or services, offering immediate visibility and direct response compared to broader-reaching digital ad types."
+        },
+        {
+          "question": "How do you optimize paid search ads for high conversion rates?",
+          "answer": "We focus on precise keyword targeting, crafting engaging ad copy, and designing user-friendly landing pages that are optimized for conversions."
+        },
+        {
+          "question": "What metrics are most important in measuring paid search effectiveness?",
+          "answer": "Key metrics include Click-Through Rate (CTR), Cost Per Click (CPC), Conversion Rate, and Return on Ad Spend (ROAS), which help us gauge campaign success and areas for improvement."
+        },
+        {
+          "question": "How quickly can we see results from paid search campaigns?",
+          "answer": "Results can often be seen shortly after campaign launch due to the immediate nature of paid search, with ongoing optimizations enhancing performance over time."
+        }
+      ],
+      "performanceMax": [
+        {
+          "question": "What is Google's Performance Max, and how does it benefit advertisers?",
+          "answer": "Performance Max is a Google Ads campaign type that uses AI to optimize ad placement across all Google platforms. It maximizes conversion value by automatically finding the best performing strategies."
+        },
+        {
+          "question": "How do you set up a Performance Max campaign?",
+          "answer": "Setting up involves defining campaign goals, uploading assets like images and videos, and providing a range of conversion actions for Google's AI to target."
+        },
+        {
+          "question": "What makes Performance Max different from standard PPC campaigns?",
+          "answer": "Performance Max utilizes machine learning to automatically adjust bids, placements, and targeting across Google's entire inventory, which can lead to improved performance and simplified management."
+        },
+        {
+          "question": "Can Performance Max campaigns use existing assets from other campaigns?",
+          "answer": "Yes, Performance Max can utilize existing ad assets, allowing seamless integration and leveraging past creative work for new optimization opportunities."
+        }
+      ],
+      "googleShopping": [
+        {
+          "question": "How does Google Shopping work for retailers?",
+          "answer": "Google Shopping displays products directly in search results, allowing users to compare prices and see products before clicking through to a retailer's website to make a purchase."
+        },
+        {
+          "question": "What are the advantages of using Google Shopping for e-commerce?",
+          "answer": "It offers high intent-to-purchase exposure, direct product comparisons, and simplified path to purchase, which can significantly boost sales."
+        },
+        {
+          "question": "What strategies optimize Google Shopping campaigns?",
+          "answer": "Optimization strategies include detailed product feeds, strategic bidding, high-quality images, and continuous performance monitoring to adjust bids and product listings for maximum ROI."
+        },
+        {
+          "question": "How do you handle product listings and bidding in Google Shopping?",
+          "answer": "We manage product listings through meticulous feed optimization and use data-driven bidding strategies to compete effectively in product category auctions."
+        }
+      ],
+      "googleMyBusiness": [
+        {
+          "question": "What is Google My Business and why is it important for local businesses?",
+          "answer": "Google My Business (GMB) is a free tool that allows businesses to manage their online presence across Google, including Search and Maps. It is crucial for helping local businesses increase their visibility, attract more customers, and manage their information effectively."
+        },
+        {
+          "question": "How do you optimize a Google My Business listing for better visibility?",
+          "answer": "Optimization includes ensuring your business information is accurate and comprehensive, posting regular updates, adding high-quality photos, and collecting customer reviews to enhance credibility and attract more local searches."
+        },
+        {
+          "question": "What types of content should be posted on Google My Business?",
+          "answer": "Effective content for GMB includes updates about your business, promotions, upcoming events, and new products or services. Regular posting keeps your profile active and engaging for potential customers."
+        },
+        {
+          "question": "How can Google My Business impact my local SEO rankings?",
+          "answer": "A well-managed GMB profile can significantly boost your local SEO by making your business more relevant and visible in local search results and on Google Maps. This can lead to increased traffic both online and in-store."
+        }
+      ]
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "company": "Company",
+      "website": "Website",
+      "phone": "Phone",
+      "email": "Your email",
+      "message": "Your message",
+      "submit": "Send your Message",
+      "sending": "Sending...",
+      "success": "Thank you for your message! We will contact you shortly.",
+      "error": "An error occurred. Please try again later.",
+      "namePlaceholder": "Your Full Name",
+      "companyPlaceholder": "Your Company Name",
+      "websitePlaceholder": "www.yourwebsite.com",
+      "phonePlaceholder": "Your Phone Number",
+      "emailPlaceholder": "name@example.com",
+      "messagePlaceholder": "Message..."
+    },
+    "page": {
+      "title": "Contact us",
+      "subtitle": "We'd love to hear from you!",
+      "businessTitle": "We help drive your business forward faster",
+      "businessDescription": "Reach out to us to discuss your business needs. Whether it's via our address, phone number, or email, we're here to provide the support you need to drive your business forward.",
+      "callUs": "Call us",
+      "phoneNumber": "+971 50 341 21 74",
+      "sendMail": "Send us a mail",
+      "email": "info@clicksalesmedia.com",
+      "addressTitle": "Address",
+      "addressText": "Meydan Free Zone Meydan Hotel, Meydan Grandstand, 6th Floor, Meydan Rd, Nad Al Sheba 1, Dubai, UAE",
+      "openingHoursTitle": "Opening Hours",
+      "openingHoursText": "Monday - Friday: 8:00 AM - 6:00 PM",
+      "getInTouch": "Let's Get in Touch",
+      "projectDetails": "Please provide details about your project and any challenges you're encountering. The more information you share, the better we can tailor our solutions to meet your specific needs."
+    }
+  },
+  "aiMarketing": {
+    "title": "AI Marketing Services",
+    "description": "At ClickSalesMedia, we are dedicated to transforming the marketing landscape through automation and artificial intelligence. Our mission is to help companies achieve quick and effective results",
+    "cta": "Boost Your ROI Today!",
+    "services": {
+      "performance": {
+        "title": "AI Performance Marketing",
+        "description": "Our AI-driven performance marketing solutions optimize your campaigns in real-time, ensuring maximum reach and engagement while minimizing costs."
+      },
+      "cro": {
+        "title": "Conversion Rate Optimization (CRO)",
+        "description": "Utilize AI to analyze user behavior and optimize your website for higher conversion rates, turning more visitors into loyal customers."
+      },
+      "automation": {
+        "title": "Automation Scripts",
+        "description": "Streamline repetitive marketing tasks with our advanced automation scripts, allowing your team to focus on strategic growth initiatives."
+      },
+      "seo": {
+        "title": "AI SEO",
+        "description": "Boost your search engine rankings with AI-powered SEO strategies that adapt to changing algorithms and deliver sustainable results."
+      },
+      "ppc": {
+        "title": "PPC Ads by AI",
+        "description": "Maximize the effectiveness of your pay-per-click ads with AI that dynamically adjusts bids and targets to achieve the best possible ROI."
+      },
+      "blogging": {
+        "title": "Auto Blogging",
+        "description": "Generate high-quality, SEO-friendly content automatically with our AI-driven auto blogging solutions, keeping your website fresh and engaging."
+      },
+      "email": {
+        "title": "Email Marketing",
+        "description": "Leverage AI to personalize email campaigns, increase open rates, and drive conversions with targeted, data-driven content."
+      },
+      "leadGen": {
+        "title": "Lead Generation",
+        "description": "Use AI to identify and attract high-quality leads, optimizing your sales funnel and increasing your conversion rates efficiently."
+      },
+      "social": {
+        "title": "Social Media AI",
+        "description": "Enhance your social media presence with AI tools that automate posting, analyze engagement, and optimize your content strategy for better results."
+      }
+    },
+    "grid": {
+      "title": "Our AI Technology is Built to Skyrocket Your Company",
+      "description": "At our core, we believe in transforming your marketing and sales experience with the power of AI and automation. Our cutting-edge solutions are designed to seamlessly enhance your performance and boost your ROI. Imagine a world where your marketing efforts are finely tuned and effortlessly scalable, delivering exceptional results. With our innovative approach, you can unlock new levels of efficiency and effectiveness, all while focusing on what truly matters. Let us guide you on this exciting journey towards smarter, more impactful marketing.",
+      "aiMarketingAlt": "AI Marketing Solutions",
+      "companiesAlt": "Companies using our AI solutions"
+    },
+    "faq": {
+      "title": "FAQ",
+      "description": "Discover how our agency helps you maximize the potential of Google's services. Our FAQs offer insights into effective strategies for Google Ads, Google My Business, Google Shopping, and more, ensuring your business achieves optimal online visibility and success.",
+      "tabs": {
+        "PPCAdsStrategies": "PPC Ads Strategies",
+        "PaidSearch": "Paid Search",
+        "PerformanceMax": "Performance Max",
+        "GoogleShopping": "Google Shopping",
+        "GoogleMyBusiness": "Google My Business"
+      },
+      "questions": {
+        "PPCAdsStrategies": {
+          "q1": "What are the key elements of a successful PPC campaign?",
+          "a1": "A successful PPC campaign involves careful keyword selection, compelling ad copy, optimized landing pages, and strategic bid management to maximize ROI.",
+          "q2": "How do you determine the right budget for a PPC campaign?",
+          "a2": "We assess your business goals, target audience, and competitive landscape to set a budget that maximizes visibility and conversions while maintaining cost-efficiency.",
+          "q3": "What strategies do you use to improve PPC ad performance?",
+          "a3": "We utilize A/B testing, keyword refinement, and performance analytics to continually optimize ads and ensure they resonate with the target audience and drive results.",
+          "q4": "How do you ensure PPC ads reach the intended audience?",
+          "a4": "We leverage advanced targeting options including demographic, geographic, and psychographic filters, as well as retargeting techniques to ensure ads are seen by the most relevant users."
+        },
+        "PaidSearch": {
+          "q1": "What distinguishes paid search from other forms of digital advertising?",
+          "a1": "Paid search targets users actively searching for your products or services, offering immediate visibility and direct response compared to broader-reaching digital ad types.",
+          "q2": "How do you optimize paid search ads for high conversion rates?",
+          "a2": "We focus on precise keyword targeting, crafting engaging ad copy, and designing user-friendly landing pages that are optimized for conversions.",
+          "q3": "What metrics are most important in measuring paid search effectiveness?",
+          "a3": "Key metrics include Click-Through Rate (CTR), Cost Per Click (CPC), Conversion Rate, and Return on Ad Spend (ROAS), which help us gauge campaign success and areas for improvement.",
+          "q4": "How quickly can we see results from paid search campaigns?",
+          "a4": "Results can often be seen shortly after campaign launch due to the immediate nature of paid search, with ongoing optimizations enhancing performance over time."
+        },
+        "PerformanceMax": {
+          "q1": "What is Google's Performance Max, and how does it benefit advertisers?",
+          "a1": "Performance Max is a Google Ads campaign type that uses AI to optimize ad placement across all Google platforms. It maximizes conversion value by automatically finding the best performing strategies.",
+          "q2": "How do you set up a Performance Max campaign?",
+          "a2": "Setting up involves defining campaign goals, uploading assets like images and videos, and providing a range of conversion actions for Google's AI to target.",
+          "q3": "What makes Performance Max different from standard PPC campaigns?",
+          "a3": "Performance Max utilizes machine learning to automatically adjust bids, placements, and targeting across Google's entire inventory, which can lead to improved performance and simplified management.",
+          "q4": "Can Performance Max campaigns use existing assets from other campaigns?",
+          "a4": "Yes, Performance Max can utilize existing ad assets, allowing seamless integration and leveraging past creative work for new optimization opportunities."
+        },
+        "GoogleShopping": {
+          "q1": "How does Google Shopping work for retailers?",
+          "a1": "Google Shopping displays products directly in search results, allowing users to compare prices and see products before clicking through to a retailer's website to make a purchase.",
+          "q2": "What are the advantages of using Google Shopping for e-commerce?",
+          "a2": "It offers high intent-to-purchase exposure, direct product comparisons, and simplified path to purchase, which can significantly boost sales.",
+          "q3": "What strategies optimize Google Shopping campaigns?",
+          "a3": "Optimization strategies include detailed product feeds, strategic bidding, high-quality images, and continuous performance monitoring to adjust bids and product listings for maximum ROI.",
+          "q4": "How do you handle product listings and bidding in Google Shopping?",
+          "a4": "We manage product listings through meticulous feed optimization and use data-driven bidding strategies to compete effectively in product category auctions."
+        },
+        "GoogleMyBusiness": {
+          "q1": "What is Google My Business and why is it important for local businesses?",
+          "a1": "Google My Business (GMB) is a free tool that allows businesses to manage their online presence across Google, including Search and Maps. It is crucial for helping local businesses increase their visibility, attract more customers, and manage their information effectively.",
+          "q2": "How do you optimize a Google My Business listing for better visibility?",
+          "a2": "Optimization includes ensuring your business information is accurate and comprehensive, posting regular updates, adding high-quality photos, and collecting customer reviews to enhance credibility and attract more local searches.",
+          "q3": "What types of content should be posted on Google My Business?",
+          "a3": "Effective content for GMB includes updates about your business, promotions, upcoming events, and new products or services. Regular posting keeps your profile active and engaging for potential customers.",
+          "q4": "How can Google My Business impact my local SEO rankings?",
+          "a4": "A well-managed GMB profile can significantly boost your local SEO by making your business more relevant and visible in local search results and on Google Maps. This can lead to increased traffic both online and in-store."
+        }
+      }
+    },
+    "hero": {
+      "title": "Transform Your Marketing with AI-Driven Success",
+      "subtitle": "Elevate. Automate. Dominate 🤖",
+      "description": "Our AI marketing solutions revolutionize your business by optimizing every step of your marketing and sales journey. Experience seamless processes, enhanced performance, and skyrocketing ROI. Let us guide you to unprecedented growth and efficiency.",
+      "letsTalk": "Let's Talk",
+      "scheduleCall": "Schedule a call"
+    }
+  },
+  "portfolio": {
+    "mainTitle": "Our Work",
+    "mainSubtitle": "Delivering results that speak for themselves",
+    "filters": {
+      "all": "All",
+      "website": "Website",
+      "seo": "SEO",
+      "ppc": "PPC",
+      "socialMedia": "Social Media",
+      "emailMarketing": "Email Marketing",
+      "contentMarketing": "Content Marketing",
+      "branding": "Branding",
+      "other": "Other"
+    },
+    "search": "Search projects...",
+    "filterBy": "Filter by",
+    "noResults": "No projects found matching your criteria. Try adjusting your filters.",
+    "clientLabel": "Client",
+    "viewProject": "View Project",
+    "visitWebsite": "Visit Website",
+    "technologies": "Technologies Used",
+    "results": "Results",
+    "relatedProjects": "Related Projects",
+    "backToPortfolio": "Back to Portfolio"
+  }
+}

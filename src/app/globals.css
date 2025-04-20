@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import React Toastify styles */
+@import 'react-toastify/dist/ReactToastify.css';
 
 html, body {
   font-family: 'Montserrat', sans-serif;
@@ -10,6 +12,32 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* Dashboard form input styles */
+.dashboard input,
+.dashboard textarea,
+.dashboard select,
+.tiptap {
+  color: #000000 !important;
+}
+
+/* Apply Noto Kufi Arabic font for all elements in RTL mode */
+html[dir="rtl"] body {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+html[dir="rtl"] p,
+html[dir="rtl"] span,
+html[dir="rtl"] div,
+html[dir="rtl"] button,
+html[dir="rtl"] a {
+  font-family: 'Noto Kufi Arabic', sans-serif !important;
+}
 
 h1 {
   font-family: 'Cormorant', serif;
@@ -96,6 +124,82 @@ p {
   filter: none;
   transform: scale(1.05);
   background-color: #C3A177;
+}
+
+/* Tiptap Editor Styles */
+.tiptap {
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+.tiptap:focus {
+  outline: none;
+}
+
+.tiptap p {
+  margin-bottom: 1em;
+}
+
+.tiptap h1, 
+.tiptap h2, 
+.tiptap h3, 
+.tiptap h4, 
+.tiptap h5, 
+.tiptap h6 {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.tiptap h1 {
+  font-size: 2em;
+}
+
+.tiptap h2 {
+  font-size: 1.75em;
+}
+
+.tiptap h3 {
+  font-size: 1.5em;
+}
+
+.tiptap h4 {
+  font-size: 1.25em;
+}
+
+.tiptap h5 {
+  font-size: 1.1em;
+}
+
+.tiptap h6 {
+  font-size: 1em;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.tiptap blockquote {
+  padding-left: 1em;
+  border-left: 3px solid #ccc;
+  margin-left: 0;
+  margin-right: 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* RTL specific styles */
+[dir="rtl"] .tiptap {
+  text-align: right;
+}
+
+[dir="rtl"] .tiptap blockquote {
+  padding-left: 0;
+  padding-right: 1em;
+  border-left: none;
+  border-right: 3px solid #ccc;
 }
 
 

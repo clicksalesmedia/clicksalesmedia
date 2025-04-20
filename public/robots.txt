@@ -1,0 +1,15 @@
+# Allow all web crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.clicksalesmedia.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /dashboard/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login/
+
+# Host
+Host: https://www.clicksalesmedia.com 
