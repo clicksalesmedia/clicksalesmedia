@@ -1,14 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
 import LoadingSpinner from "@/app/components/LoadingSpinner";
-
-// Fix the import path here
-const ModelLoader = dynamic(() => import('@/app/components/3d/ModelLoader'), {
-  loading: () => <LoadingSpinner size="large" />,
-  ssr: false
-});
 
 interface ClientPageWrapperProps {
   children: React.ReactNode;
@@ -17,7 +10,9 @@ interface ClientPageWrapperProps {
 export default function ClientPageWrapper({ children }: ClientPageWrapperProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInitialRender, setIsInitialRender] = useState(true);
+  const [resourcesLoaded, setResourcesLoaded] = useState(false);
 
+  // Handle initialization and resources preloading
   useEffect(() => {
     // This code only runs on the client
     if (typeof window !== 'undefined') {
@@ -27,7 +22,6 @@ export default function ClientPageWrapper({ children }: ClientPageWrapperProps) 
         
         // Add a small delay to make sure all resources start loading
         setTimeout(() => {
-          setIsLoaded(true);
           setIsInitialRender(false);
         }, 300);
         
@@ -43,8 +37,7 @@ export default function ClientPageWrapper({ children }: ClientPageWrapperProps) 
           window.removeEventListener('beforeunload', handleBeforeUnload);
         };
       } else {
-        // For subsequent visits, just set as loaded
-        setIsLoaded(true);
+        // For subsequent visits, skip initial render phase
         setIsInitialRender(false);
       }
     }
@@ -53,26 +46,56 @@ export default function ClientPageWrapper({ children }: ClientPageWrapperProps) 
   // Preload critical images
   useEffect(() => {
     if (!isInitialRender) {
-      const criticalImages = [
-        '/clicksalesmedia-marketing-agency.png',
-        '/mesh-clicksalesmedia.png',
-      ];
+      // Preload key images
+      const preloadImages = () => {
+        const criticalImages = [
+          '/clicksalesmedia-marketing-agency.png',
+          '/mesh-clicksalesmedia.png',
+        ];
+        
+        const imagePromises = criticalImages.map(src => {
+          return new Promise<void>((resolve) => {
+            if (typeof window !== 'undefined') {
+              const img = new window.Image();
+              img.onload = () => resolve();
+              img.onerror = () => resolve(); // Still resolve on error
+              img.src = src;
+            } else {
+              resolve();
+            }
+          });
+        });
+        
+        // Wait for images to load or timeout after 2 seconds
+        Promise.race([
+          Promise.all(imagePromises),
+          new Promise(resolve => setTimeout(resolve, 2000))
+        ]).then(() => {
+          setResourcesLoaded(true);
+        });
+      };
       
-      criticalImages.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
+      preloadImages();
     }
   }, [isInitialRender]);
+  
+  // Set as loaded when resources are ready
+  useEffect(() => {
+    if (resourcesLoaded) {
+      // Small delay for smooth transition
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [resourcesLoaded]);
 
+  // Show loading spinner until everything is ready
   if (!isLoaded) {
-    return <LoadingSpinner size="large" fullScreen />;
+    return <LoadingSpinner size="large" fullScreen text="LOADING" />;
   }
 
-  // Use ModelLoader as a wrapper to ensure proper 3D/complex content loading
-  return (
-    <ModelLoader minLoadTime={800}>
-      {children}
-    </ModelLoader>
-  );
+  // Once loaded, show the actual content
+  return <>{children}</>;
 } 
