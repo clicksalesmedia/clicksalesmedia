@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import LoadingSpinner from "@/app/components/LoadingSpinner";
 
-// Dynamic import for 3D components - this can only be done in a client component
-const ModelLoader = dynamic(() => import('./3d/ModelLoader'), {
+// Fix the import path here
+const ModelLoader = dynamic(() => import('@/app/components/3d/ModelLoader'), {
   loading: () => <LoadingSpinner size="large" />,
   ssr: false
 });
