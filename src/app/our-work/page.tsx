@@ -105,11 +105,11 @@ export default function OurWorkPage() {
         (item) => {
           // Check in both English and Arabic fields
           const titleMatch = item.title.toLowerCase().includes(query) || 
-                            (item.titleAr && item.titleAr.toLowerCase().includes(query));
+                            (item.titleAr ? item.titleAr.toLowerCase().includes(query) : false);
           const clientMatch = item.clientName.toLowerCase().includes(query) || 
-                             (item.clientNameAr && item.clientNameAr.toLowerCase().includes(query));
+                             (item.clientNameAr ? item.clientNameAr.toLowerCase().includes(query) : false);
           const descMatch = item.description.toLowerCase().includes(query) || 
-                           (item.descriptionAr && item.descriptionAr.toLowerCase().includes(query));
+                           (item.descriptionAr ? item.descriptionAr.toLowerCase().includes(query) : false);
           const techMatch = item.techStack.some(tech => tech.toLowerCase().includes(query));
           
           return titleMatch || clientMatch || descMatch || techMatch;

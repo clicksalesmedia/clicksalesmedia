@@ -1,13 +1,5 @@
 // next-sitemap.config.js
 
-interface TransformConfig {
-  autoLastmod?: boolean;
-  alternateRefs?: Array<{
-    href: string;
-    hreflang: string;
-  }>;
-}
-
 module.exports = {
   siteUrl: 'https://www.clicksalesmedia.com', // Replace with your actual site URL
   generateRobotsTxt: true, // Generate a robots.txt file
@@ -30,7 +22,7 @@ module.exports = {
   ],
   priority: 0.7,
   changefreq: 'weekly',
-  transform: async (config: TransformConfig, path: string) => {
+  transform: async (config, path) => {
     // Custom priority for specific pages
     const priority = path === '/' 
       ? 1.0 

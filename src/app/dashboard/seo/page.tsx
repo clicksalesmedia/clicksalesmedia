@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Overview } from "@/components/dashboard/seo/overview"
 import { MetaTagsManager } from "@/components/dashboard/seo/meta-tags"
-import { SitemapManager } from "@/app/components/dashboard/seo/sitemap"
+// import { SitemapManager } from "@/app/components/dashboard/seo/sitemap"
 import { Analytics } from "@/components/dashboard/seo/analytics"
 
 export default function SEODashboard() {
@@ -131,7 +131,20 @@ export default function SEODashboard() {
         )}
 
         {activeTab === 'meta-tags' && <MetaTagsManager />}
-        {activeTab === 'sitemap' && <SitemapManager />}
+        {activeTab === 'sitemap' && (
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold">Sitemap Management</h3>
+              <p className="text-sm text-gray-500 mt-2">This feature is currently being updated.</p>
+            </div>
+            <div className="border-t border-gray-200 pt-4 mt-4">
+              <p className="text-sm text-gray-600">
+                The sitemap management tool will be available soon. In the meantime, the site's sitemap is
+                automatically generated based on your content.
+              </p>
+            </div>
+          </div>
+        )}
         {activeTab === 'analytics' && <Analytics />}
       </div>
     </div>
