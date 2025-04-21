@@ -81,6 +81,34 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children, params }) => {
   return (
     <html lang={currentLang} dir={isRtl ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
+        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
+        <script 
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Helper to ensure CSS is loaded before showing content
+              (function() {
+                if (typeof window !== 'undefined') {
+                  const loadState = document.createElement('style');
+                  loadState.textContent = 'body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #272727; z-index: 9999; transition: opacity 0.3s ease, visibility 0.3s ease; }';
+                  loadState.id = 'loadStateStyle';
+                  document.head.appendChild(loadState);
+                  
+                  window.addEventListener('load', function() {
+                    setTimeout(function() {
+                      const style = document.getElementById('loadStateStyle');
+                      if (style) {
+                        style.textContent = 'body::before { opacity: 0; visibility: hidden; }';
+                        setTimeout(function() {
+                          style.remove();
+                        }, 300);
+                      }
+                    }, 200);
+                  });
+                }
+              })();
+            `
+          }}
+        />
         <Script
           id='gtm-script'
           strategy='afterInteractive'

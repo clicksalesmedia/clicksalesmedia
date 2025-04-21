@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaArrowLeft, FaGlobe, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import LoadingSpinner from '@/app/components/LoadingSpinner';
+import usePageLoading from '@/app/hooks/usePageLoading';
 
 enum PortfolioType {
   WEBSITE = 'WEBSITE',
@@ -39,6 +41,10 @@ interface Portfolio {
   };
   createdAt: string;
   updatedAt: string;
+  titleAr?: string;
+  clientNameAr?: string;
+  descriptionAr?: string;
+  resultsAr?: string;
 }
 
 const projectTypeLabels: Record<string, { label: string; color: string }> = {
@@ -61,10 +67,18 @@ export default function PortfolioDetail() {
   const [error, setError] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showGallery, setShowGallery] = useState(false);
+  const [coverImageLoaded, setCoverImageLoaded] = useState(false);
+
+  // Use our custom page loading hook
+  const { isLoading: isPageLoading } = usePageLoading({ minLoadingTime: 800 });
+  
+  // Combined loading state
+  const isLoadingContent = loading || isPageLoading || (portfolio && !coverImageLoaded);
 
   useEffect(() => {
     async function fetchPortfolioItem() {
       try {
+        console.log('Fetching portfolio item by slug:', slug);
         // Use a query to find the item by slug since our API is set up by ID
         const response = await fetch(`/api/portfolio?published=true`);
         if (!response.ok) {
@@ -92,6 +106,34 @@ export default function PortfolioDetail() {
     }
   }, [slug]);
 
+  // After portfolio is set, preload cover image
+  useEffect(() => {
+    if (portfolio && !coverImageLoaded) {
+      // Use window.Image() instead of new Image() to fix TypeScript error
+      if (typeof window !== 'undefined') {
+        const img = new window.Image();
+        img.src = portfolio.coverImage;
+        img.onload = () => {
+          setCoverImageLoaded(true);
+        };
+      }
+    }
+  }, [portfolio, coverImageLoaded]);
+
+  useEffect(() => {
+    if (portfolio) {
+      // Ensure all needed fields exist, using English versions as fallback if Arabic isn't available
+      setPortfolio({
+        ...portfolio,
+        titleAr: portfolio.titleAr || "",
+        clientNameAr: portfolio.clientNameAr || "",
+        descriptionAr: portfolio.descriptionAr || "",
+        resultsAr: portfolio.resultsAr || "",
+      });
+      setLoading(false);
+    }
+  }, [portfolio]);
+
   const handlePrevImage = () => {
     if (!portfolio?.gallery.length) return;
     setCurrentImageIndex((prev) => 
@@ -106,12 +148,8 @@ export default function PortfolioDetail() {
     );
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-96">
-        <div className="w-12 h-12 border-t-4 border-secondaryColor border-solid rounded-full animate-spin"></div>
-      </div>
-    );
+  if (isLoadingContent) {
+    return <LoadingSpinner fullScreen text="LOADING" />;
   }
 
   if (error || !portfolio) {
@@ -141,7 +179,8 @@ export default function PortfolioDetail() {
           alt={portfolio.title}
           fill
           className="object-cover brightness-75"
-          priority
+          priority={true}
+          onLoad={() => setCoverImageLoaded(true)}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#272727] to-transparent">
           <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-10">

@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaFilter, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from '@/app/hooks/useTranslation';
 import { useLanguage } from '@/app/providers/LanguageProvider';
+import LoadingSpinner from '@/app/components/LoadingSpinner';
+import usePageLoading from '@/app/hooks/usePageLoading';
 
 enum PortfolioType {
   WEBSITE = 'WEBSITE',
@@ -58,6 +60,14 @@ export default function OurWorkPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [showFilters, setShowFilters] = useState<boolean>(false);
+  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+  const [isFirstLoad, setIsFirstLoad] = useState<boolean>(true);
+  
+  // Use our custom page loading hook
+  const { isLoading: isPageLoading } = usePageLoading({ minLoadingTime: 800 });
+  
+  // Combined loading state
+  const isLoadingContent = loading || isPageLoading || !imagesLoaded;
 
   // Helper function to get language-specific field
   const getLocalizedField = (item: PortfolioItem, field: string, arField: string) => {
@@ -97,6 +107,11 @@ export default function OurWorkPage() {
         
         setPortfolioItems(processedData);
         setFilteredItems(processedData);
+
+        // After first successful data load, mark as not first load anymore
+        if (isFirstLoad) {
+          setIsFirstLoad(false);
+        }
       } catch (err) {
         const errorMessage = (err as Error).message || 'Failed to load portfolio items';
         console.error('Portfolio fetch error:', err);
@@ -107,7 +122,48 @@ export default function OurWorkPage() {
     }
 
     fetchPortfolioItems();
-  }, []);
+  }, [isFirstLoad]);
+
+  // Add this effect to preload images after data is loaded
+  useEffect(() => {
+    if (portfolioItems.length > 0 && !imagesLoaded) {
+      let loadedCount = 0;
+      const totalImages = portfolioItems.length;
+      
+      const preloadImages = async () => {
+        const promises = portfolioItems.map((item) => {
+          return new Promise<void>((resolve) => {
+            // Use window.Image() instead of new Image() to fix TypeScript error
+            if (typeof window !== 'undefined') {
+              const img = new window.Image();
+              img.src = item.coverImage;
+              img.onload = () => {
+                loadedCount++;
+                if (loadedCount === totalImages) {
+                  setImagesLoaded(true);
+                }
+                resolve();
+              };
+              img.onerror = () => {
+                loadedCount++;
+                if (loadedCount === totalImages) {
+                  setImagesLoaded(true);
+                }
+                resolve();
+              };
+            } else {
+              // Server-side rendering case
+              resolve();
+            }
+          });
+        });
+        
+        await Promise.all(promises);
+      };
+      
+      preloadImages();
+    }
+  }, [portfolioItems, imagesLoaded]);
 
   // Apply filters when filter or search changes
   useEffect(() => {
@@ -166,18 +222,8 @@ export default function OurWorkPage() {
     show: { y: 0, opacity: 1 }
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-[#272727]">
-        <div className="relative w-24 h-24">
-          <div className="absolute top-0 w-full h-full border-8 border-gray-800 rounded-full"></div>
-          <div className="absolute top-0 w-full h-full border-8 border-t-secondaryColor rounded-full animate-spin"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-secondaryColor font-bold">
-            LOADING
-          </div>
-        </div>
-      </div>
-    );
+  if (isLoadingContent) {
+    return <LoadingSpinner fullScreen text="LOADING" />;
   }
 
   if (error) {
@@ -361,7 +407,7 @@ export default function OurWorkPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence>
-              {filteredItems.map((item) => (
+              {filteredItems.map((item, index) => (
                 <motion.div
                   key={item.id}
                   variants={itemVariant}
@@ -375,6 +421,7 @@ export default function OurWorkPage() {
                           src={item.coverImage}
                           alt={item.title}
                           fill
+                          priority={index < 4}
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
