@@ -15,8 +15,8 @@ export async function GET(request: Request) {
   try {
     console.log('Fetching portfolio items with filters:', { published, featured, projectType, limit });
     
-    // Query the portfolio items first without the schema check
     try {
+      // Query the portfolio items directly - fields should match the database schema
       const portfolioItems = await prisma.portfolio.findMany({
         where: {
           ...(published === 'true' ? { published: true } : {}),
@@ -36,8 +36,10 @@ export async function GET(request: Request) {
           },
         },
       });
+
+      console.log(`Found ${portfolioItems.length} portfolio items`);
       
-      // Simplified approach - just ensure all items have Arabic fields even if empty
+      // Ensure all items have the required fields, using null coalescing
       const processedItems = portfolioItems.map(item => ({
         ...item,
         titleAr: item.titleAr || "",
