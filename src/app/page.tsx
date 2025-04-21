@@ -8,10 +8,11 @@ import LogoClient from "./components/Home/LogoClient";
 import Testimonial from "./components/Home/Testimonial";
 import Vision from "./components/Home/Vision";
 import { Metadata } from "next";
-import NewHero from "./components/Home/NewHero";
+import NewHeroWrapper from "./components/Home/NewHeroWrapper";
 import AIAgents from "./components/Home/AIAgents";
 import FeaturedWork from "./components/Home/FeaturedWork";
 import { OrganizationSchema, WebsiteSchema, LocalBusinessSchema } from "./components/JsonLdSchema";
+import ClientPageWrapper from "./components/ClientPageWrapper";
 
 export const metadata: Metadata = {
   title: 'Clicksalesmedia: AI Performance Marketing Agency in Dubai',
@@ -38,25 +39,26 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  
   return (
     <> 
       <OrganizationSchema />
       <WebsiteSchema />
       <LocalBusinessSchema />
-      <main>
-        <NewHero />
-        <LogoClient />
-        <About />
-        <AIAgents />
-        <FitText />
-        <Feature />
-        <FeaturedWork />
-        <Testimonial />
-        <Vision />
-        <Blog />
-        <Cta />    
-      </main>
+      <ClientPageWrapper>
+        <main>
+          <NewHeroWrapper />
+          <LogoClient />
+          <About />
+          <AIAgents />
+          <FitText />
+          <Feature />
+          <FeaturedWork />
+          <Testimonial />
+          <Vision />
+          <Blog />
+          <Cta />    
+        </main>
+      </ClientPageWrapper>
     </>
   );
 }
