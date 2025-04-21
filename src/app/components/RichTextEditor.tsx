@@ -177,7 +177,7 @@ export default function RichTextEditor({
                 className={`p-1 rounded ${editor.isActive('blockquote') ? 'bg-gray-300' : 'hover:bg-gray-200'}`}
                 title="Blockquote"
               >
-                ""
+                &quot;&quot;
               </button>
               <div className="border-r border-gray-300 mx-1 h-6"></div>
               <button

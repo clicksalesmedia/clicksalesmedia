@@ -158,4 +158,6 @@ export function SitemapManager() {
       </div>
     </div>
   )
-} 
+}
+
+export default SitemapManager; 

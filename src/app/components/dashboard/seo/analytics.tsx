@@ -1,7 +1,16 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardTitle } from "@/app/ui/card-hover-effect"
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+
+// ... Define a custom CardContent and CardHeader component
+const CardHeader = ({ children }: { children: React.ReactNode }) => {
+  return <div className="p-6 pb-0">{children}</div>;
+};
+
+const CardContent = ({ children }: { children: React.ReactNode }) => {
+  return <div className="p-6">{children}</div>;
+};
 
 const data = [
   {

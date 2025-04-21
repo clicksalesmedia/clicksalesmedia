@@ -5,7 +5,7 @@ import { normalizeImageUrl } from '@/app/lib/utils'
 import Script from 'next/script'
 
 type Props = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 // Generate static pages for all published blog posts
@@ -26,8 +26,9 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   // Fetch the blog post data
+  const { slug } = await params;
   const post = await prisma.blogPost.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       categories: true,
       author: {
@@ -97,7 +98,7 @@ export async function generateMetadata(
 }
 
 // Blog Post page component
-export default function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <Details />
@@ -109,8 +110,9 @@ export default function BlogPostPage({ params }: Props) {
 // JSON-LD structured data for blog post
 async function BlogPostJsonLd({ params }: Props) {
   // Fetch the blog post data for structured data
+  const { slug } = await params;
   const post = await prisma.blogPost.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: {
       categories: true,
       author: {

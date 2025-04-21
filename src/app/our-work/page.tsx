@@ -378,7 +378,14 @@ export default function OurWorkPage() {
                                 backgroundColor: projectTypeLabels[item.projectType]?.bgColor || 'bg-gray-100',
                                 color: projectTypeLabels[item.projectType]?.color || 'text-gray-800'
                               }}>
-                            {t(`portfolio.filters.${item.projectType.toLowerCase()}`)}
+                            {item.projectType.toLowerCase() === 'website' ? t('portfolio.filters.website') :
+                             item.projectType.toLowerCase() === 'seo' ? t('portfolio.filters.seo') :
+                             item.projectType.toLowerCase() === 'ppc' ? t('portfolio.filters.ppc') :
+                             item.projectType.toLowerCase() === 'social_media' ? t('portfolio.filters.socialMedia') :
+                             item.projectType.toLowerCase() === 'email_marketing' ? t('portfolio.filters.emailMarketing') :
+                             item.projectType.toLowerCase() === 'content_marketing' ? t('portfolio.filters.contentMarketing') :
+                             item.projectType.toLowerCase() === 'branding' ? t('portfolio.filters.branding') :
+                             t('portfolio.filters.other')}
                           </div>
                           <h3 className="text-xl font-bold text-white mb-1 line-clamp-2">
                             {isRTL && item.titleAr ? item.titleAr : item.title}

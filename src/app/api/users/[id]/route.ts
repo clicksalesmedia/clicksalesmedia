@@ -6,7 +6,7 @@ import { hashPassword } from '@/app/lib/utils';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
 
@@ -18,14 +18,13 @@ export async function GET(
   }
 
   // Users can view their own profile or admins can view any profile
-  if (session.user.id !== params.id && session.user.role !== 'ADMIN') {
+  const { id } = await params;
+  if (session.user.id !== id && session.user.role !== 'ADMIN') {
     return NextResponse.json(
       { error: 'You do not have permission to view this user' },
       { status: 403 }
     );
   }
-
-  const { id } = params;
 
   try {
     const user = await prisma.user.findUnique({
@@ -60,7 +59,7 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
 
@@ -72,14 +71,14 @@ export async function PATCH(
   }
 
   // Users can update their own profile or admins can update any profile
-  if (session.user.id !== params.id && session.user.role !== 'ADMIN') {
+  const { id } = await params;
+  if (session.user.id !== id && session.user.role !== 'ADMIN') {
     return NextResponse.json(
       { error: 'You do not have permission to update this user' },
       { status: 403 }
     );
   }
 
-  const { id } = params;
   const body = await request.json();
   const { name, email, password, role, image } = body;
 
@@ -142,7 +141,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
 
@@ -153,7 +152,7 @@ export async function DELETE(
     );
   }
 
-  const { id } = params;
+  const { id } = await params;
 
   // Prevent deleting your own account
   if (id === session.user.id) {

@@ -218,7 +218,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
         <div>
           <div className="mb-2 block">
             <Label htmlFor="service" value="Service" className="text-whiteColor flex items-center">
-              Service You're Interested In
+              Service You&apos;re Interested In
             </Label>
           </div>
           <Select

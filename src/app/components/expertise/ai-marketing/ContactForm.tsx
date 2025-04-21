@@ -70,7 +70,7 @@ export default function ContactForm() {
       <h2 className="text-2xl font-bold text-zinc-50 mb-6">Boost Your ROI Today!</h2>
       {success ? (
         <div className="text-green-500 text-center p-4 bg-green-500/10 rounded-md">
-          Thank you for your interest! We'll be in touch soon.
+          Thank you for your interest! We&apos;ll be in touch soon.
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">

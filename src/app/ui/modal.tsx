@@ -13,8 +13,8 @@ interface SpringModalProps {
 
 declare global {
   interface Window {
-    dataLayer: Array<Record<string, any>>;
-    fbq: (...args: any[]) => void;
+    dataLayer?: any[];
+    fbq?: (...args: any[]) => void;
   }
 }
 
@@ -134,6 +134,7 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         });
 
         // Push form data to dataLayer for GTM
+        window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: 'formSubmission',
           formData: {
@@ -149,8 +150,10 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
         });
 
         // Track events in Facebook
-        window.fbq('track', 'Lead');
-        window.fbq('track', 'Contact');
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead');
+          window.fbq('track', 'Contact');
+        }
       } else {
         Swal.fire({
           icon: 'error',

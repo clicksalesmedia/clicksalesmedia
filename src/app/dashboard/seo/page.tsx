@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Overview } from "@/components/dashboard/seo/overview"
 import { MetaTagsManager } from "@/components/dashboard/seo/meta-tags"
-import { SitemapManager } from "@/components/dashboard/seo/sitemap"
+import { SitemapManager } from "@/app/components/dashboard/seo/sitemap"
 import { Analytics } from "@/components/dashboard/seo/analytics"
 
 export default function SEODashboard() {

@@ -113,11 +113,11 @@ const BookingSuccess: React.FC<BookingSuccessProps> = ({ bookingDetails, onClose
         <ul className="space-y-3">
           <li className="flex items-start text-gray-300">
             <FiArrowRight className="mt-1 mr-2 text-primaryColor flex-shrink-0" />
-            <span>We'll send a calendar invitation to your email shortly</span>
+            <span>We&apos;ll send a calendar invitation to your email shortly</span>
           </li>
           <li className="flex items-start text-gray-300">
             <FiArrowRight className="mt-1 mr-2 text-primaryColor flex-shrink-0" />
-            <span>You'll receive a Zoom/Google Meet link for the meeting</span>
+            <span>You&apos;ll receive a Zoom/Google Meet link for the meeting</span>
           </li>
           <li className="flex items-start text-gray-300">
             <FiArrowRight className="mt-1 mr-2 text-primaryColor flex-shrink-0" />

@@ -14,7 +14,7 @@ interface SpringModalProps {
 
 declare global {
   interface Window {
-    dataLayer: Array<Record<string, any>>;
+    dataLayer?: any[];
   }
 }
 
@@ -102,24 +102,21 @@ const SpringModal: FunctionComponent<SpringModalProps> = ({ isOpen, setIsOpen })
       });
     }
 
+    // Ensure dataLayer is initialized
+    window.dataLayer = window.dataLayer || [];
 
-// Ensure dataLayer is initialized
-window.dataLayer = window.dataLayer || [];
-
-// Push the form data
-window.dataLayer.push({
-  event: 'formSubmission',
-  formData: {
-    name: form.name,
-    company: form.company,
-    website: form.website,
-    mobile: form.mobile,
-    services: form.services,
-    email: form.email
-  }
-});
-
-
+    // Push the form data
+    window.dataLayer.push({
+      event: 'formSubmission',
+      formData: {
+        name: form.name,
+        company: form.company,
+        website: form.website,
+        mobile: form.mobile,
+        services: form.services,
+        email: form.email
+      }
+    });
   };
 
   return (
