@@ -71,16 +71,36 @@ export default function OurWorkPage() {
   useEffect(() => {
     async function fetchPortfolioItems() {
       try {
+        console.log('Fetching portfolio items...');
         const response = await fetch('/api/portfolio?published=true');
+        
         if (!response.ok) {
-          throw new Error('Failed to fetch portfolio items');
+          const errorData = await response.json().catch(() => ({}));
+          console.error('Portfolio API Error:', { 
+            status: response.status, 
+            statusText: response.statusText,
+            data: errorData 
+          });
+          throw new Error(`Failed to fetch portfolio items: ${errorData.details || response.statusText}`);
         }
+        
         const data = await response.json();
-        setPortfolioItems(data);
-        setFilteredItems(data);
+        console.log(`Retrieved ${data.length} portfolio items`);
+        
+        // Make sure all items have the Arabic fields defined, even if empty
+        const processedData = data.map((item: PortfolioItem) => ({
+          ...item,
+          titleAr: item.titleAr || "",
+          clientNameAr: item.clientNameAr || "",
+          descriptionAr: item.descriptionAr || "",
+        }));
+        
+        setPortfolioItems(processedData);
+        setFilteredItems(processedData);
       } catch (err) {
-        setError('Failed to load portfolio items');
-        console.error(err);
+        const errorMessage = (err as Error).message || 'Failed to load portfolio items';
+        console.error('Portfolio fetch error:', err);
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -105,11 +125,11 @@ export default function OurWorkPage() {
         (item) => {
           // Check in both English and Arabic fields
           const titleMatch = item.title.toLowerCase().includes(query) || 
-                            (item.titleAr ? item.titleAr.toLowerCase().includes(query) : false);
+                            ((item.titleAr || '').toLowerCase().includes(query));
           const clientMatch = item.clientName.toLowerCase().includes(query) || 
-                             (item.clientNameAr ? item.clientNameAr.toLowerCase().includes(query) : false);
+                             ((item.clientNameAr || '').toLowerCase().includes(query));
           const descMatch = item.description.toLowerCase().includes(query) || 
-                           (item.descriptionAr ? item.descriptionAr.toLowerCase().includes(query) : false);
+                           ((item.descriptionAr || '').toLowerCase().includes(query));
           const techMatch = item.techStack.some(tech => tech.toLowerCase().includes(query));
           
           return titleMatch || clientMatch || descMatch || techMatch;

@@ -13,31 +13,59 @@ export async function GET(request: Request) {
   const limit = url.searchParams.get('limit');
 
   try {
-    const portfolioItems = await prisma.portfolio.findMany({
-      where: {
-        ...(published === 'true' ? { published: true } : {}),
-        ...(featured === 'true' ? { featured: true } : {}),
-        ...(projectType ? { projectType: projectType as any } : {}),
-      },
-      orderBy: {
-        createdAt: 'desc',
-      },
-      ...(limit ? { take: parseInt(limit, 10) } : {}),
-      include: {
-        author: {
-          select: {
-            id: true,
-            name: true,
+    console.log('Fetching portfolio items with filters:', { published, featured, projectType, limit });
+    
+    // Query the portfolio items first without the schema check
+    try {
+      const portfolioItems = await prisma.portfolio.findMany({
+        where: {
+          ...(published === 'true' ? { published: true } : {}),
+          ...(featured === 'true' ? { featured: true } : {}),
+          ...(projectType ? { projectType: projectType as any } : {}),
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+        ...(limit ? { take: parseInt(limit, 10) } : {}),
+        include: {
+          author: {
+            select: {
+              id: true,
+              name: true,
+            },
           },
         },
-      },
-    });
+      });
+      
+      // Simplified approach - just ensure all items have Arabic fields even if empty
+      const processedItems = portfolioItems.map(item => ({
+        ...item,
+        titleAr: item.titleAr || "",
+        clientNameAr: item.clientNameAr || "",
+        descriptionAr: item.descriptionAr || "",
+        resultsAr: item.resultsAr || "",
+      }));
 
-    return NextResponse.json(portfolioItems);
+      return NextResponse.json(processedItems);
+    } catch (queryError) {
+      console.error('Error querying portfolio items:', queryError);
+      return NextResponse.json(
+        { 
+          error: 'Failed to query portfolio items',
+          details: (queryError as Error).message,
+          stack: (queryError as Error).stack
+        },
+        { status: 500 }
+      );
+    }
   } catch (error) {
-    console.error('Error fetching portfolio items:', error);
+    console.error('Error in portfolio GET route:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch portfolio items' },
+      { 
+        error: 'Failed to fetch portfolio items',
+        details: (error as Error).message,
+        stack: (error as Error).stack
+      },
       { status: 500 }
     );
   }
