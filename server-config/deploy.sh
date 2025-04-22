@@ -1,22 +1,27 @@
 #!/bin/bash
 
-# This script is meant to be run on the server after pulling from GitHub
+# This script performs a complete reset and deployment of the Next.js application
 
-# Clear caches and create necessary directories
-echo "Cleaning cache directories..."
-rm -rf /var/cache/nginx/proxy_cache/* || true
-rm -rf /var/cache/nginx/static_cache/* || true
-mkdir -p /var/cache/nginx/proxy_cache
-mkdir -p /var/cache/nginx/static_cache
-mkdir -p /var/log/pm2
+echo "===== BEGINNING COMPLETE SERVER RESET AND DEPLOYMENT ====="
 
-# Set correct permissions
+# Stop all running PM2 processes
+echo "Stopping all PM2 processes..."
+pm2 stop all || true
+pm2 delete all || true
+
+# Remove cache directories to start fresh
+echo "Cleaning all cache directories..."
+rm -rf /var/cache/nginx/* || true
+mkdir -p /var/cache/nginx
+
+# Set proper ownership and permissions
+echo "Setting proper ownership and permissions..."
 chown -R www-data:www-data /var/cache/nginx
 chmod -R 755 /var/cache/nginx
 
-# Copy configuration files
+# Copy Nginx configuration
+echo "Updating Nginx configuration..."
 cp server-config/nginx-config.conf /etc/nginx/sites-available/clicksalesmedia
-cp server-config/pm2-config.json /var/www/clicksalesmediaAI/pm2-config.json
 
 # Test Nginx configuration
 echo "Testing Nginx configuration..."
@@ -31,26 +36,30 @@ else
   exit 1
 fi
 
-# Stop the current PM2 process
-echo "Stopping current PM2 process..."
-pm2 stop clicksalesmedia || true
-pm2 delete clicksalesmedia || true
-
 # Change to the application directory
 cd /var/www/clicksalesmediaAI
+
+# Clean the Next.js build directory to start fresh
+echo "Cleaning Next.js build..."
+rm -rf .next
+rm -rf node_modules/.cache
+
+# Install dependencies again to ensure everything is fresh
+echo "Installing dependencies..."
+npm ci --force
 
 # Build the Next.js application
 echo "Building Next.js application..."
 npm run build
 
-# Ensure .next directory has proper permissions
-echo "Setting permissions on .next directory..."
+# Set proper permissions
+echo "Setting permissions on application files..."
 chown -R www-data:www-data .next
 chmod -R 755 .next
 
-# Start with new PM2 configuration
-echo "Starting with new PM2 configuration..."
-pm2 start pm2-config.json
+# Start with new PM2 configuration directly using Next start
+echo "Starting the application with PM2..."
+pm2 start npm --name "clicksalesmedia" -- start
 
 # Save PM2 configuration
 pm2 save
@@ -62,8 +71,12 @@ pm2 status
 # Update the PM2 startup configuration
 pm2 startup
 
-# Force reload Nginx to ensure configuration is fully applied
+# Force reload Nginx
 echo "Force reloading Nginx..."
-nginx -s reload
+systemctl restart nginx
 
-echo "Deployment completed." 
+# Output success message
+echo "===== DEPLOYMENT COMPLETED ====="
+echo "If you're still experiencing issues, please check:"
+echo "1. The Nginx error log: cat /var/log/nginx/error.log"
+echo "2. The Next.js application logs: pm2 logs clicksalesmedia" 
