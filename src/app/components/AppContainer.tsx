@@ -10,10 +10,10 @@ import ScrollToTopButton from '../utils/ScrollToTopButton';
 import dynamic from 'next/dynamic';
 import ImagePreloader from './ImagePreloader';
 
-// Dynamically import AnimatedCursor with no SSR
+// Dynamically import AnimatedCursor with no SSR and low priority
 const AnimatedCursor = dynamic(
   () => import('react-animated-cursor').then((mod) => mod.default),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 
 interface AppContainerProps {
@@ -27,29 +27,46 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
   const isDashboard = pathname?.startsWith('/dashboard');
 
   useEffect(() => {
-    // Mark as mounted right away
+    // Mark as mounted immediately
     setIsMounted(true);
     
-    // Check if this is the first load in the session
-    const isNewSession = !sessionStorage.getItem('appInitialized');
+    // For returning visits in the same session, load instantly
+    const hasSessionStorage = typeof sessionStorage !== 'undefined';
+    const isInitialized = hasSessionStorage && sessionStorage.getItem('appInitialized');
     
-    // Set loading state based on whether this is a new session
-    if (isNewSession) {
-      // For new sessions, show loading briefly
+    if (isInitialized) {
+      // Skip loading animation for returning visitors
+      setIsLoaded(true);
+    } else {
+      // Very short loading time for new visitors - just enough to show the logo briefly
       const timer = setTimeout(() => {
         setIsLoaded(true);
-        sessionStorage.setItem('appInitialized', 'true');
-      }, 1500);
+        if (hasSessionStorage) {
+          sessionStorage.setItem('appInitialized', 'true');
+        }
+      }, 600);
+      
       return () => clearTimeout(timer);
-    } else {
-      // For returning visits in the same session, skip loading
-      setIsLoaded(true);
     }
   }, []);
 
   useEffect(() => {
-    if (pathname) {
+    // Scroll to top when pathname changes
+    if (pathname && window) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Delay the loading of non-critical resources
+    const loadNonCriticalResources = () => {
+      // Load non-critical JS or styles here if needed
+    };
+    
+    // Load non-critical resources after page is visible
+    if (document.readyState === 'complete') {
+      loadNonCriticalResources();
+    } else {
+      window.addEventListener('load', loadNonCriticalResources);
+      return () => window.removeEventListener('load', loadNonCriticalResources);
     }
   }, [pathname]);
 
@@ -60,8 +77,12 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
 
   return (
     <div>
+      {/* Always include ImagePreloader to ensure fast image loading */}
       <ImagePreloader />
+      
+      {/* Only show loading for new visitors and very briefly */}
       {!isLoaded && <LoadingOptimized />}
+      
       {isLoaded && (
         <>
           {!isDashboard && <Navbar />}

@@ -2,71 +2,62 @@
 
 import React, { useState, useEffect } from 'react';
 import NewHero from './NewHero';
-import LoadingOptimized from '@/app/components/LoadingOptimized';
 
 export default function NewHeroWrapper() {
   const [isLoaded, setIsLoaded] = useState(false);
   
-  // Improved image preloading with better performance
+  // Ultra-fast loading for hero section
   useEffect(() => {
-    // Immediately start preloading critical hero images
+    // Check if we've loaded this component before in this session
+    const hasLoaded = sessionStorage.getItem('heroLoaded');
+    
+    if (hasLoaded) {
+      // If already loaded in this session, show immediately
+      setIsLoaded(true);
+      return;
+    }
+    
+    // Immediately preload critical hero images with highest priority
     const heroImages = [
       '/clicksalesmedia-marketing-agency.png',
       '/mesh-clicksalesmedia.png',
     ];
     
-    // Create an array to track loading status
-    const imageLoadingStatus = heroImages.map(() => false);
-    let loadTimeout: NodeJS.Timeout;
-    
-    // Function to check if we should consider loading complete
-    const checkAllLoaded = () => {
-      // If any image has loaded or max time elapsed, consider loading complete
-      if (imageLoadingStatus.some(status => status) || 
-          document.readyState === 'complete') {
-        clearTimeout(loadTimeout);
-        setIsLoaded(true);
-      }
-    };
-    
-    // Set a maximum timeout to show content regardless
-    loadTimeout = setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
-    
-    // Preload each image and track its status
-    heroImages.forEach((src, index) => {
-      if (typeof window !== 'undefined') {
-        const img = new Image();
-        img.onload = () => {
-          imageLoadingStatus[index] = true;
-          checkAllLoaded();
-        };
-        img.onerror = () => {
-          // Still mark as "loaded" on error to avoid blocking
-          imageLoadingStatus[index] = true;
-          checkAllLoaded();
-        };
-        // Add timestamp to prevent caching issues
-        img.src = `${src}?t=${Date.now()}`;
-      }
+    // Add preload tags to head for faster loading
+    heroImages.forEach(src => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      link.fetchPriority = 'high';
+      document.head.appendChild(link);
     });
     
-    // Also check when document is ready
-    if (document.readyState === 'complete') {
-      checkAllLoaded();
-    } else {
-      window.addEventListener('load', checkAllLoaded);
-    }
+    // Also use Image objects for maximum browser compatibility
+    heroImages.forEach(src => {
+      const img = new window.Image();
+      img.onload = () => {
+        setIsLoaded(true);
+        sessionStorage.setItem('heroLoaded', 'true');
+      };
+      img.src = `${src}?t=${Date.now()}`;
+    });
+    
+    // Fallback - show content after short delay even if images haven't loaded
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+      sessionStorage.setItem('heroLoaded', 'true');
+    }, 400);
     
     return () => {
-      clearTimeout(loadTimeout);
-      window.removeEventListener('load', checkAllLoaded);
+      clearTimeout(timer);
     };
   }, []);
   
+  // If not loaded, render an empty div with the same dimensions
+  // to prevent layout shifts, but no spinner
   if (!isLoaded) {
-    return <LoadingOptimized />;
+    return <div className="min-h-[70vh]"></div>;
   }
   
   return <NewHero />;
