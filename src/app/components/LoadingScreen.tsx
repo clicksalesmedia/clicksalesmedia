@@ -8,15 +8,39 @@ const LoadingScreen: React.FC<{ onLoaded: () => void }> = ({ onLoaded }) => {
 
   useEffect(() => {
     setIsMounted(true);
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-      onLoaded(); // Notify the parent component that loading is finished
+    
+    if (typeof window === 'undefined') return;
+    
+    // Set a minimum display time for the loading screen
+    const minDisplayTime = setTimeout(() => {
+      // This ensures the loading screen shows for at least 2 seconds
+      const contentLoadedHandler = () => {
+        setIsVisible(false);
+        onLoaded();
+      };
+      
+      if (document.readyState === 'complete') {
+        contentLoadedHandler();
+      } else {
+        window.addEventListener('load', contentLoadedHandler);
+        
+        // Fallback in case the load event never fires
+        const fallback = setTimeout(() => {
+          setIsVisible(false);
+          onLoaded();
+        }, 3000);
+        
+        return () => {
+          window.removeEventListener('load', contentLoadedHandler);
+          clearTimeout(fallback);
+        };
+      }
     }, 2000);
-
-    return () => clearTimeout(timer);
+    
+    return () => clearTimeout(minDisplayTime);
   }, [onLoaded]);
 
-  // Don't render anything during SSR
+  // Don't render during SSR
   if (!isMounted) return null;
   
   // Don't render if not visible
