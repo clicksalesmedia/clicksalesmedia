@@ -2,13 +2,17 @@
 
 # This script is meant to be run on the server after pulling from GitHub
 
-# Create necessary directories
+# Clear caches and create necessary directories
+echo "Cleaning cache directories..."
+rm -rf /var/cache/nginx/proxy_cache/* || true
+rm -rf /var/cache/nginx/static_cache/* || true
 mkdir -p /var/cache/nginx/proxy_cache
 mkdir -p /var/cache/nginx/static_cache
 mkdir -p /var/log/pm2
 
 # Set correct permissions
 chown -R www-data:www-data /var/cache/nginx
+chmod -R 755 /var/cache/nginx
 
 # Copy configuration files
 cp server-config/nginx-config.conf /etc/nginx/sites-available/clicksalesmedia
@@ -39,6 +43,11 @@ cd /var/www/clicksalesmediaAI
 echo "Building Next.js application..."
 npm run build
 
+# Ensure .next directory has proper permissions
+echo "Setting permissions on .next directory..."
+chown -R www-data:www-data .next
+chmod -R 755 .next
+
 # Start with new PM2 configuration
 echo "Starting with new PM2 configuration..."
 pm2 start pm2-config.json
@@ -52,5 +61,9 @@ pm2 status
 
 # Update the PM2 startup configuration
 pm2 startup
+
+# Force reload Nginx to ensure configuration is fully applied
+echo "Force reloading Nginx..."
+nginx -s reload
 
 echo "Deployment completed." 
