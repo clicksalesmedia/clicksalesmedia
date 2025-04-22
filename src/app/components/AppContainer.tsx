@@ -4,10 +4,11 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Footer from './Footer/Footer';
-import LoadingScreen from './LoadingScreen';
+import LoadingOptimized from './LoadingOptimized';
 import Navbar from './Header/Navbar';
 import ScrollToTopButton from '../utils/ScrollToTopButton';
 import dynamic from 'next/dynamic';
+import ImagePreloader from './ImagePreloader';
 
 // Dynamically import AnimatedCursor with no SSR
 const AnimatedCursor = dynamic(
@@ -25,12 +26,28 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
   const pathname = usePathname();
   const isDashboard = pathname?.startsWith('/dashboard');
 
-  const handleLoaded = () => {
-    setIsLoaded(true);
-  };
+  useEffect(() => {
+    // Mark as mounted right away
+    setIsMounted(true);
+    
+    // Check if this is the first load in the session
+    const isNewSession = !sessionStorage.getItem('appInitialized');
+    
+    // Set loading state based on whether this is a new session
+    if (isNewSession) {
+      // For new sessions, show loading briefly
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+        sessionStorage.setItem('appInitialized', 'true');
+      }, 1500);
+      return () => clearTimeout(timer);
+    } else {
+      // For returning visits in the same session, skip loading
+      setIsLoaded(true);
+    }
+  }, []);
 
   useEffect(() => {
-    setIsMounted(true);
     if (pathname) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -43,7 +60,8 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
 
   return (
     <div>
-      {!isLoaded && <LoadingScreen onLoaded={handleLoaded} />}
+      <ImagePreloader />
+      {!isLoaded && <LoadingOptimized />}
       {isLoaded && (
         <>
           {!isDashboard && <Navbar />}

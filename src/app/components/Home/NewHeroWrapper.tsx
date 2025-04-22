@@ -2,56 +2,71 @@
 
 import React, { useState, useEffect } from 'react';
 import NewHero from './NewHero';
-import LoadingSpinner from '@/app/components/LoadingSpinner';
+import LoadingOptimized from '@/app/components/LoadingOptimized';
 
 export default function NewHeroWrapper() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   
-  // Make sure all critical hero images are preloaded
+  // Improved image preloading with better performance
   useEffect(() => {
-    // Preload hero images
+    // Immediately start preloading critical hero images
     const heroImages = [
       '/clicksalesmedia-marketing-agency.png',
       '/mesh-clicksalesmedia.png',
     ];
     
-    const imagePromises = heroImages.map(src => {
-      return new Promise<void>((resolve) => {
-        if (typeof window !== 'undefined') {
-          const img = new window.Image();
-          img.onload = () => resolve();
-          img.onerror = () => resolve(); // Still resolve on error
-          img.src = src;
-        } else {
-          resolve();
-        }
-      });
+    // Create an array to track loading status
+    const imageLoadingStatus = heroImages.map(() => false);
+    let loadTimeout: NodeJS.Timeout;
+    
+    // Function to check if we should consider loading complete
+    const checkAllLoaded = () => {
+      // If any image has loaded or max time elapsed, consider loading complete
+      if (imageLoadingStatus.some(status => status) || 
+          document.readyState === 'complete') {
+        clearTimeout(loadTimeout);
+        setIsLoaded(true);
+      }
+    };
+    
+    // Set a maximum timeout to show content regardless
+    loadTimeout = setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000);
+    
+    // Preload each image and track its status
+    heroImages.forEach((src, index) => {
+      if (typeof window !== 'undefined') {
+        const img = new Image();
+        img.onload = () => {
+          imageLoadingStatus[index] = true;
+          checkAllLoaded();
+        };
+        img.onerror = () => {
+          // Still mark as "loaded" on error to avoid blocking
+          imageLoadingStatus[index] = true;
+          checkAllLoaded();
+        };
+        // Add timestamp to prevent caching issues
+        img.src = `${src}?t=${Date.now()}`;
+      }
     });
     
-    // Mark images as loaded when all are done, or after timeout
-    Promise.race([
-      Promise.all(imagePromises),
-      new Promise(resolve => setTimeout(resolve, 2000)) // Safety timeout
-    ]).then(() => {
-      setImageLoaded(true);
-    });
+    // Also check when document is ready
+    if (document.readyState === 'complete') {
+      checkAllLoaded();
+    } else {
+      window.addEventListener('load', checkAllLoaded);
+    }
+    
+    return () => {
+      clearTimeout(loadTimeout);
+      window.removeEventListener('load', checkAllLoaded);
+    };
   }, []);
   
-  // Set component as loaded after a delay and when images are loaded
-  useEffect(() => {
-    if (imageLoaded) {
-      // Small delay to ensure smooth rendering
-      const timer = setTimeout(() => {
-        setIsLoaded(true);
-      }, 100);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [imageLoaded]);
-  
   if (!isLoaded) {
-    return <LoadingSpinner size="large" />;
+    return <LoadingOptimized />;
   }
   
   return <NewHero />;
