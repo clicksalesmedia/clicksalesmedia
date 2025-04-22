@@ -9,83 +9,49 @@ interface ClientPageWrapperProps {
 
 export default function ClientPageWrapper({ children }: ClientPageWrapperProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInitialRender, setIsInitialRender] = useState(true);
   const [resourcesLoaded, setResourcesLoaded] = useState(false);
 
-  // Handle initialization and resources preloading
+  // Skip the initial render check and start loading resources immediately
   useEffect(() => {
-    // This code only runs on the client
-    if (typeof window !== 'undefined') {
-      // Force a refresh on first visit in a new browser
-      if (!sessionStorage.getItem('page_initialized')) {
-        sessionStorage.setItem('page_initialized', 'true');
-        
-        // Add a small delay to make sure all resources start loading
-        setTimeout(() => {
-          setIsInitialRender(false);
-        }, 300);
-        
-        // If first load in a new browser, listen for navigation and force a reload
-        // This helps with loading issues
-        const handleBeforeUnload = () => {
-          sessionStorage.setItem('should_reload', 'true');
-        };
-        
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        
-        return () => {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-      } else {
-        // For subsequent visits, skip initial render phase
-        setIsInitialRender(false);
-      }
-    }
-  }, []);
-  
-  // Preload critical images
-  useEffect(() => {
-    if (!isInitialRender) {
-      // Preload key images
-      const preloadImages = () => {
-        const criticalImages = [
-          '/clicksalesmedia-marketing-agency.png',
-          '/mesh-clicksalesmedia.png',
-        ];
-        
-        const imagePromises = criticalImages.map(src => {
-          return new Promise<void>((resolve) => {
-            if (typeof window !== 'undefined') {
-              const img = new window.Image();
-              img.onload = () => resolve();
-              img.onerror = () => resolve(); // Still resolve on error
-              img.src = src;
-            } else {
-              resolve();
-            }
-          });
-        });
-        
-        // Wait for images to load or timeout after 2 seconds
-        Promise.race([
-          Promise.all(imagePromises),
-          new Promise(resolve => setTimeout(resolve, 2000))
-        ]).then(() => {
-          setResourcesLoaded(true);
-        });
-      };
+    // Preload key images
+    const preloadImages = () => {
+      const criticalImages = [
+        '/clicksalesmedia-marketing-agency.png',
+        '/mesh-clicksalesmedia.png',
+      ];
       
-      preloadImages();
-    }
-  }, [isInitialRender]);
+      const imagePromises = criticalImages.map(src => {
+        return new Promise<void>((resolve) => {
+          if (typeof window !== 'undefined') {
+            const img = new window.Image();
+            img.onload = () => resolve();
+            img.onerror = () => resolve(); // Still resolve on error
+            img.src = src;
+          } else {
+            resolve();
+          }
+        });
+      });
+      
+      // Wait for images to load or timeout after 2 seconds
+      Promise.race([
+        Promise.all(imagePromises),
+        new Promise(resolve => setTimeout(resolve, 2000))
+      ]).then(() => {
+        setResourcesLoaded(true);
+      });
+    };
+    
+    preloadImages();
+  }, []);
   
   // Set as loaded when resources are ready
   useEffect(() => {
     if (resourcesLoaded) {
-      // Small delay for smooth transition
+      // Shorter delay for faster loading
       const timer = setTimeout(() => {
         setIsLoaded(true);
-      }, 500);
+      }, 300);
       
       return () => clearTimeout(timer);
     }
