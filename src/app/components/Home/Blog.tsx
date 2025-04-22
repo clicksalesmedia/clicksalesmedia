@@ -31,6 +31,15 @@ type BlogCardProps = {
   post: Post;
 };
 
+const formatDate = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  });
+};
+
 const BlogSection: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]); 
   const { language } = useLanguage();
@@ -78,10 +87,13 @@ const BlogSection: React.FC = () => {
             <Image
               src={imageUrl}
               alt={getTitle(post)}
-              width={1300}
-              height={1400}
+              width={600}
+              height={400}
               className="rounded-t-lg w-full aspect-[5/3] object-cover"
-              unoptimized={true}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+              quality={75}
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyMjIyIi8+PC9zdmc+"
               onError={(e) => {
                 console.error("Failed to load image:", imageUrl);
                 const target = e.target as HTMLImageElement;
@@ -91,31 +103,38 @@ const BlogSection: React.FC = () => {
         </Link>
         <div className="p-5">
           <Link href={`/blog/${post.slug}`} passHref>
-              <h5 className="mb-2 text-2xl font-semibold tracking-tight text-secondaryColor dark:text-white line-clamp-2">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white line-clamp-2">
                 {getTitle(post)}
               </h5>
           </Link>
-          <p className="mb-3 font-light text-whiteColor dark:text-gray-400 line-clamp-2">
+          <p className="mb-3 font-normal text-gray-400 dark:text-gray-400 line-clamp-3">
           {stripHtml(getContent(post))}
           </p>
-          <Link href={`/blog/${post.slug}`} passHref className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-secondaryColor rounded-lg hover:bg-primaryColor-dark focus:ring-4 focus:outline-none focus:ring-primaryColor-light dark:bg-primaryColor dark:hover:bg-primaryColor-dark dark:focus:ring-primaryColor-light"> 
-            {t('common.readMore')}
-            <svg
-              className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 10"
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {formatDate(post.createdAt || new Date().toISOString())}
+            </span>
+            <Link href={`/blog/${post.slug}`} passHref
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-secondaryColor rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M1 5h12m0 0L9 1m4 4L9 9"
-              />
-            </svg>
-          </Link>
+              Read more
+              <svg
+                className="w-3.5 h-3.5 ml-2"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </Link>
+          </div>
         </div>
       </div>
     );

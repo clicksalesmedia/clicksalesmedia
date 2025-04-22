@@ -1,9 +1,21 @@
 'use client'
+import React from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from 'next/image';
 import { useEffect } from 'react';
+
+const logos = [
+  '/clients/client1.png',
+  '/clients/client2.png',
+  '/clients/client3.png',
+  '/clients/client4.png',
+  '/clients/client5.png',
+  '/clients/client6.png',
+  '/clients/client7.png',
+  '/clients/client8.png',
+];
 
 const CarouselLogo = () => {
   // Add effect to handle overflow on mount and cleanup
@@ -22,49 +34,35 @@ const CarouselLogo = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 4000,
-    autoplaySpeed: 100,
+    speed: 3000,
+    autoplaySpeed: 0,
+    cssEase: 'linear',
+    pauseOnHover: true,
     arrows: false,
-    cssEase: "linear",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-        }
+        },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 2,
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
-
-  const logos = [
-    '/clients/wse.png',
-    '/clients/thegreenroasteries-logo.png',
-    '/clients/ses-school-logo-clicksalesmedia.png',
-    '/clients/eshraq.png',
-    '/clients/inspeedglobal-1.png',
-    '/clients/maeva-2.png',
-    '/clients/storage.png',
-    '/clients/mahadahlan.png',
-    '/clients/joynt-1.png',
-    '/clients/bajunaid-company.png',
-    '/clients/erosforlady.png',
-    '/clients/lavivianex.png',
-  ];
 
   return (
     <div className="w-full logo-carousel-container px-0 mx-0 vw-100">
@@ -121,12 +119,13 @@ const CarouselLogo = () => {
         {logos.map((logo, index) => (
           <div key={index} className="logo-item">
             <Image 
-              width={200} 
+              width={160} 
               height={80} 
               src={logo} 
-              alt={`Logo ${index + 1}`} 
-              className="logo-image" 
-              unoptimized={true}
+              alt={`Client Logo ${index + 1}`} 
+              className="logo-image"
+              quality={75}
+              loading={index < 3 ? "eager" : "lazy"}
             />
           </div>
         ))}
