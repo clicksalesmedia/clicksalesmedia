@@ -1,0 +1,32 @@
+{
+  "apps": [
+    {
+      "name": "clicksalesmedia",
+      "script": "node_modules/next/dist/bin/next",
+      "args": "start",
+      "cwd": "/var/www/clicksalesmediaAI",
+      "instances": "2",
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3000
+      },
+      "max_memory_restart": "600M",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "combine_logs": true,
+      "merge_logs": true,
+      "error_file": "/var/log/pm2/clicksalesmedia-error.log",
+      "out_file": "/var/log/pm2/clicksalesmedia-out.log",
+      "time": true,
+      "watch": false,
+      "node_args": "--max-old-space-size=600 --max-http-header-size=16384",
+      "restart_delay": 3000,
+      "wait_ready": true,
+      "listen_timeout": 30000,
+      "kill_timeout": 5000,
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+} 

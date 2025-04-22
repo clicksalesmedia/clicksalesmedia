@@ -12,7 +12,9 @@ pm2 delete all || true
 # Remove cache directories to start fresh
 echo "Cleaning all cache directories..."
 rm -rf /var/cache/nginx/* || true
-mkdir -p /var/cache/nginx
+mkdir -p /var/cache/nginx/proxy_cache
+mkdir -p /var/cache/nginx/static_cache
+mkdir -p /var/cache/nginx/image_cache
 
 # Set proper ownership and permissions
 echo "Setting proper ownership and permissions..."
@@ -22,6 +24,9 @@ chmod -R 755 /var/cache/nginx
 # Copy Nginx configuration
 echo "Updating Nginx configuration..."
 cp server-config/nginx-config.conf /etc/nginx/sites-available/clicksalesmedia
+
+# Ensure symbolic link exists
+ln -sf /etc/nginx/sites-available/clicksalesmedia /etc/nginx/sites-enabled/clicksalesmedia
 
 # Test Nginx configuration
 echo "Testing Nginx configuration..."
@@ -48,6 +53,11 @@ rm -rf node_modules/.cache
 echo "Installing dependencies..."
 npm ci --force
 
+# Set Next.js build optimization flags
+export NEXT_OPTIMIZE_IMAGES=true
+export NEXT_OPTIMIZE_CSS=true
+export NEXT_OPTIMIZE_FONTS=true
+
 # Build the Next.js application
 echo "Building Next.js application..."
 npm run build
@@ -57,9 +67,9 @@ echo "Setting permissions on application files..."
 chown -R www-data:www-data .next
 chmod -R 755 .next
 
-# Start with new PM2 configuration directly using Next start
+# Start with new PM2 configuration
 echo "Starting the application with PM2..."
-pm2 start npm --name "clicksalesmedia" -- start
+pm2 start npm --name "clicksalesmedia" -- start -- --max-old-space-size=4096
 
 # Save PM2 configuration
 pm2 save
@@ -75,8 +85,14 @@ pm2 startup
 echo "Force reloading Nginx..."
 systemctl restart nginx
 
+# Clear Nginx cache (optional, only if needed)
+# echo "Clearing Nginx cache..."
+# rm -rf /var/cache/nginx/*
+# systemctl reload nginx
+
 # Output success message
 echo "===== DEPLOYMENT COMPLETED ====="
 echo "If you're still experiencing issues, please check:"
 echo "1. The Nginx error log: cat /var/log/nginx/error.log"
-echo "2. The Next.js application logs: pm2 logs clicksalesmedia" 
+echo "2. The Next.js application logs: pm2 logs clicksalesmedia"
+echo "3. Cache status: curl -I https://clicksalesmedia.com | grep X-Cache-Status" 
