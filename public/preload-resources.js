@@ -22,13 +22,16 @@
       ]
     };
 
-    // Create a promise-based resource loader
+    // Create a promise-based resource loader with improved performance
     function preloadResource(url, type) {
       return new Promise((resolve, reject) => {
         let resource;
 
         if (type === 'image') {
+          // Use fetchpriority for images
           resource = new Image();
+          resource.fetchPriority = 'high';
+          resource.decoding = 'async'; // Use async decoding
           resource.onload = resolve;
           resource.onerror = resolve; // Still resolve to avoid blocking
           resource.src = url;
@@ -38,7 +41,7 @@
           resource.as = 'style';
           resource.href = url;
           resource.onload = resolve;
-          resource.onerror = resolve; // Still resolve to avoid blocking
+          resource.onerror = resolve;
           document.head.appendChild(resource);
         } else if (type === 'script') {
           resource = document.createElement('link');
@@ -46,12 +49,12 @@
           resource.as = 'script';
           resource.href = url;
           resource.onload = resolve;
-          resource.onerror = resolve; // Still resolve to avoid blocking
+          resource.onerror = resolve;
           document.head.appendChild(resource);
         }
 
-        // Set a timeout to avoid hanging forever
-        setTimeout(resolve, 3000);
+        // Reduce timeout to improve perceived performance
+        setTimeout(resolve, 1500);
       });
     }
 
@@ -80,13 +83,29 @@
     // Add to sessionStorage that we've started preloading
     sessionStorage.setItem('resources_preloaded', 'started');
 
-    // Execute all preloads in parallel
-    Promise.all(preloadPromises).then(() => {
-      sessionStorage.setItem('resources_preloaded', 'complete');
-      
-      // Dispatch a custom event that other scripts can listen for
-      const event = new CustomEvent('resourcesPreloaded');
-      window.dispatchEvent(event);
-    });
+    // Execute all preloads in parallel with a race condition
+    // This ensures we don't wait for ALL resources if some are slow
+    Promise.all(preloadPromises.map(p => Promise.race([p, new Promise(r => setTimeout(r, 1000))])))
+      .then(() => {
+        sessionStorage.setItem('resources_preloaded', 'complete');
+        
+        // Dispatch a custom event that other scripts can listen for
+        const event = new CustomEvent('resourcesPreloaded');
+        window.dispatchEvent(event);
+        
+        // Add a second wave of preloading for non-critical resources
+        setTimeout(() => {
+          // Preload additional resources after the initial render
+          const secondaryImages = [
+            '/images/about/team-bg.jpg',
+            '/images/services/services-bg.jpg'
+          ];
+          
+          secondaryImages.forEach(url => {
+            const img = new Image();
+            img.src = url;
+          });
+        }, 2000);
+      });
   }
 })(); 

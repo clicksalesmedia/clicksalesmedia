@@ -9,9 +9,12 @@ echo "Stopping all PM2 processes..."
 pm2 stop all || true
 pm2 delete all || true
 
-# Remove cache directories to start fresh
-echo "Cleaning all cache directories..."
-rm -rf /var/cache/nginx/* || true
+# Selectively manage cache directories
+echo "Selectively managing cache directories..."
+# Preserve image cache but clear other caches
+rm -rf /var/cache/nginx/proxy_cache/* || true
+rm -rf /var/cache/nginx/static_cache/* || true
+# Ensure cache directories exist
 mkdir -p /var/cache/nginx/proxy_cache
 mkdir -p /var/cache/nginx/static_cache
 mkdir -p /var/cache/nginx/image_cache
