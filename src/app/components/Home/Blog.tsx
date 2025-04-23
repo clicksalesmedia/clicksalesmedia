@@ -124,7 +124,7 @@ const BlogSection: React.FC = () => {
   return (
     <section className="py-20 relative">
       <div className="absolute left-0 top-3/1 transform -translate-y-1/2 hidden md:block">
-        <Image src="/svg/arrows.svg" alt="Arrows" width={45} height={45} layout="fixed" />
+        <Image src="/svg/arrows.svg" alt="Arrows" width={45} height={45} />
       </div>
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-10">
         <Data sectionName="blog" />

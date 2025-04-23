@@ -53,9 +53,9 @@ function Hero() {
       <Image
         src="/clicksalesmedia-marketing-agency.png"
         alt="clicksalesmedia Marketing strategy"
-        layout="responsive"
         width={550}  // Used for aspect ratio
         height={550} // Used for aspect ratio
+        style={{ width: '100%', height: 'auto' }}
       />
   </div>
 

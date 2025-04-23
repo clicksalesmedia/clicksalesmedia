@@ -57,7 +57,7 @@ const CustomCarousel: React.FC = () => {
         <Slider {...settings} className="relative z-10">
           {slides.map((src, index) => (
             <div key={index} className="px-2">
-              <Image src={src} alt={`Slide ${index}`} width={211} height={427} layout="responsive" />
+              <Image src={src} alt={`Slide ${index}`} width={211} height={427} style={{ width: '100%', height: 'auto' }} />
             </div>
           ))}
         </Slider>

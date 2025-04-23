@@ -46,7 +46,6 @@ function Feature() {
           alt="Arrows"
           width={45} // Adjust based on your SVG's size
           height={45} // Adjust based on your SVG's size
-          layout="fixed"
         />
       </div>
 
@@ -85,9 +84,9 @@ function Feature() {
               p-6 rounded-lg aspect-[4/2.4] overflow-hidden">
                         <Image src="/business-services.jpg"
                          alt="illustration"
-                        className="wfull hauto"
-                        fill={true}
-                        
+                         className="w-full h-auto"
+                         width={800}
+                         height={500}
                         />
                     </div>
                 </div>

@@ -36,7 +36,11 @@ const FeaturedWork = () => {
     async function fetchFeaturedWorks() {
       try {
         const response = await fetch('/api/portfolio?published=true&limit=3');
-        if (!response.ok) throw new Error('Failed to fetch works');
+        if (!response.ok) {
+          console.error('Failed to fetch portfolio items:', response.status, response.statusText);
+          setLoading(false);
+          return; // Early return instead of throwing
+        }
         const data = await response.json();
         setLatestWorks(data);
       } catch (error) {
@@ -67,6 +71,59 @@ const FeaturedWork = () => {
           <div className="flex justify-center">
             <div className="w-8 h-8 border-t-2 border-secondaryColor border-solid rounded-full animate-spin"></div>
           </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (latestWorks.length === 0 && !loading) {
+    return (
+      <section className="py-20 bg-[#1f1f1f]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primaryColor to-secondaryColor bg-clip-text text-transparent"
+            >
+              Our Latest Work
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray-300 text-lg max-w-3xl mx-auto"
+            >
+              We're currently updating our portfolio. Please check back soon!
+            </motion.p>
+          </div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12 text-center"
+          >
+            <Link href="/contact" className="inline-block">
+              <div className="relative group">
+                <button className="px-8 py-3 text-white font-semibold rounded-sm overflow-hidden relative">
+                  <span className="relative z-10">Get in Touch</span>
+                  <motion.div
+                    initial={{ left: 0 }}
+                    animate={{ left: '-300%' }}
+                    transition={{
+                      repeat: Infinity,
+                      repeatType: 'mirror',
+                      duration: 4,
+                      ease: 'linear',
+                    }}
+                    className="bg-[linear-gradient(to_right,#c3a177,#cc9f6e,#d19b61,#ce8442,#bf752b)] absolute z-0 inset-0 w-[400%]"
+                  ></motion.div>
+                </button>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </section>
     );

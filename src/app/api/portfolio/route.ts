@@ -15,14 +15,62 @@ export async function GET(request: Request) {
   try {
     console.log('Fetching portfolio items with filters:', { published, featured, projectType, limit });
     
-    // Query the portfolio items first without the schema check
+    // Build the where clause
+    const where: any = {};
+    
+    if (published === 'true') {
+      where.published = true;
+    }
+    
+    if (featured === 'true') {
+      where.featured = true;
+    }
+    
+    if (projectType) {
+      where.projectType = projectType;
+    }
+    
+    console.log('Portfolio query where clause:', where);
+    
+    // First check if Portfolio table exists
     try {
+      const tableExists = await prisma.$queryRaw`
+        SELECT EXISTS (
+          SELECT FROM information_schema.tables 
+          WHERE table_schema = 'public' AND 
+                table_name = 'Portfolio' OR 
+                table_name = 'portfolio'
+        ) as exists
+      `;
+      console.log('Portfolio table exists check:', tableExists);
+      
+      // Try to get a count of portfolio items directly
+      try {
+        const count = await prisma.$queryRaw`
+          SELECT COUNT(*) FROM "Portfolio"
+        `;
+        console.log('Direct Portfolio count query:', count);
+      } catch (countErr) {
+        console.error('Error counting Portfolio items directly:', countErr);
+        
+        // Try with lowercase table name
+        try {
+          const countLower = await prisma.$queryRaw`
+            SELECT COUNT(*) FROM "portfolio"
+          `;
+          console.log('Direct portfolio (lowercase) count query:', countLower);
+        } catch (lowerErr) {
+          console.error('Error counting portfolio (lowercase) items directly:', lowerErr);
+        }
+      }
+    } catch (err) {
+      console.error('Error checking if Portfolio table exists:', err);
+    }
+    
+    try {
+      // Query the portfolio items with simplified approach
       const portfolioItems = await prisma.portfolio.findMany({
-        where: {
-          ...(published === 'true' ? { published: true } : {}),
-          ...(featured === 'true' ? { featured: true } : {}),
-          ...(projectType ? { projectType: projectType as any } : {}),
-        },
+        where,
         orderBy: {
           createdAt: 'desc',
         },
@@ -37,34 +85,25 @@ export async function GET(request: Request) {
         },
       });
       
-      // Simplified approach - just ensure all items have Arabic fields even if empty
-      const processedItems = portfolioItems.map(item => ({
-        ...item,
-        titleAr: item.titleAr || "",
-        clientNameAr: item.clientNameAr || "",
-        descriptionAr: item.descriptionAr || "",
-        resultsAr: item.resultsAr || "",
-      }));
-
-      return NextResponse.json(processedItems);
+      console.log('Successfully fetched portfolio items, count:', portfolioItems.length);
+      return NextResponse.json(portfolioItems);
     } catch (queryError) {
-      console.error('Error querying portfolio items:', queryError);
+      console.error('Error in portfolio findMany:', queryError);
       return NextResponse.json(
         { 
-          error: 'Failed to query portfolio items',
-          details: (queryError as Error).message,
-          stack: (queryError as Error).stack
+          error: 'Database query failed',
+          details: (queryError as Error).message
         },
         { status: 500 }
       );
     }
+    
   } catch (error) {
     console.error('Error in portfolio GET route:', error);
     return NextResponse.json(
       { 
         error: 'Failed to fetch portfolio items',
-        details: (error as Error).message,
-        stack: (error as Error).stack
+        details: (error as Error).message
       },
       { status: 500 }
     );
