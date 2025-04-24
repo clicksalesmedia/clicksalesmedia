@@ -1,12 +1,9 @@
 // components/RootLayout.tsx
+import './globals.css';
 import Script from 'next/script';
 import { Noto_Sans_Arabic, Noto_Kufi_Arabic, Inter } from 'next/font/google';
-import './globals.css';
-import React from 'react';
-import AppContainer from './components/AppContainer';
-import { NextAuthProvider } from '@/app/providers';
-import { LanguageProvider } from '@/app/providers/LanguageProvider';
 import type { Metadata } from 'next';
+import ClientLayout from './ClientLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 const notoSansArabic = Noto_Sans_Arabic({ subsets: ['arabic'] });
@@ -66,54 +63,56 @@ export const metadata: Metadata = {
   },
 };
 
-interface RootLayoutProps {
+export default function RootLayout({
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}
-
-const RootLayout: React.FC<RootLayoutProps> = ({ children, params }) => {
-  // Determine direction and language based on locale parameter
-  const isRtl = params?.locale === 'ar';
-  const currentLang = params?.locale || 'ar';
+  params: { locale?: string };
+}) {
+  // Default to English if no locale is provided
+  const locale = params?.locale || 'en';
   
   return (
-    <html lang={currentLang} dir={isRtl ? 'rtl' : 'ltr'} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
-        <Script
-          id='gtm-script'
-          strategy='afterInteractive'
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-WBLD4686');`,
-          }}
-        />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} ${notoSansArabic.className} ${notoKufiArabic.className}`}>
         <noscript>
           <iframe
-            src='https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686'
-            height='0'
-            width='0'
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686"
+            height="0"
+            width="0"
             style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
+          />
         </noscript>
-        <NextAuthProvider>
-          <LanguageProvider>
-          <AppContainer>
-            {children}
-          </AppContainer>
-          </LanguageProvider>
-        </NextAuthProvider>
+        
+        <ClientLayout>{children}</ClientLayout>
+        
+        {/* Place the script tag outside of <head> to prevent errors */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({
+                  'gtm.start': new Date().getTime(),
+                  event:'gtm.js'
+                });
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WBLD4686');
+            `
+          }}
+        />
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
