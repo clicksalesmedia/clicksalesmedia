@@ -1,11 +1,10 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Data from "@/app/ui/data";
 import { useLanguage } from "@/app/providers/LanguageProvider";
 import { useTranslation } from "@/app/hooks/useTranslation";
-import { normalizeImageUrl } from '@/app/lib/utils';
 
 interface Category {
   id: string;
@@ -21,8 +20,6 @@ interface Post {
   contentAr: string;
   coverImage: string;
   slug: string;
-  createdAt: string;
-  categories: Category[];
   day: number;
   month: string;
 }
@@ -31,29 +28,46 @@ type BlogCardProps = {
   post: Post;
 };
 
+// Sample blog posts data with client images
+const samplePosts: Post[] = [
+  {
+    id: "1",
+    title: "Digital Marketing Strategies for 2023",
+    titleAr: "استراتيجيات التسويق الرقمي لعام 2023",
+    content: "Explore the latest digital marketing strategies that can help your business grow in the coming year.",
+    contentAr: "استكشف أحدث استراتيجيات التسويق الرقمي التي يمكن أن تساعد عملك على النمو في العام المقبل.",
+    coverImage: "/clients/bajunaid-company.png",
+    slug: "digital-marketing-strategies-2023",
+    day: 15,
+    month: "January",
+  },
+  {
+    id: "2",
+    title: "The Power of SEO for Small Businesses",
+    titleAr: "قوة تحسين محركات البحث للشركات الصغيرة",
+    content: "Learn how small businesses can leverage SEO to compete with larger companies in their industry.",
+    contentAr: "تعرف على كيفية استفادة الشركات الصغيرة من تحسين محركات البحث للتنافس مع الشركات الكبرى في مجالها.",
+    coverImage: "/clients/maeva-2.png",
+    slug: "power-of-seo-small-businesses",
+    day: 22,
+    month: "February",
+  },
+  {
+    id: "3",
+    title: "Building a Strong Brand Identity Online",
+    titleAr: "بناء هوية علامة تجارية قوية عبر الإنترنت",
+    content: "Discover the essential elements for creating a memorable and effective brand identity in the digital world.",
+    contentAr: "اكتشف العناصر الأساسية لإنشاء هوية علامة تجارية فعالة ولا تُنسى في العالم الرقمي.",
+    coverImage: "/clients/wse.png",
+    slug: "building-strong-brand-identity",
+    day: 8,
+    month: "March",
+  }
+];
+
 const BlogSection: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]); 
   const { language } = useLanguage();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    // Fetch from internal API instead of external URL
-    fetch('/api/blog?published=true&limit=3')
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(
-          data.map((post: any) => {
-            const date = new Date(post.createdAt);
-            return {
-              ...post,
-              day: date.getDate(),
-              month: date.toLocaleString(language === 'ar' ? 'ar-EG' : 'default', { month: 'long' }),
-            };
-          })
-        );
-      })
-      .catch((error) => console.error('Failed to fetch posts', error));
-  }, [language]);
 
   const getTitle = (post: Post) => {
     return language === 'ar' && post.titleAr ? post.titleAr : post.title;
@@ -65,29 +79,27 @@ const BlogSection: React.FC = () => {
 
   // BlogCard component
   const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
-    const imageUrl = normalizeImageUrl(post.coverImage);
-    
     const stripHtml = (html: string) => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      return doc.body.textContent || "";
+      return html; // No need to strip HTML as our sample data is already plain text
     };
     
     return (
       <div className="max-w-sm bg-black bg-opacity-30 border border-secondaryColor rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Link href={`/blog/${post.slug}`} passHref>
-            <Image
-              src={imageUrl}
-              alt={getTitle(post)}
-              width={1300}
-              height={1400}
-              className="rounded-t-lg w-full aspect-[5/3] object-cover"
-              unoptimized={true}
-              onError={(e) => {
-                console.error("Failed to load image:", imageUrl);
-                const target = e.target as HTMLImageElement;
-                target.src = '/images/blog_uploads/default-blog-image.jpg'; // Fallback image
-              }}
-            />
+            <div className="relative h-48 w-full bg-white">
+              <Image
+                src={post.coverImage}
+                alt={getTitle(post)}
+                fill
+                className="rounded-t-lg object-contain p-4"
+                unoptimized={true}
+                onError={(e) => {
+                  console.error("Failed to load image:", post.coverImage);
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/clients/wse.png'; // Fallback image
+                }}
+              />
+            </div>
         </Link>
         <div className="p-5">
           <Link href={`/blog/${post.slug}`} passHref>
@@ -98,7 +110,7 @@ const BlogSection: React.FC = () => {
           <p className="mb-3 font-light text-whiteColor dark:text-gray-400 line-clamp-2">
           {stripHtml(getContent(post))}
           </p>
-          <Link href={`/blog/${post.slug}`} passHref className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-secondaryColor rounded-lg hover:bg-primaryColor-dark focus:ring-4 focus:outline-none focus:ring-primaryColor-light dark:bg-primaryColor dark:hover:bg-primaryColor-dark dark:focus:ring-primaryColor-light"> 
+          <Link href={`/blog/${post.slug}`} passHref className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-secondaryColor rounded-lg hover:bg-primaryColor-dark focus:ring-4 focus:outline-none focus:ring-primaryColor-light dark:bg-primaryColor dark:hover:bg-primaryColor-dark dark:focus:ring-primaryColor-light">
             {t('common.readMore')}
             <svg
               className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -129,7 +141,7 @@ const BlogSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 space-y-10">
         <Data sectionName="blog" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {posts.map((post, index) => (
+          {samplePosts.map((post, index) => (
             <BlogCard key={`post-${post.id}-${index}`} post={post} />
           ))}
         </div>
@@ -138,4 +150,4 @@ const BlogSection: React.FC = () => {
   );
 };
 
-export default BlogSection;
+export default BlogSection; 
