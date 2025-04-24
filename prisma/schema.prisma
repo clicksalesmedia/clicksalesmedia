@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -19,15 +13,14 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -41,21 +34,20 @@ model Session {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?    @unique
+  email         String?     @unique
   emailVerified DateTime?
   image         String?
   password      String?
-  role          UserRole   @default(USER)
+  role          UserRole    @default(USER)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
   accounts      Account[]
-  sessions      Session[]
   blogPosts     BlogPost[]
   caseStudies   CaseStudy[]
   portfolios    Portfolio[]
-  trackingScripts TrackingScript[]
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  sessions      Session[]
 }
 
 model VerificationToken {
@@ -67,21 +59,21 @@ model VerificationToken {
 }
 
 model BlogPost {
-  id          String   @id @default(cuid())
-  title       String
-  titleAr     String?
-  slug        String   @unique
-  content     String   @db.Text
-  contentAr   String?  @db.Text
-  excerpt     String?  @db.Text
-  excerptAr   String?  @db.Text
-  coverImage  String?
-  published   Boolean  @default(false)
-  author      User     @relation(fields: [authorId], references: [id])
-  authorId    String
-  categories  Category[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id         String     @id @default(cuid())
+  title      String
+  slug       String     @unique
+  content    String
+  excerpt    String?
+  coverImage String?
+  published  Boolean    @default(false)
+  authorId   String
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  contentAr  String?
+  excerptAr  String?
+  titleAr    String?
+  author     User       @relation(fields: [authorId], references: [id])
+  categories Category[] @relation("BlogPostToCategory")
 }
 
 model CaseStudy {
@@ -89,64 +81,137 @@ model CaseStudy {
   title       String
   slug        String   @unique
   clientName  String
-  description String   @db.Text
-  challenge   String   @db.Text
-  solution    String   @db.Text
-  results     String   @db.Text
+  description String
+  challenge   String
+  solution    String
+  results     String
   coverImage  String?
-  gallery     String[] // Array of image URLs
-  services    String[] // Array of services provided
+  gallery     String[]
+  services    String[]
   published   Boolean  @default(false)
-  author      User     @relation(fields: [authorId], references: [id])
   authorId    String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [authorId], references: [id])
 }
 
 model Contact {
-  id        String   @id @default(cuid())
+  id        String        @id @default(cuid())
   name      String
   email     String
   phone     String?
   company   String?
-  message   String   @db.Text
+  message   String
   status    ContactStatus @default(NEW)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
 
 model Portfolio {
-  id          String       @id @default(cuid())
+  id          String        @id @default(cuid())
   title       String
-  titleAr     String?
-  slug        String       @unique
+  slug        String        @unique
   clientName  String
-  clientNameAr String?
-  description String       @db.Text
-  descriptionAr String?    @db.Text
+  description String
   coverImage  String
-  gallery     String[]     // Array of image URLs
+  gallery     String[]
   projectType PortfolioType
-  results     String?      @db.Text
-  resultsAr   String?      @db.Text
-  metrics     Json?        // For storing metrics data like conversions, clicks, etc.
-  techStack   String[]     // For website projects - technologies used
-  url         String?      // URL to live project if applicable
-  published   Boolean      @default(false)
-  featured    Boolean      @default(false)
-  author      User         @relation(fields: [authorId], references: [id])
+  results     String?
+  metrics     Json?
+  techStack   String[]
+  url         String?
+  published   Boolean       @default(false)
+  featured    Boolean       @default(false)
   authorId    String
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  author      User          @relation(fields: [authorId], references: [id])
 }
 
 model Category {
   id        String     @id @default(cuid())
   name      String     @unique
   slug      String     @unique
-  posts     BlogPost[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
+  posts     BlogPost[] @relation("BlogPostToCategory")
+}
+
+model SEOSettings {
+  id            String    @id @default(cuid())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  pageUrl       String    @unique
+  title         String
+  description   String
+  keywords      String
+  ogTitle       String?
+  ogDescription String?
+  ogImage       String?
+  canonical     String?
+  robotsTxt     String?
+  sitemap       String?
+  schema        Json?
+  metaTags      MetaTag[]
+}
+
+model MetaTag {
+  id           String      @id @default(cuid())
+  name         String
+  content      String
+  seoSettingId String
+  seoSetting   SEOSettings @relation(fields: [seoSettingId], references: [id], onDelete: Cascade)
+}
+
+model SitemapEntry {
+  id         String   @id @default(cuid())
+  url        String   @unique
+  priority   Float    @default(0.5)
+  changefreq String   @default("weekly")
+  lastmod    DateTime @default(now())
+}
+
+model SEOAnalytics {
+  id        String   @id @default(cuid())
+  pageUrl   String
+  pageSpeed Json?
+  rankings  Json?
+  keywords  Json?
+  backlinks Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lead {
+  id        String     @id @default(cuid())
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  message   String?
+  source    String?
+  status    LeadStatus @default(LEAD)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Meeting {
+  id            String        @id @default(cuid())
+  name          String
+  email         String
+  company       String?
+  phone         String?
+  message       String?
+  service       String?
+  date          DateTime
+  time          String
+  duration      Int           @default(60)
+  status        MeetingStatus @default(PENDING)
+  googleEventId String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@unique([date, time])
 }
 
 enum UserRole {
@@ -172,51 +237,6 @@ enum PortfolioType {
   OTHER
 }
 
-model SEOSettings {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  pageUrl     String   @unique
-  title       String
-  description String   @db.Text
-  keywords    String   @db.Text
-  ogTitle     String?
-  ogDescription String? @db.Text
-  ogImage     String?
-  canonical   String?
-  robotsTxt   String?  @db.Text
-  sitemap     String?
-  schema      Json?
-  metaTags    MetaTag[]
-}
-
-model MetaTag {
-  id          String   @id @default(cuid())
-  name        String
-  content     String   @db.Text
-  seoSetting  SEOSettings @relation(fields: [seoSettingId], references: [id], onDelete: Cascade)
-  seoSettingId String
-}
-
-model SitemapEntry {
-  id          String   @id @default(cuid())
-  url         String   @unique
-  priority    Float    @default(0.5)
-  changefreq  String   @default("weekly")
-  lastmod     DateTime @default(now())
-}
-
-model SEOAnalytics {
-  id          String   @id @default(cuid())
-  pageUrl     String
-  pageSpeed   Json?
-  rankings    Json?
-  keywords    Json?
-  backlinks   Json?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
-
 enum LeadStatus {
   LEAD
   MQL
@@ -224,71 +244,9 @@ enum LeadStatus {
   CUSTOMER
 }
 
-model Lead {
-  id        String     @id @default(cuid())
-  name      String
-  email     String
-  company   String?
-  phone     String?
-  message   String?    @db.Text
-  source    String?
-  status    LeadStatus @default(LEAD)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-}
-
 enum MeetingStatus {
   PENDING
   CONFIRMED
   CANCELLED
   COMPLETED
-}
-
-model Meeting {
-  id            String        @id @default(cuid())
-  name          String
-  email         String
-  company       String?
-  phone         String?
-  message       String?       @db.Text
-  service       String?
-  date          DateTime
-  time          String
-  duration      Int           @default(60) // Duration in minutes
-  status        MeetingStatus @default(PENDING)
-  googleEventId String?       // For Google Calendar integration
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  
-  @@unique([date, time]) // Ensure no double bookings at the same time slot
-}
-
-// Tracking System Models
-model TrackingScript {
-  id               String        @id @default(cuid())
-  name             String
-  type             String        // analytics, conversion, remarketing, pixel, tag_manager, custom
-  provider         String        // google, meta, linkedin, twitter, other
-  script           String        @db.Text
-  active           Boolean       @default(true)
-  location         String        // head, body, custom
-  loadType         String        // sync, async, defer
-  notes            String?       @db.Text
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @updatedAt
-  lastVerified     DateTime?
-  triggerConditions Json?
-  userId           String?
-  user             User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
-  logs             TrackingLog[]
-}
-
-model TrackingLog {
-  id               String        @id @default(cuid())
-  trackingScriptId String?
-  trackingScript   TrackingScript? @relation(fields: [trackingScriptId], references: [id], onDelete: SetNull)
-  action           String        // added, modified, activated, deactivated, deleted, verified
-  timestamp        DateTime      @default(now())
-  userEmail        String
-  details          String?
 }

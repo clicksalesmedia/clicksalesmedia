@@ -95,9 +95,9 @@ function Grid() {
             <Image 
               src="/svg/ai.svg"
               alt={getTranslation(language, 'aiMarketingAlt')}
-              layout="responsive"
               width={600}
               height={700}
+              style={{ width: '100%', height: 'auto' }}
             />
           </div>
         </div>
@@ -108,9 +108,9 @@ function Grid() {
             <Image 
               src="/svg/companiesv.svg"
               alt={getTranslation(language, 'companiesAlt')}
-              layout="responsive"
               width={1000}
               height={700}
+              style={{ width: '100%', height: 'auto' }}
             />
           </div>
           <div className="col-span-1 md:col-span-4 lg:col-span-6">

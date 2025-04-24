@@ -46,6 +46,7 @@
     "caniuse-lite": "^1.0.30001714",
     "clsx": "^2.1.0",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.5.0",
     "flowbite-react": "^0.7.3",
     "framer-motion": "^11.0.3",
     "lucide-react": "^0.321.0",

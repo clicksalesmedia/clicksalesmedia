@@ -1,161 +1,116 @@
 import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/lib/auth';
-import { prisma } from '@/app/lib/prisma';
-import { slugify } from '@/app/lib/utils';
+import { prisma } from '../../lib/prisma';
+import { headers } from 'next/headers';
+import { PortfolioType } from '@prisma/client';
 
-// GET all portfolio items
-export async function GET(request: Request) {
-  const url = new URL(request.url);
-  const published = url.searchParams.get('published');
-  const featured = url.searchParams.get('featured');
-  const projectType = url.searchParams.get('type');
-  const limit = url.searchParams.get('limit');
-
-  try {
-    console.log('Fetching portfolio items with filters:', { published, featured, projectType, limit });
-    
-    try {
-      // Query the portfolio items directly - fields should match the database schema
-      const portfolioItems = await prisma.portfolio.findMany({
-        where: {
-          ...(published === 'true' ? { published: true } : {}),
-          ...(featured === 'true' ? { featured: true } : {}),
-          ...(projectType ? { projectType: projectType as any } : {}),
-        },
-        orderBy: {
-          createdAt: 'desc',
-        },
-        ...(limit ? { take: parseInt(limit, 10) } : {}),
-        include: {
-          author: {
-            select: {
-              id: true,
-              name: true,
-            },
-          },
-        },
-      });
-
-      console.log(`Found ${portfolioItems.length} portfolio items`);
-      
-      // Ensure all items have the required fields, using null coalescing
-      const processedItems = portfolioItems.map(item => ({
-        ...item,
-        titleAr: item.titleAr || "",
-        clientNameAr: item.clientNameAr || "",
-        descriptionAr: item.descriptionAr || "",
-        resultsAr: item.resultsAr || "",
-      }));
-
-      return NextResponse.json(processedItems);
-    } catch (queryError) {
-      console.error('Error querying portfolio items:', queryError);
-      return NextResponse.json(
-        { 
-          error: 'Failed to query portfolio items',
-          details: (queryError as Error).message,
-          stack: (queryError as Error).stack
-        },
-        { status: 500 }
-      );
-    }
-  } catch (error) {
-    console.error('Error in portfolio GET route:', error);
-    return NextResponse.json(
-      { 
-        error: 'Failed to fetch portfolio items',
-        details: (error as Error).message,
-        stack: (error as Error).stack
-      },
-      { status: 500 }
-    );
-  }
+// Set CORS headers to avoid cross-origin issues
+async function setCorsHeaders(res: NextResponse): Promise<NextResponse> {
+  const headersList = await headers();
+  const origin = headersList.get('origin') ?? '*';
+  
+  res.headers.set('Access-Control-Allow-Origin', origin);
+  res.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  return res;
 }
 
-// POST to create a new portfolio item
-export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session || !session.user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
+// Handle preflight requests
+export async function OPTIONS() {
+  const res = new NextResponse(null, { status: 204 });
+  return setCorsHeaders(res);
+}
 
+export async function GET(request: Request) {
   try {
-    const body = await request.json();
-    const {
-      title,
-      titleAr,
-      clientName,
-      clientNameAr,
-      description,
-      descriptionAr,
-      coverImage,
-      gallery,
-      projectType,
-      results,
-      resultsAr,
-      metrics,
-      techStack,
-      url,
-      published,
-      featured,
-    } = body;
-
-    // Generate a slug from the title
-    const slug = slugify(title);
-
-    // Find the user
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email as string },
-    });
-
-    if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+    const { searchParams } = new URL(request.url);
+    const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit') || '') : undefined;
+    const featured = searchParams.get('featured') === 'true' ? true : null;
+    
+    // Handle projectType with proper enum typing
+    const projectTypeParam = searchParams.get('projectType');
+    let projectType: PortfolioType | null = null;
+    
+    if (projectTypeParam) {
+      // Validate that projectType is a valid enum value
+      const validTypes = ['WEBSITE', 'SEO', 'PPC', 'SOCIAL_MEDIA', 'EMAIL_MARKETING', 'CONTENT_MARKETING', 'BRANDING', 'OTHER'];
+      if (validTypes.includes(projectTypeParam)) {
+        projectType = projectTypeParam as PortfolioType;
+      }
     }
-
-    // Check if slug already exists
-    const existingItem = await prisma.portfolio.findUnique({
-      where: { slug },
-    });
-
-    if (existingItem) {
-      return NextResponse.json(
-        { error: 'A portfolio item with this title already exists' },
-        { status: 400 }
-      );
+    
+    console.log('Fetching portfolio items with filters:', { published: 'true', featured, projectType, limit });
+    
+    const where = {
+      published: true,
+      ...(featured !== null && { featured }),
+      ...(projectType && { projectType })
+    };
+    
+    console.log('Portfolio query where clause:', where);
+    
+    // Check if table exists first
+    try {
+      const tableExists = await prisma.$queryRaw<Array<{exists: boolean}>>`
+        SELECT EXISTS (
+          SELECT FROM information_schema.tables 
+          WHERE table_schema = 'public'
+          AND table_name = 'Portfolio'
+        );
+      `;
+      
+      console.log('Portfolio table exists check:', tableExists);
+      
+      if (tableExists[0] && !tableExists[0].exists) {
+        return setCorsHeaders(NextResponse.json({ items: [], total: 0 }, { status: 200 }));
+      }
+    } catch (checkError) {
+      console.error('Error checking if Portfolio table exists:', checkError);
     }
-
-    const portfolioItem = await prisma.portfolio.create({
-      data: {
-        title,
-        titleAr: titleAr || null,
-        slug,
-        clientName,
-        clientNameAr: clientNameAr || null,
-        description,
-        descriptionAr: descriptionAr || null,
-        coverImage,
-        gallery: gallery || [],
-        projectType,
-        results: results || null,
-        resultsAr: resultsAr || null,
-        metrics: metrics || null,
-        techStack: techStack || [],
-        url: url || null,
-        published: published || false,
-        featured: featured || false,
-        author: {
-          connect: { id: user.id },
-        },
+    
+    // Try counting to validate access
+    try {
+      const count = await prisma.$queryRaw`SELECT COUNT(*) FROM "Portfolio" WHERE "published" = true`;
+      console.log('Count result:', count);
+    } catch (countError) {
+      console.error('Error counting portfolio (lowercase) items directly:', countError);
+    }
+    
+    const portfolioItems = await prisma.portfolio.findMany({
+      where,
+      orderBy: { 
+        createdAt: 'desc' 
       },
+      take: limit,
+      include: {
+        author: {
+          select: {
+            name: true
+          }
+        }
+      }
+    }).catch((error: any) => {
+      console.error('Error in portfolio findMany:', error);
+      return [];
     });
-
-    return NextResponse.json(portfolioItem, { status: 201 });
-  } catch (error) {
-    console.error('Error creating portfolio item:', error);
-    return NextResponse.json(
-      { error: 'Failed to create portfolio item' },
+    
+    const total = await prisma.portfolio.count({ where }).catch(() => 0);
+    
+    console.log(`Found ${portfolioItems.length} portfolio items`);
+    
+    const response = NextResponse.json({
+      items: portfolioItems,
+      total
+    });
+    
+    return setCorsHeaders(response);
+  } catch (error: any) {
+    console.error('Error fetching portfolio items:', error);
+    
+    const errorResponse = NextResponse.json(
+      { error: 'Failed to fetch portfolio items', details: error.message },
       { status: 500 }
     );
+    
+    return setCorsHeaders(errorResponse);
   }
 } 

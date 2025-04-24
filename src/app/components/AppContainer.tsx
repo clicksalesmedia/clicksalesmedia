@@ -8,6 +8,7 @@ import LoadingScreen from './LoadingScreen';
 import Navbar from './Header/Navbar';
 import ScrollToTopButton from '../utils/ScrollToTopButton';
 import dynamic from 'next/dynamic';
+import { useLanguage } from '../providers/LanguageProvider';
 
 // Dynamically import AnimatedCursor with no SSR
 const AnimatedCursor = dynamic(
@@ -24,6 +25,7 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
   const [isMounted, setIsMounted] = useState(false);
   const pathname = usePathname();
   const isDashboard = pathname?.startsWith('/dashboard');
+  const { isInitialized } = useLanguage();
 
   const handleLoaded = () => {
     setIsLoaded(true);
@@ -36,9 +38,21 @@ const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
     }
   }, [pathname]);
 
-  // Only render client-side components after mounting
-  if (!isMounted) {
-    return <div className="min-h-screen">{children}</div>;
+  // Ensure resources are loaded before showing content
+  useEffect(() => {
+    if (isMounted && isInitialized) {
+      // Add a small delay to ensure all resources load properly
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isMounted, isInitialized]);
+
+  // Don't render content until client-side hydration is complete
+  if (!isMounted || !isInitialized) {
+    return <LoadingScreen onLoaded={() => {}} />;
   }
 
   return (

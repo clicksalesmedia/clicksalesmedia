@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -28,26 +28,42 @@ interface PortfolioItem {
   techStack: string[];
 }
 
+// Sample portfolio items with real images
+const mockPortfolioItems: PortfolioItem[] = [
+  {
+    id: "1",
+    title: "E-Commerce Website Redesign",
+    slug: "ecommerce-website-redesign",
+    clientName: "Fashion Boutique",
+    description: "Complete redesign of an e-commerce platform focusing on user experience and conversion optimization.",
+    coverImage: "/clients/bajunaid-company.png",
+    projectType: PortfolioType.WEBSITE,
+    techStack: ["React", "Next.js", "Tailwind CSS", "Stripe"]
+  },
+  {
+    id: "2",
+    title: "SEO Campaign for Local Business",
+    slug: "seo-campaign-local-business",
+    clientName: "City Dental Clinic",
+    description: "Comprehensive SEO strategy that improved local search rankings and increased patient inquiries by 45%.",
+    coverImage: "/clients/erosforlady.png",
+    projectType: PortfolioType.SEO,
+    techStack: ["Keyword Research", "Local SEO", "Content Strategy", "Analytics"]
+  },
+  {
+    id: "3",
+    title: "Brand Identity Development",
+    slug: "brand-identity-development",
+    clientName: "Green Earth Foods",
+    description: "Created a complete brand identity including logo, color scheme, typography, and brand guidelines.",
+    coverImage: "/clients/ses-school-logo-clicksalesmedia.png",
+    projectType: PortfolioType.BRANDING,
+    techStack: ["Logo Design", "Brand Strategy", "Style Guide", "Visual Identity"]
+  }
+];
+
 const FeaturedWork = () => {
-  const [latestWorks, setLatestWorks] = useState<PortfolioItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchFeaturedWorks() {
-      try {
-        const response = await fetch('/api/portfolio?published=true&limit=3');
-        if (!response.ok) throw new Error('Failed to fetch works');
-        const data = await response.json();
-        setLatestWorks(data);
-      } catch (error) {
-        console.error('Error fetching featured works:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchFeaturedWorks();
-  }, []);
+  const latestWorks = mockPortfolioItems;
 
   const projectTypeLabels: Record<string, { label: string; color: string; bgColor: string }> = {
     WEBSITE: { label: 'Website', color: 'text-blue-800', bgColor: 'bg-blue-100' },
@@ -59,18 +75,6 @@ const FeaturedWork = () => {
     BRANDING: { label: 'Branding', color: 'text-red-800', bgColor: 'bg-red-100' },
     OTHER: { label: 'Other', color: 'text-gray-800', bgColor: 'bg-gray-100' },
   };
-
-  if (loading) {
-    return (
-      <section className="py-20 bg-[#1f1f1f]">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center">
-            <div className="w-8 h-8 border-t-2 border-secondaryColor border-solid rounded-full animate-spin"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-20 bg-[#1f1f1f]">
@@ -103,12 +107,12 @@ const FeaturedWork = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-[#2a2a2a] rounded-lg overflow-hidden group hover:shadow-xl hover:shadow-secondaryColor/10 transition-all duration-300"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden bg-white">
                 <Image
-                  src={work.coverImage || '/images/placeholder.jpg'}
+                  src={work.coverImage || '/clients/wse.png'}
                   alt={work.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-contain p-6 group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
