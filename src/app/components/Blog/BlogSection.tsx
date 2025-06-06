@@ -60,7 +60,6 @@ const BlogSection = () => {
   const BlogCard: React.FC<{ post: Post }> = ({ post }) => {
     // Use the normalize function to get a properly formatted image URL
     const imageUrl = normalizeImageUrl(post.coverImage);
-    console.log(`Blog post "${post.title}" using image: ${imageUrl}`);
 
     return (
       <Link 
@@ -78,9 +77,8 @@ const BlogSection = () => {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 unoptimized={true}
                 onError={(e) => {
-                  console.error("Failed to load image:", imageUrl);
                   const target = e.target as HTMLImageElement;
-                  target.src = '/images/blog_uploads/default-blog-image.jpg'; // Fallback image
+                  target.src = '/images/blog_uploads/default-blog-image.jpg';
                 }}
               />
             </div>

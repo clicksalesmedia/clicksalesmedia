@@ -28,13 +28,15 @@ export async function GET(request: Request) {
     const page = parseInt(searchParams.get('page') || '1');
     const category = searchParams.get('category');
     const featured = searchParams.get('featured') === 'true';
+    const published = searchParams.get('published') === 'true';
+    const format = searchParams.get('format'); // 'array' or 'paginated'
     
-    console.log('Query params:', { limit, page, category, featured });
+    console.log('Query params:', { limit, page, category, featured, published, format });
     
     const skip = (page - 1) * limit;
     
     const where = {
-      published: true,
+      ...(published && { published: true }),
       ...(category && {
         categories: {
           some: {
@@ -75,6 +77,13 @@ export async function GET(request: Request) {
     
     console.log(`Found ${posts.length} posts out of ${total} total`);
     
+    // For backward compatibility, return array format by default for published=true requests
+    if (published && format !== 'paginated') {
+      const response = NextResponse.json(posts);
+      return setCorsHeaders(response);
+    }
+    
+    // Return paginated format for dashboard and explicit requests
     const response = NextResponse.json({
       posts,
       total,
@@ -89,6 +98,57 @@ export async function GET(request: Request) {
     
     const errorResponse = NextResponse.json(
       { error: 'Failed to fetch blog posts' },
+      { status: 500 }
+    );
+    
+    return setCorsHeaders(errorResponse);
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const data = await request.json();
+    
+    const blogPost = await prisma.blogPost.create({
+      data: {
+        title: data.title,
+        titleAr: data.titleAr || null,
+        slug: data.slug,
+        content: data.content,
+        contentAr: data.contentAr || null,
+        excerpt: data.excerpt || null,
+        excerptAr: data.excerptAr || null,
+        coverImage: data.coverImage || null,
+        published: data.published || false,
+        authorId: data.authorId,
+        categories: {
+          connect: data.categories?.map((cat: any) => ({ id: cat.id })) || []
+        }
+      },
+      include: {
+        author: {
+          select: {
+            name: true,
+            image: true
+          }
+        },
+        categories: {
+          select: {
+            id: true,
+            name: true,
+            slug: true
+          }
+        }
+      }
+    });
+    
+    const response = NextResponse.json(blogPost, { status: 201 });
+    return setCorsHeaders(response);
+  } catch (error) {
+    console.error('Error creating blog post:', error);
+    
+    const errorResponse = NextResponse.json(
+      { error: 'Failed to create blog post' },
       { status: 500 }
     );
     

@@ -299,22 +299,22 @@ const AIAgents = () => {
       icon: <FaChartLine className="w-10 h-10" />,
       title: t('home.aiAgents.predictiveAnalytics.title'),
       description: t('home.aiAgents.predictiveAnalytics.description'),
-      color: "#4D96FF",
-      bgGradient: "linear-gradient(135deg, rgba(77, 150, 255, 0.1) 0%, rgba(77, 150, 255, 0.3) 100%)"
+      color: "#AD8253",
+      bgGradient: "linear-gradient(135deg, rgba(173, 130, 83, 0.1) 0%, rgba(173, 130, 83, 0.3) 100%)"
     },
     {
       icon: <FaBrain className="w-10 h-10" />,
       title: t('home.aiAgents.personalization.title'),
       description: t('home.aiAgents.personalization.description'),
-      color: "#FF6B6B",
-      bgGradient: "linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.3) 100%)"
+      color: "#8C5C28",
+      bgGradient: "linear-gradient(135deg, rgba(140, 92, 40, 0.1) 0%, rgba(140, 92, 40, 0.3) 100%)"
     },
     {
       icon: <FaCogs className="w-10 h-10" />,
       title: t('home.aiAgents.automation.title'),
       description: t('home.aiAgents.automation.description'),
-      color: "#1EE3CF",
-      bgGradient: "linear-gradient(135deg, rgba(30, 227, 207, 0.1) 0%, rgba(30, 227, 207, 0.3) 100%)"
+      color: "#C3A177",
+      bgGradient: "linear-gradient(135deg, rgba(195, 161, 119, 0.1) 0%, rgba(195, 161, 119, 0.3) 100%)"
     }
   ];
 
@@ -400,9 +400,9 @@ const AIAgents = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden" ref={sectionRef}>
+    <section className="py-24 relative overflow-hidden bg-[#1f1f1f]" ref={sectionRef} dir={isRTL ? 'rtl' : 'ltr'}>
       {/* Background with animated mesh gradient */}
-      <div className="absolute inset-0 bg-[#272727] z-0">
+      <div className="absolute inset-0 bg-[#1f1f1f] z-0">
         <div className="absolute inset-0 opacity-20 bg-[#151515]">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -430,11 +430,12 @@ const AIAgents = () => {
 
       {/* Content section */}
       <div className="container mx-auto px-4 relative z-10">
+        {/* Section Header - Same style as Features */}
         <motion.div 
-          className="text-center mb-16 relative"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col justify-center text-center mx-auto md:max-w-3xl space-y-5 mb-16"
         >
           <motion.div 
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full"
@@ -442,26 +443,28 @@ const AIAgents = () => {
             style={{ background: "radial-gradient(circle, rgba(195,161,119,0.15) 0%, rgba(0,0,0,0) 70%)" }}
           />
           
-          <motion.h2 
-            variants={titleVariants}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primaryColor via-[#e0c9a1] to-secondaryColor bg-clip-text text-transparent relative inline-block"
-          >
-            {t('home.aiAgents.title')}
+          <span className={`rounded-lg px-2.5 py-1 text-xs w-max mx-auto font-semibold tracking-wide text-white bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28] ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL ? 'الذكاء الاصطناعي' : 'AI Technology'}
+          </span>
+          <h2 className={`font-semibold font-cormorant text-3xl sm:text-4xl lg:text-5xl text-white ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL ? 'وكلاء الذكاء ' : 'AI Agents '} 
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28]">
+              {isRTL ? 'الاصطناعي' : '& Automation'}
+            </span>
             <motion.span 
-              className="absolute -right-8 -top-8 text-primaryColor opacity-30"
+              className="absolute -right-8 -top-8 text-[#C3A177] opacity-30"
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
               <FaCogs size={40} />
             </motion.span>
-          </motion.h2>
-          
-          <motion.p 
-            variants={itemVariants}
-            className="text-gray-300 text-xl max-w-3xl mx-auto font-light leading-relaxed"
-          >
-            {t('home.aiAgents.description')}
-          </motion.p>
+          </h2>
+          <p className={`text-white ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL 
+              ? 'نستخدم أحدث تقنيات الذكاء الاصطناعي لتحسين حملاتك التسويقية وتحقيق أفضل النتائج، مع التركيز على الأتمتة الذكية والتحليلات المتقدمة.'
+              : 'We use the latest AI technologies to optimize your marketing campaigns and achieve the best results, focusing on smart automation and advanced analytics.'
+            }
+          </p>
         </motion.div>
 
         <motion.div 
@@ -534,9 +537,12 @@ const AIAgents = () => {
         >
           <button 
             onClick={() => setIsChatOpen(true)}
-            className="px-8 py-4 bg-gradient-to-r from-primaryColor to-secondaryColor text-white font-semibold rounded-md hover:opacity-90 transition-opacity"
+            className={`px-8 py-4 bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28] text-white font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:scale-105 ${isRTL ? 'font-noto-kufi' : ''}`}
           >
-            {isRTL ? 'تحدث مع كريم، المساعد الذكي' : 'Talk to Our AI Assistant Karim'}
+            <span className="flex items-center gap-2 justify-center">
+              <FaRobot className="w-5 h-5" />
+              {isRTL ? 'تحدث مع كريم، المساعد الذكي' : 'Talk to Our AI Assistant Karim'}
+            </span>
           </button>
         </motion.div>
       </div>
@@ -553,7 +559,7 @@ const AIAgents = () => {
           >
             <div className="bg-gray-900 border border-gray-800 rounded-xl shadow-2xl overflow-hidden flex flex-col h-[500px]">
               {/* Chat header */}
-              <div className="p-4 bg-gradient-to-r from-primaryColor to-secondaryColor flex justify-between items-center">
+              <div className="p-4 bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28] flex justify-between items-center">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <FaRobot className="text-white" />
@@ -704,7 +710,7 @@ const AIAgents = () => {
             exit={{ opacity: 0, scale: 0.5 }}
             whileHover={{ scale: 1.1 }}
             onClick={() => setIsChatOpen(true)}
-            className="fixed bottom-24 right-6 w-16 h-16 rounded-full bg-gradient-to-r from-primaryColor to-secondaryColor shadow-lg flex items-center justify-center cursor-pointer z-50"
+            className="fixed bottom-24 right-6 w-16 h-16 rounded-full bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28] shadow-lg flex items-center justify-center cursor-pointer z-50"
           >
             <div className="relative">
               <FaComments className="text-white w-7 h-7" />

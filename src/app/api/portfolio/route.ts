@@ -97,10 +97,17 @@ export async function GET(request: Request) {
     
     console.log(`Found ${portfolioItems.length} portfolio items`);
     
-    const response = NextResponse.json({
-      items: portfolioItems,
-      total
-    });
+    // For backward compatibility, also check if client expects direct array
+    const acceptHeader = request.headers.get('accept') || '';
+    
+    if (acceptHeader.includes('application/json') && portfolioItems.length === 0) {
+      // Return empty array for empty results
+      const response = NextResponse.json([]);
+      return setCorsHeaders(response);
+    }
+    
+    // Return items array directly if requested by legacy clients
+    const response = NextResponse.json(portfolioItems);
     
     return setCorsHeaders(response);
   } catch (error: any) {

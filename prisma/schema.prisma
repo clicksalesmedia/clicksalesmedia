@@ -108,24 +108,28 @@ model Contact {
 }
 
 model Portfolio {
-  id          String        @id @default(cuid())
-  title       String
-  slug        String        @unique
-  clientName  String
-  description String
-  coverImage  String
-  gallery     String[]
-  projectType PortfolioType
-  results     String?
-  metrics     Json?
-  techStack   String[]
-  url         String?
-  published   Boolean       @default(false)
-  featured    Boolean       @default(false)
-  authorId    String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  author      User          @relation(fields: [authorId], references: [id])
+  id            String        @id @default(cuid())
+  title         String
+  titleAr       String?
+  slug          String        @unique
+  clientName    String
+  clientNameAr  String?
+  description   String
+  descriptionAr String?
+  coverImage    String
+  gallery       String[]
+  projectType   PortfolioType
+  results       String?
+  resultsAr     String?
+  metrics       Json?
+  techStack     String[]
+  url           String?
+  published     Boolean       @default(false)
+  featured      Boolean       @default(false)
+  authorId      String
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  author        User          @relation(fields: [authorId], references: [id])
 }
 
 model Category {
@@ -249,4 +253,16 @@ enum MeetingStatus {
   CONFIRMED
   CANCELLED
   COMPLETED
+}
+
+model Logo {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String
+  altText   String?
+  link      String?
+  active    Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
