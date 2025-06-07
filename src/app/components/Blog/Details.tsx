@@ -12,31 +12,48 @@ type Category = {
   slug: string;
 };
 
+type Author = {
+  name: string | null;
+  image: string | null;
+};
+
 type Post = {
   id: string;
   title: string;
-  titleAr: string;
+  titleAr?: string | null;
   content: string;
-  contentAr: string;
-  excerpt: string;
-  excerptAr: string;
+  contentAr?: string | null;
+  excerpt?: string | null;
+  excerptAr?: string | null;
   coverImage: string;
   createdAt: string;
   updatedAt: string;
   published: boolean;
   categories: Category[];
+  author?: Author;
 };
 
-const Details = () => {
+interface DetailsProps {
+  post?: Post;
+}
+
+const Details: React.FC<DetailsProps> = ({ post: propPost }) => {
   const pathname = usePathname();
-  const [post, setPost] = useState<Post | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [post, setPost] = useState<Post | null>(propPost || null);
+  const [isLoading, setIsLoading] = useState(!propPost);
   const [error, setError] = useState<string | null>(null);
   const { language } = useLanguage();
 
   const isArabic = language === 'ar';
 
   useEffect(() => {
+    // If we already have a post from props, don't fetch
+    if (propPost) {
+      setPost(propPost);
+      setIsLoading(false);
+      return;
+    }
+
     if (!pathname) {
       console.error('Pathname is null');
       setIsLoading(false);
@@ -74,7 +91,7 @@ const Details = () => {
         })
         .finally(() => setIsLoading(false));
     }
-  }, [pathname, language, isArabic]);
+  }, [pathname, language, isArabic, propPost]);
 
   const getTitle = () => {
     if (!post) return '';
@@ -92,7 +109,6 @@ const Details = () => {
 
   // Use the normalizeImageUrl utility function to handle the image URL properly
   const imageUrl = normalizeImageUrl(post.coverImage);
-  console.log("Normalized image URL for display:", imageUrl);
 
   return (
     <article className='py-20' dir={isArabic ? 'rtl' : 'ltr'}>
@@ -109,8 +125,6 @@ const Details = () => {
               unoptimized={true} 
               priority // Add priority to ensure the cover image loads quickly
               onError={(e) => {
-                // If image fails to load, replace with default
-                console.error("Image failed to load:", imageUrl);
                 const target = e.target as HTMLImageElement;
                 target.src = '/images/blog_uploads/default-blog-image.jpg';
               }}

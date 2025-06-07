@@ -1,0 +1,8 @@
+/*
+ * ReactToastify styles imported without source maps to prevent 404 errors
+ */
+
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Disable any sourceMap comments */
+/* sourceMappingURL=none */ 

@@ -2,8 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import React Toastify styles */
-@import 'react-toastify/dist/ReactToastify.css';
+/* React Toastify styles are now imported in components/Footer/Footer.tsx */
 
 html, body {
   font-family: 'Montserrat', sans-serif;

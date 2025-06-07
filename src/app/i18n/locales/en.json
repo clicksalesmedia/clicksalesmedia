@@ -191,7 +191,10 @@
     },
     "blog": {
       "title": "Blog",
-      "description": "Discover the latest news and articles in the digital marketing world."
+      "description": "Discover the latest news and articles in the digital marketing world.",
+      "latest": "Latest Article",
+      "viewAll": "View all articles",
+      "featured": "Featured"
     },
     "cta": {
       "title": "Start Your Business Growth Journey Today",
@@ -377,6 +380,44 @@
         "info": "The B2B strategies developed by clicksalesmedia have opened new doors for us in the industry. Their insights into partnership development have led to several lucrative contracts and a stronger market position."
       }
     }
+  },
+  "footer": {
+    "company": {
+      "title": "Clicksalesmedia",
+      "about": "About",
+      "caseStudies": "Case studies",
+      "blog": "Blog"
+    },
+    "expertise": {
+      "title": "Expertise",
+      "branding": "Branding",
+      "socialMedia": "Social Media",
+      "webSolutions": "Web Solutions",
+      "seoSolutions": "SEO Solutions",
+      "googleMarketing": "Google Marketing",
+      "b2bManagement": "B2B Management"
+    },
+    "contact": {
+      "title": "Contact",
+      "contactUs": "Contact us",
+      "callUs": "Call us",
+      "scheduleMeeting": "Schedule a meeting"
+    },
+    "newsletter": {
+      "title": "Subscribe to our newsletter",
+      "description": "Stay updated with our latest news and offers. Join our newsletter today!",
+      "placeholder": "Your Address Email",
+      "subscribe": "Subscribe",
+      "successMessage": "👌 Successfully subscribed!",
+      "errorMessage": "Subscription failed. Please try again later.",
+      "generalError": "An error occurred. Please try again later."
+    },
+    "contactInfo": {
+      "address": "Meydan Hotel - Nad Al Sheba - Nad Al Sheba 1 - Dubai, UAE",
+      "phone": "+971 503 412 174",
+      "email": "info@clicksalesmedia.com"
+    },
+    "copyright": "© 2025 Clicksalesmedia. All right reserved"
   },
   "ceo": {
     "title": "Elevating Brands Together",

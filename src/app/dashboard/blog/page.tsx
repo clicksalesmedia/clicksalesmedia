@@ -39,12 +39,12 @@ export default function BlogManagementPage() {
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
-        const response = await fetch('/api/blog');
+        const response = await fetch(`/api/blog?format=paginated&t=${Date.now()}`);
         if (!response.ok) {
           throw new Error('Failed to fetch blog posts');
         }
         const data = await response.json();
-        setBlogPosts(data);
+        setBlogPosts(data.posts || data);
       } catch (error) {
         console.error('Error fetching blog posts:', error);
         setError('Failed to load blog posts');
@@ -163,7 +163,6 @@ export default function BlogManagementPage() {
                           unoptimized={true}
                           sizes="96px"
                           onError={(e) => {
-                            console.error('Error loading image:', post.coverImage);
                             const target = e.target as HTMLImageElement;
                             target.src = '/images/blog_uploads/default-blog-image.jpg';
                           }}

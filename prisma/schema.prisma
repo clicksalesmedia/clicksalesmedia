@@ -34,21 +34,20 @@ model Session {
 }
 
 model User {
-  id              String           @id @default(cuid())
-  name            String?
-  email           String?          @unique
-  emailVerified   DateTime?
-  image           String?
-  password        String?
-  role            UserRole         @default(USER)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  accounts        Account[]
-  blogPosts       BlogPost[]
-  caseStudies     CaseStudy[]
-  portfolios      Portfolio[]
-  sessions        Session[]
-  trackingScripts TrackingScript[]
+  id            String      @id @default(cuid())
+  name          String?
+  email         String?     @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole    @default(USER)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  accounts      Account[]
+  blogPosts     BlogPost[]
+  caseStudies   CaseStudy[]
+  portfolios    Portfolio[]
+  sessions      Session[]
 }
 
 model VerificationToken {
@@ -111,13 +110,17 @@ model Contact {
 model Portfolio {
   id            String        @id @default(cuid())
   title         String
+  titleAr       String?
   slug          String        @unique
   clientName    String
+  clientNameAr  String?
   description   String
+  descriptionAr String?
   coverImage    String
   gallery       String[]
   projectType   PortfolioType
   results       String?
+  resultsAr     String?
   metrics       Json?
   techStack     String[]
   url           String?
@@ -126,10 +129,6 @@ model Portfolio {
   authorId      String
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
-  clientNameAr  String?
-  descriptionAr String?
-  resultsAr     String?
-  titleAr       String?
   author        User          @relation(fields: [authorId], references: [id])
 }
 
@@ -219,35 +218,6 @@ model Meeting {
   @@unique([date, time])
 }
 
-model TrackingScript {
-  id                String        @id @default(cuid())
-  name              String
-  type              String
-  provider          String
-  script            String
-  active            Boolean       @default(true)
-  location          String
-  loadType          String
-  notes             String?
-  createdAt         DateTime      @default(now())
-  updatedAt         DateTime      @updatedAt
-  lastVerified      DateTime?
-  triggerConditions Json?
-  userId            String?
-  logs              TrackingLog[]
-  user              User?         @relation(fields: [userId], references: [id])
-}
-
-model TrackingLog {
-  id               String          @id @default(cuid())
-  trackingScriptId String?
-  action           String
-  timestamp        DateTime        @default(now())
-  userEmail        String
-  details          String?
-  trackingScript   TrackingScript? @relation(fields: [trackingScriptId], references: [id])
-}
-
 enum UserRole {
   USER
   ADMIN
@@ -283,4 +253,16 @@ enum MeetingStatus {
   CONFIRMED
   CANCELLED
   COMPLETED
+}
+
+model Logo {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String
+  altText   String?
+  link      String?
+  active    Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

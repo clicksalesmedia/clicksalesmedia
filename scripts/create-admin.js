@@ -1,5 +1,14 @@
+// Load environment variables from .env file
+require('dotenv').config();
+
 const { PrismaClient } = require('@prisma/client');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
+// Check if DATABASE_URL is available
+if (!process.env.DATABASE_URL) {
+  console.error('DATABASE_URL environment variable is not set');
+  process.exit(1);
+}
 
 const prisma = new PrismaClient();
 
@@ -48,8 +57,9 @@ async function createUsers() {
         continue;
       }
 
-      // Hash password
-      const hashedPassword = await bcrypt.hash(user.password, 10);
+      // Hash password with bcryptjs
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(user.password, saltRounds);
 
       // Create user
       const createdUser = await prisma.user.create({

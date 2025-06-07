@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { ReactNode, useEffect, useState } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
-import { FaBlog, FaBriefcase, FaEnvelope, FaTachometerAlt, FaUser, FaImages, FaSearch, FaUserPlus, FaCalendarAlt, FaCalendarCheck, FaTag, FaCode } from "react-icons/fa";
+import { FaBlog, FaBriefcase, FaEnvelope, FaTachometerAlt, FaUser, FaImages, FaSearch, FaUserPlus, FaCalendarAlt, FaCalendarCheck, FaTag, FaCode, FaBuilding } from "react-icons/fa";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -158,6 +158,9 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           <SidebarLink href="/dashboard/portfolio" icon={<FaImages />} active={pathname.startsWith("/dashboard/portfolio")}>
             Portfolio
           </SidebarLink>
+          <SidebarLink href="/dashboard/logos" icon={<FaBuilding />} active={pathname.startsWith("/dashboard/logos")}>
+            Client Logos
+          </SidebarLink>
           <SidebarLink href="/dashboard/contacts" icon={<FaEnvelope />} active={pathname.startsWith("/dashboard/contacts")}>
             Contacts
           </SidebarLink>
@@ -230,6 +233,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               {pathname.startsWith("/dashboard/blog") && "Blog Management"}
               {pathname.startsWith("/dashboard/case-studies") && "Case Studies Management"}
               {pathname.startsWith("/dashboard/portfolio") && "Portfolio Management"}
+              {pathname.startsWith("/dashboard/logos") && "Client Logos Management"}
               {pathname.startsWith("/dashboard/contacts") && "Contact Management"}
               {pathname.startsWith("/dashboard/seo") && "SEO Management"}
               {pathname.startsWith("/dashboard/tracking") && "Tracking Management"}

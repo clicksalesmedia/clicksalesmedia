@@ -54,7 +54,9 @@ export default function PortfolioManagement() {
           throw new Error('Failed to fetch portfolio items');
         }
         const data = await response.json();
-        setPortfolioItems(data);
+        // Handle both response formats: direct array or { items: [...], total: number }
+        const portfolioData = Array.isArray(data) ? data : (data.items || []);
+        setPortfolioItems(portfolioData);
       } catch (error) {
         console.error('Error fetching portfolio items:', error);
         setError('Failed to load portfolio items');

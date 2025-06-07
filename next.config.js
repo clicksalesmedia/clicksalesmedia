@@ -1,75 +1,52 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 604800, // 7 days in seconds
-    domains: ['clicksalesmedia.com', 'www.clicksalesmedia.com', 'i.ibb.co'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'clicksalesmedia.com',
+        hostname: 'images.unsplash.com',
+        port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'www.clicksalesmedia.com',
+        hostname: 'placehold.co',
+        port: '',
         pathname: '/**',
       },
       {
         protocol: 'https',
-        hostname: 'i.ibb.co',
+        hostname: 'cdn.pixabay.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'aceternity.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'clicksalesmediacms.s3.us-east-1.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'sspark.ai',
+        port: '',
         pathname: '/**',
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-      {
-        source: '/(.*).(jpg|jpeg|png|webp|avif|ico|svg)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/(.*).(js|css)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
-  // Minify the generated output
-  swcMinify: true,
-
-  // Disable unnecessary x-powered-by header
-  poweredByHeader: false,
-
+  
   // Add redirects for problematic paths
   async redirects() {
     return [

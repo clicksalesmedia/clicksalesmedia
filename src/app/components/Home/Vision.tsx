@@ -3,6 +3,7 @@ import Image from "next/image"
 import Data from "@/app/ui/data";
 import { useTranslation } from '@/app/hooks/useTranslation';
 import { useLanguage } from '@/app/providers/LanguageProvider';
+import { motion } from 'framer-motion';
 
 function Vision() {
   const { t } = useTranslation();
@@ -10,7 +11,32 @@ function Vision() {
   const isRTL = language === 'ar';
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-[#1f1f1f]" dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-4">
+        {/* Section Header - Same style as Features */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col justify-center text-center mx-auto md:max-w-3xl space-y-5 mb-16"
+        >
+          <span className={`rounded-lg px-2.5 py-1 text-xs w-max mx-auto font-semibold tracking-wide text-white bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28] ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL ? 'عنا' : 'About Us'}
+          </span>
+          <h2 className={`font-semibold font-cormorant text-3xl sm:text-4xl lg:text-5xl text-white ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL ? 'مهمتنا ' : 'Our Mission '} 
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#C3A177] from-20% via-[#AD8253] via-30% to-[#8C5C28]">
+              {isRTL ? 'ورؤيتنا' : '& Vision'}
+            </span>
+          </h2>
+          <p className={`text-white ${isRTL ? 'font-noto-kufi' : ''}`}>
+            {isRTL 
+              ? 'نحن ملتزمون بتقديم خدمات تسويقية استثنائية تحقق نتائج متميزة لعملائنا، مدفوعين بقيمنا الأساسية في الشفافية والإبداع والتميز.'
+              : 'We are committed to delivering exceptional marketing services that achieve outstanding results for our clients, driven by our core values of transparency, creativity, and excellence.'
+            }
+          </p>
+        </motion.div>
+
         <div className="max-w-7xl mx-auto px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col md:flex-row gap-16">
             <div className="flex md:flex-1">
                 <Image src="/chess-clicksalesmedia.png" alt="working on housing" width={1300} height={900} className="w-full md:h-full object-cover rounded-lg" />
@@ -69,6 +95,7 @@ function Vision() {
                 </div>
             </div>
         </div>
+      </div>
     </section>
   )
 }

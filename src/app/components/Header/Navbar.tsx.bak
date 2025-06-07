@@ -1,0 +1,442 @@
+'use client'
+import React, { useState, ReactNode } from "react";
+import { FiMenu, FiArrowRight, FiX, FiChevronDown } from "react-icons/fi";
+import { GrSchedule } from "react-icons/gr";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslation } from "@/app/hooks/useTranslation";
+
+import {
+  useMotionValueEvent,
+  AnimatePresence,
+  useScroll,
+  motion,
+} from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import ModalCalendar from "@/app/ui/modalCalendar";
+
+interface NavLinkProps {
+  children: ReactNode;
+  href: string;
+  FlyoutContent?: React.ComponentType<{ setMenuOpen?: (open: boolean) => void }>;
+}
+
+interface MobileMenuLinkProps {
+  children: ReactNode;
+  href: string;
+  className?: any;
+  FoldContent?: React.ComponentType<{ setMenuOpen?: (open: boolean) => void }>;
+  setMenuOpen: (open: boolean) => void;
+}
+
+interface ExpertiseProps {
+  setMenuOpen?: (open: boolean) => void;
+}
+
+const Navbar = () => {
+  return (
+    <>
+      <FlyoutNav />
+    </>
+  );
+};
+
+const FlyoutNav = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 250 ? true : false);
+  });
+
+  return (
+    <nav
+      className={`fixed top-0 z-50 w-full px-6 text-white 
+      transition-all duration-300 ease-out lg:px-12
+      ${
+        scrolled
+          ? "bg-primaryColor py-3 shadow-xl"
+          : "bg-primaryColor/0 py-6 shadow-none"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between">
+        <Logo />
+        <div className="hidden gap-6 lg:flex">
+          <Links />
+          <CTAs />
+        </div>
+        <MobileMenu />
+      </div>
+    </nav>
+  );
+};
+
+const Logo = () => {
+  return (
+    <div className="flex items-center gap-2">
+      <Link href="/">
+        <Image
+          src="/clicksalesmedialogo.svg"
+          alt="clicksalesmedia agency"
+          width={100}
+          height={50}
+        ></Image>
+      </Link>
+    </div>
+  );
+};
+
+const Links = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="flex items-center gap-6">
+      <NavLink href="/">{t('nav.home')}</NavLink>
+      <NavLink href="/about">{t('nav.about')}</NavLink>
+      <NavLink href="/expertise" FlyoutContent={Expertise}>{t('nav.expertise')}</NavLink>
+      <NavLink href="/our-work">{t('nav.ourWork')}</NavLink>
+      <NavLink href="/" className="disabled-link">{t('nav.blog')}</NavLink>
+      <NavLink href="/contact">{t('nav.contact')}</NavLink>
+    </div>
+  );
+};
+
+const NavLink: React.FC<NavLinkProps> = ({ children, href, FlyoutContent }) => {
+  const [open, setOpen] = useState(false);
+
+  const showFlyout = FlyoutContent && open;
+
+  return (
+    <div
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      className="relative w-fit h-fit"
+    >
+      <Link href={href} className="relative">
+        {children}
+        <span
+          style={{
+            transform: showFlyout ? "scaleX(1)" : "scaleX(0)",
+          }}
+          className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full bg-secondaryColor transition-transform duration-300 ease-out"
+        />
+      </Link>
+      <AnimatePresence>
+        {showFlyout && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 15 }}
+            style={{ translateX: "-50%" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="absolute left-1/2 top-12 bg-white text-black"
+          >
+            <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
+            <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-primaryColor" />
+            <FlyoutContent />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const CTAs = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="flex items-center gap-4">
+      <LanguageSwitcher />
+      <Link href="/schedule-a-meeting">
+        <button className="flex items-center gap-2 rounded-full border-2 border-secondaryColor px-4 py-1.5 font-semibold text-secondaryColor transition-all duration-300 hover:bg-white hover:text-black">
+          <GrSchedule />
+          <span>{t('nav.scheduleAMeeting')}</span>
+        </button>
+      </Link>
+    </div>
+  );
+};
+
+const Expertise: React.FC<ExpertiseProps> = ({ setMenuOpen }) => {
+  const { t } = useTranslation();
+  return (
+    <div className="grid h-fit w-full grid-cols-12 shadow-xl lg:h-72 lg:w-[600px] lg:shadow-none xl:w-[750px]">
+      <div className="col-span-12 flex flex-col justify-between bg-secondaryColor p-6 lg:col-span-4">
+        <div>
+          <h2 className="mb-2 text-2xl font-bold text-primaryColor">
+            {t('expertise.title')}
+          </h2>
+          <p className="mb-6 max-w-xs text-sm font-semibold text-primaryColor">
+            {t('expertise.description')}
+          </p>
+        </div>
+        <Link
+          href="/contact"
+          className="flex items-center gap-1 text-xs font-bold text-primaryColor hover:underline"
+        >
+          {t('expertise.letsDiscuss')} <FiArrowRight />
+        </Link>
+      </div>
+      <div
+        className="col-span-12 grid grid-cols-2 grid-rows-2 gap-3 bg-primaryColor border border-[#222222] p-6 lg:col-span-8"
+        onClick={() => setMenuOpen?.(false)}
+      >
+        <Link
+          href="/expertise/ai-marketing"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.aiMarketing.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.aiMarketing.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/branding"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.branding.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.branding.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/social-media-management"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.socialMedia.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.socialMedia.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/website-solutions"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.websiteSolutions.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.websiteSolutions.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/web-animation"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.webAnimation.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.webAnimation.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/seo-solutions"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.seoSolutions.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.seoSolutions.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/google-marketing-services"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.googleMarketing.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.googleMarketing.description')}
+          </p>
+        </Link>
+        <Link
+          href="/expertise/business-to-business"
+          className="rounded border-2 border-secondaryColor bg-[#222222] p-3 transition-colors hover:bg-[#111111]"
+        >
+          <h3 className="mb-1 font-semibold text-secondaryColor">
+            {t('nav.megaMenu.b2b.title')}
+          </h3>
+          <p className="text-xs text-whiteColor">
+            {t('nav.megaMenu.b2b.description')}
+          </p>
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+const MobileMenuLink: React.FC<MobileMenuLinkProps> = ({
+  children,
+  href,
+  FoldContent,
+  setMenuOpen,
+}) => {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.stopPropagation();
+    setMenuOpen(false);
+  };
+
+  const toggleFoldContent = () => {
+    setOpen(!open);
+    if (!FoldContent) {
+      setMenuOpen(false);
+    }
+  };
+
+  return (
+    <div className="relative text-neutral-950">
+      {FoldContent ? (
+        <>
+          <div
+            className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold"
+            onClick={toggleFoldContent}
+          >
+            <span>{children}</span>
+            <motion.div
+              animate={{ rotate: open ? "180deg" : "0deg" }}
+              transition={{
+                duration: 0.3,
+                ease: "easeOut",
+              }}
+            >
+              <FiChevronDown className="text-white" />
+            </motion.div>
+          </div>
+          {open && (
+            <motion.div
+              initial={false}
+              animate={{
+                height: "fit-content",
+                marginBottom: "24px",
+                marginTop: "12px",
+              }}
+              className="overflow-hidden"
+            >
+              <FoldContent setMenuOpen={setMenuOpen} />
+            </motion.div>
+          )}
+        </>
+      ) : (
+        <Link href={href} onClick={handleClick}>
+          <div className="flex w-full cursor-pointer items-center justify-between border-b border-neutral-300 py-6 text-start text-2xl font-semibold text-white">
+            <span>{children}</span>
+            <FiArrowRight className="text-white" />
+          </div>
+        </Link>
+      )}
+    </div>
+  );
+};
+
+const MobileMenu = () => {
+  const { t } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mobileLinks = [
+    { href: "/", text: t('nav.home') },
+    { href: "/about", text: t('nav.about') },
+    { href: "/expertise", text: t('nav.expertise'), component: Expertise },
+    { href: "/our-work", text: t('nav.ourWork') },
+    { href: "/blog", text: t('nav.blog') },
+    { href: "/contact", text: t('nav.contact') },
+  ];
+
+  return (
+    <div className="lg:hidden">
+      <button
+        onClick={() => setMenuOpen(true)}
+        className="rounded-full p-2 text-2xl hover:bg-white/10"
+      >
+        <FiMenu />
+      </button>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="fixed inset-y-0 right-0 z-50 w-[80%] bg-primaryColor p-6"
+            >
+              <div className="flex items-center justify-between">
+                <Logo />
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-full p-2 text-2xl hover:bg-white/10"
+                >
+                  <FiX />
+                </button>
+              </div>
+              <div className="mt-6 flex flex-col gap-4">
+                <div className="flex justify-center mb-2">
+                  <LanguageSwitcher />
+                </div>
+                {mobileLinks.map((l) => (
+                  <MobileMenuLink
+                    key={l.text}
+                    href={l.href}
+                    FoldContent={l.component}
+                    setMenuOpen={setMenuOpen}
+                  >
+                    {l.text}
+                  </MobileMenuLink>
+                ))}
+                <div className="mt-4">
+                  <Link href="/schedule-a-meeting">
+                    <button className="flex w-full items-center justify-center gap-2 rounded-xs border-2 border-secondaryColor px-4 py-2 font-semibold text-secondaryColor transition-colors hover:bg-white hover:text-black">
+                      <GrSchedule />
+                      <span>{t('nav.scheduleAMeeting')}</span>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default Navbar;
+
+const LINKS = [
+  {
+    text: "About",
+    href: "/about",
+  },
+  {
+    text: "Expertise",
+    href: "#",
+    component: Expertise,
+  },
+  {
+    text: "Our Work",
+    href: "/our-work",
+  },
+  {
+    text: "Blog",
+    href: "/blog",
+  },
+  {
+    text: "Contact",
+    href: "/contact",
+  },
+];

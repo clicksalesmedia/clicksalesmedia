@@ -1,14 +1,9 @@
 // components/RootLayout.tsx
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { LanguageProvider } from './providers/LanguageProvider';
-import { Analytics } from '@vercel/analytics/react';
-import Script from 'next/script';
 import './globals.css';
-import React from 'react';
-import AppContainer from './components/AppContainer';
-import { NextAuthProvider } from '@/app/providers';
-import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Noto_Sans_Arabic, Noto_Kufi_Arabic, Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import ClientLayout from './ClientLayout';
 
 const inter = Inter({ subsets: ['latin'] });
 const notoSansArabic = Noto_Sans_Arabic({ subsets: ['arabic'] });
@@ -70,80 +65,51 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { locale?: string };
 }) {
-  // Get current language from URL or set default to English
-  let currentLang = 'en';
-  let isRtl = false;
-  
-  // Handle client-side logic separately to prevent hydration mismatch
-  if (typeof window !== 'undefined') {
-    const pathname = window.location.pathname;
-    currentLang = pathname.includes('/ar') ? 'ar' : 'en';
-    isRtl = currentLang === 'ar';
-  }
+  // Default to English if no locale is provided
+  const locale = params?.locale || 'en';
   
   return (
-    <html lang={currentLang} dir={isRtl ? 'rtl' : 'ltr'} suppressHydrationWarning>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
       <head>
-        {/* Preload critical assets */}
-        <link 
-          rel="preload" 
-          href="/logo.svg" 
-          as="image" 
-          type="image/svg+xml" 
-          fetchPriority="high"
-        />
-        <link 
-          rel="preconnect" 
-          href="https://cdn.jsdelivr.net" 
-          crossOrigin="anonymous" 
-        />
-        <link 
-          rel="preconnect" 
-          href="https://fonts.googleapis.com" 
-          crossOrigin="anonymous" 
-        />
-        <link 
-          rel="dns-prefetch" 
-          href="https://cdn.jsdelivr.net" 
-        />
-        
-        {/* Advanced preloading strategy for critical resources */}
-        <link rel="preload" href="/_next/static/css/app/layout.css" as="style" />
-        <link rel="preload" href="/_next/static/css/app/page.css" as="style" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={`${inter.className} ${notoSansArabic.className} ${notoKufiArabic.className} bg-bgColor dark:bg-[#121212] text-textColor dark:text-white h-screen overflow-x-hidden`}>
+      <body className={`${inter.className} ${notoSansArabic.className} ${notoKufiArabic.className}`}>
         <noscript>
           <iframe
-            src='https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686'
-            height='0'
-            width='0'
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WBLD4686"
+            height="0"
+            width="0"
             style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
+          />
         </noscript>
-        <NextAuthProvider>
-          <LanguageProvider>
-            <AppContainer>
-              {children}
-            </AppContainer>
-          </LanguageProvider>
-        </NextAuthProvider>
-
+        
+        <ClientLayout>{children}</ClientLayout>
+        
+        {/* Place the script tag outside of <head> to prevent errors */}
         <Script
-          id='gtm-script'
-          strategy='afterInteractive'
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-WBLD4686');`,
+              (function(w,d,s,l,i){
+                w[l]=w[l]||[];
+                w[l].push({
+                  'gtm.start': new Date().getTime(),
+                  event:'gtm.js'
+                });
+                var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),
+                dl=l!='dataLayer'?'&l='+l:'';
+                j.async=true;
+                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WBLD4686');
+            `
           }}
         />
       </body>
