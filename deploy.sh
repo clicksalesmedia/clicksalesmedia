@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 # Server credentials
 HETZNER_IP="49.13.238.33"
 HETZNER_USER="root"
-HETZNER_PASSWORD="iHv9XTVvAURxrPn94H9i"
+HETZNER_PASSWORD="iHv9XTVvAURxrPn94H9iK"
 
 echo -e "${BLUE}🚀 Starting ClickSales Media Deployment...${NC}"
 echo "============================================="
