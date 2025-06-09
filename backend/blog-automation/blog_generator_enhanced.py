@@ -242,17 +242,26 @@ Make it engaging, informative, and professional for {current_year}.
         try:
             logger.info(f"Generating image for: {title}")
             
-            # Clean title for better prompt
-            clean_title = re.sub(r'[^\w\s]', '', title)
+            # Create a professional image prompt based on the title
+            # Remove any numbers, special characters, and make it professional
+            clean_title = re.sub(r'\d{4}', '', title)  # Remove years
+            clean_title = re.sub(r'[^\w\s]', '', clean_title)  # Remove special chars
             
             prompt = f"""
-Create a professional, modern blog header image related to "{clean_title}".
-Style: Clean, minimalist, corporate design
-Colors: Professional blues (#1E40AF), whites, and subtle accent colors
-Elements: Abstract digital marketing icons, subtle charts or graphs, modern geometric shapes
-Composition: Balanced, eye-catching, suitable for blog header
-Quality: High-resolution, crisp, professional
-No text overlay, no people, focus on abstract marketing concepts
+Create a professional, modern digital marketing illustration for an article about {clean_title}.
+
+The image should be:
+- Clean, professional business style
+- Digital marketing theme with modern elements
+- Corporate color scheme (blues, whites, grays)
+- High quality, crisp design
+- Include elements like charts, graphs, digital icons
+- Professional office or digital workspace setting
+- No text overlays
+- 16:9 aspect ratio
+- High resolution
+
+Style: Corporate, professional, modern, clean
 """
             
             response = self.client.images.generate(
@@ -261,11 +270,10 @@ No text overlay, no people, focus on abstract marketing concepts
                 size="1792x1024",
                 quality="hd",
                 n=1,
-                style="natural"
             )
             
             image_url = response.data[0].url
-            logger.info("Successfully generated image using gpt-image-1")
+            logger.info(f"Successfully generated image: {image_url}")
             return image_url
             
         except Exception as e:
@@ -273,10 +281,30 @@ No text overlay, no people, focus on abstract marketing concepts
             # Fallback to a high-quality professional placeholder
             return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1792&h=1024&fit=crop&auto=format&q=80"
 
+    def _detect_language(self, text: str) -> str:
+        """Detect if text is primarily Arabic or English"""
+        if not text:
+            return "en"
+            
+        # Count Arabic characters vs Latin characters
+        arabic_chars = sum(1 for char in text if '\u0600' <= char <= '\u06FF')
+        latin_chars = sum(1 for char in text if char.isalpha() and char.isascii())
+        
+        # If more than 30% Arabic characters, consider it Arabic
+        total_chars = arabic_chars + latin_chars
+        if total_chars > 0 and (arabic_chars / total_chars) > 0.3:
+            return "ar"
+        else:
+            return "en"
+
     def publish_to_nextjs(self, blog_data: Dict[str, Any]) -> bool:
         """Publish blog post to Next.js API"""
         try:
             logger.info(f"Publishing blog post: {blog_data['title']}")
+            
+            # Detect actual language from content
+            detected_language = self._detect_language(blog_data['title'])
+            blog_data['language'] = detected_language
             
             # Generate clean slug from title
             title_for_slug = blog_data["title"].lower()
@@ -296,13 +324,21 @@ No text overlay, no people, focus on abstract marketing concepts
                 "authorId": "cmbmdeprt000081y34rklazoj"  # Server admin user ID
             }
             
-            # Add Arabic fields if language is Arabic
-            if blog_data["language"] == "ar":
+            # Only add Arabic fields if the content is actually Arabic
+            if detected_language == "ar":
                 post_data.update({
                     "titleAr": blog_data["title"],
                     "contentAr": blog_data["content"],
                     "excerptAr": blog_data["excerpt"],
-                    "metaDescriptionAr": blog_data["metaDescription"]
+                    "metaDescriptionAr": blog_data.get("metaDescription", "")
+                })
+            else:
+                # For English posts, explicitly set Arabic fields to null
+                post_data.update({
+                    "titleAr": None,
+                    "contentAr": None,
+                    "excerptAr": None,
+                    "metaDescriptionAr": None
                 })
             
             # Send to Next.js API
