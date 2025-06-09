@@ -29,13 +29,14 @@ export async function GET(request: Request) {
     const category = searchParams.get('category');
     const featured = searchParams.get('featured') === 'true';
     const published = searchParams.get('published') === 'true';
+    const language = searchParams.get('language'); // 'en' or 'ar'
     const format = searchParams.get('format'); // 'array' or 'paginated'
     
-    console.log('Query params:', { limit, page, category, featured, published, format });
+    console.log('Query params:', { limit, page, category, featured, published, language, format });
     
     const skip = (page - 1) * limit;
     
-    const where = {
+    const where: any = {
       ...(published && { published: true }),
       ...(category && {
         categories: {
@@ -46,6 +47,20 @@ export async function GET(request: Request) {
       }),
       ...(featured && { featured: true })
     };
+
+    // Add language filtering
+    if (language === 'ar') {
+      // Arabic posts should have titleAr
+      where.titleAr = {
+        not: null
+      };
+    } else if (language === 'en') {
+      // English posts should not have titleAr or titleAr should be null/empty
+      where.OR = [
+        { titleAr: null },
+        { titleAr: '' }
+      ];
+    }
     
     console.log('Where clause:', where);
     

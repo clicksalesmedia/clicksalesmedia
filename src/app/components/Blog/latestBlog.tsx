@@ -34,7 +34,7 @@ const BlogSection = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    fetch('/api/blog?published=true&limit=1')
+    fetch(`/api/blog?published=true&limit=1&language=${language}`)
       .then((response) => response.json())
       .then((data) => { 
         setPosts(
