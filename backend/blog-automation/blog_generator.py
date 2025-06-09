@@ -10,6 +10,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 import base64
+import re
 
 # Load environment variables
 load_dotenv()
@@ -88,16 +89,13 @@ class BlogGenerator:
             prompt = self._create_prompt(topic, language)
             
             response = self.client.chat.completions.create(
-                model="o1-mini",  # Using o1-mini instead of o4-mini
+                model="o4-mini",
                 messages=[
                     {
                         "role": "user",
                         "content": prompt
                     }
-                ],
-                # Note: o1-mini doesn't support response_format parameter
-                # response_format={"type": "text"},
-                # reasoning_effort="medium"  # Not supported in o1-mini
+                ]
             )
             
             content = response.choices[0].message.content
@@ -118,76 +116,93 @@ class BlogGenerator:
 
     def _create_prompt(self, topic: str, language: str) -> str:
         """Create prompt for OpenAI API"""
+        current_year = datetime.now().year
         lang_instruction = "in English" if language == "en" else "in Arabic"
         
         return f"""
-Write a comprehensive blog post about "{topic}" {lang_instruction} for Click Sales Media, a digital marketing agency.
+Write a comprehensive, professional blog post about "{topic}" {lang_instruction} for Click Sales Media, a digital marketing agency.
 
-The blog post should be structured as follows:
-1. Title: Catchy and SEO-optimized (60 characters max)
-2. Meta Description: Compelling meta description (150 characters max)
-3. Introduction: Hook the reader with a problem or interesting fact
-4. Main Content: 800-1200 words with practical insights
-5. How Click Sales Media Can Help: 2-3 paragraphs about our services
-6. Conclusion: Call-to-action and summary
-7. Tags: 5-7 relevant tags
+IMPORTANT: Respond with ONLY valid JSON. No additional text, explanations, or formatting outside the JSON.
 
-Structure your response as JSON with these fields:
-- title
-- metaDescription
-- content (in HTML format with proper headings)
-- excerpt (first 150 words)
-- tags (array of strings)
-- category
-- readingTime (estimated minutes)
+The blog post should be for {current_year} and include current trends and best practices.
+
+Structure your response as a single JSON object with these exact fields:
+{{
+  "title": "Catchy and SEO-optimized title (60 characters max, no JSON or code formatting)",
+  "metaDescription": "Compelling meta description (150 characters max)",
+  "content": "Full blog post content in HTML format with proper headings (800-1200 words)",
+  "excerpt": "Engaging introduction excerpt (150 words max)",
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
+  "category": "Digital Marketing",
+  "readingTime": 5
+}}
 
 Focus on:
-- Actionable insights and tips
+- Actionable insights and tips for {current_year}
 - Current trends and best practices
 - Real-world examples
 - How businesses can benefit
 - Why they should choose Click Sales Media
 - SEO optimization
+- Clean, professional titles without JSON formatting
 
-Make it engaging, informative, and professional.
+Make it engaging, informative, and professional for {current_year}.
 """
 
     def _parse_blog_content(self, content: str, topic: str, language: str) -> Dict[str, Any]:
         """Parse the OpenAI response into structured blog data"""
         try:
-            # Try to parse as JSON first
-            if content.strip().startswith('{'):
-                blog_data = json.loads(content)
-            else:
-                # If not JSON, create structure manually
-                blog_data = {
-                    "title": f"Master {topic}: Complete Guide for 2024",
-                    "metaDescription": f"Discover expert {topic} strategies to boost your business. Learn from Click Sales Media's proven techniques.",
-                    "content": content,
-                    "excerpt": content[:150] + "...",
-                    "tags": [topic.replace(" ", "").lower(), "digitalmarketing", "marketing", "business", "strategy"],
-                    "category": "Digital Marketing",
-                    "readingTime": len(content.split()) // 200 + 1
-                }
+            # Clean the content first
+            content = content.strip()
             
-            # Ensure required fields exist
+            # Remove any markdown code blocks if present
+            content = re.sub(r'```json\s*', '', content)
+            content = re.sub(r'\s*```', '', content)
+            
+            # Try to find JSON content
+            json_match = re.search(r'\{.*\}', content, re.DOTALL)
+            if json_match:
+                json_content = json_match.group(0)
+            else:
+                json_content = content
+            
+            # Parse JSON
+            blog_data = json.loads(json_content)
+            
+            # Clean the title to remove any JSON artifacts
+            if 'title' in blog_data:
+                blog_data['title'] = re.sub(r'```json|```|{|}|"title":|"', '', str(blog_data['title'])).strip()
+                blog_data['title'] = blog_data['title'].replace('\\n', ' ').replace('\\', '')
+                # Update year to 2025
+                blog_data['title'] = blog_data['title'].replace('2024', '2025')
+            
+            # Ensure required fields exist with proper values
+            current_year = datetime.now().year
             blog_data.setdefault('publishedAt', datetime.now().isoformat())
             blog_data.setdefault('language', language)
             blog_data.setdefault('status', 'published')
             blog_data.setdefault('featured', False)
             
+            # Update any 2024 references to current year
+            for key in ['title', 'content', 'metaDescription', 'excerpt']:
+                if key in blog_data and isinstance(blog_data[key], str):
+                    blog_data[key] = blog_data[key].replace('2024', str(current_year))
+            
             return blog_data
             
-        except json.JSONDecodeError:
-            logger.warning("Failed to parse JSON response, using fallback structure")
+        except (json.JSONDecodeError, AttributeError) as e:
+            logger.warning(f"Failed to parse JSON response: {e}, using fallback structure")
+            current_year = datetime.now().year
+            clean_topic = topic.replace('2024', str(current_year))
+            
             return {
-                "title": f"Master {topic}: Complete Guide for 2024",
-                "metaDescription": f"Discover expert {topic} strategies to boost your business.",
-                "content": content,
-                "excerpt": content[:150] + "...",
-                "tags": [topic.replace(" ", "").lower(), "digitalmarketing"],
+                "title": f"Master {clean_topic}: Complete Guide for {current_year}",
+                "metaDescription": f"Discover expert {clean_topic} strategies to boost your business with Click Sales Media's proven techniques for {current_year}.",
+                "content": f"<h1>Master {clean_topic}: Complete Guide for {current_year}</h1><p>In the rapidly evolving digital landscape of {current_year}, {clean_topic.lower()} has become more crucial than ever for businesses looking to thrive online...</p>",
+                "excerpt": f"In the rapidly evolving digital landscape of {current_year}, {clean_topic.lower()} has become more crucial than ever for businesses looking to thrive online. This comprehensive guide will walk you through the latest strategies and best practices.",
+                "tags": [clean_topic.replace(" ", "").lower(), "digitalmarketing", "marketing", "business", f"strategy{current_year}"],
                 "category": "Digital Marketing",
-                "readingTime": len(content.split()) // 200 + 1,
+                "readingTime": 6,
                 "publishedAt": datetime.now().isoformat(),
                 "language": language,
                 "status": "published",
@@ -195,48 +210,73 @@ Make it engaging, informative, and professional.
             }
 
     def _generate_image(self, title: str) -> str:
-        """Generate image using OpenAI DALL-E"""
+        """Generate image using gpt-image-1"""
         try:
             logger.info(f"Generating image for: {title}")
             
+            # Clean title for better prompt
+            clean_title = re.sub(r'[^\w\s]', '', title)
+            
             prompt = f"""
-Create a professional, modern blog header image for "{title}".
-Style: Clean, minimalist, corporate
-Colors: Professional blues, whites, and accent colors
-Elements: Abstract marketing icons, charts, digital elements
-No text overlay, high quality, suitable for blog header
+Create a professional, modern blog header image related to "{clean_title}".
+Style: Clean, minimalist, corporate design
+Colors: Professional blues (#1E40AF), whites, and subtle accent colors
+Elements: Abstract digital marketing icons, subtle charts or graphs, modern geometric shapes
+Composition: Balanced, eye-catching, suitable for blog header
+Quality: High-resolution, crisp, professional
+No text overlay, no people, focus on abstract marketing concepts
 """
             
             response = self.client.images.generate(
-                model="dall-e-3",
+                model="gpt-image-1",
                 prompt=prompt,
                 size="1792x1024",
-                quality="standard",
-                n=1
+                quality="hd",
+                n=1,
+                style="natural"
             )
             
             image_url = response.data[0].url
-            logger.info("Successfully generated image")
-            return image_url
+            
+            # Download and save the image to prevent it from expiring
+            image_response = requests.get(image_url, timeout=30)
+            if image_response.status_code == 200:
+                # Save to a permanent location (you might want to upload to your CDN)
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"blog_image_{timestamp}.jpg"
+                
+                # For now, return the original URL but you could save it locally
+                logger.info("Successfully generated and downloaded image using gpt-image-1")
+                return image_url
+            else:
+                raise Exception("Failed to download generated image")
             
         except Exception as e:
-            logger.error(f"Error generating image: {str(e)}")
-            # Fallback to a placeholder image
-            return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1792&h=1024&fit=crop"
+            logger.error(f"Error generating image with gpt-image-1: {str(e)}")
+            # Fallback to a high-quality professional placeholder
+            return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1792&h=1024&fit=crop&auto=format&q=80"
 
     def publish_to_nextjs(self, blog_data: Dict[str, Any]) -> bool:
         """Publish blog post to Next.js API"""
         try:
             logger.info(f"Publishing blog post: {blog_data['title']}")
             
+            # Generate clean slug from title
+            title_for_slug = blog_data["title"].lower()
+            # Remove special characters and normalize
+            slug = re.sub(r'[^\w\s-]', '', title_for_slug)
+            slug = re.sub(r'[\s_-]+', '-', slug)
+            slug = slug.strip('-')[:100]  # Limit length and remove leading/trailing dashes
+            
             # Prepare data for Next.js API
             post_data = {
                 "title": blog_data["title"],
+                "slug": slug,
                 "content": blog_data["content"],
-                "excerpt": f"AI Generated - {blog_data['excerpt']}",  # Add AI Generated tag
+                "excerpt": blog_data['excerpt'],  # Remove AI Generated prefix for cleaner look
                 "coverImage": blog_data["image"],
                 "published": True,
-                "authorId": "admin_user_id"  # Will need to be updated with actual admin ID
+                "authorId": "cmbmdeprt000081y34rklazoj"  # Server admin user ID
             }
             
             # Add Arabic fields if language is Arabic

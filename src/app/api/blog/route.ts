@@ -109,6 +109,26 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
     
+    // Find or use admin user as author
+    let authorId = data.authorId;
+    if (!authorId) {
+      // Try to find admin user
+      const adminUser = await prisma.user.findFirst({
+        where: {
+          OR: [
+            { email: 'admin@clicksalesmedia.com' },
+            { role: 'ADMIN' }
+          ]
+        }
+      });
+      
+      if (adminUser) {
+        authorId = adminUser.id;
+      } else {
+        throw new Error('No admin user found');
+      }
+    }
+    
     const blogPost = await prisma.blogPost.create({
       data: {
         title: data.title,
@@ -120,7 +140,7 @@ export async function POST(request: Request) {
         excerptAr: data.excerptAr || null,
         coverImage: data.coverImage || null,
         published: data.published || false,
-        authorId: data.authorId,
+        authorId: authorId,
         categories: {
           connect: data.categories?.map((cat: any) => ({ id: cat.id })) || []
         }

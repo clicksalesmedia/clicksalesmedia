@@ -21,8 +21,8 @@ log() {
 log "🚀 Starting daily blog generation..."
 log "Working directory: $SCRIPT_DIR"
 
-# Activate UV environment and run the script
-if ~/.local/bin/uv run python blog_generator.py >> "$LOG_FILE" 2>&1; then
+# Activate UV environment and run the script with enhanced generator
+if ~/.local/bin/uv run python main.py >> "$LOG_FILE" 2>&1; then
     log "✅ Blog generation completed successfully"
     exit_code=0
 else

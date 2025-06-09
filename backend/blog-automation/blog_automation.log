@@ -1,0 +1,67 @@
+2025-06-07 23:59:05,052 - INFO - Starting daily blog post generation
+2025-06-07 23:59:05,052 - INFO - Generating blog post for topic: Brand Strategy in en
+2025-06-07 23:59:14,498 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-07 23:59:14,502 - INFO - Generating image for: Master Brand Strategy: Complete Guide for 2024
+2025-06-07 23:59:30,770 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-07 23:59:30,773 - INFO - Successfully generated image
+2025-06-07 23:59:30,773 - INFO - Successfully generated blog post: Master Brand Strategy: Complete Guide for 2024
+2025-06-07 23:59:30,773 - INFO - Publishing blog post: Master Brand Strategy: Complete Guide for 2024
+2025-06-07 23:59:31,248 - ERROR - Failed to publish blog post: 500 - {"error":"Failed to create blog post"}
+2025-06-07 23:59:31,249 - INFO - Generated post 1/2: Master Brand Strategy: Complete Guide for 2024
+2025-06-07 23:59:31,249 - INFO - Generating blog post for topic: Travel Marketing in ar
+2025-06-07 23:59:39,379 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-07 23:59:39,382 - INFO - Generating image for: Master Travel Marketing: Complete Guide for 2024
+2025-06-07 23:59:57,716 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-07 23:59:57,717 - INFO - Successfully generated image
+2025-06-07 23:59:57,717 - INFO - Successfully generated blog post: Master Travel Marketing: Complete Guide for 2024
+2025-06-07 23:59:57,717 - INFO - Publishing blog post: Master Travel Marketing: Complete Guide for 2024
+2025-06-07 23:59:58,525 - ERROR - Failed to publish blog post: 500 - {"error":"Failed to create blog post"}
+2025-06-07 23:59:58,525 - INFO - Generated post 2/2: Master Travel Marketing: Complete Guide for 2024
+2025-06-07 23:59:58,525 - INFO - Successfully generated 2 blog posts
+2025-06-07 23:59:58,526 - INFO - Generation log saved to generation_log_20250607.json
+2025-06-08 00:01:35,486 - INFO - Starting daily blog post generation
+2025-06-08 00:01:35,487 - INFO - Generating blog post for topic: AI Marketing in en
+2025-06-08 00:01:46,050 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-08 00:01:46,056 - INFO - Generating image for: Master AI Marketing: Complete Guide for 2024
+2025-06-08 00:02:04,488 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-08 00:02:04,490 - INFO - Successfully generated image
+2025-06-08 00:02:04,490 - INFO - Successfully generated blog post: Master AI Marketing: Complete Guide for 2024
+2025-06-08 00:02:04,490 - INFO - Publishing blog post: Master AI Marketing: Complete Guide for 2024
+2025-06-08 00:02:05,098 - ERROR - Failed to publish blog post: 500 - {"error":"Failed to create blog post"}
+2025-06-08 00:02:05,098 - INFO - Generated post 1/2: Master AI Marketing: Complete Guide for 2024
+2025-06-08 00:02:05,098 - INFO - Generating blog post for topic: Marketing Automation in ar
+2025-06-08 00:02:11,214 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-08 00:02:11,220 - INFO - Generating image for: Master Marketing Automation: Complete Guide for 2024
+2025-06-08 00:02:30,983 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-08 00:02:30,985 - INFO - Successfully generated image
+2025-06-08 00:02:30,985 - INFO - Successfully generated blog post: Master Marketing Automation: Complete Guide for 2024
+2025-06-08 00:02:30,986 - INFO - Publishing blog post: Master Marketing Automation: Complete Guide for 2024
+2025-06-08 00:02:31,618 - ERROR - Failed to publish blog post: 500 - {"error":"Failed to create blog post"}
+2025-06-08 00:02:31,618 - INFO - Generated post 2/2: Master Marketing Automation: Complete Guide for 2024
+2025-06-08 00:02:31,618 - INFO - Successfully generated 2 blog posts
+2025-06-08 00:02:31,619 - INFO - Generation log saved to generation_log_20250608.json
+2025-06-09 22:12:22,033 - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0), using fallback structure
+2025-06-09 22:12:22,033 - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0), using fallback structure
+2025-06-09 22:15:51,584 - INFO - 🚀 Starting daily blog post generation for 2025 (2 posts)
+2025-06-09 22:15:51,584 - INFO - 📝 Generating post 1/2: Finance Marketing Compliance (B2B) in en
+2025-06-09 22:15:51,584 - INFO - Generating blog post for topic: Finance Marketing Compliance in en
+2025-06-09 22:16:49,600 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 22:16:49,605 - INFO - Generating image for: Finance Marketing Compliance 2025: Trends & Best Practices
+2025-06-09 22:17:21,345 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-09 22:17:21,350 - INFO - Successfully generated image
+2025-06-09 22:17:21,350 - INFO - Successfully generated blog post: Finance Marketing Compliance 2025: Trends & Best Practices
+2025-06-09 22:17:21,350 - INFO - Publishing blog post: Finance Marketing Compliance 2025: Trends & Best Practices
+2025-06-09 22:17:22,037 - INFO - Successfully published blog post to Next.js
+2025-06-09 22:17:22,039 - INFO - ✅ Generated: Finance Marketing Compliance 2025: Trends & Best Practices - Published
+2025-06-09 22:17:22,039 - INFO - 📝 Generating post 2/2: AI-Powered Marketing Strategies (AI Marketing) in ar
+2025-06-09 22:17:22,039 - INFO - Generating blog post for topic: AI-Powered Marketing Strategies in ar
+2025-06-09 22:17:48,304 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 22:17:48,310 - INFO - Generating image for: استراتيجيات تسويق مدعومة بالذكاء الاصطناعي لعام 2025
+2025-06-09 22:18:21,490 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-09 22:18:21,492 - INFO - Successfully generated image
+2025-06-09 22:18:21,493 - INFO - Successfully generated blog post: استراتيجيات تسويق مدعومة بالذكاء الاصطناعي لعام 2025
+2025-06-09 22:18:21,493 - INFO - Publishing blog post: استراتيجيات تسويق مدعومة بالذكاء الاصطناعي لعام 2025
+2025-06-09 22:18:22,229 - INFO - Successfully published blog post to Next.js
+2025-06-09 22:18:22,230 - INFO - ✅ Generated: استراتيجيات تسويق مدعومة بالذكاء الاصطناعي لعام 2025 - Published
+2025-06-09 22:18:22,230 - INFO - 🎉 Completed daily generation: 2 posts created
+2025-06-09 22:18:22,233 - INFO - Generation log saved to generation_log_20250609.json
