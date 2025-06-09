@@ -65,3 +65,19 @@
 2025-06-09 22:18:22,230 - INFO - ✅ Generated: استراتيجيات تسويق مدعومة بالذكاء الاصطناعي لعام 2025 - Published
 2025-06-09 22:18:22,230 - INFO - 🎉 Completed daily generation: 2 posts created
 2025-06-09 22:18:22,233 - INFO - Generation log saved to generation_log_20250609.json
+2025-06-09 23:02:14,487 - INFO - Generating blog post for topic: AI-Powered Marketing Automation in en
+2025-06-09 23:03:00,560 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:03:00,566 - INFO - Generating image for: AI-Powered Marketing Automation Trends 2025
+2025-06-09 23:03:01,566 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2025-06-09 23:03:01,567 - ERROR - Error generating image with gpt-image-1: Error code: 400 - {'error': {'message': "Invalid value: 'hd'. Supported values are: 'low', 'medium', 'high', and 'auto'.", 'type': 'invalid_request_error', 'param': 'quality', 'code': 'invalid_value'}}
+2025-06-09 23:03:01,568 - INFO - Successfully generated blog post: AI-Powered Marketing Automation Trends 2025
+2025-06-09 23:03:01,568 - INFO - Publishing blog post: AI-Powered Marketing Automation Trends 2025
+2025-06-09 23:03:02,056 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:03:02,066 - INFO - Generating blog post for topic: التسويق الرقمي بالذكاء الاصطناعي in ar
+2025-06-09 23:03:43,235 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:03:43,246 - INFO - Generating image for: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:03:43,640 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2025-06-09 23:03:43,641 - ERROR - Error generating image with gpt-image-1: Error code: 400 - {'error': {'message': "Invalid value: 'hd'. Supported values are: 'low', 'medium', 'high', and 'auto'.", 'type': 'invalid_request_error', 'param': 'quality', 'code': 'invalid_value'}}
+2025-06-09 23:03:43,641 - INFO - Successfully generated blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:03:43,641 - INFO - Publishing blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:03:44,372 - INFO - Successfully published blog post to Next.js

@@ -240,7 +240,7 @@ Style: Corporate, professional, modern, clean
                 model="gpt-image-1",
                 prompt=prompt,
                 size="1792x1024",
-                quality="hd",
+                quality="high",
                 n=1,
             )
             

@@ -36,29 +36,31 @@ export async function GET(request: Request) {
     
     const skip = (page - 1) * limit;
     
-    const where: any = {
-      ...(published && { published: true }),
-      ...(category && {
-        categories: {
-          some: {
-            slug: category
-          }
+    // Build base conditions
+    const baseConditions: any = {};
+    if (published) baseConditions.published = true;
+    if (category) {
+      baseConditions.categories = {
+        some: {
+          slug: category
         }
-      }),
-      ...(featured && { featured: true })
-    };
+      };
+    }
+    if (featured) baseConditions.featured = true;
 
     // Add language filtering
+    let where: any = baseConditions;
+    
     if (language === 'ar') {
-      // Arabic posts should have titleAr
+      // Arabic posts should have titleAr that is not null and not empty
       where.titleAr = {
         not: null
       };
     } else if (language === 'en') {
-      // English posts should not have titleAr or titleAr should be null/empty
+      // English posts should have titleAr null or empty
       where.OR = [
-        { titleAr: null },
-        { titleAr: '' }
+        { ...baseConditions, titleAr: null },
+        { ...baseConditions, titleAr: '' }
       ];
     }
     
