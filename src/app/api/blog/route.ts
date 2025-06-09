@@ -53,32 +53,39 @@ export async function GET(request: Request) {
     // Build where clause with language filtering
     let where: any = {};
     
-    if (language === 'ar') {
-      // Arabic posts: base conditions + titleAr not null
-      where.AND = [
-        ...baseConditions,
-        { titleAr: { not: null } },
-        { titleAr: { not: '' } }
-      ];
-    } else if (language === 'en') {
-      // English posts: base conditions + (titleAr null OR titleAr empty)
-      where.AND = [
-        ...baseConditions,
-        {
-          OR: [
-            { titleAr: null },
-            { titleAr: '' }
-          ]
-        }
-      ];
-    } else {
-      // No language filter, just base conditions
-      if (baseConditions.length > 0) {
-        where.AND = baseConditions;
-      }
+    // Apply base conditions first
+    if (baseConditions.length > 0) {
+      where.AND = [...baseConditions];
     }
     
-    console.log('Where clause:', where);
+    // Add language filtering
+    if (language === 'ar') {
+      // Arabic posts should have titleAr with actual content
+      if (!where.AND) where.AND = [];
+      where.AND.push({
+        titleAr: {
+          not: null
+        }
+      });
+      where.AND.push({
+        titleAr: {
+          not: ''
+        }
+      });
+    } else if (language === 'en') {
+      // English posts should have titleAr as null or empty
+      if (!where.AND) where.AND = [];
+      where.AND.push({
+        OR: [
+          { titleAr: null },
+          { titleAr: '' }
+        ]
+      });
+    }
+    
+    console.log('Where clause:', JSON.stringify(where, null, 2));
+    console.log('Language filter:', language);
+    console.log('Base conditions:', baseConditions);
     
     const posts = await prisma.blogPost.findMany({
       where,

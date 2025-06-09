@@ -239,7 +239,7 @@ Style: Corporate, professional, modern, clean
             response = self.client.images.generate(
                 model="gpt-image-1",
                 prompt=prompt,
-                size="1792x1024",
+                size="1536x1024",
                 quality="high",
                 n=1,
             )

@@ -81,3 +81,42 @@
 2025-06-09 23:03:43,641 - INFO - Successfully generated blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
 2025-06-09 23:03:43,641 - INFO - Publishing blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
 2025-06-09 23:03:44,372 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:17:13,592 - INFO - Generating blog post for topic: AI-Powered Marketing Automation in en
+2025-06-09 23:18:34,687 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:18:34,697 - INFO - Generating image for: AI-Powered Marketing Automation: 2025 Trends & Tips
+2025-06-09 23:18:35,238 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2025-06-09 23:18:35,240 - ERROR - Error generating image with gpt-image-1: Error code: 400 - {'error': {'message': "Invalid value: '1792x1024'. Supported values are: '1024x1024', '1024x1536', '1536x1024', and 'auto'.", 'type': 'invalid_request_error', 'param': 'size', 'code': 'invalid_value'}}
+2025-06-09 23:18:35,240 - INFO - Successfully generated blog post: AI-Powered Marketing Automation: 2025 Trends & Tips
+2025-06-09 23:18:35,240 - INFO - Publishing blog post: AI-Powered Marketing Automation: 2025 Trends & Tips
+2025-06-09 23:18:35,760 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:18:35,767 - INFO - Generating blog post for topic: التسويق الرقمي بالذكاء الاصطناعي in ar
+2025-06-09 23:20:27,201 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:20:27,210 - INFO - Generating image for: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:20:28,063 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2025-06-09 23:20:28,064 - ERROR - Error generating image with gpt-image-1: Error code: 400 - {'error': {'message': "Invalid value: '1792x1024'. Supported values are: '1024x1024', '1024x1536', '1536x1024', and 'auto'.", 'type': 'invalid_request_error', 'param': 'size', 'code': 'invalid_value'}}
+2025-06-09 23:20:28,064 - INFO - Successfully generated blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:20:28,064 - INFO - Publishing blog post: التسويق الرقمي بالذكاء الاصطناعي: استراتيجيات 2025
+2025-06-09 23:20:28,934 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:21:52,816 - INFO - 🚀 Starting daily blog post generation for 2025 (2 posts)
+2025-06-09 23:21:52,816 - INFO - 📝 Generating post 1/2: E-commerce Email Marketing (Ecommerce) in en
+2025-06-09 23:21:52,816 - INFO - Generating blog post for topic: E-commerce Email Marketing in en
+2025-06-09 23:22:08,208 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:22:08,215 - INFO - Generating image for: Master 2025 E-commerce Email Marketing Trends Now
+2025-06-09 23:23:05,150 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-09 23:23:06,421 - INFO - Successfully generated image: None
+2025-06-09 23:23:06,421 - INFO - Successfully generated blog post: Master 2025 E-commerce Email Marketing Trends Now
+2025-06-09 23:23:06,422 - INFO - Publishing blog post: Master 2025 E-commerce Email Marketing Trends Now
+2025-06-09 23:23:06,868 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:23:06,868 - INFO - ✅ Generated: Master 2025 E-commerce Email Marketing Trends Now - Published
+2025-06-09 23:23:06,868 - INFO - 📝 Generating post 2/2: Real Estate Marketing Strategies (B2B) in ar
+2025-06-09 23:23:06,868 - INFO - Generating blog post for topic: Real Estate Marketing Strategies in ar
+2025-06-09 23:23:33,363 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-09 23:23:33,384 - INFO - Generating image for: استراتيجيات تسويق العقارات بفعالية في 2025
+2025-06-09 23:24:30,465 - INFO - HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 200 OK"
+2025-06-09 23:24:31,599 - INFO - Successfully generated image: None
+2025-06-09 23:24:31,599 - INFO - Successfully generated blog post: استراتيجيات تسويق العقارات بفعالية في 2025
+2025-06-09 23:24:31,599 - INFO - Publishing blog post: استراتيجيات تسويق العقارات بفعالية في 2025
+2025-06-09 23:24:32,389 - INFO - Successfully published blog post to Next.js
+2025-06-09 23:24:32,389 - INFO - ✅ Generated: استراتيجيات تسويق العقارات بفعالية في 2025 - Published
+2025-06-09 23:24:32,389 - INFO - 🎉 Completed daily generation: 2 posts created
+2025-06-09 23:24:32,390 - INFO - Generation log saved to generation_log_20250609.json
