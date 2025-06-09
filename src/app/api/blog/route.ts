@@ -37,31 +37,45 @@ export async function GET(request: Request) {
     const skip = (page - 1) * limit;
     
     // Build base conditions
-    const baseConditions: any = {};
-    if (published) baseConditions.published = true;
+    const baseConditions: any[] = [];
+    if (published) baseConditions.push({ published: true });
     if (category) {
-      baseConditions.categories = {
-        some: {
-          slug: category
+      baseConditions.push({
+        categories: {
+          some: {
+            slug: category
+          }
         }
-      };
+      });
     }
-    if (featured) baseConditions.featured = true;
+    if (featured) baseConditions.push({ featured: true });
 
-    // Add language filtering
-    let where: any = baseConditions;
+    // Build where clause with language filtering
+    let where: any = {};
     
     if (language === 'ar') {
-      // Arabic posts should have titleAr that is not null and not empty
-      where.titleAr = {
-        not: null
-      };
-    } else if (language === 'en') {
-      // English posts should have titleAr null or empty
-      where.OR = [
-        { ...baseConditions, titleAr: null },
-        { ...baseConditions, titleAr: '' }
+      // Arabic posts: base conditions + titleAr not null
+      where.AND = [
+        ...baseConditions,
+        { titleAr: { not: null } },
+        { titleAr: { not: '' } }
       ];
+    } else if (language === 'en') {
+      // English posts: base conditions + (titleAr null OR titleAr empty)
+      where.AND = [
+        ...baseConditions,
+        {
+          OR: [
+            { titleAr: null },
+            { titleAr: '' }
+          ]
+        }
+      ];
+    } else {
+      // No language filter, just base conditions
+      if (baseConditions.length > 0) {
+        where.AND = baseConditions;
+      }
     }
     
     console.log('Where clause:', where);
