@@ -161,3 +161,50 @@
 2025-06-10 09:27:16,484 - INFO - Successfully published blog post to Next.js
 2025-06-10 09:27:16,485 - INFO - ✅ Generated: تحسين تجربة الجوال للتجارة الإلكترونية في 2025 - Published
 2025-06-10 09:27:16,485 - INFO - 🎉 Completed daily generation: 2 posts created
+2025-06-10 10:54:47,502 - INFO - Generating image with Imagen 3 for: Digital Marketing Strategy 2025
+2025-06-10 10:54:47,946 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 400 Bad Request"
+2025-06-10 10:54:47,947 - ERROR - Error generating image with Imagen 3: 400 INVALID_ARGUMENT. {'error': {'code': 400, 'message': 'Only block_low_and_above is supported for safetySetting.', 'status': 'INVALID_ARGUMENT'}}
+2025-06-10 10:55:49,161 - INFO - Generating image with Imagen 3 for: Digital Marketing Strategy 2025
+2025-06-10 10:55:54,236 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 200 OK"
+2025-06-10 10:55:55,330 - INFO - Successfully generated Imagen 3 image
+2025-06-10 10:55:55,331 - INFO - Saving Imagen 3 image as: digital-marketing-strategy-2025-c3a07bb8.png
+2025-06-10 10:55:55,332 - INFO - Imagen 3 image saved permanently as: /images/blog_uploads/digital-marketing-strategy-2025-c3a07bb8.png
+2025-06-10 10:56:06,251 - INFO - Generating blog post for topic: Digital Marketing Trends in en
+2025-06-10 10:56:07,632 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-06-10 10:56:07,634 - ERROR - Error generating blog post: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-***************************************************************************************************************************************************5q7k. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-06-10 10:57:12,611 - INFO - Generating blog post for topic: Digital Marketing Trends in en
+2025-06-10 10:57:31,623 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 10:57:31,634 - INFO - Generating image with Imagen 3 for: Digital Marketing Trends 2025: Top Strategies & Tips
+2025-06-10 10:57:36,363 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 200 OK"
+2025-06-10 10:57:37,139 - INFO - Successfully generated Imagen 3 image
+2025-06-10 10:57:37,139 - INFO - Saving Imagen 3 image as: digital-marketing-trends-2025-top-strategies-tips-0e9da563.png
+2025-06-10 10:57:37,140 - INFO - Imagen 3 image saved permanently as: /images/blog_uploads/digital-marketing-trends-2025-top-strategies-tips-0e9da563.png
+2025-06-10 10:57:37,140 - INFO - Successfully generated blog post: Digital Marketing Trends 2025: Top Strategies & Tips
+2025-06-10 10:57:37,140 - INFO - Publishing blog post: Digital Marketing Trends 2025: Top Strategies & Tips
+2025-06-10 10:57:37,849 - INFO - Successfully published blog post to Next.js
+2025-06-10 10:57:51,446 - INFO - 🚀 Starting daily blog post generation for 2025 (2 posts)
+2025-06-10 10:57:51,446 - INFO - 📝 Generating post 1/2: Technology B2B Marketing (B2B) in en
+2025-06-10 10:57:51,446 - INFO - Generating blog post for topic: Technology B2B Marketing in en
+2025-06-10 10:58:56,500 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 10:58:56,506 - INFO - Generating image with Imagen 3 for: Top Technology B2B Marketing Trends for 2025
+2025-06-10 10:59:02,228 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 200 OK"
+2025-06-10 10:59:03,184 - INFO - Successfully generated Imagen 3 image
+2025-06-10 10:59:03,184 - INFO - Saving Imagen 3 image as: top-technology-b2b-marketing-trends-for-2025-ecebd192.png
+2025-06-10 10:59:03,186 - INFO - Imagen 3 image saved permanently as: /images/blog_uploads/top-technology-b2b-marketing-trends-for-2025-ecebd192.png
+2025-06-10 10:59:03,186 - INFO - Successfully generated blog post: Top Technology B2B Marketing Trends for 2025
+2025-06-10 10:59:03,186 - INFO - Publishing blog post: Top Technology B2B Marketing Trends for 2025
+2025-06-10 10:59:03,669 - INFO - Successfully published blog post to Next.js
+2025-06-10 10:59:03,669 - INFO - ✅ Generated: Top Technology B2B Marketing Trends for 2025 - Published
+2025-06-10 10:59:03,669 - INFO - 📝 Generating post 2/2: Machine Learning in Digital Marketing (AI Marketing) in ar
+2025-06-10 10:59:03,669 - INFO - Generating blog post for topic: Machine Learning in Digital Marketing in ar
+2025-06-10 10:59:27,052 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-10 10:59:27,056 - INFO - Generating image with Imagen 3 for: التعلم الآلي في التسويق الرقمي: اتجاهات 2025
+2025-06-10 10:59:32,315 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 200 OK"
+2025-06-10 10:59:33,334 - INFO - Successfully generated Imagen 3 image
+2025-06-10 10:59:33,334 - INFO - Saving Imagen 3 image as: التعلم-الآلي-في-التسويق-الرقمي-اتجاهات-2025-46b6f043.png
+2025-06-10 10:59:33,334 - INFO - Imagen 3 image saved permanently as: /images/blog_uploads/التعلم-الآلي-في-التسويق-الرقمي-اتجاهات-2025-46b6f043.png
+2025-06-10 10:59:33,335 - INFO - Successfully generated blog post: التعلم الآلي في التسويق الرقمي: اتجاهات 2025
+2025-06-10 10:59:33,335 - INFO - Publishing blog post: التعلم الآلي في التسويق الرقمي: اتجاهات 2025
+2025-06-10 10:59:33,970 - INFO - Successfully published blog post to Next.js
+2025-06-10 10:59:33,970 - INFO - ✅ Generated: التعلم الآلي في التسويق الرقمي: اتجاهات 2025 - Published
+2025-06-10 10:59:33,970 - INFO - 🎉 Completed daily generation: 2 posts created

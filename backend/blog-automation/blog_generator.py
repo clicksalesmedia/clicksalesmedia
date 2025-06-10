@@ -11,6 +11,10 @@ from PIL import Image
 from io import BytesIO
 import base64
 import re
+import uuid
+import shutil
+from google import genai
+from google.genai import types
 
 # Load environment variables
 load_dotenv()
@@ -32,6 +36,9 @@ class BlogGenerator:
         self.nextjs_api_url = os.getenv('NEXTJS_API_URL', 'https://clicksalesmedia.com/api')
         self.posts_per_day = int(os.getenv('POSTS_PER_DAY', '2'))
         self.languages = os.getenv('LANGUAGES', 'en,ar').split(',')
+        
+        # Initialize Google GenAI client for Imagen 3
+        self.genai_client = genai.Client(api_key="AIzaSyBgO6YYByI0R7SUSEibhFsSlceBgetb-d0")
         
         # Marketing topics for blog posts
         self.topics = [
@@ -209,10 +216,43 @@ Make it engaging, informative, and professional for {current_year}.
                 "featured": False
             }
 
-    def _generate_image(self, title: str) -> str:
-        """Generate image using dall-e-3"""
+    def _download_and_save_image(self, image_url: str, title: str) -> str:
+        """Download image from temporary URL and save it permanently"""
         try:
-            logger.info(f"Generating image for: {title}")
+            # Create a clean filename from the title
+            clean_title = re.sub(r'[^\w\s-]', '', title).strip()
+            clean_title = re.sub(r'[\s_-]+', '-', clean_title).lower()
+            filename = f"{clean_title[:50]}-{uuid.uuid4().hex[:8]}.png"
+            
+            # Define paths
+            blog_images_dir = "../public/images/blog_uploads"
+            os.makedirs(blog_images_dir, exist_ok=True)
+            file_path = os.path.join(blog_images_dir, filename)
+            
+            # Download the image
+            logger.info(f"Downloading image from: {image_url}")
+            response = requests.get(image_url, timeout=30)
+            response.raise_for_status()
+            
+            # Save the image
+            with open(file_path, 'wb') as f:
+                f.write(response.content)
+            
+            # Return the public URL
+            public_url = f"/images/blog_uploads/{filename}"
+            logger.info(f"Image saved permanently as: {public_url}")
+            
+            return public_url
+            
+        except Exception as e:
+            logger.error(f"Error downloading and saving image: {str(e)}")
+            # Return fallback image
+            return "/images/blog_uploads/default-blog-image.jpg"
+
+    def _generate_image(self, title: str) -> str:
+        """Generate image using Google Imagen 3 and save it permanently"""
+        try:
+            logger.info(f"Generating image with Imagen 3 for: {title}")
             
             # Create a professional image prompt based on the title
             # Remove any numbers, special characters, and make it professional
@@ -230,34 +270,68 @@ The image should be:
 - Include elements like charts, graphs, digital icons
 - Professional office or digital workspace setting
 - No text overlays
-- 16:9 aspect ratio
+- Square aspect ratio
 - High resolution
 
 Style: Corporate, professional, modern, clean
 """
             
-            response = self.client.images.generate(
-                model="dall-e-3",  # Changed to stable DALL-E 3 model
+            # Generate image using Imagen 3
+            response = self.genai_client.models.generate_images(
+                model='imagen-3.0-generate-002',
                 prompt=prompt,
-                size="1024x1024",  # Standard DALL-E 3 size
-                quality="standard", # DALL-E 3 quality parameter
-                n=1,
+                config=types.GenerateImagesConfig(
+                    number_of_images=1,
+                    aspect_ratio="1:1",
+                    safety_filter_level="block_low_and_above",
+                    person_generation="allow_adult"
+                )
             )
             
-            image_url = response.data[0].url
-            logger.info(f"Successfully generated image: {image_url}")
+            logger.info(f"Successfully generated Imagen 3 image")
             
-            # Ensure we have a valid image URL
-            if not image_url:
-                logger.warning("Generated image URL is None, using fallback")
-                return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=1024&fit=crop&auto=format&q=80"
-            
-            return image_url
+            # Save the generated image permanently
+            permanent_url = self._save_imagen_image(response.generated_images[0], title)
+            return permanent_url
             
         except Exception as e:
-            logger.error(f"Error generating image with dall-e-3: {str(e)}")
+            logger.error(f"Error generating image with Imagen 3: {str(e)}")
             # Fallback to a high-quality professional placeholder
-            return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=1024&fit=crop&auto=format&q=80"
+            return "/images/blog_uploads/default-blog-image.jpg"
+
+    def _save_imagen_image(self, generated_image, title: str) -> str:
+        """Save Imagen 3 generated image permanently"""
+        try:
+            # Create a clean filename from the title
+            clean_title = re.sub(r'[^\w\s-]', '', title).strip()
+            clean_title = re.sub(r'[\s_-]+', '-', clean_title).lower()
+            filename = f"{clean_title[:50]}-{uuid.uuid4().hex[:8]}.png"
+            
+            # Define paths
+            blog_images_dir = "../public/images/blog_uploads"
+            os.makedirs(blog_images_dir, exist_ok=True)
+            file_path = os.path.join(blog_images_dir, filename)
+            
+            # Save the image directly (Google GenAI returns image bytes)
+            logger.info(f"Saving Imagen 3 image as: {filename}")
+            
+            # Extract image bytes from the generated image object
+            image_bytes = generated_image.image.image_bytes
+            
+            # Save the image bytes to file
+            with open(file_path, 'wb') as f:
+                f.write(image_bytes)
+            
+            # Return the public URL
+            public_url = f"/images/blog_uploads/{filename}"
+            logger.info(f"Imagen 3 image saved permanently as: {public_url}")
+            
+            return public_url
+            
+        except Exception as e:
+            logger.error(f"Error saving Imagen 3 image: {str(e)}")
+            # Return fallback image
+            return "/images/blog_uploads/default-blog-image.jpg"
 
     def _detect_language(self, text: str) -> str:
         """Detect if text is primarily Arabic or English"""
