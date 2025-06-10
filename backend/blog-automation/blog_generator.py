@@ -105,7 +105,7 @@ class BlogGenerator:
             
             # Generate image for the post
             image_url = self._generate_image(blog_data['title'])
-            blog_data['image'] = image_url
+            blog_data['coverImage'] = image_url
             
             logger.info(f"Successfully generated blog post: {blog_data['title']}")
             return blog_data
@@ -210,7 +210,7 @@ Make it engaging, informative, and professional for {current_year}.
             }
 
     def _generate_image(self, title: str) -> str:
-        """Generate image using gpt-image-1"""
+        """Generate image using dall-e-3"""
         try:
             logger.info(f"Generating image for: {title}")
             
@@ -237,21 +237,27 @@ Style: Corporate, professional, modern, clean
 """
             
             response = self.client.images.generate(
-                model="gpt-image-1",
+                model="dall-e-3",  # Changed to stable DALL-E 3 model
                 prompt=prompt,
-                size="1536x1024",
-                quality="high",
+                size="1024x1024",  # Standard DALL-E 3 size
+                quality="standard", # DALL-E 3 quality parameter
                 n=1,
             )
             
             image_url = response.data[0].url
             logger.info(f"Successfully generated image: {image_url}")
+            
+            # Ensure we have a valid image URL
+            if not image_url:
+                logger.warning("Generated image URL is None, using fallback")
+                return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=1024&fit=crop&auto=format&q=80"
+            
             return image_url
             
         except Exception as e:
-            logger.error(f"Error generating image with gpt-image-1: {str(e)}")
+            logger.error(f"Error generating image with dall-e-3: {str(e)}")
             # Fallback to a high-quality professional placeholder
-            return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1792&h=1024&fit=crop&auto=format&q=80"
+            return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1024&h=1024&fit=crop&auto=format&q=80"
 
     def _detect_language(self, text: str) -> str:
         """Detect if text is primarily Arabic or English"""
@@ -291,7 +297,7 @@ Style: Corporate, professional, modern, clean
                 "slug": slug,
                 "content": blog_data["content"],
                 "excerpt": blog_data['excerpt'],  # Remove AI Generated prefix for cleaner look
-                "coverImage": blog_data["image"],
+                "coverImage": blog_data["coverImage"],
                 "published": True,
                 "authorId": "cmbmdeprt000081y34rklazoj"  # Server admin user ID
             }

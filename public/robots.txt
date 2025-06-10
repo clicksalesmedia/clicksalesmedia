@@ -1,4 +1,4 @@
-# Allow all crawlers
+# *
 User-agent: *
 Allow: /
 
@@ -13,6 +13,6 @@ Disallow: /dashboard/
 # Host
 Host: https://www.clicksalesmedia.com
 
-# Sitemap location
-Sitemap: https://clicksalesmedia.com/sitemap.xml
+# Sitemaps
+Sitemap: https://www.clicksalesmedia.com/sitemap.xml
 Sitemap: https://www.clicksalesmedia.com/server-sitemap.xml
